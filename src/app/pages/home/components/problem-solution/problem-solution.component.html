@@ -1,0 +1,139 @@
+<section class="relative bg-gray-900 py-24 sm:py-32 overflow-hidden">
+  <!-- Decorative gradients -->
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.gray.800),theme(colors.gray.900))] opacity-50"
+  ></div>
+  <div
+    class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center opacity-20"
+  ></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-indigo-400">The Challenge</h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+        Your Frontend Is Holding Your Product Back.
+      </p>
+    </div>
+
+    <!-- Cards Layout: Mobile First Stack -> Desktop Grid -->
+    <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
+      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
+        @for (problem of problems(); track problem.title; let last = $last) {
+        <div
+          class="relative flex gap-6 lg:flex-col lg:gap-0 lg:p-8 lg:rounded-3xl lg:bg-gray-800/20 lg:ring-1 lg:ring-white/10 lg:hover:ring-white/20 lg:transition-all lg:duration-300 group"
+        >
+          <!-- Mobile: Left Column (Icon + Line) -->
+          <div class="flex flex-col items-center lg:hidden">
+            <!-- Icon -->
+            <div
+              class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300"
+              [ngClass]="{
+                'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]':
+                  problem.theme === 'red',
+                'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]':
+                  problem.theme === 'orange',
+                'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]':
+                  problem.theme === 'indigo'
+              }"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
+              </svg>
+            </div>
+
+            <!-- Vertical Line connecting to next item -->
+            @if (!last) {
+            <div
+              class="w-px h-full bg-white/10 my-2 group-hover:bg-indigo-500/50 transition-colors duration-500"
+            ></div>
+            }
+          </div>
+
+          <!-- Content Column -->
+          <div class="flex-auto lg:mt-0">
+            <!-- Desktop Icon Wrapper (Hidden on Mobile) -->
+            <div class="hidden lg:block lg:mb-6">
+              <div
+                class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300 group-hover:scale-110"
+                [ngClass]="{
+                  'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]':
+                    problem.theme === 'red',
+                  'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]':
+                    problem.theme === 'orange',
+                  'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]':
+                    problem.theme === 'indigo'
+                }"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
+                </svg>
+              </div>
+            </div>
+
+            <dt class="text-lg font-semibold leading-7 text-white flex items-center h-10 lg:h-auto">
+              {{ problem.title }}
+            </dt>
+
+            <dd
+              class="mt-1 text-base leading-7 text-gray-400 group-hover:text-gray-300 transition-colors"
+            >
+              {{ problem.description }}
+            </dd>
+          </div>
+        </div>
+        }
+      </dl>
+    </div>
+
+    <!-- Bottom Action / Summary Banner -->
+    <div class="mt-16 sm:mt-20 lg:mt-24">
+      <div
+        class="relative overflow-hidden rounded-3xl bg-gray-800/50 px-6 py-10 shadow-2xl sm:px-12 xl:py-16 ring-1 ring-white/10 isolate"
+      >
+        <!-- Background blob -->
+        <svg
+          viewBox="0 0 1024 1024"
+          class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+          aria-hidden="true"
+        >
+          <circle cx="512" cy="512" r="512" fill="url(#gradient-problem-sol)" fill-opacity="0.25" />
+          <defs>
+            <radialGradient id="gradient-problem-sol">
+              <stop stop-color="#7775D6" />
+              <stop offset="1" stop-color="#E935C1" />
+            </radialGradient>
+          </defs>
+        </svg>
+
+        <div class="mx-auto max-w-3xl text-center">
+          <h3 class="text-lg font-medium leading-8 text-gray-300 text-pretty">
+            Whether you need architecture-level intervention, end-to-end SaaS delivery, or
+            production-ready templates you can customize in minutes,
+            <span
+              class="text-white font-bold block sm:inline mt-2 sm:mt-0 underline decoration-indigo-500 decoration-2 underline-offset-4"
+              >you're choosing from the same engineering standards</span
+            >
+            <span class="block mt-2 text-sm text-gray-500 uppercase tracking-widest font-semibold"
+              >— just different delivery formats. —</span
+            >
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

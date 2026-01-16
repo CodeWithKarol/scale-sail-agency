@@ -1,0 +1,114 @@
+<section class="relative bg-gray-900 py-24 sm:py-32 overflow-hidden">
+  <!-- Decorative background effects -->
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.900),theme(colors.gray.900))] opacity-20"
+  ></div>
+  <div
+    class="absolute inset-y-0 right-0 -z-10 w-[50%] bg-gradient-to-l from-gray-800/10 to-transparent"
+  ></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="mx-auto max-w-4xl text-center mb-16 lg:mb-24">
+      <h2 class="text-base font-semibold leading-7 text-indigo-400">
+        Services & Value Proposition
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl text-balance">
+        Bank-Grade Engineering. Startup-Speed Delivery.
+      </p>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-400 text-pretty">
+        For enterprise teams and ambitious startups, I modernize legacy frontends, fix performance
+        bottlenecks, and build modular Angular systems that stay maintainable as your product grows.
+        Clear outcomes, measurable wins, and audit-ready quality.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="mx-auto grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+      @for (tier of tiers(); track tier.name; let first = $first; let last = $last) {
+      <div
+        class="flex flex-col justify-between rounded-3xl p-8 xl:p-10 transition-all duration-300 relative group overflow-hidden"
+        [ngClass]="{
+          'bg-gray-800/60 ring-1 ring-white/10 hover:ring-white/20 hover:bg-gray-800':
+            !tier.featured,
+          'bg-gray-900 ring-2 ring-indigo-500 shadow-2xl shadow-indigo-500/20 z-10 scale-[1.02] lg:scale-110':
+            tier.featured
+        }"
+      >
+        <!-- Highlight/Glow Effect for featured card -->
+        @if (tier.featured) {
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-transparent opacity-50 pointer-events-none"
+        ></div>
+        <div
+          class="absolute top-0 right-0 -mr-3 -mt-3 w-24 h-24 rounded-full bg-indigo-500 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"
+        ></div>
+        }
+
+        <div class="relative">
+          <!-- Card Header -->
+          <div class="flex items-center justify-between gap-x-4 mb-4">
+            <h3
+              class="text-xl font-bold leading-8 text-white"
+              [class.text-indigo-400]="tier.featured"
+            >
+              {{ tier.name }}
+            </h3>
+
+            @if (tier.featured) {
+            <span
+              class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold leading-5 text-indigo-400 ring-1 ring-inset ring-indigo-500/30 whitespace-nowrap shrink-0"
+            >
+              Most Popular
+            </span>
+            }
+          </div>
+
+          <!-- Description -->
+          <p class="text-sm leading-6 text-gray-400 border-b border-white/5 pb-6 mb-6">
+            {{ tier.description }}
+          </p>
+
+          <!-- Features List -->
+          <ul role="list" class="space-y-4 text-sm leading-6 text-gray-300">
+            @for (feature of tier.features; track feature) {
+            <li class="flex gap-x-3 items-start">
+              <div
+                class="flex-none rounded-full p-1"
+                [ngClass]="
+                  tier.featured
+                    ? 'bg-indigo-500/10 text-indigo-400'
+                    : 'bg-gray-700/50 text-gray-400'
+                "
+              >
+                <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path
+                    fill-rule="evenodd"
+                    d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              {{ feature }}
+            </li>
+            }
+          </ul>
+        </div>
+
+        <!-- CTA Button -->
+        <a
+          [href]="tier.ctaLink"
+          class="mt-8 block rounded-xl px-3 py-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all duration-200 relative z-10"
+          [ngClass]="
+            tier.featured
+              ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25 hover:bg-indigo-500 hover:scale-[1.02] focus-visible:outline-indigo-500'
+              : 'bg-white/5 text-white ring-1 ring-inset ring-white/10 hover:bg-white/10 hover:ring-white/20 focus-visible:outline-white'
+          "
+        >
+          {{ tier.ctaText }}
+        </a>
+      </div>
+      }
+    </div>
+  </div>
+</section>

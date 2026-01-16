@@ -1,0 +1,96 @@
+<footer class="bg-gray-900 border-t border-white/10 text-white mt-auto">
+  <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div class="space-y-8">
+        <!-- Brand -->
+        <a href="#" (click)="scrollToTop($event)" class="flex items-center gap-3 group">
+          <img
+            src="images/scale-sail-logo.webp"
+            alt="Scale Sail Logo"
+            class="h-10 w-10 rounded-lg bg-white p-1.5 shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-all duration-300 group-hover:scale-105"
+          />
+          <span
+            class="text-2xl font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors"
+          >
+            Scale Sail
+          </span>
+        </a>
+
+        <p class="text-sm leading-6 text-gray-300">
+          Bank-Grade Engineering. <br />
+          Startup-Speed Delivery.
+        </p>
+
+        <p class="text-sm leading-6 text-gray-400 max-w-sm">
+          Senior Frontend Developer & SaaS Founder. Modernizing legacy frontends and building
+          performance-first, audit-ready web applications for enterprise and startups.
+        </p>
+      </div>
+
+      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0 xl:grid-cols-3">
+        <div>
+          <h3 class="text-sm font-semibold leading-6 text-white">Services</h3>
+          <ul role="list" class="mt-6 space-y-4">
+            @for (item of services(); track item.name) {
+            <li>
+              <a
+                [href]="item.link"
+                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+              >
+                {{ item.name }}
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold leading-6 text-white">Resources</h3>
+          <ul role="list" class="mt-6 space-y-4">
+            @for (item of resources(); track item.name) {
+            <li>
+              <a
+                [href]="item.link"
+                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+              >
+                {{ item.name }}
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold leading-6 text-white">Connect</h3>
+          <ul role="list" class="mt-6 space-y-4">
+            @for (item of connect(); track item.name) {
+            <li>
+              <a
+                [href]="item.link"
+                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+              >
+                {{ item.name }}
+              </a>
+            </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col items-center justify-between gap-y-4 md:flex-row"
+    >
+      <p class="text-xs leading-5 text-gray-400">
+        &copy; {{ currentYear }} Scale Sail. All rights reserved.
+      </p>
+      <div class="flex gap-x-8">
+        @for (item of legal(); track item.name) {
+        <a
+          [href]="item.link"
+          class="text-xs leading-5 text-gray-400 hover:text-white transition-colors"
+          >{{ item.name }}</a
+        >
+        }
+      </div>
+    </div>
+  </div>
+</footer>
