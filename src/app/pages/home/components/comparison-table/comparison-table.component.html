@@ -1,0 +1,181 @@
+<section class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+  <!-- Interactive Background -->
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.950),transparent)] opacity-20"
+  ></div>
+  <div
+    class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-950 shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50/5 sm:mr-28 lg:mr-0 lg:-ml-96 lg:w-[200%]"
+  ></div>
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center mb-16 sm:mb-20">
+      <h2 class="text-base font-semibold leading-7 text-indigo-400 uppercase tracking-widest">
+        Compare Options
+      </h2>
+      <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
+        Choose Your Engagement Model
+      </p>
+    </div>
+
+    <!-- Mobile View (Styled Cards) -->
+    <div class="grid grid-cols-1 gap-8 lg:hidden">
+      @for (tier of tiers(); track tier.name) {
+      <div
+        class="relative flex flex-col rounded-3xl p-8 ring-1 transition-transform"
+        [ngClass]="
+          tier.highlighted
+            ? 'bg-gray-800/60 ring-indigo-500 shadow-2xl shadow-indigo-500/10 scale-[1.02]'
+            : 'bg-white/5 ring-white/10 hover:bg-white/10'
+        "
+      >
+        @if (tier.highlighted) {
+        <div class="absolute -top-4 left-0 right-0 flex justify-center">
+          <span
+            class="inline-flex items-center rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset ring-indigo-500"
+            >Most Popular</span
+          >
+        </div>
+        }
+
+        <h3 id="{{ tier.name }}-mobile" class="text-xl font-bold leading-8 text-white">
+          {{ tier.name }}
+        </h3>
+        <p class="mt-4 text-sm leading-6 text-gray-300">{{ tier.bestFor }}</p>
+
+        <ul role="list" class="mt-8 space-y-4 text-sm leading-6 text-gray-300">
+          <li class="flex gap-x-3">
+            <svg
+              class="h-6 w-5 flex-none text-indigo-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="text-white font-medium">Timeline:</span> {{ tier.timeline }}
+          </li>
+          <li class="flex gap-x-3">
+            <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <span class="text-white font-medium">Investment:</span> {{ tier.investment }}
+          </li>
+        </ul>
+
+        <a
+          [href]="tier.ctaLink"
+          [attr.aria-describedby]="tier.name + '-mobile'"
+          class="mt-8 block rounded-md px-3 py-2.5 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all duration-300"
+          [ngClass]="
+            tier.highlighted
+              ? 'bg-indigo-600 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-indigo-600'
+              : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white'
+          "
+        >
+          {{ tier.ctaText }}
+        </a>
+      </div>
+      }
+    </div>
+
+    <!-- Desktop View (Modern Table) -->
+    <div class="hidden lg:block">
+      <div
+        class="relative rounded-3xl bg-gray-900/40 ring-1 ring-white/10 backdrop-blur-sm overflow-hidden isolate"
+      >
+        <!-- Highlight Column Background (Legacy Mod is Index 0 -> Col 2) -->
+        <!-- 7 Columns: Label(14.28%) + 6 Tiers(14.28% each) -->
+        <div
+          class="absolute inset-y-0 left-[14.28%] w-[14.28%] bg-white/5 pointer-events-none -z-10 rounded-t-3xl border-x border-white/5"
+        ></div>
+
+        <div class="grid grid-cols-7 text-sm leading-6 border-b border-white/10">
+          <div class="p-4"></div>
+          @for (tier of tiers(); track tier.name) {
+          <div class="p-4 text-center flex flex-col justify-end">
+            <h3 class="text-base font-bold leading-6 text-white text-balance">{{ tier.name }}</h3>
+            @if(tier.highlighted) {
+            <div class="flex justify-center mt-2">
+              <span
+                class="inline-flex items-center rounded-full bg-indigo-400/10 px-2 py-0.5 text-[10px] uppercase tracking-wide font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/20"
+                >Recommended</span
+              >
+            </div>
+            }
+          </div>
+          }
+        </div>
+
+        <div
+          class="grid grid-cols-7 text-sm leading-6 divide-x divide-white/5 border-b border-white/5"
+        >
+          <!-- Best For Row -->
+          <div class="p-4 font-semibold text-white pl-8 flex items-center bg-transparent">
+            Best For
+          </div>
+          @for (tier of tiers(); track tier.name) {
+          <div class="p-4 text-gray-400 text-center text-xs flex items-center justify-center">
+            {{ tier.bestFor }}
+          </div>
+          }
+        </div>
+
+        <div
+          class="grid grid-cols-7 text-sm leading-6 divide-x divide-white/5 border-b border-white/5"
+        >
+          <!-- Timeline Row -->
+          <div class="p-4 font-semibold text-white pl-8 flex items-center bg-transparent">
+            Timeline
+          </div>
+          @for (tier of tiers(); track tier.name) {
+          <div class="p-4 text-gray-400 text-center flex items-center justify-center">
+            {{ tier.timeline }}
+          </div>
+          }
+        </div>
+
+        <div
+          class="grid grid-cols-7 text-sm leading-6 divide-x divide-white/5 border-b border-white/5"
+        >
+          <!-- Investment Row -->
+          <div class="p-4 font-semibold text-white pl-8 flex items-center bg-transparent">
+            Investment
+          </div>
+          @for (tier of tiers(); track tier.name) {
+          <div class="p-4 font-medium text-white text-center flex items-center justify-center">
+            {{ tier.investment }}
+          </div>
+          }
+        </div>
+
+        <div class="grid grid-cols-7 text-sm leading-6 divide-x divide-white/5">
+          <!-- CTA Row -->
+          <div class="p-4"></div>
+          @for (tier of tiers(); track tier.name) {
+          <div class="p-4 text-center flex items-end justify-center">
+            <a
+              [href]="tier.ctaLink"
+              class="block w-full rounded-md px-2 py-2 text-center text-xs font-semibold leading-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all"
+              [ngClass]="
+                tier.highlighted
+                  ? 'bg-indigo-600 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-indigo-600'
+                  : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white'
+              "
+            >
+              {{ tier.ctaText }}
+            </a>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

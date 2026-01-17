@@ -1,0 +1,196 @@
+<div class="relative bg-gray-900 border-b border-white/5 overflow-hidden">
+  <!-- Decorative background effects -->
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20"
+  ></div>
+  <div
+    class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gray-900 shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"
+  ></div>
+  <div
+    class="absolute bottom-0 h-40 w-full bg-gradient-to-t from-gray-900 to-transparent z-20"
+  ></div>
+
+  <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+    <!-- Left Column: Content -->
+    <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-56 lg:pt-48 xl:col-span-6">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <!-- Badge -->
+        <div class="mt-24 sm:mt-32 lg:mt-0">
+          <div
+            class="inline-flex rounded-full px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20 bg-indigo-500/10 backdrop-blur-sm"
+          >
+            Availability: Available for new projects
+          </div>
+        </div>
+
+        <!-- Heading -->
+        <h1
+          class="mt-8 text-4xl font-bold tracking-tight text-white sm:mt-10 sm:text-6xl text-balance"
+        >
+          Senior Frontend Developer
+          <span class="text-indigo-400 block mt-2">Modernizing Legacy Frontends</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="mt-6 text-lg leading-8 text-gray-300 text-pretty">
+          I help enterprise teams and ambitious startups turn slow, tangled Angular frontends into
+          clean, modular systems that ship faster and stay fast. Expect measurable performance wins,
+          audit-ready engineering practices, and architecture that scales with your product.
+        </p>
+
+        <!-- CTA Actions -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
+          <a
+            href="https://www.karol-modelski.scale-sail.io/contact"
+            class="group relative inline-flex items-center justify-center gap-x-2 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all duration-200"
+          >
+            <div class="flex flex-col items-start text-left">
+              <span>Book Discovery Call</span>
+              <span class="text-[10px] uppercase tracking-wider opacity-80 font-normal"
+                >Modernize or Build SaaS</span
+              >
+            </div>
+            <svg
+              class="h-4 w-4 transition-transform group-hover:translate-x-1"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </a>
+
+          <a
+            href="https://www.shop.scale-sail.io/"
+            class="group inline-flex items-center justify-center gap-x-2 rounded-lg bg-white/5 px-6 py-3 text-sm font-semibold text-white ring-1 ring-inset ring-white/10 hover:bg-white/10 transition-all duration-200"
+          >
+            <div class="flex flex-col items-start text-left">
+              <span>Shop Templates</span>
+              <span
+                class="text-[10px] uppercase tracking-wider text-gray-400 font-normal group-hover:text-gray-300"
+                >One-time purchase</span
+              >
+            </div>
+          </a>
+        </div>
+
+        <!-- Tertiary Link -->
+        <div class="mt-8 flex items-center gap-x-4">
+          <a
+            href="https://www.karol-modelski.scale-sail.io/portfolio"
+            class="text-sm font-semibold leading-6 text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+          >
+            View Portfolio
+            <span class="h-1 w-1 rounded-full bg-gray-500"></span>
+            <span class="text-gray-500 font-normal">Validate quality first</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Code Visual -->
+    <div
+      class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0 z-10 box-border px-6 lg:px-0 pb-20 lg:pb-0"
+    >
+      <div
+        class="relative h-full w-full lg:flex lg:items-center justify-center lg:justify-start xl:pl-20 mt-10 lg:mt-0"
+      >
+        <!-- Code Window -->
+        <div
+          class="w-full max-w-lg mx-auto lg:mx-0 rounded-xl bg-gray-900 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm transform transition-all duration-500 hover:scale-[1.01] cursor-pointer group"
+          (click)="toggleModernization()"
+        >
+          <!-- Window Controls -->
+          <div
+            class="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 border-b border-white/5 bg-gray-800/50 rounded-t-xl"
+          >
+            <div class="flex gap-1.5">
+              <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+              <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+            </div>
+            <div class="ml-3 sm:ml-4 text-[10px] font-mono text-gray-500 flex items-center gap-2">
+              <span class="text-indigo-400">~/app</span>
+              <span class="text-gray-600">/</span>
+              <span>{{ isModernized() ? 'modern.ts' : 'legacy.ts' }}</span>
+            </div>
+            <div class="ml-auto text-[10px] text-gray-500 font-mono hidden sm:block">
+              Click to toggle
+            </div>
+          </div>
+
+          <!-- Code Content -->
+          <div class="p-3 sm:p-6 overflow-x-auto">
+            <pre
+              class="font-mono text-[10px] sm:text-sm leading-4 sm:leading-6"
+            ><code>@if (isModernized()) {<span class="text-purple-400">import</span> {{ '{' }} <span class="text-yellow-300">Component</span>, <span class="text-yellow-300">signal</span> {{ '}' }} <span class="text-purple-400">from</span> <span class="text-green-300">'@angular/core'</span>;
+
+<span class="text-purple-400">@Component</span>({{ '{' }}
+  <span class="text-blue-300">standalone</span>: <span class="text-red-300">true</span>,
+  <span class="text-blue-300">changeDetection</span>: <span class="text-yellow-300">ChangeDetectionStrategy</span>.<span class="text-blue-300">OnPush</span>,
+  <span class="text-blue-300">template</span>: <span class="text-green-300">`
+    &lt;h1&gt;{{ '{{' }} title() {{ '}}' }}&lt;/h1&gt;
+    &lt;button (click)="update()"&gt;Update&lt;/button&gt;
+  `</span>
+{{ '}' }})
+<span class="text-purple-400">export class</span> <span class="text-yellow-300">ModernComponent</span> {{ '{' }}
+  <span class="text-blue-300">title</span> = <span class="text-yellow-300">signal</span>(<span class="text-green-300">'Fast &amp; Reactive 🚀'</span>);
+
+  <span class="text-yellow-300">update</span>() {{ '{' }}
+    <span class="text-purple-400">this</span>.title.<span class="text-yellow-300">set</span>(<span class="text-green-300">'Modernized!'</span>);
+  {{ '}' }}
+{{ '}' }}
+} @else {<span class="text-purple-400">import</span> {{ '{' }} <span class="text-yellow-300">Component</span> {{ '}' }} <span class="text-purple-400">from</span> <span class="text-green-300">'@angular/core'</span>;
+
+<span class="text-purple-400">@Component</span>({{ '{' }}
+  <span class="text-blue-300">selector</span>: <span class="text-green-300">'app-legacy'</span>,
+  <span class="text-blue-300">template</span>: <span class="text-green-300">`
+    &lt;h1&gt;{{ '{{' }} title {{ '}}' }}&lt;/h1&gt;
+    &lt;button (click)="update()"&gt;Update&lt;/button&gt;
+  `</span>
+{{ '}' }})
+<span class="text-purple-400">export class</span> <span class="text-yellow-300">LegacyComponent</span> {{ '{' }}
+  <span class="text-blue-300">title</span>: <span class="text-red-300">string</span> = <span class="text-green-300">'Slow &amp; Heavy 🐢'</span>;
+
+  <span class="text-yellow-300">update</span>() {{ '{' }}
+    <span class="text-comment italic text-gray-500">// Triggering full change detection...</span>
+    <span class="text-purple-400">this</span>.title = <span class="text-green-300">'Still loading...'</span>;
+  {{ '}' }}
+{{ '}' }}
+}</code></pre>
+          </div>
+
+          <!-- Bottom Status Bar -->
+          <div
+            class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-800/50 rounded-b-xl border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-gray-400"
+          >
+            <div class="flex items-center gap-2">
+              <div
+                class="w-2 h-2 rounded-full"
+                [class.bg-green-500]="isModernized()"
+                [class.bg-yellow-500]="!isModernized()"
+              ></div>
+              {{ isModernized() ? '100/100' : '65/100' }}
+            </div>
+            <div>TS</div>
+          </div>
+        </div>
+
+        <!-- Decoration behind code window -->
+        <div
+          class="absolute -top-12 -right-12 -z-10 text-indigo-900/10 transform rotate-12 scale-150 pointer-events-none select-none"
+          aria-hidden="true"
+        >
+          <svg width="400" height="400" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
