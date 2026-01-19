@@ -45,12 +45,12 @@
     <!-- Desktop Nav -->
     <div class="hidden xl:flex xl:gap-x-8">
       @for (item of navigation; track item.name) {
-      <a
-        [href]="item.href"
-        class="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
-      >
-        {{ item.name }}
-      </a>
+        <a
+          [href]="item.href"
+          class="text-sm font-semibold leading-6 text-gray-300 hover:text-white transition-colors"
+        >
+          {{ item.name }}
+        </a>
       }
     </div>
 
@@ -67,69 +67,69 @@
 </header>
 <!-- Mobile Menu -->
 @if (mobileMenuOpen()) {
-<div class="lg:hidden relative z-[60]" role="dialog" aria-modal="true">
-  <!-- Backdrop -->
-  <div class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm" (click)="closeMobileMenu()"></div>
+  <div class="xl:hidden relative z-[60]" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-gray-900/80 backdrop-blur-sm" (click)="closeMobileMenu()"></div>
 
-  <!-- Drawer -->
-  <div
-    class="fixed inset-y-0 right-0 z-[60] w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10 shadow-2xl"
-  >
-    <div class="flex items-center justify-between">
-      <a
-        href="https://www.karol-modelski.scale-sail.io/"
-        class="-m-1.5 p-1.5 flex items-center gap-3"
-        (click)="closeMobileMenu()"
-      >
-        <img
-          src="images/scale-sail-logo.webp"
-          alt="Scale Sail Logo"
-          class="h-8 w-8 rounded-lg bg-white p-1"
-        />
-        <span class="text-sm font-bold leading-6 text-white">Scale Sail</span>
-      </a>
-      <button
-        type="button"
-        class="-m-2.5 rounded-md p-2.5 text-gray-400 hover:text-white transition-colors"
-        (click)="closeMobileMenu()"
-      >
-        <span class="sr-only">Close menu</span>
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
+    <!-- Drawer -->
+    <div
+      class="fixed inset-y-0 right-0 z-[60] w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10 shadow-2xl"
+    >
+      <div class="flex items-center justify-between">
+        <a
+          href="https://www.karol-modelski.scale-sail.io/"
+          class="-m-1.5 p-1.5 flex items-center gap-3"
+          (click)="closeMobileMenu()"
         >
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-    <div class="mt-6 flow-root">
-      <div class="-my-6 divide-y divide-gray-500/25">
-        <div class="space-y-2 py-6">
-          @for (item of navigation; track item.name) {
-          <a
-            [href]="item.href"
-            class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
-            (click)="closeMobileMenu()"
+          <img
+            src="images/scale-sail-logo.webp"
+            alt="Scale Sail Logo"
+            class="h-8 w-8 rounded-lg bg-white p-1"
+          />
+          <span class="text-sm font-bold leading-6 text-white">Scale Sail</span>
+        </a>
+        <button
+          type="button"
+          class="-m-2.5 rounded-md p-2.5 text-gray-400 hover:text-white transition-colors"
+          (click)="closeMobileMenu()"
+        >
+          <span class="sr-only">Close menu</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            {{ item.name }}
-          </a>
-          }
-        </div>
-        <div class="py-6">
-          <a
-            href="https://www.karol-modelski.scale-sail.io/contact"
-            class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-white/5 transition-colors"
-            (click)="closeMobileMenu()"
-          >
-            Work With Me <span aria-hidden="true">&rarr;</span>
-          </a>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mt-6 flow-root">
+        <div class="-my-6 divide-y divide-gray-500/25">
+          <div class="space-y-2 py-6">
+            @for (item of navigation; track item.name) {
+              <a
+                [href]="item.href"
+                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
+                (click)="closeMobileMenu()"
+              >
+                {{ item.name }}
+              </a>
+            }
+          </div>
+          <div class="py-6">
+            <a
+              href="https://www.karol-modelski.scale-sail.io/contact"
+              class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-white hover:bg-white/5 transition-colors"
+              (click)="closeMobileMenu()"
+            >
+              Work With Me <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 }
