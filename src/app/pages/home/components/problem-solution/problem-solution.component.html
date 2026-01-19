@@ -18,13 +18,13 @@
 
     <!-- Cards Layout: Mobile First Stack -> Desktop Grid -->
     <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
-      <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
+      <ul class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
         @for (problem of problems(); track problem.title; let last = $last) {
-          <div
+          <li
             class="relative flex gap-6 lg:flex-col lg:gap-0 lg:p-8 lg:rounded-3xl lg:bg-gray-800/20 lg:ring-1 lg:ring-white/10 lg:hover:ring-white/20 lg:transition-all lg:duration-300 group"
           >
             <!-- Mobile: Left Column (Icon + Line) -->
-            <div class="flex flex-col items-center lg:hidden">
+            <div class="flex flex-col items-center lg:hidden" aria-hidden="true">
               <!-- Icon -->
               <div
                 class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300"
@@ -43,7 +43,6 @@
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  aria-hidden="true"
                 >
                   <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
                 </svg>
@@ -60,7 +59,7 @@
             <!-- Content Column -->
             <div class="flex-auto lg:mt-0">
               <!-- Desktop Icon Wrapper (Hidden on Mobile) -->
-              <div class="hidden lg:block lg:mb-6">
+              <div class="hidden lg:block lg:mb-6" aria-hidden="true">
                 <div
                   class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300 group-hover:scale-110"
                   [ngClass]="{
@@ -97,9 +96,9 @@
                 {{ problem.description }}
               </p>
             </div>
-          </div>
+          </li>
         }
-      </div>
+      </ul>
     </div>
 
     <!-- Bottom Action / Summary Banner -->

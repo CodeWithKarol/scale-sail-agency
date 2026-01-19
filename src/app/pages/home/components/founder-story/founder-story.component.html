@@ -124,27 +124,31 @@
         </div>
       </div>
 
-      <!-- Image (Desktop: Right Side, Mobile: Between Header and Text or At Bottom? Let's put strictly right/sticky on desktop) -->
+      <!-- Image -->
       <div
         class="lg:-ml-12 lg:-mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden"
       >
-        <div
+        <figure
           class="relative aspect-[4/5] rounded-xl bg-gray-800 object-cover shadow-2xl ring-1 ring-white/10 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group"
         >
           <img
             class="absolute inset-0 h-full w-full rounded-xl bg-gray-900 object-cover shadow-2xl transition duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale-[50%]"
             [src]="founder().image"
-            alt="Portrait of the founder"
+            alt="Portrait of Karol Modelski, Founder"
           />
-          <div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10"></div>
+          <div
+            class="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10"
+            aria-hidden="true"
+          ></div>
 
           <!-- Quick stats overlaid on image bottom -->
-          <div
+          <figcaption
             class="absolute bottom-4 left-4 right-4 rounded-lg bg-gray-900/90 backdrop-blur p-4 border border-white/10 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
           >
             <div class="flex items-center gap-3">
               <div
                 class="h-10 w-10 flex-shrink-0 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold"
+                aria-hidden="true"
               >
                 KM
               </div>
@@ -153,8 +157,8 @@
                 <p class="text-sm font-semibold text-white">Business-First Engineering</p>
               </div>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </div>
