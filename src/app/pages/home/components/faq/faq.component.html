@@ -51,24 +51,24 @@
 
       <!-- FAQ List -->
       <div class="mt-16 sm:mt-20 lg:col-span-8 lg:mt-0">
-        <dl class="space-y-6 sm:space-y-8">
+        <div class="space-y-6 sm:space-y-8">
           @for (faq of faqs(); track faq.question) {
-          <div
-            class="rounded-3xl bg-white/5 px-6 py-8 ring-1 ring-white/10 hover:bg-white/10 hover:ring-indigo-500/30 transition-all duration-300 sm:p-10"
-          >
-            <dt class="text-lg font-bold leading-7 text-white flex gap-3">
-              <!-- Optional Icon or Q marker -->
-              <span class="text-indigo-400 font-mono hidden sm:inline-block">Q.</span>
-              {{ faq.question }}
-            </dt>
-            <dd
-              class="mt-4 text-base leading-7 text-gray-300 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
+            <div
+              class="rounded-3xl bg-white/5 px-6 py-8 ring-1 ring-white/10 hover:bg-white/10 hover:ring-indigo-500/30 transition-all duration-300 sm:p-10"
             >
-              {{ faq.answer }}
-            </dd>
-          </div>
+              <h3 class="text-lg font-bold leading-7 text-white flex gap-3">
+                <!-- Optional Icon or Q marker -->
+                <span class="text-indigo-400 font-mono hidden sm:inline-block">Q.</span>
+                {{ faq.question }}
+              </h3>
+              <p
+                class="mt-4 text-base leading-7 text-gray-300 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
+              >
+                {{ faq.answer }}
+              </p>
+            </div>
           }
-        </dl>
+        </div>
       </div>
     </div>
   </div>

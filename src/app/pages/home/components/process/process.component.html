@@ -18,49 +18,49 @@
     </div>
 
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-      <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3 relative">
+      <div class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3 relative">
         <!-- Connector Line (Desktop Only) -->
         <div
           class="hidden lg:block absolute top-12 left-10 right-10 h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent border-t border-dashed border-white/5 -z-10"
         ></div>
 
         @for (step of steps(); track step.number; let index = $index) {
-        <div class="flex flex-col relative group">
-          <!-- Step Number & Icon -->
-          <div
-            class="mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-800 ring-1 ring-white/10 shadow-2xl group-hover:bg-indigo-600 group-hover:ring-indigo-500 group-hover:scale-110 transition-all duration-300 z-10"
-          >
-            <div class="flex flex-col items-center gap-1">
-              <svg
-                class="h-8 w-8 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
+          <div class="flex flex-col relative group">
+            <!-- Step Number & Icon -->
+            <div
+              class="mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-gray-800 ring-1 ring-white/10 shadow-2xl group-hover:bg-indigo-600 group-hover:ring-indigo-500 group-hover:scale-110 transition-all duration-300 z-10"
+            >
+              <div class="flex flex-col items-center gap-1">
+                <svg
+                  class="h-8 w-8 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="step.iconPath" />
+                </svg>
+                <span class="text-[0.6rem] font-medium text-white/60 font-mono tracking-widest">{{
+                  step.number
+                }}</span>
+              </div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="flex flex-col gap-y-1">
+              <h3
+                class="text-xl font-bold leading-7 text-white group-hover:text-indigo-400 transition-colors"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="step.iconPath" />
-              </svg>
-              <span class="text-[0.6rem] font-medium text-white/60 font-mono tracking-widest">{{
-                step.number
-              }}</span>
+                {{ step.title }}
+              </h3>
+            </div>
+            <div class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-400">
+              <p class="flex-auto">{{ step.description }}</p>
             </div>
           </div>
-
-          <!-- Content Card -->
-          <dt class="flex flex-col gap-y-1">
-            <h3
-              class="text-xl font-bold leading-7 text-white group-hover:text-indigo-400 transition-colors"
-            >
-              {{ step.title }}
-            </h3>
-          </dt>
-          <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-400">
-            <p class="flex-auto">{{ step.description }}</p>
-          </dd>
-        </div>
         }
-      </dl>
+      </div>
     </div>
   </div>
 </section>
