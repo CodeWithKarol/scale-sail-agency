@@ -30,46 +30,46 @@
       <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0 xl:grid-cols-3">
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">Services</h3>
-          <ul role="list" class="mt-6 space-y-4">
+          <ul class="mt-6 space-y-4">
             @for (item of services(); track item.name) {
-            <li>
-              <a
-                [href]="item.link"
-                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
-              >
-                {{ item.name }}
-              </a>
-            </li>
+              <li>
+                <a
+                  [href]="item.link"
+                  class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+                >
+                  {{ item.name }}
+                </a>
+              </li>
             }
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">Resources</h3>
-          <ul role="list" class="mt-6 space-y-4">
+          <ul class="mt-6 space-y-4">
             @for (item of resources(); track item.name) {
-            <li>
-              <a
-                [href]="item.link"
-                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
-              >
-                {{ item.name }}
-              </a>
-            </li>
+              <li>
+                <a
+                  [href]="item.link"
+                  class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+                >
+                  {{ item.name }}
+                </a>
+              </li>
             }
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-semibold leading-6 text-white">Connect</h3>
-          <ul role="list" class="mt-6 space-y-4">
+          <ul class="mt-6 space-y-4">
             @for (item of connect(); track item.name) {
-            <li>
-              <a
-                [href]="item.link"
-                class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
-              >
-                {{ item.name }}
-              </a>
-            </li>
+              <li>
+                <a
+                  [href]="item.link"
+                  class="text-sm leading-6 text-gray-400 hover:text-white transition-colors"
+                >
+                  {{ item.name }}
+                </a>
+              </li>
             }
           </ul>
         </div>
@@ -84,11 +84,11 @@
       </p>
       <div class="flex gap-x-8">
         @for (item of legal(); track item.name) {
-        <a
-          [href]="item.link"
-          class="text-xs leading-5 text-gray-400 hover:text-white transition-colors"
-          >{{ item.name }}</a
-        >
+          <a
+            [href]="item.link"
+            class="text-xs leading-5 text-gray-400 hover:text-white transition-colors"
+            >{{ item.name }}</a
+          >
         }
       </div>
     </div>

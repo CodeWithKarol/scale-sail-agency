@@ -76,9 +76,9 @@
             <p class="text-base font-semibold leading-7 text-indigo-400 uppercase tracking-wide">
               The Founder
             </p>
-            <h1 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
               {{ founder().headline }}
-            </h1>
+            </h2>
             <div class="mt-6 text-xl leading-8 text-white font-semibold">
               {{ founder().name }}
               <span class="block text-base font-normal text-gray-400 mt-1">{{
@@ -89,11 +89,11 @@
             <!-- Badges Mobile/Desktop combined logic -->
             <div class="mt-6 flex flex-wrap gap-2">
               @for (badge of founder().badges; track $index) {
-              <span
-                class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30"
-              >
-                {{ badge }}
-              </span>
+                <span
+                  class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30"
+                >
+                  {{ badge }}
+                </span>
               }
             </div>
           </div>
@@ -107,7 +107,7 @@
         <div class="lg:pr-4">
           <div class="max-w-xl text-base leading-7 text-gray-300 lg:max-w-lg">
             @for (paragraph of founder().bio; track $index) {
-            <p class="mb-4 last:mb-0">{{ paragraph }}</p>
+              <p class="mb-4 last:mb-0">{{ paragraph }}</p>
             }
 
             <!-- Buttons -->
