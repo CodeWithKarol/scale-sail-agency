@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 interface CaseStudy {
@@ -11,7 +12,7 @@ interface CaseStudy {
 @Component({
   selector: 'app-case-studies',
   standalone: true,
-  imports: [],
+  imports: [NgOptimizedImage],
   templateUrl: './case-studies.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -22,7 +23,7 @@ export class CaseStudiesComponent {
       title: 'Modern Enterprise Admin Dashboard',
       description:
         'Real-time analytics collapsing under scale fixed with Angular Signals and Tailwind CSS 4.',
-      imageUrl: 'images/www.admin-panel.scale-sail.io_dashboard.webp',
+      imageUrl: 'images/admin-panel.webp',
       link: 'https://www.karol-modelski.scale-sail.io/portfolio',
     },
     {
@@ -30,7 +31,7 @@ export class CaseStudiesComponent {
       title: 'QuickCart E-Commerce',
       description:
         '"Smart Shell" architecture with Signals handling complex cart state without bloat.',
-      imageUrl: 'images/www.quick-cart.scale-sail.io_.webp',
+      imageUrl: 'images/quick-cart.webp',
       link: 'https://www.karol-modelski.scale-sail.io/portfolio',
     },
   ]);

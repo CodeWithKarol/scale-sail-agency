@@ -55,9 +55,10 @@
             class="aspect-[16/9] w-full overflow-hidden bg-gray-900 sm:aspect-[3/2] lg:aspect-[16/9] relative"
           >
             <img
-              [src]="study.imageUrl"
+              [ngSrc]="study.imageUrl"
               [alt]="study.title"
-              class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              fill
+              class="object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
             <!-- Gradient Overlay for better text contrast if needed, mostly for aesthetics on image bottom -->
             <div
