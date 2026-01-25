@@ -24,7 +24,7 @@ export class CaseStudiesComponent {
       description:
         'Real-time analytics collapsing under scale fixed with Angular Signals and Tailwind CSS 4.',
       imageUrl: 'images/admin-panel.webp',
-      link: 'https://www.karol-modelski.scale-sail.io/portfolio',
+      link: 'https://www.karol-modelski.scale-sail.io/work/modern-enterprise-admin-dashboard',
     },
     {
       tag: 'Next-Gen Angular E-Commerce Architecture',
@@ -32,7 +32,7 @@ export class CaseStudiesComponent {
       description:
         '"Smart Shell" architecture with Signals handling complex cart state without bloat.',
       imageUrl: 'images/quick-cart.webp',
-      link: 'https://www.karol-modelski.scale-sail.io/portfolio',
+      link: 'https://www.karol-modelski.scale-sail.io/quickcart-ecommerce',
     },
   ]);
 }

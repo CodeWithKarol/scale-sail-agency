@@ -18,7 +18,7 @@ export class FooterComponent {
   ]);
 
   resources = signal([
-    { name: 'Portfolio', link: 'https://www.karol-modelski.scale-sail.io/portfolio' },
+    { name: 'Portfolio', link: 'https://www.karol-modelski.scale-sail.io' },
     { name: 'Engineering Blog', link: 'https://www.karol-modelski.scale-sail.io/blog' },
     { name: 'About', link: 'https://www.karol-modelski.scale-sail.io/about' },
   ]);
