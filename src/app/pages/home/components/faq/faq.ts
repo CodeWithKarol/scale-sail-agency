@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
 
 interface FAQ {
   question: string;
@@ -10,7 +10,7 @@ interface FAQ {
   selector: 'app-faq',
   standalone: true,
   imports: [SectionHeaderComponent],
-  templateUrl: './faq.component.html',
+  templateUrl: './faq.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FaqComponent {

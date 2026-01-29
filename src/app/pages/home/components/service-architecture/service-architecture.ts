@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
 
 interface ServiceTier {
   name: string;
@@ -13,7 +13,7 @@ interface ServiceTier {
 @Component({
   selector: 'app-service-architecture',
   imports: [SectionHeaderComponent],
-  templateUrl: './service-architecture.component.html',
+  templateUrl: './service-architecture.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ServiceArchitectureComponent {

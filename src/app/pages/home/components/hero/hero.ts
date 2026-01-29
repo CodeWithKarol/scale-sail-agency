@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 @Component({
   selector: 'app-hero',
   imports: [],
-  templateUrl: './hero.component.html',
+  templateUrl: './hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent {

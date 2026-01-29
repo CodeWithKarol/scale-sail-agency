@@ -9,7 +9,7 @@ interface ProcessStep {
 
 @Component({
   selector: 'app-process',
-  templateUrl: './process.component.html',
+  templateUrl: './process.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProcessComponent {

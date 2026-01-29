@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 @Component({
   selector: 'app-founder-story',
   imports: [],
-  templateUrl: './founder-story.component.html',
+  templateUrl: './founder-story.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FounderStoryComponent {

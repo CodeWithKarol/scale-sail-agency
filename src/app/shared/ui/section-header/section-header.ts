@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 @Component({
   selector: 'app-section-header',
   imports: [],
-  templateUrl: './section-header.component.html',
+  templateUrl: './section-header.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SectionHeaderComponent {

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
 
 interface ComparisonTier {
   id: string;
@@ -15,7 +15,7 @@ interface ComparisonTier {
 @Component({
   selector: 'app-comparison-table',
   imports: [SectionHeaderComponent],
-  templateUrl: './comparison-table.component.html',
+  templateUrl: './comparison-table.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComparisonTableComponent {
