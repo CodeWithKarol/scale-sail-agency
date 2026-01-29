@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
+import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
+import { Badge } from '../../../../shared/ui/badge/badge';
+import { Button } from '../../../../shared/ui/button/button';
+import { Card } from '../../../../shared/ui/card/card';
 
 interface ComparisonTier {
   id: string;
@@ -14,11 +17,11 @@ interface ComparisonTier {
 
 @Component({
   selector: 'app-comparison-table',
-  imports: [SectionHeaderComponent],
+  imports: [SectionHeader, Badge, Button, Card],
   templateUrl: './comparison-table.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ComparisonTableComponent {
+export class ComparisonTable {
   tiers = signal<ComparisonTier[]>([
     {
       id: 'legacy-modernization',

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
+import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
+import { Card } from '../../../../shared/ui/card/card';
 
 interface Problem {
   title: string;
@@ -10,11 +11,11 @@ interface Problem {
 
 @Component({
   selector: 'app-problem-solution',
-  imports: [SectionHeaderComponent],
+  imports: [SectionHeader, Card],
   templateUrl: './problem-solution.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProblemSolutionComponent {
+export class ProblemSolution {
   problems = signal<Problem[]>([
     {
       title: 'Legacy Teams',
@@ -44,9 +45,9 @@ export class ProblemSolutionComponent {
       case 'red':
         return 'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]';
       case 'orange':
-        return 'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]';
+        return 'ring-accent/50 text-accent shadow-[0_0_15px_rgba(255,111,60,0.3)]';
       case 'indigo':
-        return 'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]';
+        return 'ring-primary/50 text-primary shadow-[0_0_15px_rgba(0,123,255,0.3)]';
     }
   }
 }

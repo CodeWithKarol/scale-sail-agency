@@ -1,38 +1,13 @@
-<section class="py-24 sm:py-32 bg-gray-900 relative isolate overflow-hidden">
+<section class="section-padding bg-secondary relative isolate overflow-hidden">
   <!-- Background decoration -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.gray.800),theme(colors.gray.900))] opacity-40"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.secondary),theme(colors.black))] opacity-20"
   ></div>
   <div
-    class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80 pointer-events-none"
-    aria-hidden="true"
-  >
-    <div
-      class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#6366f1] to-[#4338ca] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-      style="
-        clip-path: polygon(
-          74.1% 44.1%,
-          100% 61.6%,
-          97.5% 26.9%,
-          85.5% 0.1%,
-          80.7% 2%,
-          72.5% 32.5%,
-          60.2% 62.4%,
-          52.4% 68.1%,
-          47.5% 58.3%,
-          45.2% 34.5%,
-          27.5% 76.7%,
-          0.1% 64.9%,
-          17.9% 100%,
-          27.6% 76.8%,
-          76.1% 97.7%,
-          74.1% 44.1%
-        );
-      "
-    ></div>
-  </div>
+    class="absolute inset-y-0 right-0 -z-10 w-[50%] bg-gradient-to-l from-white/5 to-transparent"
+  ></div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="layout-container">
     <!-- Header -->
     <app-section-header
       subtitle="Featured Work"
@@ -41,82 +16,82 @@
 
     <!-- Case Studies Grid -->
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
-      @for (study of caseStudies(); track study.title) {
-        <a
-          [href]="study.link"
-          class="group relative flex flex-col overflow-hidden rounded-3xl bg-gray-800/40 ring-1 ring-white/10 transition-all duration-300 hover:bg-gray-800 hover:ring-indigo-500/40 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1"
-        >
-          <!-- Image Area -->
-          <figure
-            class="aspect-[16/9] w-full overflow-hidden bg-gray-900 sm:aspect-[3/2] lg:aspect-[16/9] relative"
-          >
-            <img
-              [ngSrc]="study.imageUrl"
-              [alt]="study.title"
-              fill
-              class="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-            <!-- Gradient Overlay for better text contrast if needed, mostly for aesthetics on image bottom -->
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-40"
-            ></div>
-          </figure>
+      @for (study of caseStudies(); track study.title; let first = $first) {
+        <a [href]="study.link" class="block h-full group outline-none focus-visible:rounded-3xl">
+          <app-card [interactive]="true" class="h-full flex flex-col p-0 overflow-hidden">
+            <!-- Image Area -->
+            <figure
+              class="aspect-[16/9] w-full overflow-hidden bg-black/20 sm:aspect-[3/2] lg:aspect-[16/9] relative"
+            >
+              <img
+                [ngSrc]="study.imageUrl"
+                [alt]="study.title"
+                [priority]="first"
+                fill
+                class="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              <!-- Gradient Overlay for better text contrast -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent opacity-40"
+              ></div>
+            </figure>
 
-          <!-- Content Area -->
-          <div class="flex flex-1 flex-col p-6 sm:p-8 lg:p-10">
-            <div class="flex items-center gap-x-4 text-xs font-medium text-indigo-400 mb-4">
-              <span
-                class="inline-flex items-center rounded-full bg-indigo-500/10 px-3 py-1 ring-1 ring-inset ring-indigo-500/20 backdrop-blur-sm"
-                >{{ study.tag }}</span
+            <!-- Content Area -->
+            <div class="flex flex-1 flex-col p-6 sm:p-8 lg:p-10">
+              <div class="flex items-center gap-x-4 mb-4">
+                <app-badge variant="soft" color="primary">{{ study.tag }}</app-badge>
+              </div>
+
+              <h3
+                class="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-primary transition-colors duration-300 text-balance"
               >
-            </div>
+                {{ study.title }}
+              </h3>
 
-            <h3
-              class="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors duration-300 text-balance"
-            >
-              {{ study.title }}
-            </h3>
-
-            <p
-              class="mt-4 flex-1 text-base leading-7 text-gray-400 text-pretty group-hover:text-gray-300 transition-colors"
-            >
-              {{ study.description }}
-            </p>
-
-            <div
-              class="mt-8 flex items-center gap-2 text-sm font-semibold text-white group-hover:text-indigo-400 transition-colors"
-            >
-              View Case Study
-              <svg
-                class="h-4 w-4 transition-transform group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
+              <p
+                class="mt-4 flex-1 text-base leading-7 text-white/60 text-pretty group-hover:text-white/80 transition-colors"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                />
-              </svg>
+                {{ study.description }}
+              </p>
+
+              <div
+                class="mt-8 flex items-center gap-2 text-sm font-semibold text-white group-hover:text-primary transition-colors"
+              >
+                View Case Study
+                <svg
+                  class="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
+          </app-card>
         </a>
       }
     </div>
 
     <!-- Final CTA -->
     <footer class="mt-16 text-center">
-      <a
+      <app-button
         href="https://www.karol-modelski.scale-sail.io"
-        class="inline-flex items-center gap-x-2 rounded-full bg-white/5 px-8 py-3 text-sm font-semibold text-white ring-1 ring-white/10 transition-all hover:bg-white/10 hover:scale-105 active:scale-95"
+        variant="ghost"
+        styleClass="bg-white/5 ring-1 ring-white/10 hover:bg-white/10 text-white"
       >
         View Full Portfolio
-        <span aria-hidden="true" class="text-gray-400 group-hover:text-white transition-colors"
+        <span
+          aria-hidden="true"
+          class="ml-2 opacity-60 transition-transform group-hover:translate-x-1"
           >→</span
         >
-      </a>
+      </app-button>
     </footer>
   </div>
 </section>

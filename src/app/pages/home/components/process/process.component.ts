@@ -16,7 +16,7 @@ interface ProcessStep {
   templateUrl: './process.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Process {
+export class ProcessComponent {
   steps = signal<ProcessStep[]>([
     {
       number: '01',

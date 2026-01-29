@@ -1,11 +1,11 @@
-<section class="relative isolate bg-gray-900 py-24 sm:py-32">
+<section class="section-padding relative isolate overflow-hidden bg-secondary">
   <!-- Background Pattern -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.950),transparent)] opacity-20"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary),transparent)] opacity-10"
   ></div>
   <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2">
     <svg
-      class="absolute inset-0 h-full w-full stroke-gray-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+      class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
       aria-hidden="true"
     >
       <defs>
@@ -20,7 +20,7 @@
           <path d="M.5 200V.5H200" fill="none" />
         </pattern>
       </defs>
-      <svg x="100%" y="-1" class="overflow-visible fill-gray-800/20">
+      <svg x="100%" y="-1" class="overflow-visible fill-white/5">
         <path
           d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
           stroke-width="0"
@@ -30,7 +30,7 @@
     </svg>
   </div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="layout-container">
     <div class="lg:grid lg:grid-cols-12 lg:gap-8">
       <!-- Header Section (Sticky on Desktop) -->
       <div class="lg:col-span-4 lg:sticky lg:top-8 self-start">
@@ -39,11 +39,11 @@
           subtitle="FAQ"
           title="Common Questions Before You Start."
         >
-          <p class="mt-4 text-base leading-7 text-gray-400">
+          <p class="mt-4 text-base leading-7 text-white/60">
             Have a different question?
             <a
               href="mailto:contact@scale-sail.io"
-              class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+              class="font-semibold text-primary hover:text-white transition-colors"
               >Contact support</a
             >
             and I’ll get back to you.
@@ -55,22 +55,22 @@
       <div class="mt-16 sm:mt-20 lg:col-span-8 lg:mt-0">
         <dl class="space-y-6 sm:space-y-8">
           @for (faq of faqs(); track faq.question) {
-            <div
-              class="rounded-3xl bg-white/5 px-6 py-8 ring-1 ring-white/10 hover:bg-white/10 hover:ring-indigo-500/30 transition-all duration-300 sm:p-10"
-            >
-              <dt class="text-lg font-bold leading-7 text-white flex gap-3">
-                <!-- Optional Icon or Q marker -->
-                <span class="text-indigo-400 font-mono hidden sm:inline-block" aria-hidden="true"
-                  >Q.</span
+            <app-card variant="default" [interactive]="true" class="block">
+              <div class="px-6 py-8 sm:p-10">
+                <dt class="text-lg font-bold leading-7 text-white flex gap-3">
+                  <!-- Optional Icon or Q marker -->
+                  <span class="text-primary font-mono hidden sm:inline-block" aria-hidden="true"
+                    >Q.</span
+                  >
+                  {{ faq.question }}
+                </dt>
+                <dd
+                  class="mt-4 text-base leading-7 text-white/70 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
                 >
-                {{ faq.question }}
-              </dt>
-              <dd
-                class="mt-4 text-base leading-7 text-gray-300 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
-              >
-                {{ faq.answer }}
-              </dd>
-            </div>
+                  {{ faq.answer }}
+                </dd>
+              </div>
+            </app-card>
           }
         </dl>
       </div>

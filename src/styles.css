@@ -2,6 +2,107 @@
 
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #007bff;
+  --color-secondary: #0a1f44;
+  --color-accent: #ff6f3c;
+  --color-neutral: #f4f6f8;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  @apply bg-white text-secondary antialiased;
+}
+
 html {
   scroll-behavior: smooth;
+}
+
+@layer components {
+  /* ==========================================
+     SCALE SAIL DESIGN SYSTEM
+     ========================================== */
+
+  /* --- Layout & Container --- */
+  .layout-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  /* --- Typography --- */
+  .heading-1 {
+    @apply font-bold text-4xl lg:text-5xl tracking-tight text-secondary leading-tight;
+  }
+
+  .heading-2 {
+    @apply font-bold text-3xl lg:text-4xl tracking-tight text-secondary leading-tight;
+  }
+
+  .heading-3 {
+    @apply font-bold text-2xl lg:text-3xl tracking-tight text-secondary;
+  }
+
+  .text-body {
+    @apply text-base text-secondary/80 leading-relaxed;
+  }
+
+  .text-small {
+    @apply text-sm text-secondary/60;
+  }
+
+  /* --- Buttons --- */
+  .btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-accent,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-blue-600 shadow-lg shadow-primary/25 hover:shadow-primary/40 focus:ring-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-[#112a55] focus:ring-secondary;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-[#ff855a] focus:ring-accent;
+  }
+
+  .btn-ghost {
+    @apply text-secondary hover:bg-neutral hover:text-primary bg-transparent;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-md {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* --- Cards & Surfaces --- */
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-neutral/50 overflow-hidden transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:shadow-md hover:-translate-y-1 hover:border-primary/20;
+  }
+
+  /* --- Forms --- */
+  .input-field {
+    @apply w-full rounded-lg border-neutral bg-neutral/50 px-4 py-3 text-secondary placeholder:text-secondary/40 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors;
+  }
 }

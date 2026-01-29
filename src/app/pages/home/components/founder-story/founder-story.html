@@ -1,11 +1,11 @@
-<section class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+<section class="section-padding relative isolate overflow-hidden bg-secondary">
   <!-- Background Pattern -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.950),transparent)] opacity-20"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary),transparent)] opacity-10"
   ></div>
   <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2">
     <svg
-      class="absolute inset-0 h-full w-full stroke-gray-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+      class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
       aria-hidden="true"
     >
       <defs>
@@ -20,7 +20,7 @@
           <path d="M.5 200V.5H200" fill="none" />
         </pattern>
       </defs>
-      <svg x="100%" y="-1" class="overflow-visible fill-gray-800/20">
+      <svg x="100%" y="-1" class="overflow-visible fill-white/5">
         <path
           d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
           stroke-width="0"
@@ -33,7 +33,7 @@
       aria-hidden="true"
     >
       <div
-        class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-br from-[#80caff] to-[#4f46e5] opacity-20"
+        class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-br from-primary to-accent opacity-20"
         style="
           clip-path: polygon(
             74.1% 44.1%,
@@ -68,7 +68,7 @@
       >
         <div class="lg:pr-4">
           <div class="lg:max-w-lg">
-            <p class="text-base font-semibold leading-7 text-indigo-400 uppercase tracking-wide">
+            <p class="text-base font-semibold leading-7 text-accent uppercase tracking-wide">
               The Founder
             </p>
             <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -76,7 +76,7 @@
             </h2>
             <div class="mt-6 text-xl leading-8 text-white font-semibold">
               {{ founder().name }}
-              <span class="block text-base font-normal text-gray-400 mt-1">{{
+              <span class="block text-base font-normal text-white/60 mt-1">{{
                 founder().role
               }}</span>
             </div>
@@ -84,11 +84,9 @@
             <!-- Badges Mobile/Desktop combined logic -->
             <div class="mt-6 flex flex-wrap gap-2">
               @for (badge of founder().badges; track $index) {
-                <span
-                  class="inline-flex items-center rounded-md bg-indigo-400/10 px-2 py-1 text-xs font-medium text-indigo-400 ring-1 ring-inset ring-indigo-400/30"
-                >
+                <app-badge variant="soft" color="primary">
                   {{ badge }}
-                </span>
+                </app-badge>
               }
             </div>
           </div>
@@ -100,25 +98,30 @@
         class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
       >
         <div class="lg:pr-4">
-          <div class="max-w-xl text-base leading-7 text-gray-300 lg:max-w-lg">
+          <div class="max-w-xl text-base leading-7 text-white/80 lg:max-w-lg">
             @for (paragraph of founder().bio; track $index) {
               <p class="mb-4 last:mb-0">{{ paragraph }}</p>
             }
 
             <!-- Buttons -->
-            <div id="blog-link" class="mt-10 flex items-center gap-x-6 scroll-mt-32">
-              <a
+            <div
+              id="blog-link"
+              class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-x-6 scroll-mt-32"
+            >
+              <app-button
                 href="https://www.karol-modelski.scale-sail.io"
-                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
+                variant="primary"
+                styleClass="justify-center"
               >
                 View Portfolio
-              </a>
-              <a
+              </app-button>
+              <app-button
                 href="https://www.karol-modelski.scale-sail.io/blog"
-                class="text-sm font-semibold leading-6 text-white hover:text-indigo-400 transition-colors"
+                variant="ghost"
+                styleClass="text-white hover:bg-white/10 hover:text-white justify-center"
               >
-                Read Engineering Blog <span aria-hidden="true">→</span>
-              </a>
+                Read Engineering Blog <span aria-hidden="true" class="ml-1">→</span>
+              </app-button>
             </div>
           </div>
         </div>
@@ -141,23 +144,29 @@
             aria-hidden="true"
           ></div>
 
-          <!-- Quick stats overlaid on image bottom -->
-          <figcaption
-            class="absolute bottom-4 left-4 right-4 rounded-lg bg-gray-900/90 backdrop-blur p-4 border border-white/10 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300"
+          <!-- Quick stats overlaid on image (Bottom on mobile, Top on desktop) -->
+          <div
+            class="absolute bottom-4 lg:bottom-auto lg:top-4 left-4 right-4 rounded-2xl p-4 bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-lg"
           >
             <div class="flex items-center gap-3">
               <div
-                class="h-10 w-10 flex-shrink-0 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold"
+                class="h-10 w-10 flex-shrink-0 rounded-full bg-primary flex items-center justify-center text-white font-bold"
                 aria-hidden="true"
               >
                 KM
               </div>
               <div>
-                <p class="text-xs text-gray-400">Core Advantage</p>
-                <p class="text-sm font-semibold text-white">Business-First Engineering</p>
+                <p
+                  class="text-[10px] text-accent uppercase font-black tracking-widest leading-none mb-1"
+                >
+                  Core Advantage
+                </p>
+                <p class="text-sm font-bold text-secondary leading-tight">
+                  Business-First Engineering
+                </p>
               </div>
             </div>
-          </figcaption>
+          </div>
         </figure>
       </div>
     </div>

@@ -1,0 +1,9 @@
+{
+    "chat.mcp.serverSampling": {
+        "scale-sail-agency/.vscode/mcp.json: angular-cli": {
+            "allowedModels": [
+                "copilot/gemini-3-pro-preview"
+            ]
+        }
+    }
+}
