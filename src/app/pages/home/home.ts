@@ -13,7 +13,6 @@ import { FinalCtaComponent } from './components/final-cta/final-cta.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     CommonModule,
     HeroComponent,

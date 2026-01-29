@@ -28,14 +28,7 @@
               <!-- Icon -->
               <div
                 class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300"
-                [ngClass]="{
-                  'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]':
-                    problem.theme === 'red',
-                  'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]':
-                    problem.theme === 'orange',
-                  'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]':
-                    problem.theme === 'indigo',
-                }"
+                [class]="getThemeClass(problem.theme)"
               >
                 <svg
                   class="h-5 w-5"
@@ -62,14 +55,7 @@
               <div class="hidden lg:block lg:mb-6" aria-hidden="true">
                 <div
                   class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-gray-900 transition-all duration-300 group-hover:scale-110"
-                  [ngClass]="{
-                    'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]':
-                      problem.theme === 'red',
-                    'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]':
-                      problem.theme === 'orange',
-                    'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]':
-                      problem.theme === 'indigo',
-                  }"
+                  [class]="getThemeClass(problem.theme)"
                 >
                   <svg
                     class="h-6 w-6"

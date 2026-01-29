@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 interface ComparisonTier {
   id: string;
@@ -14,8 +13,7 @@ interface ComparisonTier {
 
 @Component({
   selector: 'app-comparison-table',
-  standalone: true,
-  imports: [NgClass],
+  imports: [],
   templateUrl: './comparison-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

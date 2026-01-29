@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-founder-story',
-  standalone: true,
   imports: [],
   templateUrl: './founder-story.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

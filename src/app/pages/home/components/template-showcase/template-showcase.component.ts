@@ -11,7 +11,6 @@ interface Template {
 
 @Component({
   selector: 'app-template-showcase',
-  standalone: true,
   imports: [],
   templateUrl: './template-showcase.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

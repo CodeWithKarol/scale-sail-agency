@@ -9,7 +9,6 @@ interface ProcessStep {
 
 @Component({
   selector: 'app-process',
-  standalone: true,
   templateUrl: './process.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

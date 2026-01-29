@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 interface ServiceTier {
   name: string;
@@ -12,8 +11,7 @@ interface ServiceTier {
 
 @Component({
   selector: 'app-service-architecture',
-  standalone: true,
-  imports: [NgClass],
+  imports: [],
   templateUrl: './service-architecture.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

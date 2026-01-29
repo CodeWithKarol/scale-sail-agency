@@ -7,7 +7,6 @@ interface FAQ {
 
 @Component({
   selector: 'app-faq',
-  standalone: true,
   templateUrl: './faq.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

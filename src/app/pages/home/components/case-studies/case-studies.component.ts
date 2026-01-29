@@ -11,7 +11,6 @@ interface CaseStudy {
 
 @Component({
   selector: 'app-case-studies',
-  standalone: true,
   imports: [NgOptimizedImage],
   templateUrl: './case-studies.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

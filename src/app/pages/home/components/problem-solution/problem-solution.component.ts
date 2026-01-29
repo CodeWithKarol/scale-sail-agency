@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 interface Problem {
   title: string;
@@ -10,8 +9,7 @@ interface Problem {
 
 @Component({
   selector: 'app-problem-solution',
-  standalone: true,
-  imports: [NgClass],
+  imports: [],
   templateUrl: './problem-solution.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -39,4 +37,15 @@ export class ProblemSolutionComponent {
       theme: 'indigo',
     },
   ]);
+
+  getThemeClass(theme: 'red' | 'orange' | 'indigo') {
+    switch (theme) {
+      case 'red':
+        return 'ring-red-500/50 text-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)]';
+      case 'orange':
+        return 'ring-orange-500/50 text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)]';
+      case 'indigo':
+        return 'ring-indigo-500/50 text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.3)]';
+    }
+  }
 }
