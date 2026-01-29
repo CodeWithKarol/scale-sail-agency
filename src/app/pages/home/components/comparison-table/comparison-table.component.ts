@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 interface ComparisonTier {
   id: string;
@@ -13,7 +14,7 @@ interface ComparisonTier {
 
 @Component({
   selector: 'app-comparison-table',
-  imports: [],
+  imports: [SectionHeaderComponent],
   templateUrl: './comparison-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -26,7 +27,7 @@ export class ComparisonTableComponent {
       timeline: '4-12 Weeks',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
       highlighted: true,
     },
     {
@@ -36,7 +37,7 @@ export class ComparisonTableComponent {
       timeline: '2-6 Weeks',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
     },
     {
       id: 'saas-engineering',
@@ -45,7 +46,7 @@ export class ComparisonTableComponent {
       timeline: '3-6 Months',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
     },
     {
       id: 'audits-performance',
@@ -54,7 +55,7 @@ export class ComparisonTableComponent {
       timeline: '1-2 Weeks',
       investment: 'Fixed Price',
       ctaText: 'Book Audit',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
     },
     {
       id: 'tech-lead-mentor',
@@ -63,7 +64,7 @@ export class ComparisonTableComponent {
       timeline: 'Ongoing',
       investment: 'Retainer',
       ctaText: 'Discuss Role',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
     },
     {
       id: 'ready-to-ship-templates',

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 interface ServiceTier {
   name: string;
@@ -11,7 +12,7 @@ interface ServiceTier {
 
 @Component({
   selector: 'app-service-architecture',
-  imports: [],
+  imports: [SectionHeaderComponent],
   templateUrl: './service-architecture.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -27,7 +28,7 @@ export class ServiceArchitectureComponent {
         'Refactoring & Technical Debt Removal',
       ],
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
     },
     {
       name: 'SaaS Product Engineering',
@@ -39,7 +40,7 @@ export class ServiceArchitectureComponent {
         'Rapid Iteration Support',
       ],
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/contact',
+      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
       featured: true,
     },
     {

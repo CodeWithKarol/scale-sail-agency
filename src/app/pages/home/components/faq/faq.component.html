@@ -34,19 +34,21 @@
     <div class="lg:grid lg:grid-cols-12 lg:gap-8">
       <!-- Header Section (Sticky on Desktop) -->
       <div class="lg:col-span-4 lg:sticky lg:top-8 self-start">
-        <h2 class="text-base font-bold leading-7 text-indigo-400 uppercase tracking-widest">FAQ</h2>
-        <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Common Questions Before You Start.
-        </p>
-        <p class="mt-4 text-base leading-7 text-gray-400">
-          Have a different question?
-          <a
-            href="mailto:contact@scale-sail.io"
-            class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
-            >Contact support</a
-          >
-          and I’ll get back to you.
-        </p>
+        <app-section-header
+          alignment="left"
+          subtitle="FAQ"
+          title="Common Questions Before You Start."
+        >
+          <p class="mt-4 text-base leading-7 text-gray-400">
+            Have a different question?
+            <a
+              href="mailto:contact@scale-sail.io"
+              class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+              >Contact support</a
+            >
+            and I’ll get back to you.
+          </p>
+        </app-section-header>
       </div>
 
       <!-- FAQ List -->

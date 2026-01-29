@@ -23,7 +23,7 @@ export class FooterComponent {
   ]);
 
   connect = signal([
-    { name: 'Book Discovery Call', link: 'https://www.karol-modelski.scale-sail.io/contact' },
+    { name: 'Book Discovery Call', link: 'https://www.karol-modelski.scale-sail.io/#contact' },
   ]);
 
   legal = signal<{ name: string; link: string }[]>([]);

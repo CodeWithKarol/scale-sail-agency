@@ -1,0 +1,14 @@
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+
+@Component({
+  selector: 'app-section-header',
+  imports: [],
+  templateUrl: './section-header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class SectionHeaderComponent {
+  subtitle = input<string>();
+  title = input.required<string>();
+  description = input<string>();
+  alignment = input<'center' | 'left'>('center');
+}

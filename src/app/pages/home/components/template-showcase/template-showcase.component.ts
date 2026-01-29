@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 interface Template {
   id: string;
@@ -11,7 +12,7 @@ interface Template {
 
 @Component({
   selector: 'app-template-showcase',
-  imports: [],
+  imports: [SectionHeaderComponent],
   templateUrl: './template-showcase.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

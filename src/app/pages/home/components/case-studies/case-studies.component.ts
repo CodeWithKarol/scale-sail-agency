@@ -1,5 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 interface CaseStudy {
   tag: string;
@@ -11,7 +12,7 @@ interface CaseStudy {
 
 @Component({
   selector: 'app-case-studies',
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, SectionHeaderComponent],
   templateUrl: './case-studies.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

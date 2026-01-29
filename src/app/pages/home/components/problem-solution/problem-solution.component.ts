@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header.component';
 
 interface Problem {
   title: string;
@@ -9,7 +10,7 @@ interface Problem {
 
 @Component({
   selector: 'app-problem-solution',
-  imports: [],
+  imports: [SectionHeaderComponent],
   templateUrl: './problem-solution.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
