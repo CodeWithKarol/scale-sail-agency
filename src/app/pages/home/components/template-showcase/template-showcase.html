@@ -37,7 +37,7 @@
               <!-- Badge -->
               @if (template.badge) {
                 <div class="absolute top-4 right-4 z-30">
-                  <app-badge variant="solid" color="primary">{{ template.badge }}</app-badge>
+                  <app-badge variant="solid" color="accent">{{ template.badge }}</app-badge>
                 </div>
               }
 
@@ -89,7 +89,7 @@
 
                 <app-badge
                   [variant]="template.price === 'Free' ? 'solid' : 'outline'"
-                  [color]="template.price === 'Free' ? 'primary' : 'neutral'"
+                  [color]="template.price === 'Free' ? 'accent' : 'neutral'"
                 >
                   {{ template.price === 'Free' ? 'Get for Free' : 'Buy ' + template.price }}
                 </app-badge>
