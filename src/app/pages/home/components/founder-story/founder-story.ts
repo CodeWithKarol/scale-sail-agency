@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Badge } from '../../../../shared/ui/badge/badge';
+import { Button } from '../../../../shared/ui/button/button';
 
 @Component({
   selector: 'app-founder-story',
-  imports: [],
+  imports: [Badge, Button],
   templateUrl: './founder-story.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FounderStoryComponent {
+export class FounderStory {
   founder = signal({
     name: 'Karol Modelski',
     role: 'Senior Frontend Developer & Founder',

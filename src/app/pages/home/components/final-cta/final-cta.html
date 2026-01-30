@@ -1,32 +1,35 @@
-<section class="relative isolate overflow-hidden bg-gray-900">
-  <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+<section class="section-padding relative isolate overflow-hidden bg-secondary">
+  <div class="layout-container">
     <div class="mx-auto max-w-2xl text-center">
       <app-section-header
         title="Ship with Confidence."
         description="If you're dealing with a slow, hard-to-change frontend (or planning a new SaaS build), I can help you ship with confidence. Share your goals and constraints—I'll review your inquiry and if it's a good fit, I'll send you a link to book a discovery call."
       >
         <nav class="mt-10 flex flex-col items-center justify-center gap-y-6 gap-x-6 sm:flex-row">
-          <a
+          <app-button
             href="https://www.karol-modelski.scale-sail.io/#contact"
-            class="w-full sm:w-auto rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-all"
+            variant="primary"
+            size="lg"
+            styleClass="w-full sm:w-auto"
           >
             Book Discovery Call
-          </a>
+          </app-button>
 
           <div class="flex flex-col sm:flex-row items-center gap-6">
-            <a
+            <app-button
               href="https://www.shop.scale-sail.io/"
-              target="_blank"
-              class="text-sm font-semibold leading-6 text-white hover:text-indigo-400 transition-colors flex items-center gap-1"
+              variant="ghost"
+              styleClass="text-white hover:bg-white/10 hover:text-white"
             >
-              Shop Templates <span aria-hidden="true">→</span>
-            </a>
-            <a
+              Shop Templates <span aria-hidden="true" class="ml-1">→</span>
+            </app-button>
+            <app-button
               href="https://www.karol-modelski.scale-sail.io"
-              class="text-sm font-semibold leading-6 text-white hover:text-indigo-400 transition-colors flex items-center gap-1"
+              variant="ghost"
+              styleClass="text-white hover:bg-white/10 hover:text-white"
             >
-              View Portfolio <span aria-hidden="true">→</span>
-            </a>
+              View Portfolio <span aria-hidden="true" class="ml-1">→</span>
+            </app-button>
           </div>
         </nav>
       </app-section-header>
@@ -34,14 +37,14 @@
   </div>
   <svg
     viewBox="0 0 1024 1024"
-    class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
+    class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] opacity-40"
     aria-hidden="true"
   >
     <circle cx="512" cy="512" r="512" fill="url(#radial-gradient-final-cta)" fill-opacity="0.7" />
     <defs>
       <radialGradient id="radial-gradient-final-cta">
-        <stop offset="0" stop-color="#7775D6" />
-        <stop offset="1" stop-color="#E935C1" />
+        <stop offset="0" stop-color="var(--color-primary)" />
+        <stop offset="1" stop-color="var(--color-accent)" />
       </radialGradient>
     </defs>
   </svg>

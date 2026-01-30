@@ -1,13 +1,13 @@
-<section class="relative bg-gray-900 py-24 sm:py-32 overflow-hidden">
+<section class="relative bg-secondary section-padding overflow-hidden">
   <!-- Decorative background effects -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.900),theme(colors.gray.900))] opacity-20"
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.secondary),theme(colors.black))] opacity-20"
   ></div>
   <div
-    class="absolute inset-y-0 right-0 -z-10 w-[50%] bg-gradient-to-l from-gray-800/10 to-transparent"
+    class="absolute inset-y-0 right-0 -z-10 w-[50%] bg-gradient-to-l from-white/5 to-transparent"
   ></div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="layout-container">
     <!-- Section Header -->
     <app-section-header
       subtitle="Services & Value Proposition"
@@ -18,21 +18,18 @@
     <!-- Cards Grid -->
     <div class="mx-auto grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
       @for (tier of tiers(); track tier.name; let first = $first; let last = $last) {
-        <article
-          class="flex flex-col justify-between rounded-3xl p-8 xl:p-10 transition-all duration-300 relative group overflow-hidden"
-          [class]="
-            tier.featured
-              ? 'bg-gray-900 ring-2 ring-indigo-500 shadow-2xl shadow-indigo-500/20 z-10 scale-[1.02] lg:scale-110'
-              : 'bg-gray-800/60 ring-1 ring-white/10 hover:ring-white/20 hover:bg-gray-800'
-          "
+        <app-card
+          [variant]="tier.featured ? 'highlight' : 'default'"
+          [interactive]="!tier.featured"
+          class="flex flex-col justify-between p-8 xl:p-10 relative overflow-hidden"
         >
           <!-- Highlight/Glow Effect for featured card -->
           @if (tier.featured) {
             <div
-              class="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-transparent opacity-50 pointer-events-none"
+              class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50 pointer-events-none"
             ></div>
             <div
-              class="absolute top-0 right-0 -mr-3 -mt-3 w-24 h-24 rounded-full bg-indigo-500 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"
+              class="absolute top-0 right-0 -mr-3 -mt-3 w-24 h-24 rounded-full bg-primary blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"
             ></div>
           }
 
@@ -41,35 +38,29 @@
             <header class="flex items-center justify-between gap-x-4 mb-4">
               <h3
                 class="text-xl font-bold leading-8 text-white"
-                [class.text-indigo-400]="tier.featured"
+                [class.text-primary]="tier.featured"
               >
                 {{ tier.name }}
               </h3>
 
               @if (tier.featured) {
-                <span
-                  class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold leading-5 text-indigo-400 ring-1 ring-inset ring-indigo-500/30 whitespace-nowrap shrink-0"
-                >
-                  Most Popular
-                </span>
+                <app-badge variant="soft" color="primary">Most Popular</app-badge>
               }
             </header>
 
             <!-- Description -->
-            <p class="text-sm leading-6 text-gray-400 border-b border-white/5 pb-6 mb-6">
+            <p class="text-sm leading-6 text-white/50 border-b border-white/5 pb-6 mb-6">
               {{ tier.description }}
             </p>
 
             <!-- Features List -->
-            <ul class="space-y-4 text-sm leading-6 text-gray-300">
+            <ul class="space-y-4 text-sm leading-6 text-white/80">
               @for (feature of tier.features; track feature) {
                 <li class="flex gap-x-3 items-start">
                   <div
                     class="flex-none rounded-full p-1"
                     [class]="
-                      tier.featured
-                        ? 'bg-indigo-500/10 text-indigo-400'
-                        : 'bg-gray-700/50 text-gray-400'
+                      tier.featured ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white/40'
                     "
                   >
                     <svg
@@ -92,18 +83,21 @@
           </div>
 
           <!-- CTA Button -->
-          <a
-            [href]="tier.ctaLink"
-            class="mt-8 block rounded-xl px-3 py-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition-all duration-200 relative z-10"
-            [class]="
-              tier.featured
-                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25 hover:bg-indigo-500 hover:scale-[1.02] focus-visible:outline-indigo-500'
-                : 'bg-white/5 text-white ring-1 ring-inset ring-white/10 hover:bg-white/10 hover:ring-white/20 focus-visible:outline-white'
-            "
-          >
-            {{ tier.ctaText }}
-          </a>
-        </article>
+          <div class="mt-8">
+            <app-button
+              [href]="tier.ctaLink"
+              [variant]="tier.featured ? 'primary' : 'ghost'"
+              [styleClass]="
+                'w-full ' +
+                (!tier.featured
+                  ? 'bg-white/5 ring-1 ring-white/10 hover:bg-white/10 text-white'
+                  : '')
+              "
+            >
+              {{ tier.ctaText }}
+            </app-button>
+          </div>
+        </app-card>
       }
     </div>
   </div>

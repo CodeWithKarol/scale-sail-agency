@@ -1,0 +1,17 @@
+<ng-template #content>
+  <ng-content />
+</ng-template>
+
+@if (href()) {
+  <a [href]="href()" [class]="computedClasses()">
+    <ng-container *ngTemplateOutlet="content" />
+  </a>
+} @else if (route()) {
+  <a [routerLink]="route()" [class]="computedClasses()">
+    <ng-container *ngTemplateOutlet="content" />
+  </a>
+} @else {
+  <button [type]="type()" [disabled]="disabled()" [class]="computedClasses()">
+    <ng-container *ngTemplateOutlet="content" />
+  </button>
+}

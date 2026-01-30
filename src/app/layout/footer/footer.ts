@@ -1,13 +1,15 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { BrandLogo } from '../../shared/ui/brand-logo/brand-logo';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [BrandLogo],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FooterComponent {
+export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
@@ -28,8 +30,10 @@ export class FooterComponent {
 
   legal = signal<{ name: string; link: string }[]>([]);
 
+  private readonly viewportScroller = inject(ViewportScroller);
+
   scrollToTop(event: Event) {
     event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

@@ -1,33 +1,33 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroComponent } from './components/hero/hero';
-import { ProblemSolutionComponent } from './components/problem-solution/problem-solution';
-import { ServiceArchitectureComponent } from './components/service-architecture/service-architecture';
-import { CaseStudiesComponent } from './components/case-studies/case-studies';
-import { TemplateShowcaseComponent } from './components/template-showcase/template-showcase';
-import { ProcessComponent } from './components/process/process';
-import { FounderStoryComponent } from './components/founder-story/founder-story';
-import { ComparisonTableComponent } from './components/comparison-table/comparison-table';
-import { FaqComponent } from './components/faq/faq';
-import { FinalCtaComponent } from './components/final-cta/final-cta';
+import { Hero } from './components/hero/hero';
+import { ProblemSolution } from './components/problem-solution/problem-solution';
+import { ServiceArchitecture } from './components/service-architecture/service-architecture';
+import { CaseStudies } from './components/case-studies/case-studies';
+import { TemplateShowcase } from './components/template-showcase/template-showcase';
+import { Process } from './components/process/process';
+import { FounderStory } from './components/founder-story/founder-story';
+import { ComparisonTable } from './components/comparison-table/comparison-table';
+import { Faq } from './components/faq/faq';
+import { FinalCta } from './components/final-cta/final-cta';
 
 @Component({
   selector: 'app-home',
   imports: [
     CommonModule,
-    HeroComponent,
-    ProblemSolutionComponent,
-    ServiceArchitectureComponent,
-    CaseStudiesComponent,
-    TemplateShowcaseComponent,
-    ProcessComponent,
-    FounderStoryComponent,
-    ComparisonTableComponent,
-    FaqComponent,
-    FinalCtaComponent,
+    Hero,
+    ProblemSolution,
+    ServiceArchitecture,
+    CaseStudies,
+    TemplateShowcase,
+    Process,
+    FounderStory,
+    ComparisonTable,
+    Faq,
+    FinalCta,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent {}
+export class Home {}

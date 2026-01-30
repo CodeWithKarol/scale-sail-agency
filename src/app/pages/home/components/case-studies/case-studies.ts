@@ -1,6 +1,9 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SectionHeaderComponent } from '../../../../shared/ui/section-header/section-header';
+import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
+import { Card } from '../../../../shared/ui/card/card';
+import { Button } from '../../../../shared/ui/button/button';
+import { Badge } from '../../../../shared/ui/badge/badge';
 
 interface CaseStudy {
   tag: string;
@@ -12,11 +15,11 @@ interface CaseStudy {
 
 @Component({
   selector: 'app-case-studies',
-  imports: [NgOptimizedImage, SectionHeaderComponent],
+  imports: [NgOptimizedImage, SectionHeader, Card, Button, Badge],
   templateUrl: './case-studies.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CaseStudiesComponent {
+export class CaseStudies {
   caseStudies = signal<CaseStudy[]>([
     {
       tag: 'High-Performance Real-Time Analytics',

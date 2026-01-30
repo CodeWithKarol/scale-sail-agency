@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   templateUrl: './section-header.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SectionHeaderComponent {
+export class SectionHeader {
   subtitle = input<string>();
   title = input.required<string>();
   description = input<string>();
