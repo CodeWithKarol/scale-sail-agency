@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SeoService } from '../../shared/core/seo/seo.service';
 import { Hero } from './components/hero/hero';
 import { ProblemSolution } from './components/problem-solution/problem-solution';
 import { ServiceArchitecture } from './components/service-architecture/service-architecture';
@@ -30,4 +31,34 @@ import { FinalCta } from './components/final-cta/final-cta';
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Home {}
+export class Home implements OnInit {
+  private seoService = inject(SeoService);
+
+  ngOnInit(): void {
+    this.seoService.setPageMetadata({
+      title: 'Senior Angular Developer | Legacy Modernization & Performance',
+      description:
+        'Senior Angular Developer specialized in modernizing legacy apps, Angular migrations, and fixing technical debt. Scale your enterprise frontend with audit-ready architecture and high performance.',
+      slug: '',
+      type: 'website',
+      keywords: [
+        // Short-tail (High Volume)
+        'Angular Developer',
+        'Frontend Architect',
+        'Angular Consultant',
+        // Mid-tail (Targeted Services)
+        'Angular Migration',
+        'Enterprise Angular',
+        'Performance Optimization',
+        'Code Refactoring',
+        'Technical Debt',
+        // Long-tail (High Intent/Specific Problems)
+        'Legacy Application Modernization',
+        'AngularJS to Angular Upgrade',
+        'Fix Slow Angular Application',
+        'Scalable Frontend Architecture',
+        'Zoneless Angular Migration',
+      ],
+    });
+  }
+}
