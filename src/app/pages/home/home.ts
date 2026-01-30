@@ -60,5 +60,26 @@ export class Home implements OnInit {
         'Zoneless Angular Migration',
       ],
     });
+
+    this.seoService.setSchema({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Scale Sail Agency',
+      url: 'https://scale-sail.io',
+      logo: 'https://scale-sail.io/images/scale-sail-logo.jpeg',
+      description:
+        'Senior Angular Developer specialized in modernizing legacy apps, Angular migrations, and fixing technical debt.',
+      founder: {
+        '@type': 'Person',
+        name: 'Karol Modelski',
+        jobTitle: 'Senior Frontend Developer & Founder',
+      },
+      areaServed: 'Worldwide',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        email: 'contact@scale-sail.io',
+      },
+    });
   }
 }
