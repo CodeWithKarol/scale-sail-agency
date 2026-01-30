@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HeroComponent } from './components/hero/hero';
 import { ProblemSolutionComponent } from './components/problem-solution/problem-solution';
 import { ServiceArchitectureComponent } from './components/service-architecture/service-architecture';
@@ -14,7 +13,6 @@ import { FinalCtaComponent } from './components/final-cta/final-cta';
 @Component({
   selector: 'app-home',
   imports: [
-    CommonModule,
     HeroComponent,
     ProblemSolutionComponent,
     ServiceArchitectureComponent,
