@@ -17,7 +17,10 @@
     <!-- Case Studies Grid -->
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
       @for (study of caseStudies(); track study.title; let first = $first) {
-        <a [href]="study.link" class="block h-full group outline-none focus-visible:rounded-3xl">
+        <a
+          [href]="study.link"
+          class="block h-full group outline-none focus-visible:rounded-3xl focus-visible:ring-2 focus-visible:ring-primary"
+        >
           <app-card [interactive]="true" class="h-full flex flex-col p-0 overflow-hidden">
             <!-- Image Area -->
             <figure

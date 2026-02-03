@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 
@@ -10,6 +10,9 @@ import { ViewportScroller } from '@angular/common';
       <img
         src="images/scale-sail-logo.webp"
         alt="Scale Sail Logo"
+        [attr.loading]="loading()"
+        width="32"
+        height="32"
         class="h-8 w-8 rounded-lg bg-white p-1 shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-all duration-300 group-hover:scale-105"
       />
       <span
@@ -29,6 +32,7 @@ import { ViewportScroller } from '@angular/common';
 export class BrandLogo {
   private readonly viewportScroller = inject(ViewportScroller);
   scrollToTop = output<void>();
+  loading = input<'eager' | 'lazy'>('eager');
 
   onScrollToTop() {
     this.viewportScroller.scrollToPosition([0, 0]);
