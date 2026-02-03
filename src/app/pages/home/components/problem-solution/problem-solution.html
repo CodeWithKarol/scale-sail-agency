@@ -20,62 +20,66 @@
         @for (problem of problems(); track problem.title; let last = $last) {
           <li>
             <app-card [interactive]="true" class="flex gap-6 lg:flex-col lg:gap-0 p-6 lg:p-8">
-            <!-- Mobile: Left Column (Icon + Line) -->
-            <div class="flex flex-col items-center lg:hidden" aria-hidden="true">
-              <!-- Icon -->
-              <div
-                class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300"
-                [class]="getThemeClass(problem.theme)"
-              >
-                <svg
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
-                </svg>
-              </div>
-
-              <!-- Vertical Line connecting to next item -->
-              @if (!last) {
+              <!-- Mobile: Left Column (Icon + Line) -->
+              <div class="flex flex-col items-center lg:hidden" aria-hidden="true">
+                <!-- Icon -->
                 <div
-                  class="w-px h-full bg-white/10 my-2 group-hover:bg-primary/50 transition-colors duration-500"
-                ></div>
-              }
-            </div>
-
-            <!-- Content Column -->
-            <div class="flex-auto lg:mt-0">
-              <!-- Desktop Icon Wrapper (Hidden on Mobile) -->
-              <div class="hidden lg:block lg:mb-6" aria-hidden="true">
-                <div
-                  class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300 group-hover:scale-110"
+                  class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300"
                   [class]="getThemeClass(problem.theme)"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="h-5 w-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    aria-hidden="true"
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
                   </svg>
                 </div>
+
+                <!-- Vertical Line connecting to next item -->
+                @if (!last) {
+                  <div
+                    class="w-px h-full bg-white/10 my-2 group-hover:bg-primary/50 transition-colors duration-500"
+                  ></div>
+                }
               </div>
 
-              <h3 class="text-lg font-bold leading-7 text-white flex items-center h-10 lg:h-auto">
-                {{ problem.title }}
-              </h3>
+              <!-- Content Column -->
+              <div class="flex-auto lg:mt-0">
+                <!-- Desktop Icon Wrapper (Hidden on Mobile) -->
+                <div class="hidden lg:block lg:mb-6" aria-hidden="true">
+                  <div
+                    class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300 group-hover:scale-110"
+                    [class]="getThemeClass(problem.theme)"
+                  >
+                    <svg
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        [attr.d]="problem.icon"
+                      />
+                    </svg>
+                  </div>
+                </div>
 
-              <p class="mt-1 text-body text-white/60 group-hover:text-white/80 transition-colors">
-                {{ problem.description }}
-              </p>
-            </div>
-          </app-card>
+                <h3 class="text-lg font-bold leading-7 text-white flex items-center h-10 lg:h-auto">
+                  {{ problem.title }}
+                </h3>
+
+                <p class="mt-1 text-body text-white/60 group-hover:text-white/80 transition-colors">
+                  {{ problem.description }}
+                </p>
+              </div>
+            </app-card>
           </li>
         }
       </ul>
