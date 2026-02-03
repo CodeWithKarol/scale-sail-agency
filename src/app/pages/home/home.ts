@@ -36,9 +36,9 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Senior Angular Developer | Legacy Modernization & Performance',
+      title: 'Senior Angular Developer',
       description:
-        'Senior Angular Developer specialized in modernizing legacy apps, Angular migrations, and fixing technical debt. Scale your enterprise frontend with audit-ready architecture and high performance.',
+        'Senior Angular Developer specialized in modernizing legacy apps and technical debt. Scale your enterprise frontend with audit-ready architecture.',
       slug: '',
       type: 'website',
       keywords: [

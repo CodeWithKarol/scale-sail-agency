@@ -53,26 +53,28 @@
 
       <!-- FAQ List -->
       <div class="mt-16 sm:mt-20 lg:col-span-8 lg:mt-0">
-        <dl class="space-y-6 sm:space-y-8">
+        <ul class="space-y-6 sm:space-y-8">
           @for (faq of faqs(); track faq.question) {
-            <app-card variant="default" [interactive]="true" class="block">
-              <div class="px-6 py-8 sm:p-10">
-                <dt class="text-lg font-bold leading-7 text-white flex gap-3">
-                  <!-- Optional Icon or Q marker -->
-                  <span class="text-primary font-mono hidden sm:inline-block" aria-hidden="true"
-                    >Q.</span
+            <li>
+              <app-card variant="default" [interactive]="true" class="block">
+                <div class="px-6 py-8 sm:p-10">
+                  <h3 class="text-lg font-bold leading-7 text-white flex gap-3">
+                    <!-- Optional Icon or Q marker -->
+                    <span class="text-primary font-mono hidden sm:inline-block" aria-hidden="true"
+                      >Q.</span
+                    >
+                    {{ faq.question }}
+                  </h3>
+                  <div
+                    class="mt-4 text-base leading-7 text-white/70 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
                   >
-                  {{ faq.question }}
-                </dt>
-                <dd
-                  class="mt-4 text-base leading-7 text-white/70 pl-0 sm:pl-8 sm:border-l sm:border-white/10"
-                >
-                  {{ faq.answer }}
-                </dd>
-              </div>
-            </app-card>
+                    {{ faq.answer }}
+                  </div>
+                </div>
+              </app-card>
+            </li>
           }
-        </dl>
+        </ul>
       </div>
     </div>
   </div>

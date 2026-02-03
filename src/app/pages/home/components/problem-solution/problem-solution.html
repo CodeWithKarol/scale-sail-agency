@@ -18,7 +18,8 @@
     <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
       <ul class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
         @for (problem of problems(); track problem.title; let last = $last) {
-          <app-card [interactive]="true" class="flex gap-6 lg:flex-col lg:gap-0 p-6 lg:p-8">
+          <li>
+            <app-card [interactive]="true" class="flex gap-6 lg:flex-col lg:gap-0 p-6 lg:p-8">
             <!-- Mobile: Left Column (Icon + Line) -->
             <div class="flex flex-col items-center lg:hidden" aria-hidden="true">
               <!-- Icon -->
@@ -75,6 +76,7 @@
               </p>
             </div>
           </app-card>
+          </li>
         }
       </ul>
     </div>
