@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Card } from '../../../../shared/ui/card/card';
 import { Button } from '../../../../shared/ui/button/button';
-import { Badge } from '../../../../shared/ui/badge/badge';
 
 interface ServiceTier {
   name: string;
@@ -15,7 +14,7 @@ interface ServiceTier {
 
 @Component({
   selector: 'app-service-architecture',
-  imports: [SectionHeader, Card, Button, Badge],
+  imports: [SectionHeader, Card, Button],
   templateUrl: './service-architecture.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,5 +1,11 @@
-<footer class="bg-secondary border-t border-white/10 text-white mt-auto py-12 lg:py-16">
-  <div class="layout-container">
+<footer class="bg-secondary relative border-t border-white/5 text-white mt-auto overflow-hidden">
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
+  <div
+    class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  ></div>
+
+  <div class="layout-container pt-16 pb-8 lg:pt-24 lg:pb-12">
     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
       <div class="space-y-8">
         <!-- Brand -->
@@ -7,59 +13,123 @@
           <app-brand-logo loading="lazy" />
         </div>
 
-        <p class="text-sm leading-6 text-white/80">
+        <p class="text-sm font-mono leading-6 text-white/80 border-l-2 border-primary/40 pl-4">
           Bank-Grade Engineering. <br />
           Startup-Speed Delivery.
         </p>
 
-        <p class="text-sm leading-6 text-white/60 max-w-sm">
-          Senior Frontend Developer & SaaS Founder. Modernizing legacy frontends and building
-          performance-first, audit-ready web applications for enterprise and startups.
+        <p class="text-xs leading-5 text-white/50 max-w-sm font-mono">
+          // Senior Frontend Developer & SaaS Founder. Modernizing legacy frontends and building
+          performance-first, audit-ready web applications.
         </p>
+
+        <!-- Status Indicator -->
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/[0.02] border border-white/5 rounded-sm"
+        >
+          <div class="flex gap-1">
+            <div class="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse"></div>
+            <div class="w-1.5 h-1.5 rounded-full bg-green-500/20"></div>
+          </div>
+          <span class="text-[9px] font-mono uppercase tracking-widest text-white/40"
+            >OPERATIONAL</span
+          >
+        </div>
       </div>
 
       <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0 xl:grid-cols-3">
         <div>
-          <h3 class="text-sm font-semibold leading-6 text-white">Services</h3>
-          <ul class="mt-6 space-y-4">
+          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
+            System_Modules
+          </h3>
+          <ul class="space-y-3">
             @for (item of services(); track item.name) {
               <li>
-                <a
-                  [href]="item.link"
-                  class="text-sm leading-6 text-white/60 hover:text-primary transition-colors"
-                >
-                  {{ item.name }}
-                </a>
+                @if (item.link.startsWith('/')) {
+                  <a
+                    [routerLink]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                } @else {
+                  <a
+                    [href]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                }
               </li>
             }
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold leading-6 text-white">Resources</h3>
-          <ul class="mt-6 space-y-4">
+          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
+            Knowledge_Base
+          </h3>
+          <ul class="space-y-3">
             @for (item of resources(); track item.name) {
               <li>
-                <a
-                  [href]="item.link"
-                  class="text-sm leading-6 text-white/60 hover:text-primary transition-colors"
-                >
-                  {{ item.name }}
-                </a>
+                @if (item.link.startsWith('/')) {
+                  <a
+                    [routerLink]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                } @else {
+                  <a
+                    [href]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                }
               </li>
             }
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold leading-6 text-white">Connect</h3>
-          <ul class="mt-6 space-y-4">
+          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
+            Comms_Channel
+          </h3>
+          <ul class="space-y-3">
             @for (item of connect(); track item.name) {
               <li>
-                <a
-                  [href]="item.link"
-                  class="text-sm leading-6 text-white/60 hover:text-primary transition-colors"
-                >
-                  {{ item.name }}
-                </a>
+                @if (item.link.startsWith('/')) {
+                  <a
+                    [routerLink]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                } @else {
+                  <a
+                    [href]="item.link"
+                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
+                  >
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
+                      >></span
+                    >
+                    {{ item.name }}
+                  </a>
+                }
               </li>
             }
           </ul>
@@ -68,16 +138,21 @@
     </div>
 
     <div
-      class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col items-center justify-between gap-y-4 md:flex-row"
+      class="mt-16 border-t border-white/5 pt-8 sm:mt-20 lg:mt-24 flex flex-col items-center justify-between gap-y-4 md:flex-row"
     >
-      <p class="text-xs leading-5 text-white/40">
-        &copy; {{ currentYear }} Scale Sail. All rights reserved.
-      </p>
+      <div
+        class="flex flex-col md:flex-row items-center gap-4 text-[10px] font-mono text-white/30 uppercase tracking-wider"
+      >
+        <p>&copy; {{ currentYear }} Scale_Sail Agency Systems.</p>
+        <span class="hidden md:inline text-white/10">|</span>
+        <p>All_Rights_Reserved</p>
+      </div>
+
       <div class="flex gap-x-8">
         @for (item of legal(); track item.name) {
           <a
             [href]="item.link"
-            class="text-xs leading-5 text-white/40 hover:text-white transition-colors"
+            class="text-[10px] font-mono uppercase tracking-wider text-white/30 hover:text-white transition-colors"
             >{{ item.name }}</a
           >
         }

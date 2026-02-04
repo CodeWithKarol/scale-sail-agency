@@ -1,51 +1,70 @@
-<section class="section-padding relative isolate overflow-hidden bg-secondary">
-  <div class="layout-container">
-    <div class="mx-auto max-w-2xl text-center">
-      <app-section-header
-        title="Ship with Confidence."
-        description="If you're dealing with a slow, hard-to-change frontend (or planning a new SaaS build), I can help you ship with confidence. Share your goals and constraints—I'll review your inquiry and if it's a good fit, I'll send you a link to book a discovery call."
-      >
-        <nav class="mt-10 flex flex-col items-center justify-center gap-y-6 gap-x-6 sm:flex-row">
+<section class="section-padding relative isolate overflow-hidden bg-black border-t border-white/10">
+  <div class="layout-container relative z-10">
+    <!-- Terminal Window Frame -->
+    <div
+      class="mx-auto max-w-3xl border border-white/20 bg-secondary rounded-sm overflow-hidden shadow-2xl"
+    >
+      <!-- Terminal Header -->
+      <div class="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center justify-between">
+        <div class="flex gap-2">
+          <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+        </div>
+        <div class="font-mono text-xs text-white/30">bash — 80x24</div>
+      </div>
+
+      <!-- Terminal Body -->
+      <div class="p-8 sm:p-12 text-center">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full font-mono text-xs mb-8"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+          </span>
+          SYSTEM_READY
+        </div>
+
+        <h2
+          class="text-3xl sm:text-4xl font-mono font-bold text-white mb-6 uppercase tracking-tight"
+        >
+          Initialize <span class="text-primary">Engagement</span>
+        </h2>
+
+        <p class="text-white/60 font-mono text-sm leading-relaxed max-w-xl mx-auto mb-10">
+          > If you're dealing with a slow, hard-to-change frontend (or planning a new SaaS build), I
+          can help you ship with confidence.
+          <br /><br />
+          > Share your goals and constraints.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <app-button
             href="https://www.karol-modelski.scale-sail.io/#contact"
             variant="primary"
             size="lg"
-            styleClass="w-full sm:w-auto"
+            styleClass="w-full sm:w-auto font-mono uppercase tracking-widest text-xs"
           >
-            Book Discovery Call
+            [ EXECUTE_DISCOVERY ]
           </app-button>
 
-          <div class="flex flex-col sm:flex-row items-center gap-6">
-            <app-button
-              href="https://www.shop.scale-sail.io/"
-              variant="ghost"
-              styleClass="text-white hover:bg-white/10 hover:text-white"
-            >
-              Shop Templates <span aria-hidden="true" class="ml-1">→</span>
-            </app-button>
-            <app-button
-              href="https://www.karol-modelski.scale-sail.io"
-              variant="ghost"
-              styleClass="text-white hover:bg-white/10 hover:text-white"
-            >
-              View Portfolio <span aria-hidden="true" class="ml-1">→</span>
-            </app-button>
-          </div>
-        </nav>
-      </app-section-header>
+          <app-button
+            href="https://www.shop.scale-sail.io/"
+            variant="ghost"
+            styleClass="w-full sm:w-auto text-white hover:bg-white/10 font-mono uppercase tracking-widest text-xs border border-white/10"
+          >
+            cd ./shop_templates
+          </app-button>
+        </div>
+      </div>
     </div>
   </div>
-  <svg
-    viewBox="0 0 1024 1024"
-    class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] opacity-40"
-    aria-hidden="true"
-  >
-    <circle cx="512" cy="512" r="512" fill="url(#radial-gradient-final-cta)" fill-opacity="0.7" />
-    <defs>
-      <radialGradient id="radial-gradient-final-cta">
-        <stop offset="0" stop-color="var(--color-primary)" />
-        <stop offset="1" stop-color="var(--color-accent)" />
-      </radialGradient>
-    </defs>
-  </svg>
+
+  <!-- Background Glow -->
+  <div
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10"
+  ></div>
 </section>

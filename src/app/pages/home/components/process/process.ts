@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
-import { Card } from '../../../../shared/ui/card/card';
 
 interface ProcessStep {
   number: string;
@@ -12,7 +11,7 @@ interface ProcessStep {
 @Component({
   selector: 'app-process',
   standalone: true,
-  imports: [SectionHeader, Card],
+  imports: [SectionHeader],
   templateUrl: './process.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

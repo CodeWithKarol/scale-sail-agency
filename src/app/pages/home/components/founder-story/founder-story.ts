@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { Badge } from '../../../../shared/ui/badge/badge';
+import { RouterLink } from '@angular/router';
 import { Button } from '../../../../shared/ui/button/button';
 
 @Component({
   selector: 'app-founder-story',
-  imports: [Badge, Button],
+  imports: [Button, RouterLink],
   templateUrl: './founder-story.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

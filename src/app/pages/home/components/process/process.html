@@ -1,24 +1,20 @@
-<section class="section-padding bg-secondary relative overflow-hidden">
-  <!-- Ambient Background -->
-  <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.secondary),theme(colors.black))] opacity-20"
-  ></div>
-  <div
-    class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-secondary shadow-xl shadow-primary/10 ring-1 ring-white/5 sm:mr-28 lg:mr-0 lg:-ml-96 lg:w-[200%]"
-  ></div>
+<section class="section-padding bg-secondary relative overflow-hidden border-t border-white/5">
+  <!-- Technical Background -->
+  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
 
-  <div class="layout-container">
+  <div class="layout-container relative z-10">
     <app-section-header
-      subtitle="The Process"
-      title="From Discovery to Deployment"
-      description="A structured, transparent approach to delivering high-quality Angular applications."
+      subtitle="EXECUTION_PROTOCOL"
+      title="Deployment Sequence"
+      description="A structured, transparent algorithm for delivering high-quality Angular applications."
+      class="font-mono"
     />
 
     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
       <div class="relative grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
         <!-- Connector Line (Desktop Only) -->
         <div
-          class="hidden lg:block absolute top-12 left-10 right-10 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent border-t border-dashed border-white/5 -z-10"
+          class="hidden lg:block absolute top-12 left-10 right-10 h-px bg-white/10 border-t border-dashed border-white/5 -z-10"
           aria-hidden="true"
         ></div>
 
@@ -26,13 +22,23 @@
           @for (step of steps(); track step.number; let index = $index) {
             <li class="flex flex-col relative group">
               <!-- Step Number & Icon -->
-              <app-card
-                class="mb-6 flex h-24 w-24 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 shadow-2xl group-hover:bg-primary group-hover:ring-primary group-hover:scale-110 transition-all duration-300 z-10"
-                [interactive]="false"
+              <div
+                class="mb-6 flex h-24 w-24 items-center justify-center bg-black border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300 z-10 relative"
               >
-                <div class="flex flex-col items-center gap-1">
+                <!-- Corner accents -->
+                <div
+                  class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-primary"
+                ></div>
+                <div
+                  class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-primary"
+                ></div>
+
+                <div class="flex flex-col items-center gap-2">
+                  <span class="text-[10px] font-mono text-primary tracking-widest"
+                    >STEP_{{ step.number }}</span
+                  >
                   <svg
-                    class="h-8 w-8 text-white"
+                    class="h-8 w-8 text-white/80 group-hover:text-white transition-colors"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -40,21 +46,20 @@
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="step.iconPath" />
                   </svg>
-                  <span class="text-[0.6rem] font-medium text-white/60 font-mono tracking-widest">{{
-                    step.number
-                  }}</span>
                 </div>
-              </app-card>
+              </div>
 
               <!-- Content Card -->
-              <div class="flex flex-col gap-y-1">
+              <div class="flex flex-col gap-y-2">
                 <h3
-                  class="text-xl font-bold leading-7 text-white group-hover:text-primary transition-colors"
+                  class="text-lg font-mono font-bold leading-7 text-white uppercase tracking-tight group-hover:text-primary transition-colors"
                 >
-                  <span class="sr-only">Step {{ step.number }}: </span>{{ step.title }}
+                  {{ step.title }}
                 </h3>
               </div>
-              <div class="mt-4 flex flex-auto flex-col text-base leading-7 text-white/60">
+              <div
+                class="mt-2 flex flex-auto flex-col text-sm leading-6 text-white/60 font-mono border-l border-white/10 pl-4 group-hover:border-primary/30 transition-colors"
+              >
                 <p class="flex-auto">{{ step.description }}</p>
               </div>
             </li>

@@ -1,7 +1,12 @@
 <header
   class="fixed inset-x-0 top-0 z-50 bg-secondary/90 backdrop-blur-xl border-b border-white/5 supports-[backdrop-filter]:bg-secondary/60 transition-all duration-300"
 >
-  <nav class="layout-container flex items-center justify-between py-6" aria-label="Global">
+  <!-- Technical Top Line -->
+  <div
+    class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  ></div>
+
+  <nav class="layout-container flex items-center justify-between py-5" aria-label="Global">
     <!-- Logo -->
     <div class="flex xl:flex-1">
       <app-brand-logo></app-brand-logo>
@@ -11,36 +16,74 @@
     <div class="flex xl:hidden">
       <button
         type="button"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-neutral hover:text-white transition-colors"
+        class="-m-2.5 inline-flex items-center justify-center rounded-sm p-2.5 text-white/60 hover:text-white hover:bg-white/5 transition-all border border-transparent hover:border-white/10 group"
         (click)="toggleMobileMenu()"
       >
         <span class="sr-only">Open main menu</span>
-        <svg
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+        <div class="flex flex-col gap-1.5 w-6">
+          <span class="h-0.5 w-full bg-current group-hover:w-3/4 transition-all ml-auto"></span>
+          <span class="h-0.5 w-full bg-current"></span>
+          <span class="h-0.5 w-full bg-current group-hover:w-1/2 transition-all ml-auto"></span>
+        </div>
       </button>
     </div>
 
     <!-- Desktop Nav -->
-    <div class="hidden xl:flex xl:gap-x-8">
-      @for (item of navigation; track item.name) {
-        <a
-          [href]="item.href"
-          class="text-sm font-semibold leading-6 text-neutral/80 hover:text-white transition-colors"
-        >
-          {{ item.name }}
-        </a>
+    <div class="hidden xl:flex xl:gap-x-1">
+      @for (item of navigation; track item.name; let index = $index) {
+        @if (item.href.startsWith('/')) {
+          <a
+            [routerLink]="item.href"
+            class="relative px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors group overflow-hidden rounded-sm cursor-pointer"
+          >
+            <!-- Hover Background -->
+            <span
+              class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+
+            <!-- Text with Index -->
+            <span class="relative z-10 flex items-center gap-2">
+              <span class="text-[9px] opacity-40 group-hover:text-primary/60 transition-colors"
+                >0{{ index + 1 }}</span
+              >
+              {{ item.name }}
+            </span>
+
+            <!-- Corner accents on hover -->
+            <span
+              class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+            <span
+              class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+          </a>
+        } @else {
+          <a
+            [href]="item.href"
+            class="relative px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors group overflow-hidden rounded-sm"
+          >
+            <!-- Hover Background -->
+            <span
+              class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+
+            <!-- Text with Index -->
+            <span class="relative z-10 flex items-center gap-2">
+              <span class="text-[9px] opacity-40 group-hover:text-primary/60 transition-colors"
+                >0{{ index + 1 }}</span
+              >
+              {{ item.name }}
+            </span>
+
+            <!-- Corner accents on hover -->
+            <span
+              class="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+            <span
+              class="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-primary/50 opacity-0 group-hover:opacity-100 transition-opacity"
+            ></span>
+          </a>
+        }
       }
     </div>
 
@@ -50,11 +93,22 @@
         href="https://www.karol-modelski.scale-sail.io/#contact"
         variant="primary"
         size="sm"
+        styleClass="font-mono text-[10px] uppercase tracking-widest"
       >
-        Work With Me
+        [ Initiate_Contact ]
       </app-button>
     </div>
   </nav>
+
+  <!-- Status Bar (Decorational) -->
+  <div
+    class="hidden xl:flex absolute bottom-0 right-8 translate-y-1/2 px-3 py-0.5 bg-secondary border border-white/10 text-[9px] font-mono text-white/30 uppercase tracking-wider gap-3 z-50"
+  >
+    <span>SYS_ONLINE</span>
+    <span class="flex gap-1 items-center">
+      NET <span class="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse"></span>
+    </span>
+  </div>
 </header>
 <!-- Mobile Menu -->
 @if (mobileMenuOpen()) {

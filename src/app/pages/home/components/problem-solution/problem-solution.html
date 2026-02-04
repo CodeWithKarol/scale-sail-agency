@@ -1,31 +1,54 @@
-<section class="relative bg-secondary section-padding overflow-hidden">
-  <!-- Decorative gradients -->
+<section class="relative bg-secondary section-padding overflow-hidden border-t border-white/5">
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
+  <div class="absolute inset-0 -z-10 bg-secondary/95"></div>
+
+  <!-- Decorative elements -->
   <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.secondary),theme(colors.black))] opacity-50"
+    class="absolute top-0 right-0 w-1/3 h-px bg-gradient-to-l from-primary/20 to-transparent"
   ></div>
   <div
-    class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-secondary shadow-xl shadow-primary/10 ring-1 ring-primary/10 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center opacity-20"
+    class="absolute bottom-0 left-0 w-1/3 h-px bg-gradient-to-r from-primary/20 to-transparent"
   ></div>
 
-  <div class="layout-container">
+  <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="The Challenge"
-      title="Your Frontend Is Holding Your Product Back."
+      subtitle="SYSTEM_DIAGNOSTICS"
+      title="Critical Failures Detected"
+      class="font-mono"
     />
 
-    <!-- Cards Layout: Mobile First Stack -> Desktop Grid -->
+    <!-- Cards Layout -->
     <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
       <ul class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
-        @for (problem of problems(); track problem.title; let last = $last) {
+        @for (problem of problems(); track problem.title; let index = $index; let last = $last) {
           <li>
-            <app-card [interactive]="true" class="flex gap-6 lg:flex-col lg:gap-0 p-6 lg:p-8">
-              <!-- Mobile: Left Column (Icon + Line) -->
-              <div class="flex flex-col items-center lg:hidden" aria-hidden="true">
-                <!-- Icon -->
+            <app-card
+              [interactive]="true"
+              class="h-full flex flex-col p-6 lg:p-8 bg-black/20 backdrop-blur-sm border border-white/5 hover:border-primary/30 transition-all group"
+            >
+              <!-- Technical Header -->
+              <div
+                class="flex items-center justify-between mb-6 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors"
+              >
+                <span class="font-mono text-xs text-white/40">ERR_0{{ index + 1 }}</span>
                 <div
-                  class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300"
-                  [class]="getThemeClass(problem.theme)"
+                  class="h-1.5 w-1.5 rounded-sm"
+                  [class]="
+                    problem.theme === 'red'
+                      ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
+                      : problem.theme === 'orange'
+                        ? 'bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]'
+                        : 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]'
+                  "
+                ></div>
+              </div>
+
+              <!-- Icon & Title -->
+              <div class="flex items-start gap-4 mb-4">
+                <div
+                  class="relative shrink-0 flex items-center justify-center w-10 h-10 border border-white/10 bg-white/5 text-white/60 group-hover:text-white group-hover:border-primary/50 transition-colors"
                 >
                   <svg
                     class="h-5 w-5"
@@ -36,48 +59,35 @@
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
                   </svg>
-                </div>
-
-                <!-- Vertical Line connecting to next item -->
-                @if (!last) {
+                  <!-- Corner accents -->
                   <div
-                    class="w-px h-full bg-white/10 my-2 group-hover:bg-primary/50 transition-colors duration-500"
+                    class="absolute top-0 left-0 w-1 h-1 border-t border-l border-white/20"
                   ></div>
-                }
-              </div>
-
-              <!-- Content Column -->
-              <div class="flex-auto lg:mt-0">
-                <!-- Desktop Icon Wrapper (Hidden on Mobile) -->
-                <div class="hidden lg:block lg:mb-6" aria-hidden="true">
                   <div
-                    class="inline-flex h-12 w-12 items-center justify-center rounded-xl ring-1 ring-inset bg-secondary transition-all duration-300 group-hover:scale-110"
-                    [class]="getThemeClass(problem.theme)"
-                  >
-                    <svg
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        [attr.d]="problem.icon"
-                      />
-                    </svg>
-                  </div>
+                    class="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-white/20"
+                  ></div>
                 </div>
 
-                <h3 class="text-lg font-bold leading-7 text-white flex items-center h-10 lg:h-auto">
+                <h3
+                  class="text-lg font-mono uppercase tracking-tight text-white group-hover:text-primary transition-colors pt-1"
+                >
                   {{ problem.title }}
                 </h3>
+              </div>
 
-                <p class="mt-1 text-body text-white/60 group-hover:text-white/80 transition-colors">
-                  {{ problem.description }}
-                </p>
+              <!-- Description -->
+              <p
+                class="mt-2 flex-1 text-sm leading-6 text-white/60 font-light group-hover:text-white/80 transition-colors border-l border-white/5 pl-4 ml-5"
+              >
+                {{ problem.description }}
+              </p>
+
+              <!-- Footer Status -->
+              <div
+                class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-red-400/80"
+              >
+                <span class="inline-block w-1 h-1 bg-red-400 rounded-full animate-pulse"></span>
+                Action Required
               </div>
             </app-card>
           </li>
@@ -87,36 +97,40 @@
 
     <!-- Bottom Action / Summary Banner -->
     <div class="mt-16 sm:mt-20 lg:mt-24">
-      <app-card class="overflow-hidden px-6 py-10 shadow-2xl sm:px-12 xl:py-16 isolate">
-        <!-- Background blob -->
-        <svg
-          viewBox="0 0 1024 1024"
-          class="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2 -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)]"
-          aria-hidden="true"
-        >
-          <circle cx="512" cy="512" r="512" fill="url(#gradient-problem-sol)" fill-opacity="0.25" />
-          <defs>
-            <radialGradient id="gradient-problem-sol">
-              <stop offset="0" stop-color="var(--color-primary)" />
-              <stop offset="1" stop-color="var(--color-accent)" />
-            </radialGradient>
-          </defs>
-        </svg>
+      <div class="relative overflow-hidden bg-black/40 border border-white/10 p-1">
+        <!-- Scanlines -->
+        <div
+          class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDAsIDAsIDAsIDAuMykiLz4KPC9zdmc+')] pointer-events-none z-10 opacity-20"
+        ></div>
 
-        <div class="mx-auto max-w-3xl text-center">
-          <h3 class="text-lg font-medium leading-8 text-white/80 text-pretty">
-            Whether you need architecture-level intervention, end-to-end SaaS delivery, or
-            production-ready templates you can customize in minutes,
-            <span
-              class="text-white font-bold block sm:inline mt-2 sm:mt-0 underline decoration-primary decoration-2 underline-offset-4"
-              >you're choosing from the same engineering standards</span
-            >
-            <span class="block mt-2 text-sm text-white/40 uppercase tracking-widest font-semibold"
-              >— just different delivery formats. —</span
-            >
-          </h3>
+        <div class="px-6 py-10 sm:px-12 xl:py-16 relative z-20">
+          <!-- Background glow -->
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[600px] bg-primary/5 blur-3xl rounded-full -z-10"
+          ></div>
+
+          <div class="mx-auto max-w-3xl text-center">
+            <h3 class="text-lg font-mono leading-8 text-white/80 text-pretty">
+              <span class="text-primary">></span> Whether you need architecture intervention, SaaS
+              delivery, or templates,
+              <span class="text-white border-b border-primary/50 pb-0.5"
+                >you're choosing the same engineering standards</span
+              >
+              <span class="text-primary"><</span>
+            </h3>
+
+            <div class="mt-6 text-xs font-mono text-white/30 uppercase tracking-[0.2em]">
+              // End of Diagnostics Report //
+            </div>
+          </div>
         </div>
-      </app-card>
+
+        <!-- Corner brackets -->
+        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary/30"></div>
+        <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-primary/30"></div>
+        <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-primary/30"></div>
+        <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary/30"></div>
+      </div>
     </div>
   </div>
 </section>

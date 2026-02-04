@@ -1,9 +1,9 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Card } from '../../../../shared/ui/card/card';
 import { Button } from '../../../../shared/ui/button/button';
-import { Badge } from '../../../../shared/ui/badge/badge';
 
 interface CaseStudy {
   tag: string;
@@ -15,7 +15,7 @@ interface CaseStudy {
 
 @Component({
   selector: 'app-case-studies',
-  imports: [NgOptimizedImage, SectionHeader, Card, Button, Badge],
+  imports: [NgOptimizedImage, SectionHeader, Card, Button, RouterLink],
   templateUrl: './case-studies.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -27,7 +27,7 @@ export class CaseStudies {
       description:
         'Real-time analytics collapsing under scale fixed with Angular Signals and Tailwind CSS 4.',
       imageUrl: 'images/admin-panel.webp',
-      link: 'https://www.karol-modelski.scale-sail.io/work/modern-enterprise-admin-dashboard',
+      link: '/work/modern-enterprise-admin-dashboard',
     },
     {
       tag: 'Next-Gen Angular E-Commerce Architecture',
@@ -35,7 +35,7 @@ export class CaseStudies {
       description:
         '"Smart Shell" architecture with Signals handling complex cart state without bloat.',
       imageUrl: 'images/quick-cart.webp',
-      link: 'https://www.karol-modelski.scale-sail.io/quickcart-ecommerce',
+      link: '/work/quickcart-ecommerce',
     },
   ]);
 }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Card } from '../../../../shared/ui/card/card';
 import { Button } from '../../../../shared/ui/button/button';
-import { Badge } from '../../../../shared/ui/badge/badge';
+import { UpperCasePipe } from '@angular/common';
 
 interface Template {
   id: string;
@@ -15,7 +15,7 @@ interface Template {
 
 @Component({
   selector: 'app-template-showcase',
-  imports: [SectionHeader, Card, Button, Badge],
+  imports: [SectionHeader, Card, Button, UpperCasePipe],
   templateUrl: './template-showcase.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
