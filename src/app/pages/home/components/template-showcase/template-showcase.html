@@ -1,55 +1,66 @@
-<section class="section-padding bg-secondary relative overflow-hidden">
-  <!-- Decorative background effects -->
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full h-full max-w-7xl">
-    <div
-      class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-20 animate-pulse"
-    ></div>
-    <div
-      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl opacity-20 animate-pulse"
-      style="animation-delay: 2s"
-    ></div>
-  </div>
+<section class="section-padding bg-secondary relative overflow-hidden border-t border-white/5">
+  <!-- Technical Grid -->
+  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
+  <div
+    class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
+  ></div>
 
-  <div class="layout-container">
+  <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="Ready Templates"
-      title="Ship a Landing Page Today."
-      description="Production-ready templates built with the same frontend standards as my enterprise work. Pick one, customize in minutes, deploy anywhere."
+      subtitle="SYSTEM_TEMPLATES"
+      title="Rapid Deployment Units"
+      description="Production-ready templates built with enterprise standards. Pick a unit, customize parameters, deploy to production."
+      class="font-mono"
     />
 
     <!-- Templates Grid -->
     <div class="grid max-w-md grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3 mx-auto lg:mx-0">
-      @for (template of featuredTemplates(); track template.id) {
+      @for (template of featuredTemplates(); track template.id; let index = $index) {
         <a
           href="https://www.shop.scale-sail.io/"
-          class="block h-full group outline-none focus-visible:rounded-3xl focus-visible:ring-2 focus-visible:ring-primary"
+          class="block h-full group outline-none focus-visible:ring-1 focus-visible:ring-primary"
         >
           <app-card
             [interactive]="true"
             [variant]="template.price === 'Free' ? 'highlight' : 'default'"
-            class="h-full flex flex-col p-0 overflow-hidden"
+            class="h-full flex flex-col p-0 overflow-hidden border border-white/10 hover:border-primary/50 transition-colors"
           >
+            <!-- Technical Header -->
+            <div
+              class="flex items-center justify-between px-3 py-2 bg-white/[0.02] border-b border-white/5 text-[10px] font-mono text-white/40"
+            >
+              <div class="flex items-center gap-2">
+                <span>UNIT_0{{ index + 1 }}</span>
+                <span class="w-px h-3 bg-white/10"></span>
+                <span>ID: {{ template.id | uppercase }}</span>
+              </div>
+              <div class="flex gap-1">
+                <div class="w-1 h-1 bg-white/20"></div>
+                <div class="w-1 h-1 bg-white/20"></div>
+                <div class="w-1 h-1 bg-white/20"></div>
+              </div>
+            </div>
+
             <!-- Image Container -->
             <figure
-              class="relative aspect-[16/10] w-full overflow-hidden bg-white/5 sm:aspect-[3/2] lg:aspect-[16/10]"
+              class="relative aspect-[16/10] w-full overflow-hidden bg-black/40 sm:aspect-[3/2] lg:aspect-[16/10]"
             >
               <!-- Badge -->
               @if (template.badge) {
-                <div class="absolute top-4 right-4 z-30">
-                  <app-badge variant="solid" color="accent">{{ template.badge }}</app-badge>
+                <div class="absolute top-2 right-2 z-30">
+                  <div
+                    class="bg-accent/10 backdrop-blur-md border border-accent/20 text-accent px-2 py-0.5 text-[10px] font-mono uppercase tracking-wider shadow-lg"
+                  >
+                    {{ template.badge }}
+                  </div>
                 </div>
               }
 
-              <!-- Browser Frame Look -->
+              <!-- Scanlines -->
               <div
-                class="absolute top-0 inset-x-0 h-8 bg-black/40 backdrop-blur-md z-20 border-b border-white/5 flex items-center px-4 space-x-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                aria-hidden="true"
-              >
-                <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-              </div>
+                class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDAsIDAsIDAsIDAuMykiLz4KPC9zdmc+')] pointer-events-none z-20 opacity-30"
+              ></div>
 
               <img
                 [src]="template.image"
@@ -57,45 +68,42 @@
                 loading="lazy"
                 width="500"
                 height="313"
-                class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+                class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0"
               />
             </figure>
 
             <!-- Content -->
-            <div class="flex flex-1 flex-col p-6">
+            <div
+              class="flex flex-1 flex-col p-6 border-t border-white/5 bg-black/20 backdrop-blur-sm"
+            >
               <h3
-                class="text-xl font-bold leading-7 text-white group-hover:text-primary transition-colors"
+                class="text-lg font-mono uppercase tracking-tight text-white group-hover:text-primary transition-colors mb-2"
               >
-                <span class="focus:outline-none">
-                  <span class="absolute inset-0" aria-hidden="true"></span>
-                  {{ template.name }}
-                </span>
+                > {{ template.name }}
               </h3>
-              <p class="mt-2 text-sm leading-6 text-white/60 line-clamp-2">
+              <p class="text-xs leading-5 text-white/50 font-mono border-l border-white/5 pl-3">
                 {{ template.tagline }}
               </p>
 
               <div
-                class="mt-6 flex items-center justify-between gap-4 pt-6 border-t border-white/5"
+                class="mt-6 flex items-center justify-between pt-4 border-t border-white/5 border-dashed"
               >
                 <div class="flex items-center gap-2">
-                  <span
-                    class="flex h-2 w-2 rounded-full"
+                  <div
+                    class="w-1.5 h-1.5 rounded-sm"
                     [class.bg-accent]="template.price !== 'Free'"
                     [class.bg-primary]="template.price === 'Free'"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="text-xs font-medium text-white/80">{{
-                    template.price === 'Free' ? 'Free Forever' : 'One-time purchase'
+                  ></div>
+                  <span class="text-[10px] font-mono uppercase text-white/60 tracking-wider">{{
+                    template.price === 'Free' ? 'OPEN_SOURCE' : 'LICENSED'
                   }}</span>
                 </div>
 
-                <app-badge
-                  [variant]="template.price === 'Free' ? 'solid' : 'outline'"
-                  [color]="template.price === 'Free' ? 'accent' : 'neutral'"
+                <div
+                  class="text-sm font-mono text-white group-hover:text-primary transition-colors"
                 >
-                  {{ template.price === 'Free' ? 'Get for Free' : 'Buy ' + template.price }}
-                </app-badge>
+                  {{ template.price }}
+                </div>
               </div>
             </div>
           </app-card>
@@ -108,12 +116,9 @@
       <app-button
         href="https://www.shop.scale-sail.io/"
         variant="ghost"
-        styleClass="text-white/80 hover:text-white hover:bg-white/10"
+        styleClass="font-mono text-xs uppercase tracking-widest border border-white/10 hover:border-primary hover:text-primary transition-all"
       >
-        Shop All Templates
-        <span aria-hidden="true" class="ml-2 transition-transform group-hover:translate-x-1"
-          >→</span
-        >
+        // Browse All Units
       </app-button>
     </div>
   </div>

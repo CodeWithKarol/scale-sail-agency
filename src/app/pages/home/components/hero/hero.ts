@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Button } from '../../../../shared/ui/button/button';
-import { Badge } from '../../../../shared/ui/badge/badge';
 
 @Component({
   selector: 'app-hero',
-  imports: [Button, Badge],
+  imports: [Button, RouterLink],
   templateUrl: './hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

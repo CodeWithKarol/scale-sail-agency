@@ -9,6 +9,14 @@
   --color-neutral: #f4f6f8;
 
   --font-sans: 'Inter', system-ui, sans-serif;
+
+  --animate-loading: loading 2s ease-in-out infinite;
+  
+  @keyframes loading {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
 }
 
 body {
@@ -61,35 +69,35 @@ html {
   .btn-secondary,
   .btn-accent,
   .btn-ghost {
-    @apply inline-flex items-center justify-center font-medium transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center font-bold uppercase tracking-wider font-mono transition-all duration-300 rounded-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-offset-1;
   }
 
   .btn-primary {
-    @apply bg-primary text-white hover:bg-blue-600 shadow-lg shadow-primary/25 hover:shadow-primary/40 focus:ring-primary;
+    @apply bg-primary text-white border border-primary hover:bg-transparent hover:text-primary shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
   }
 
   .btn-secondary {
-    @apply bg-secondary text-white hover:bg-[#112a55] focus:ring-secondary;
+    @apply bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm;
   }
 
   .btn-accent {
-    @apply bg-accent text-white hover:bg-[#ff855a] focus:ring-accent;
+    @apply bg-accent text-white border border-accent hover:bg-transparent hover:text-accent shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
   }
 
   .btn-ghost {
-    @apply text-secondary hover:bg-neutral hover:text-primary bg-transparent;
+    @apply text-white/60 hover:text-accent hover:bg-white/5 border border-transparent hover:border-white/10;
   }
 
   .btn-lg {
-    @apply px-8 py-4 text-lg;
+    @apply px-10 py-5 text-sm;
   }
 
   .btn-md {
-    @apply px-6 py-3 text-base;
+    @apply px-8 py-3 text-xs;
   }
 
   .btn-sm {
-    @apply px-4 py-2 text-sm;
+    @apply px-6 py-2 text-[10px];
   }
 
   /* --- Cards & Surfaces --- */

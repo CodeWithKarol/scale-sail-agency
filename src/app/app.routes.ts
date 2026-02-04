@@ -13,6 +13,20 @@ export const routes: Routes = [
       import('./pages/programmatic/industry/industry-template').then((m) => m.IndustryTemplate),
   },
   {
+    path: 'work',
+    loadComponent: () => import('./pages/work/work-page').then((m) => m.WorkPage),
+    title: 'Work | Scale Sail Agency',
+  },
+  {
+    path: 'work/:id',
+    loadComponent: () => import('./pages/work/case-study/case-study').then((m) => m.CaseStudyPage),
+  },
+  {
+    path: 'blog',
+    loadComponent: () => import('./pages/blog/blog-list-page').then((m) => m.BlogListPage),
+    title: 'Blog | Scale Sail Agency',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

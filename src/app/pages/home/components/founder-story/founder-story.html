@@ -1,64 +1,10 @@
-<section class="section-padding relative isolate overflow-hidden bg-secondary">
-  <!-- Background Pattern -->
-  <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary),transparent)] opacity-10"
-  ></div>
-  <div class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden ring-1 ring-white/5 lg:w-1/2">
-    <svg
-      class="absolute inset-0 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-      aria-hidden="true"
-    >
-      <defs>
-        <pattern
-          id="founder-story-pattern"
-          width="200"
-          height="200"
-          x="100%"
-          y="-1"
-          patternUnits="userSpaceOnUse"
-        >
-          <path d="M.5 200V.5H200" fill="none" />
-        </pattern>
-      </defs>
-      <svg x="100%" y="-1" class="overflow-visible fill-white/5">
-        <path
-          d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
-          stroke-width="0"
-        />
-      </svg>
-      <rect width="100%" height="100%" stroke-width="0" fill="url(#founder-story-pattern)" />
-    </svg>
-    <div
-      class="absolute -left-56 top-[calc(100%-13rem)] transform-gpu blur-3xl lg:left-[max(-14rem,calc(100%-59rem))] lg:top-[calc(50%-7rem)]"
-      aria-hidden="true"
-    >
-      <div
-        class="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-br from-primary to-accent opacity-20"
-        style="
-          clip-path: polygon(
-            74.1% 44.1%,
-            100% 61.6%,
-            97.5% 26.9%,
-            85.5% 0.1%,
-            80.7% 2%,
-            72.5% 32.5%,
-            60.2% 62.4%,
-            52.4% 68.1%,
-            47.5% 58.3%,
-            45.2% 34.5%,
-            27.5% 76.7%,
-            0.1% 64.9%,
-            17.9% 100%,
-            27.6% 76.8%,
-            76.1% 97.7%,
-            74.1% 44.1%
-          );
-        "
-      ></div>
-    </div>
-  </div>
+<section
+  class="section-padding relative isolate overflow-hidden bg-secondary border-t border-white/5"
+>
+  <!-- Technical Background -->
+  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
 
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
     <div
       class="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10"
     >
@@ -68,25 +14,35 @@
       >
         <div class="lg:pr-4">
           <div class="lg:max-w-lg">
-            <p class="text-base font-semibold leading-7 text-accent uppercase tracking-wide">
-              The Founder
+            <p
+              class="text-xs font-mono font-semibold leading-7 text-primary uppercase tracking-widest mb-4"
+            >
+              // Operator_Profile
             </p>
-            <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2
+              class="text-3xl font-bold tracking-tight text-white sm:text-4xl font-mono uppercase mb-2"
+            >
               {{ founder().headline }}
             </h2>
-            <div class="mt-6 text-xl leading-8 text-white font-semibold">
+            <div class="h-1 w-20 bg-primary/50 mb-6"></div>
+
+            <div
+              class="mt-6 text-xl leading-8 text-white font-mono border-l-2 border-primary/20 pl-4"
+            >
               {{ founder().name }}
-              <span class="block text-base font-normal text-white/60 mt-1">{{
+              <span class="block text-sm font-normal text-white/60 mt-1 uppercase tracking-wider">{{
                 founder().role
               }}</span>
             </div>
 
-            <!-- Badges Mobile/Desktop combined logic -->
-            <div class="mt-6 flex flex-wrap gap-2">
+            <!-- Badges -->
+            <div class="mt-8 flex flex-wrap gap-2">
               @for (badge of founder().badges; track $index) {
-                <app-badge variant="soft" color="accent">
+                <div
+                  class="px-2 py-1 bg-white/5 border border-white/10 text-[10px] font-mono uppercase tracking-wider text-white/80"
+                >
                   {{ badge }}
-                </app-badge>
+                </div>
               }
             </div>
           </div>
@@ -98,7 +54,7 @@
         class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
       >
         <div class="lg:pr-4">
-          <div class="max-w-xl text-base leading-7 text-white/80 lg:max-w-lg">
+          <div class="max-w-xl text-base leading-7 text-white/80 lg:max-w-lg font-light">
             @for (paragraph of founder().bio; track $index) {
               <p class="mb-4 last:mb-0">{{ paragraph }}</p>
             }
@@ -109,18 +65,18 @@
               class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-x-6 scroll-mt-32"
             >
               <app-button
-                href="https://www.karol-modelski.scale-sail.io"
+                route="/work"
                 variant="primary"
-                styleClass="justify-center"
+                styleClass="justify-center font-mono text-xs uppercase tracking-widest"
               >
                 View Portfolio
               </app-button>
               <app-button
-                href="https://www.karol-modelski.scale-sail.io/blog"
+                route="/blog"
                 variant="ghost"
-                styleClass="text-white hover:bg-white/10 hover:text-white justify-center"
+                styleClass="text-white hover:bg-white/10 hover:text-white justify-center font-mono text-xs uppercase tracking-widest border border-white/10"
               >
-                Read Engineering Blog <span aria-hidden="true" class="ml-1">→</span>
+                Read Engineering Blog
               </app-button>
             </div>
           </div>
@@ -131,46 +87,57 @@
       <div
         class="lg:-ml-12 lg:-mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden"
       >
-        <figure
-          class="relative aspect-[4/5] rounded-xl bg-gray-800 object-cover shadow-2xl ring-1 ring-white/10 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group"
+        <div
+          class="relative aspect-[4/5] bg-black border border-white/10 p-2 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group"
         >
+          <!-- Corner decorations -->
+          <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/20 z-20"></div>
+          <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20 z-20"></div>
+          <div
+            class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/20 z-20"
+          ></div>
+          <div
+            class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/20 z-20"
+          ></div>
+
           <img
-            class="absolute inset-0 h-full w-full rounded-xl bg-gray-900 object-cover shadow-2xl transition duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale-[50%]"
+            class="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)] object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
             [src]="founder().image"
             alt="Portrait of Karol Modelski, Founder"
             loading="lazy"
             width="400"
             height="533"
           />
+
+          <!-- Scanline overlay -->
           <div
-            class="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10"
-            aria-hidden="true"
+            class="absolute inset-2 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDAsIDAsIDAsIDAuMykiLz4KPC9zdmc+')] pointer-events-none z-10 opacity-30"
           ></div>
 
-          <!-- Quick stats overlaid on image (Bottom on mobile, Top on desktop) -->
+          <!-- Quick stats overlaid -->
           <div
-            class="absolute bottom-4 lg:bottom-auto lg:top-4 left-4 right-4 rounded-2xl p-4 bg-white/10 backdrop-blur-md ring-1 ring-white/20 shadow-lg"
+            class="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md border-t border-white/20 z-20"
           >
             <div class="flex items-center gap-3">
               <div
-                class="h-10 w-10 flex-shrink-0 rounded-full bg-primary flex items-center justify-center text-white font-bold"
+                class="h-8 w-8 flex-shrink-0 bg-primary flex items-center justify-center text-black font-mono font-bold text-xs"
                 aria-hidden="true"
               >
                 KM
               </div>
               <div>
                 <p
-                  class="text-[10px] text-accent uppercase font-black tracking-widest leading-none mb-1"
+                  class="text-[9px] text-primary uppercase font-mono tracking-widest leading-none mb-1"
                 >
-                  Core Advantage
+                  Core_Advantage
                 </p>
-                <p class="text-sm font-bold text-secondary leading-tight">
+                <p class="text-xs font-bold text-white leading-tight font-mono uppercase">
                   Business-First Engineering
                 </p>
               </div>
             </div>
           </div>
-        </figure>
+        </div>
       </div>
     </div>
   </div>

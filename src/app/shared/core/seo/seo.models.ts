@@ -15,6 +15,6 @@ export interface BreadcrumbItem {
 
 export interface JsonLdSchema {
   '@context': 'https://schema.org';
-  '@type': string;
+  '@type'?: string;
   [key: string]: unknown;
 }

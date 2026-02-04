@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
-import { Badge } from '../../../../shared/ui/badge/badge';
 import { Button } from '../../../../shared/ui/button/button';
 import { Card } from '../../../../shared/ui/card/card';
 
@@ -17,7 +16,7 @@ interface ComparisonTier {
 
 @Component({
   selector: 'app-comparison-table',
-  imports: [SectionHeader, Badge, Button, Card],
+  imports: [SectionHeader, Button, Card],
   templateUrl: './comparison-table.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

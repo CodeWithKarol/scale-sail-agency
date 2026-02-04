@@ -1,7 +1,8 @@
 <header
   class="mx-auto max-w-4xl mb-16 lg:mb-24"
-  [class.text-center]="alignment() === 'center'"
-  [class.text-left]="alignment() === 'left'"
+  [class.text-center]="alignment() === 'center' || alignment() === 'left'"
+  [class.lg:text-left]="alignment() === 'left'"
+  [class.text-left]="false"
 >
   @if (subtitle()) {
     <h2 class="text-sm font-mono font-bold leading-7 text-accent uppercase tracking-widest">

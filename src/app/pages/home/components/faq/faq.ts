@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
-import { Card } from '../../../../shared/ui/card/card';
 
 interface FAQ {
   question: string;
@@ -9,7 +8,7 @@ interface FAQ {
 
 @Component({
   selector: 'app-faq',
-  imports: [SectionHeader, Card],
+  imports: [SectionHeader],
   templateUrl: './faq.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
