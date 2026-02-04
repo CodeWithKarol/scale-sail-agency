@@ -10,57 +10,95 @@
       class="font-mono"
     />
 
-    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-      <div class="relative grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-        <!-- Connector Line (Desktop Only) -->
+    <div class="mx-auto mt-16 lg:mt-24">
+      <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Connector Line (Desktop) -->
         <div
-          class="hidden lg:block absolute top-12 left-10 right-10 h-px bg-white/10 border-t border-dashed border-white/5 -z-10"
-          aria-hidden="true"
+          class="hidden lg:block absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent border-t border-dashed border-white/5 -z-10"
         ></div>
 
         <ol class="contents">
-          @for (step of steps(); track step.number; let index = $index) {
-            <li class="flex flex-col relative group">
-              <!-- Step Number & Icon -->
+          @for (step of steps(); track step.number) {
+            <li class="relative group h-full">
+              <!-- Card Container -->
               <div
-                class="mb-6 flex h-24 w-24 items-center justify-center bg-black border border-white/10 group-hover:border-primary/50 group-hover:bg-primary/5 transition-all duration-300 z-10 relative"
+                class="h-full bg-black/40 border border-white/5 p-6 md:p-8 hover:border-primary/50 hover:bg-black/60 transition-all duration-300 backdrop-blur-sm flex flex-col relative overflow-hidden"
               >
-                <!-- Corner accents -->
+                <!-- Scanline Effect -->
                 <div
-                  class="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-primary"
-                ></div>
-                <div
-                  class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-primary"
+                  class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000 ease-in-out pointer-events-none z-0"
                 ></div>
 
-                <div class="flex flex-col items-center gap-2">
-                  <span class="text-[10px] font-mono text-primary tracking-widest"
-                    >STEP_{{ step.number }}</span
+                <!-- Corner Markers -->
+                <div
+                  class="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/20 group-hover:border-primary transition-colors z-10"
+                ></div>
+                <div
+                  class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/20 group-hover:border-primary transition-colors z-10"
+                ></div>
+
+                <!-- Header: Number & Status -->
+                <div class="flex justify-between items-start mb-6 z-10 relative">
+                  <div class="flex flex-col gap-2">
+                    <span class="text-xs font-mono text-primary/80 tracking-widest"
+                      >STEP_{{ step.number }}</span
+                    >
+                    <div class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span
+                        class="text-[10px] uppercase tracking-widest text-white/40 bg-white/5 px-2 py-0.5 rounded-sm w-fit border border-white/5"
+                        >{{ step.status }}</span
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Icon Box -->
+                  <div
+                    class="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-primary/10 group-hover:border-primary/50 transition-colors"
                   >
-                  <svg
-                    class="h-8 w-8 text-white/80 group-hover:text-white transition-colors"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="step.iconPath" />
-                  </svg>
+                    <svg
+                      class="w-6 h-6 text-white/80 group-hover:text-primary transition-colors"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        [attr.d]="step.iconPath"
+                      />
+                    </svg>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Content Card -->
-              <div class="flex flex-col gap-y-2">
-                <h3
-                  class="text-lg font-mono font-bold leading-7 text-white uppercase tracking-tight group-hover:text-primary transition-colors"
+                <!-- Content -->
+                <div class="flex-grow z-10 relative">
+                  <span class="block text-xs font-mono text-white/40 mb-2 tracking-wider">{{
+                    step.subtitle
+                  }}</span>
+                  <h3
+                    class="text-xl font-bold text-white mb-3 uppercase tracking-tight group-hover:text-primary transition-colors"
+                  >
+                    {{ step.title }}
+                  </h3>
+                  <p
+                    class="text-sm text-white/60 leading-relaxed font-mono border-l-2 border-white/5 pl-4 group-hover:border-primary/30 transition-colors"
+                  >
+                    {{ step.description }}
+                  </p>
+                </div>
+
+                <!-- Footer: Duration -->
+                <div
+                  class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40 z-10 relative"
                 >
-                  {{ step.title }}
-                </h3>
-              </div>
-              <div
-                class="mt-2 flex flex-auto flex-col text-sm leading-6 text-white/60 font-mono border-l border-white/10 pl-4 group-hover:border-primary/30 transition-colors"
-              >
-                <p class="flex-auto">{{ step.description }}</p>
+                  <span>EST_DURATION:</span>
+                  <span
+                    class="text-white/80 group-hover:text-primary transition-colors bg-white/5 px-2 py-0.5 rounded"
+                    >{{ step.duration }}</span
+                  >
+                </div>
               </div>
             </li>
           }
