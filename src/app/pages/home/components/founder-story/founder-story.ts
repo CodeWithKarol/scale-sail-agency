@@ -10,9 +10,9 @@ import { Button } from '../../../../shared/ui/button/button';
 export class FounderStory {
   founder = signal({
     name: 'Karol Modelski',
-    role: 'Senior Frontend Developer & Founder',
+    role: 'Senior Angular Developer & Founder',
     image: 'images/karol-modelski.webp',
-    headline: 'Engineering for Scale & Performance',
+    headline: 'Angular Architecture for Scale & Performance',
     bio: [
       'Delivering modernization and performance improvements at scale—from regulated enterprise platforms to high-velocity product teams.',
       'Currently leading architecture for mission-critical trading platforms: Enforcing 100% test coverage policies while migrating legacy micro-frontends to a coherent Nx monorepo. Balancing enterprise compliance with developer velocity.',

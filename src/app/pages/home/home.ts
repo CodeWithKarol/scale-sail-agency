@@ -4,13 +4,15 @@ import { SeoService } from '../../shared/core/seo/seo.service';
 import { Hero } from './components/hero/hero';
 import { ProblemSolution } from './components/problem-solution/problem-solution';
 import { ServiceArchitecture } from './components/service-architecture/service-architecture';
-import { CaseStudies } from './components/case-studies/case-studies';
-import { TemplateShowcase } from './components/template-showcase/template-showcase';
 import { Process } from './components/process/process';
 import { FounderStory } from './components/founder-story/founder-story';
 import { ComparisonTable } from './components/comparison-table/comparison-table';
+import { ServiceLevelObjectives } from './components/service-level-objectives/service-level-objectives';
+import { Contact } from './components/contact/contact';
 import { Faq } from './components/faq/faq';
 import { FinalCta } from './components/final-cta/final-cta';
+import { ImpactMetrics } from './components/impact-metrics/impact-metrics';
+import { IdealClientProfile } from './components/ideal-client-profile/ideal-client-profile';
 
 @Component({
   selector: 'app-home',
@@ -19,13 +21,15 @@ import { FinalCta } from './components/final-cta/final-cta';
     Hero,
     ProblemSolution,
     ServiceArchitecture,
-    CaseStudies,
-    TemplateShowcase,
     Process,
     FounderStory,
     ComparisonTable,
+    ServiceLevelObjectives,
+    Contact,
     Faq,
     FinalCta,
+    ImpactMetrics,
+    IdealClientProfile,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',

@@ -16,13 +16,12 @@ export class Footer {
   services = signal([
     { name: 'SaaS Engineering', link: '/#services' },
     { name: 'Architecture Audits', link: '/#services' },
-    { name: 'Scale Sail Templates', link: '/shop' },
   ]);
 
   resources = signal([
-    { name: 'Portfolio', link: '/work' },
+    { name: 'Reference Architectures', link: '/work' },
     { name: 'Engineering Blog', link: '/blog' },
-    { name: 'About', link: '/#about' },
+    { name: 'About', link: '/about' },
   ]);
 
   connect = signal([{ name: 'Book Discovery Call', link: '/#contact' }]);

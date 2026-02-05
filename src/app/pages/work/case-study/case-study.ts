@@ -403,7 +403,7 @@ export class CaseStudyPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Home', path: '/' },
-        { name: 'Work', path: '/work' }, // We don't have a dedicated /work page yet, maybe just link to home or leave it.
+        { name: 'Architecture', path: '/work' },
         { name: study.title, path: `/work/${study.id}` },
       ]);
 

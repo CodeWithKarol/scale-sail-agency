@@ -30,7 +30,7 @@ export class ComparisonTable {
       timeline: '4-12 Weeks',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
       highlighted: true,
     },
     {
@@ -40,7 +40,7 @@ export class ComparisonTable {
       timeline: '2-6 Weeks',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
     },
     {
       id: 'saas-engineering',
@@ -49,7 +49,7 @@ export class ComparisonTable {
       timeline: '3-6 Months',
       investment: 'Custom Quote',
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
     },
     {
       id: 'audits-performance',
@@ -58,7 +58,7 @@ export class ComparisonTable {
       timeline: '1-2 Weeks',
       investment: 'Fixed Price',
       ctaText: 'Book Audit',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
     },
     {
       id: 'tech-lead-mentor',
@@ -67,16 +67,7 @@ export class ComparisonTable {
       timeline: 'Ongoing',
       investment: 'Retainer',
       ctaText: 'Discuss Role',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
-    },
-    {
-      id: 'ready-to-ship-templates',
-      name: 'Ready-to-Ship Templates',
-      bestFor: 'Validating ideas with production-grade code',
-      timeline: 'Immediate',
-      investment: 'Free - $9.99',
-      ctaText: 'Shop Templates',
-      ctaLink: '/shop',
+      ctaLink: '/#contact',
     },
   ]);
 }

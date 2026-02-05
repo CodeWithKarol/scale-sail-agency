@@ -1,0 +1,110 @@
+<div class="min-h-screen bg-secondary font-sans text-white relative isolate pt-24 pb-24">
+  <!-- Background Grid -->
+  <div
+    class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+  ></div>
+
+  <div class="layout-container">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <!-- Left: Bio & Story -->
+      <div class="lg:col-span-7 space-y-16">
+        <!-- Header -->
+        <div>
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs font-mono tracking-wider uppercase mb-6 rounded-sm"
+          >
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            Operator_Profile
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+            Building systems, <br />
+            <span class="text-white/40">not just websites.</span>
+          </h1>
+          <p class="text-lg text-white/60 leading-relaxed font-light">
+            I'm Karol Modelski, a Senior Angular Consultant who treats code like critical
+            infrastructure. I help enterprise teams escape "spaghetti code" hell and build
+            predictable, scalable systems with Angular 21, NgRx, and modern architecture.
+          </p>
+        </div>
+
+        <!-- Philosophy -->
+        <div class="border-l-2 border-white/10 pl-8 py-2">
+          <h3 class="text-sm font-mono uppercase tracking-widest text-white/40 mb-4">
+            Engineering_Philosophy
+          </h3>
+          <p class="text-white/80 leading-relaxed">
+            "Reliability is a feature." In a world of fragile frameworks and breaking changes, I
+            prioritize stability, type safety, and performance. I don't chase hype trains; I build
+            software that survives them using proven patterns like Nx monorepos and NgRx.
+          </p>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div>
+          <h3 class="text-sm font-mono uppercase tracking-widest text-white/40 mb-8">
+            Mission_Log
+          </h3>
+          <div class="space-y-12 border-l border-white/10 ml-3 pl-8 relative">
+            @for (job of experience; track job.role) {
+              <div class="relative">
+                <span
+                  class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0d1117] border border-white/20"
+                ></span>
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
+                  <h4 class="text-lg font-bold text-white">{{ job.role }}</h4>
+                  <span class="text-primary font-mono text-sm">@ {{ job.company }}</span>
+                </div>
+                <div class="text-xs font-mono text-white/40 mb-3">{{ job.period }}</div>
+                <p class="text-sm text-white/60 leading-relaxed max-w-xl">{{ job.desc }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tech Stack & Stats -->
+      <div class="lg:col-span-5 space-y-12">
+        <!-- Image / Avatar -->
+        <div
+          class="relative aspect-square w-full max-w-md mx-auto lg:mx-0 overflow-hidden rounded-sm border border-white/10 group bg-[#0d1117]"
+        >
+          <div class="absolute inset-0 bg-grid-white/[0.05]"></div>
+
+          <img
+            class="absolute inset-0 h-full w-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+            src="images/karol-modelski.webp"
+            alt="Karol Modelski - Senior Angular Consultant"
+          />
+
+          <!-- Tech Overlay -->
+          <div
+            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent"
+          >
+            <div class="font-mono text-xs text-primary">>> STATUS: ONLINE</div>
+          </div>
+        </div>
+
+        <!-- Tech Stack Grid -->
+        <div class="grid grid-cols-2 gap-6">
+          @for (stack of techStack; track stack.category) {
+            <div
+              class="p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
+            >
+              <h4 class="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-3">
+                {{ stack.category }}
+              </h4>
+              <ul class="space-y-1">
+                @for (item of stack.items; track item) {
+                  <li class="text-sm text-white/80 font-mono flex items-center gap-2">
+                    <span class="w-1 h-1 bg-primary/50 rounded-full"></span>
+                    {{ item }}
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

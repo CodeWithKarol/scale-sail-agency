@@ -3,7 +3,7 @@ export interface SeoConfig {
   description: string;
   image?: string;
   slug: string; // Used for canonical consistency
-  type?: 'website' | 'article' | 'product';
+  type?: 'website' | 'article' | 'product' | 'profile';
   keywords?: string[];
   noIndex?: boolean;
 }

@@ -45,7 +45,7 @@
           <ul class="space-y-3">
             @for (item of services(); track item.name) {
               <li>
-                @if (item.link.startsWith('/')) {
+                @if (item.link.startsWith('/') && !item.link.includes('#')) {
                   <a
                     [routerLink]="item.link"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
@@ -77,7 +77,7 @@
           <ul class="space-y-3">
             @for (item of resources(); track item.name) {
               <li>
-                @if (item.link.startsWith('/')) {
+                @if (item.link.startsWith('/') && !item.link.includes('#')) {
                   <a
                     [routerLink]="item.link"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
@@ -109,7 +109,7 @@
           <ul class="space-y-3">
             @for (item of connect(); track item.name) {
               <li>
-                @if (item.link.startsWith('/')) {
+                @if (item.link.startsWith('/') && !item.link.includes('#')) {
                   <a
                     [routerLink]="item.link"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"

@@ -37,6 +37,11 @@ export class Button {
 
   protected isExternalLink = computed(() => {
     const href = this.href();
-    return href?.startsWith('http') || href?.startsWith('#') || href?.startsWith('mailto:');
+    return href?.startsWith('http') || href?.startsWith('mailto:');
+  });
+
+  protected isAnchorLink = computed(() => {
+    const href = this.href();
+    return href?.startsWith('#') || href?.startsWith('/#');
   });
 }
