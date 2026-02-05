@@ -14,13 +14,13 @@
         </div>
 
         <p class="text-sm font-mono leading-6 text-white/80 border-l-2 border-primary/40 pl-4">
-          Bank-Grade Engineering. <br />
-          Startup-Speed Delivery.
+          Enterprise Angular Strategy. <br />
+          Signal-Driven Performance.
         </p>
 
         <p class="text-xs leading-5 text-white/50 max-w-sm font-mono">
-          // Senior Frontend Developer & SaaS Founder. Modernizing legacy frontends and building
-          performance-first, audit-ready web applications.
+          // Specialized Angular Architect. I help teams migrate legacy codebases to modern
+          standards, master RxJS complexity, and ship scalable applications.
         </p>
 
         <!-- Status Indicator -->
@@ -45,9 +45,10 @@
           <ul class="space-y-3">
             @for (item of services(); track item.name) {
               <li>
-                @if (item.link.startsWith('/') && !item.link.includes('#')) {
+                @if (item.path.startsWith('/') && !item.path.includes('#')) {
                   <a
-                    [routerLink]="item.link"
+                    [routerLink]="item.path"
+                    [fragment]="item.fragment"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -57,7 +58,7 @@
                   </a>
                 } @else {
                   <a
-                    [href]="item.link"
+                    [href]="item.path"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -77,9 +78,10 @@
           <ul class="space-y-3">
             @for (item of resources(); track item.name) {
               <li>
-                @if (item.link.startsWith('/') && !item.link.includes('#')) {
+                @if (item.path.startsWith('/') && !item.path.includes('#')) {
                   <a
-                    [routerLink]="item.link"
+                    [routerLink]="item.path"
+                    [fragment]="item.fragment"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -89,7 +91,7 @@
                   </a>
                 } @else {
                   <a
-                    [href]="item.link"
+                    [href]="item.path"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -109,9 +111,10 @@
           <ul class="space-y-3">
             @for (item of connect(); track item.name) {
               <li>
-                @if (item.link.startsWith('/') && !item.link.includes('#')) {
+                @if (item.path.startsWith('/') && !item.path.includes('#')) {
                   <a
-                    [routerLink]="item.link"
+                    [routerLink]="item.path"
+                    [fragment]="item.fragment"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -121,7 +124,7 @@
                   </a>
                 } @else {
                   <a
-                    [href]="item.link"
+                    [href]="item.path"
                     class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
                   >
                     <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
@@ -151,7 +154,7 @@
       <div class="flex gap-x-8">
         @for (item of legal(); track item.name) {
           <a
-            [href]="item.link"
+            [href]="item.path"
             class="text-[10px] font-mono uppercase tracking-wider text-white/30 hover:text-white transition-colors"
             >{{ item.name }}</a
           >

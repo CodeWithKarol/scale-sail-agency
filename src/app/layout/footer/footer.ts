@@ -14,19 +14,24 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'SaaS Engineering', link: '/#services' },
-    { name: 'Architecture Audits', link: '/#services' },
+    { name: 'Enterprise Angular', path: '/', fragment: 'services' },
+    { name: 'SaaS Engineering', path: '/', fragment: 'services' },
+    { name: 'Performance Audits', path: '/', fragment: 'services' },
+    { name: 'Migration Process', path: '/', fragment: 'process' },
   ]);
 
   resources = signal([
-    { name: 'Reference Architectures', link: '/work' },
-    { name: 'Engineering Blog', link: '/blog' },
-    { name: 'About', link: '/about' },
+    { name: 'Angular Patterns', path: '/work', fragment: undefined },
+    { name: 'Engineering Blog', path: '/blog', fragment: undefined },
+    { name: 'About', path: '/about', fragment: undefined },
   ]);
 
-  connect = signal([{ name: 'Book Discovery Call', link: '/#contact' }]);
+  connect = signal([
+    { name: 'Book Discovery Call', path: '/', fragment: 'contact' },
+    { name: 'Contact', path: '/', fragment: 'contact' },
+  ]);
 
-  legal = signal<{ name: string; link: string }[]>([]);
+  legal = signal<{ name: string; path: string; fragment?: string }[]>([]);
 
   private readonly viewportScroller = inject(ViewportScroller);
 

@@ -53,9 +53,27 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
                 Navigation_Module
               </div>
               @for (item of navigation(); track item.name; let index = $index) {
-                @if (item.href.startsWith('/')) {
+                @if (item.children) {
+                  <div class="py-2">
+                    <span
+                      class="block px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-white/30"
+                      >{{ item.name }}</span
+                    >
+                    @for (child of item.children; track child.name) {
+                      <a
+                        [routerLink]="child.path"
+                        [fragment]="child.fragment"
+                        class="-mx-3 block rounded-sm px-3 py-2 pl-6 text-sm font-mono font-bold uppercase tracking-wider text-white/60 hover:bg-white/5 hover:text-primary transition-colors border-l-2 border-transparent hover:border-primary"
+                        (click)="closeMenu.emit()"
+                      >
+                        {{ child.name }}
+                      </a>
+                    }
+                  </div>
+                } @else if (item.path?.startsWith('/')) {
                   <a
-                    [routerLink]="item.href"
+                    [routerLink]="item.path"
+                    [fragment]="item.fragment"
                     class="-mx-3 block rounded-sm px-3 py-3 text-sm font-mono font-bold uppercase tracking-wider text-white/60 hover:bg-white/5 hover:text-primary transition-colors border-l-2 border-transparent hover:border-primary"
                     (click)="closeMenu.emit()"
                   >
@@ -64,7 +82,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
                   </a>
                 } @else {
                   <a
-                    [href]="item.href"
+                    [href]="item.path || item.href"
                     class="-mx-3 block rounded-sm px-3 py-3 text-sm font-mono font-bold uppercase tracking-wider text-white/60 hover:bg-white/5 hover:text-primary transition-colors border-l-2 border-transparent hover:border-primary"
                     (click)="closeMenu.emit()"
                   >
@@ -98,6 +116,14 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MobileMenu {
-  navigation = input.required<{ name: string; href: string }[]>();
+  navigation = input.required<
+    {
+      name: string;
+      path?: string;
+      fragment?: string;
+      href?: string;
+      children?: { name: string; path?: string; fragment?: string; href?: string }[];
+    }[]
+  >();
   closeMenu = output<void>();
 }

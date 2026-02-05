@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostListener,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { CommonModule, DOCUMENT, ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BrandLogo } from '../../shared/ui/brand-logo/brand-logo';
@@ -16,14 +24,42 @@ export class Header {
   mobileMenuOpen = signal(false);
 
   navigation = [
-    { name: 'Services', href: '/#services' },
-    { name: 'Process', href: '/#process' },
-    { name: 'Architecture', href: '/work' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'About', href: '/about' },
-    { name: 'FAQ', href: '/#faq' },
-    { name: 'Contact', href: '/#contact' },
+    {
+      name: 'Expertise',
+      children: [
+        { name: 'Services', path: '/', fragment: 'services' },
+        { name: 'Process', path: '/', fragment: 'process' },
+        { name: 'Architecture', path: '/work', fragment: undefined },
+      ],
+    },
+    {
+      name: 'Resources',
+      children: [
+        { name: 'Blog', path: '/blog', fragment: undefined },
+        { name: 'FAQ', path: '/', fragment: 'faq' },
+      ],
+    },
+    { name: 'About', path: '/about', fragment: undefined },
+    { name: 'Contact', path: '/', fragment: 'contact' },
   ];
+
+  openDropdown = signal<string | null>(null);
+  private elementRef = inject(ElementRef);
+
+  toggleDropdown(name: string) {
+    this.openDropdown.update((current) => (current === name ? null : name));
+  }
+
+  closeDropdown() {
+    this.openDropdown.set(null);
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.closeDropdown();
+    }
+  }
 
   toggleMobileMenu() {
     this.mobileMenuOpen.update((open) => !open);
