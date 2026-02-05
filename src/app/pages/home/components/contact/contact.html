@@ -72,9 +72,13 @@
         ></div>
 
         <form
+          [formGroup]="form"
           (ngSubmit)="onSubmit()"
           class="bg-[#0d1117] border border-white/10 p-6 sm:p-8 rounded-sm shadow-2xl relative overflow-hidden group"
         >
+          <!-- Hidden Honeypot -->
+          <input type="checkbox" formControlName="botcheck" class="hidden" style="display: none" />
+
           <!-- Top Bar -->
           <div
             class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -92,10 +96,12 @@
               <div class="space-y-2">
                 @for (log of successLogs(); track log) {
                   <div class="flex gap-2">
-                    <span class="text-white/30">[{{ log | date: 'HH:mm:ss' }}]</span>
+                    <span class="text-white/30">
+                      [{{ log.timestamp | date: 'HH:mm:ss' : '+0000' }}]
+                    </span>
                     <span
                       class="text-white/80 animate-in fade-in slide-in-from-left-2 duration-300"
-                      >{{ log }}</span
+                      >{{ log.message }}</span
                     >
                   </div>
                 }
@@ -117,9 +123,9 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1 bg-white/5 rounded-sm mb-8">
                 <button
                   type="button"
-                  (click)="projectType.set('audit')"
+                  (click)="f.projectType.setValue('audit')"
                   [class]="
-                    projectType() === 'audit'
+                    f.projectType.value === 'audit'
                       ? 'bg-primary text-secondary shadow-sm'
                       : 'text-white/40 hover:text-white'
                   "
@@ -129,9 +135,9 @@
                 </button>
                 <button
                   type="button"
-                  (click)="projectType.set('modernization')"
+                  (click)="f.projectType.setValue('modernization')"
                   [class]="
-                    projectType() === 'modernization'
+                    f.projectType.value === 'modernization'
                       ? 'bg-primary text-secondary shadow-sm'
                       : 'text-white/40 hover:text-white'
                   "
@@ -141,9 +147,9 @@
                 </button>
                 <button
                   type="button"
-                  (click)="projectType.set('staff-aug')"
+                  (click)="f.projectType.setValue('staff-aug')"
                   [class]="
-                    projectType() === 'staff-aug'
+                    f.projectType.value === 'staff-aug'
                       ? 'bg-primary text-secondary shadow-sm'
                       : 'text-white/40 hover:text-white'
                   "
@@ -164,12 +170,16 @@
                 <input
                   type="text"
                   id="name"
-                  [(ngModel)]="name"
-                  name="name"
+                  formControlName="name"
                   placeholder="Enter your name"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
-                  required
+                  [class.border-red-500]="f.name.invalid && f.name.touched"
                 />
+                @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
+                  <span class="text-[9px] text-red-500 font-mono mt-1"
+                    >>> ERROR: Name is required</span
+                  >
+                }
               </div>
 
               <!-- Email Input -->
@@ -183,12 +193,21 @@
                 <input
                   type="email"
                   id="email"
-                  [(ngModel)]="email"
-                  name="email"
+                  formControlName="email"
                   placeholder="name@company.com"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
-                  required
+                  [class.border-red-500]="f.email.invalid && f.email.touched"
                 />
+                @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
+                  <span class="text-[9px] text-red-500 font-mono mt-1"
+                    >>> ERROR: Email is required</span
+                  >
+                }
+                @if (f.email.invalid && f.email.touched && f.email.errors?.['email']) {
+                  <span class="text-[9px] text-red-500 font-mono mt-1"
+                    >>> ERROR: Invalid Email Format</span
+                  >
+                }
               </div>
 
               <!-- Message Input -->
@@ -201,13 +220,32 @@
                 </label>
                 <textarea
                   id="message"
-                  [(ngModel)]="message"
-                  name="message"
+                  formControlName="message"
                   rows="4"
                   placeholder="Describe your architecture challenges..."
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all resize-none"
-                  required
+                  [class.border-red-500]="f.message.invalid && f.message.touched"
                 ></textarea>
+                @if (
+                  f.message.invalid &&
+                  f.message.touched &&
+                  f.message.errors &&
+                  f.message.errors['required']
+                ) {
+                  <span class="text-[9px] text-red-500 font-mono mt-1"
+                    >>> ERROR: Message is required</span
+                  >
+                }
+                @if (
+                  f.message.invalid &&
+                  f.message.touched &&
+                  f.message.errors &&
+                  f.message.errors['minlength']
+                ) {
+                  <span class="text-[9px] text-red-500 font-mono mt-1"
+                    >>> ERROR: Minimum 20 chars required</span
+                  >
+                }
               </div>
 
               <!-- Submit Action -->
@@ -218,10 +256,11 @@
                 </div>
 
                 <app-button
+                  type="submit"
                   variant="primary"
                   size="lg"
-                  [disabled]="isSubmitting()"
-                  styleClass="w-full sm:w-auto"
+                  [disabled]="isSubmitting() || form.invalid"
+                  styleClass="w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span class="flex items-center gap-2">
                     @if (isSubmitting()) {
