@@ -4,6 +4,8 @@ import { Card } from '../../../../shared/ui/card/card';
 import { Button } from '../../../../shared/ui/button/button';
 import { UpperCasePipe } from '@angular/common';
 
+import { RouterLink } from '@angular/router';
+
 interface Template {
   id: string;
   name: string;
@@ -15,7 +17,7 @@ interface Template {
 
 @Component({
   selector: 'app-template-showcase',
-  imports: [SectionHeader, Card, Button, UpperCasePipe],
+  imports: [SectionHeader, Card, Button, UpperCasePipe, RouterLink],
   templateUrl: './template-showcase.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

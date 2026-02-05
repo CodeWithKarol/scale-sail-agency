@@ -19,7 +19,7 @@ export class Header {
     { name: 'Services', href: '#services' },
     { name: 'Process', href: '#process' },
     { name: 'Work', href: '/work' },
-    { name: 'Shop', href: '#shop' },
+    { name: 'Shop', href: '/shop' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '#about' },
     { name: 'FAQ', href: '#faq' },

@@ -2,12 +2,12 @@
   <ng-content />
 </ng-template>
 
-@if (href()) {
-  <a [href]="href()" [class]="computedClasses()">
+@if (isExternalLink()) {
+  <a [href]="href()" [class]="computedClasses()" target="_blank" rel="noopener noreferrer">
     <ng-container *ngTemplateOutlet="content" />
   </a>
-} @else if (route()) {
-  <a [routerLink]="route()" [class]="computedClasses()">
+} @else if (route() || href()) {
+  <a [routerLink]="route() || href()" [class]="computedClasses()">
     <ng-container *ngTemplateOutlet="content" />
   </a>
 } @else {

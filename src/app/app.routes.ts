@@ -27,6 +27,11 @@ export const routes: Routes = [
     title: 'Blog | Scale Sail Agency',
   },
   {
+    path: 'shop',
+    loadComponent: () => import('./pages/shop/shop-page').then((m) => m.ShopPage),
+    title: 'Shop | Scale Sail Agency',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

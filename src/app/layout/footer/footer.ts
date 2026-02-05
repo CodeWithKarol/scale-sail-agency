@@ -16,7 +16,7 @@ export class Footer {
   services = signal([
     { name: 'SaaS Engineering', link: '/#services' },
     { name: 'Architecture Audits', link: '/#services' },
-    { name: 'Scale Sail Templates', link: 'https://www.shop.scale-sail.io/' },
+    { name: 'Scale Sail Templates', link: '/shop' },
   ]);
 
   resources = signal([

@@ -55,7 +55,7 @@ export class ServiceArchitecture {
         'Deploy in minutes',
       ],
       ctaText: 'Shop Templates',
-      ctaLink: 'https://www.shop.scale-sail.io/',
+      ctaLink: '/shop',
     },
   ]);
 }
