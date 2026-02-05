@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Button } from '../../../../shared/ui/button/button';
 import { Card } from '../../../../shared/ui/card/card';
+import { RouterLink } from '@angular/router';
 
 interface ComparisonTier {
   id: string;
@@ -16,7 +17,7 @@ interface ComparisonTier {
 
 @Component({
   selector: 'app-comparison-table',
-  imports: [SectionHeader, Button, Card],
+  imports: [SectionHeader, Button, Card, RouterLink],
   templateUrl: './comparison-table.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -75,7 +76,7 @@ export class ComparisonTable {
       timeline: 'Immediate',
       investment: 'Free - $9.99',
       ctaText: 'Shop Templates',
-      ctaLink: 'https://www.shop.scale-sail.io/',
+      ctaLink: '/shop',
     },
   ]);
 }
