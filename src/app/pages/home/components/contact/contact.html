@@ -7,7 +7,7 @@
   ></div>
 
   <div class="layout-container">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-start">
       <!-- Left: Context & Info -->
       <div>
         <app-section-header
@@ -74,7 +74,7 @@
         <form
           [formGroup]="form"
           (ngSubmit)="onSubmit()"
-          class="bg-[#0d1117] border border-white/10 p-6 sm:p-8 rounded-sm shadow-2xl relative overflow-hidden group"
+          class="bg-[#0d1117] border border-white/10 p-4 sm:p-8 rounded-sm shadow-2xl relative overflow-hidden group"
         >
           <!-- Hidden Honeypot -->
           <input type="checkbox" formControlName="botcheck" class="hidden" style="display: none" />
@@ -249,8 +249,12 @@
               </div>
 
               <!-- Submit Action -->
-              <div class="pt-4 flex items-center justify-between">
-                <div class="flex items-center gap-2 text-[10px] font-mono text-white/30 uppercase">
+              <div
+                class="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-0"
+              >
+                <div
+                  class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono text-white/30 uppercase w-full sm:w-auto"
+                >
                   <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
                   Encrypted_SSL
                 </div>

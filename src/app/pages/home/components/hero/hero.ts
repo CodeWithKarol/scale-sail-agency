@@ -1,17 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '../../../../shared/ui/button/button';
+import { BackgroundMesh } from '../background-mesh/background-mesh';
 
 @Component({
   selector: 'app-hero',
-  imports: [Button, RouterLink],
+  imports: [Button, RouterLink, BackgroundMesh],
   templateUrl: './hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Hero {
-  protected readonly isModernized = signal(true);
-
-  toggleModernization() {
-    this.isModernized.update((v) => !v);
-  }
-}
+export class Hero {}
