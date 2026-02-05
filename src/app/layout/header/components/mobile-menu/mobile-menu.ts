@@ -76,7 +76,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
             </div>
             <div class="py-6">
               <a
-                href="https://www.karol-modelski.scale-sail.io/#contact"
+                href="/#contact"
                 class="-mx-3 block rounded-sm px-3 py-3 text-sm font-mono font-bold uppercase tracking-wider text-primary hover:bg-primary/10 transition-colors border border-primary/20 text-center"
                 (click)="closeMenu.emit()"
               >

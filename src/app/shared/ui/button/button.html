@@ -6,6 +6,10 @@
   <a [href]="href()" [class]="computedClasses()" target="_blank" rel="noopener noreferrer">
     <ng-container *ngTemplateOutlet="content" />
   </a>
+} @else if (isAnchorLink()) {
+  <a [href]="href()" [class]="computedClasses()">
+    <ng-container *ngTemplateOutlet="content" />
+  </a>
 } @else if (route() || href()) {
   <a [routerLink]="route() || href()" [class]="computedClasses()">
     <ng-container *ngTemplateOutlet="content" />

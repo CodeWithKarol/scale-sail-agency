@@ -15,7 +15,7 @@ export const routes: Routes = [
   {
     path: 'work',
     loadComponent: () => import('./pages/work/work-page').then((m) => m.WorkPage),
-    title: 'Work | Scale Sail Agency',
+    title: 'Architecture | Scale Sail Agency',
   },
   {
     path: 'work/:id',
@@ -27,9 +27,8 @@ export const routes: Routes = [
     title: 'Blog | Scale Sail Agency',
   },
   {
-    path: 'shop',
-    loadComponent: () => import('./pages/shop/shop-page').then((m) => m.ShopPage),
-    title: 'Shop | Scale Sail Agency',
+    path: 'about',
+    loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
     path: '**',

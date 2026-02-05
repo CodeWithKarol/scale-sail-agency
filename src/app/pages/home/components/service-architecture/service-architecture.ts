@@ -21,41 +21,42 @@ interface ServiceTier {
 export class ServiceArchitecture {
   tiers = signal<ServiceTier[]>([
     {
-      name: 'Enterprise Modernization',
-      description: 'Transform slow, tangled legacy frontends into clean, modular Angular systems.',
+      name: 'Enterprise Angular Modernization',
+      description:
+        'I transform slow, tangled legacy frontends into clean, modular Angular systems.',
       features: [
-        'Angular migrations (Legacy → Modern)',
-        'Architecture Audits & Performance',
-        'Fractional Tech Lead / Mentorship',
+        'Angular migrations (Legacy → v21)',
+        'Nx Monorepo Architecture',
+        'Zoneless Performance Tuning',
         'Refactoring & Technical Debt Removal',
       ],
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
     },
     {
-      name: 'SaaS Product Engineering',
+      name: 'Angular SaaS Engineering',
       description: 'End-to-end delivery for scalable SaaS products.',
       features: [
-        'End-to-end Feature Delivery',
-        'Predictable State Management',
-        'Performance-First Architecture',
+        'Complex Data Visualization',
+        'Predictable State (NgRx / Signals)',
+        'Server-side & hybrid rendering, Incremental Hydration',
         'Rapid Iteration Support',
       ],
       ctaText: 'Book Discovery Call',
-      ctaLink: 'https://www.karol-modelski.scale-sail.io/#contact',
+      ctaLink: '/#contact',
       featured: true,
     },
     {
-      name: 'Scale Sail Templates',
-      description: 'Ship a high-converting landing page today. Built with the same standards.',
+      name: 'Angular Performance Audits',
+      description: 'Deep-dive profiling to uncover bottlenecks in load time and runtime speed.',
       features: [
-        'Production-ready HTML/CSS/JS',
-        'Commercial use included',
-        'No framework required',
-        'Deploy in minutes',
+        'Core Web Vitals Optimization',
+        'NgRx Store Architecture Review',
+        'Change Detection Profiling',
+        'Architecture Health Check',
       ],
-      ctaText: 'Shop Templates',
-      ctaLink: '/shop',
+      ctaText: 'Book Audit',
+      ctaLink: '/#contact',
     },
   ]);
 }

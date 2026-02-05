@@ -16,13 +16,13 @@ export class Header {
   mobileMenuOpen = signal(false);
 
   navigation = [
-    { name: 'Services', href: '#services' },
-    { name: 'Process', href: '#process' },
-    { name: 'Work', href: '/work' },
-    { name: 'Shop', href: '/shop' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Process', href: '/#process' },
+    { name: 'Architecture', href: '/work' },
     { name: 'Blog', href: '/blog' },
-    { name: 'About', href: '#about' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'About', href: '/about' },
+    { name: 'FAQ', href: '/#faq' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   toggleMobileMenu() {

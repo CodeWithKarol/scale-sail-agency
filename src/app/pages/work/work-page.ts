@@ -28,8 +28,8 @@ import { ProjectCardComponent } from './components/project-card/project-card';
         <!-- Header -->
         <app-section-header
           subtitle="INDEX / 01"
-          title="Selected Work"
-          description="Case studies focused on modernization, performance wins, and scalable architecture."
+          title="Reference Architectures"
+          description="Production-grade implementation patterns for enterprise Angular applications. Real-world examples of high-performance architecture."
         />
 
         <!-- Projects List -->

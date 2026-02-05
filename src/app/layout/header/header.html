@@ -31,7 +31,7 @@
     <!-- Desktop Nav -->
     <div class="hidden xl:flex xl:gap-x-1">
       @for (item of navigation; track item.name; let index = $index) {
-        @if (item.href.startsWith('/')) {
+        @if (item.href.startsWith('/') && !item.href.includes('#')) {
           <a
             [routerLink]="item.href"
             class="relative px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-white/60 hover:text-primary transition-colors group overflow-hidden rounded-sm cursor-pointer"
@@ -90,12 +90,12 @@
     <!-- Desktop CTA -->
     <div class="hidden xl:flex xl:flex-1 xl:justify-end">
       <app-button
-        href="https://www.karol-modelski.scale-sail.io/#contact"
+        href="/#contact"
         variant="primary"
         size="sm"
         styleClass="font-mono text-[10px] uppercase tracking-widest"
       >
-        [ Initiate_Contact ]
+        [ Book_Growth_Audit ]
       </app-button>
     </div>
   </nav>

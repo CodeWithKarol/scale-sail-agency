@@ -1,0 +1,118 @@
+<section
+  class="section-padding relative isolate overflow-hidden bg-black/40 border-t border-white/5"
+>
+  <!-- Background Grid -->
+  <div
+    class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"
+  ></div>
+
+  <div class="layout-container">
+    <app-section-header
+      subtitle="QUALITY_ASSURANCE_PROTOCOLS"
+      title="Service Level Objectives"
+      description="I don't ask for trust. I guarantee results. Every engagement is bound by these engineering standards."
+      class="mb-16"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      @for (slo of objectives(); track slo.id) {
+        <div
+          class="group relative overflow-hidden bg-[#0d1117] border border-white/10 p-6 sm:p-8 hover:border-primary/50 transition-all duration-300"
+        >
+          <!-- Decorational Corners -->
+          <div
+            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/10 group-hover:border-primary transition-colors"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/10 group-hover:border-primary transition-colors"
+          ></div>
+
+          <!-- Header -->
+          <div class="flex items-start justify-between mb-6">
+            <div class="flex flex-col gap-1">
+              <span class="text-[10px] font-mono text-white/30 uppercase tracking-widest">
+                ID: {{ slo.id }}
+              </span>
+              <h3 class="text-lg font-mono text-white group-hover:text-primary transition-colors">
+                {{ slo.label }}
+              </h3>
+            </div>
+
+            <!-- Live Indicator -->
+            <div
+              class="flex items-center gap-2 px-2 py-1 bg-green-500/10 border border-green-500/20 rounded-sm"
+            >
+              <span class="relative flex h-1.5 w-1.5">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
+                ></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+              </span>
+              <span class="text-[9px] font-mono text-green-500 uppercase tracking-wider"
+                >MONITORED</span
+              >
+            </div>
+          </div>
+
+          <!-- Main Metric -->
+          <div class="flex items-baseline gap-2 mb-6 border-b border-white/5 pb-6">
+            <span class="text-4xl sm:text-5xl font-mono font-bold text-white tracking-tighter">
+              {{ slo.target }}
+            </span>
+            <span class="text-xs font-mono text-white/40 uppercase tracking-widest">
+              / {{ slo.metric }}
+            </span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-sm text-white/60 font-mono leading-relaxed max-w-sm">
+            > {{ slo.description }}
+          </p>
+
+          <!-- Footer -->
+          <div
+            class="mt-6 pt-4 border-t border-dashed border-white/5 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <span class="text-[9px] font-mono text-primary uppercase tracking-widest">
+              [ VERIFIED_BY_DEFAULT ]
+            </span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Guarantee Badge -->
+    <div class="mt-16 flex justify-center">
+      <div
+        class="inline-flex items-center gap-4 px-6 py-4 bg-white/[0.02] border border-white/10 rounded-sm max-w-2xl text-center md:text-left flex-col md:flex-row"
+      >
+        <div class="p-3 bg-primary/10 rounded-full border border-primary/20 text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+        </div>
+        <div>
+          <h4 class="text-sm font-mono text-white uppercase tracking-wider mb-1">
+            Risk-Free Engineering Protocol
+          </h4>
+          <p class="text-xs text-white/50 leading-relaxed">
+            If the delivered architecture fails to meet these SLOs during the acceptance phase,
+            <span class="text-white decoration-primary underline underline-offset-4"
+              >remediation is performed at my cost</span
+            >
+            until targets are met.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

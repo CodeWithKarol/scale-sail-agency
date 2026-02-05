@@ -1,0 +1,244 @@
+<section
+  class="section-padding relative isolate overflow-hidden bg-secondary border-t border-white/5"
+>
+  <!-- Technical Background -->
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,theme(colors.primary.900/0.1),transparent)]"
+  ></div>
+
+  <div class="layout-container">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+      <!-- Left: Context & Info -->
+      <div>
+        <app-section-header
+          subtitle="COMMUNICATION_UPLINK"
+          title="Initialize Engagement"
+          description="Ready to modernize your frontend architecture? Transmit your project details. Direct line to engineering—no sales intermediaries."
+          class="mb-10"
+        />
+
+        <div class="space-y-8 font-mono">
+          <!-- Availability Status -->
+          <div
+            class="p-6 bg-white/[0.02] border border-white/10 rounded-sm relative overflow-hidden group hover:border-primary/30 transition-colors"
+          >
+            <div class="absolute inset-0 bg-grid-white/[0.02] -z-10"></div>
+
+            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">Current_Bandwidth</h3>
+            <div class="flex items-center gap-4">
+              <div class="relative flex h-3 w-3">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
+                ></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+              </div>
+              <span class="text-sm text-white font-bold">Q1 Openings Available</span>
+            </div>
+            <p class="mt-4 text-xs text-white/60 leading-relaxed">
+              Currently accepting new modernization audits and retainer partnerships for the
+              upcoming quarter.
+            </p>
+          </div>
+
+          <!-- Direct Contact Info -->
+          <div class="space-y-4">
+            <div class="flex flex-col gap-1">
+              <span class="text-[10px] uppercase tracking-widest text-white/30">Secure_Mail</span>
+              <a
+                href="mailto:hello@scalesail.io"
+                class="text-lg text-white hover:text-primary transition-colors flex items-center gap-2 group"
+              >
+                hello@scalesail.io
+                <span
+                  class="opacity-0 group-hover:opacity-100 transition-opacity text-primary text-xs"
+                  >-></span
+                >
+              </a>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <span class="text-[10px] uppercase tracking-widest text-white/30">Base_Location</span>
+              <span class="text-lg text-white/60">Warsaw, PL (CET) / Remote Global</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Terminal Form -->
+      <div class="relative">
+        <!-- Decorational Form Border -->
+        <div
+          class="absolute -inset-0.5 bg-gradient-to-br from-white/10 to-transparent opacity-50 rounded-sm blur-sm -z-10"
+        ></div>
+
+        <form
+          (ngSubmit)="onSubmit()"
+          class="bg-[#0d1117] border border-white/10 p-6 sm:p-8 rounded-sm shadow-2xl relative overflow-hidden group"
+        >
+          <!-- Top Bar -->
+          <div
+            class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+          ></div>
+
+          <!-- Scanline -->
+          <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wIDBoNHYxSDB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4')] opacity-20 pointer-events-none"
+          ></div>
+
+          @if (isSuccess()) {
+            <!-- Success State: Terminal Output -->
+            <div class="h-[400px] flex flex-col justify-center font-mono text-sm">
+              <div class="text-green-400 mb-4 text-lg">>> TRANSMISSION_SUCCESSFUL</div>
+              <div class="space-y-2">
+                @for (log of successLogs(); track log) {
+                  <div class="flex gap-2">
+                    <span class="text-white/30">[{{ log | date: 'HH:mm:ss' }}]</span>
+                    <span
+                      class="text-white/80 animate-in fade-in slide-in-from-left-2 duration-300"
+                      >{{ log }}</span
+                    >
+                  </div>
+                }
+              </div>
+              <div class="mt-8 pt-6 border-t border-white/10">
+                <button
+                  type="button"
+                  (click)="isSuccess.set(false)"
+                  class="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+                >
+                  [ Send_Another_Transmission ]
+                </button>
+              </div>
+            </div>
+          } @else {
+            <!-- Form Fields -->
+            <div class="space-y-6 relative z-10">
+              <!-- Project Type Selector -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1 bg-white/5 rounded-sm mb-8">
+                <button
+                  type="button"
+                  (click)="projectType.set('audit')"
+                  [class]="
+                    projectType() === 'audit'
+                      ? 'bg-primary text-secondary shadow-sm'
+                      : 'text-white/40 hover:text-white'
+                  "
+                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
+                >
+                  Audit
+                </button>
+                <button
+                  type="button"
+                  (click)="projectType.set('modernization')"
+                  [class]="
+                    projectType() === 'modernization'
+                      ? 'bg-primary text-secondary shadow-sm'
+                      : 'text-white/40 hover:text-white'
+                  "
+                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
+                >
+                  Rewrite
+                </button>
+                <button
+                  type="button"
+                  (click)="projectType.set('staff-aug')"
+                  [class]="
+                    projectType() === 'staff-aug'
+                      ? 'bg-primary text-secondary shadow-sm'
+                      : 'text-white/40 hover:text-white'
+                  "
+                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
+                >
+                  Staffing
+                </button>
+              </div>
+
+              <!-- Name Input -->
+              <div class="group/field">
+                <label
+                  for="name"
+                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                >
+                  // User_Identity
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  [(ngModel)]="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
+                  required
+                />
+              </div>
+
+              <!-- Email Input -->
+              <div class="group/field">
+                <label
+                  for="email"
+                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                >
+                  // Contact_Point
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="email"
+                  name="email"
+                  placeholder="name@company.com"
+                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
+                  required
+                />
+              </div>
+
+              <!-- Message Input -->
+              <div class="group/field">
+                <label
+                  for="message"
+                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                >
+                  // Project_Parameters
+                </label>
+                <textarea
+                  id="message"
+                  [(ngModel)]="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Describe your architecture challenges..."
+                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all resize-none"
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Submit Action -->
+              <div class="pt-4 flex items-center justify-between">
+                <div class="flex items-center gap-2 text-[10px] font-mono text-white/30 uppercase">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+                  Encrypted_SSL
+                </div>
+
+                <app-button
+                  variant="primary"
+                  size="lg"
+                  [disabled]="isSubmitting()"
+                  styleClass="w-full sm:w-auto"
+                >
+                  <span class="flex items-center gap-2">
+                    @if (isSubmitting()) {
+                      <span
+                        class="animate-spin h-3 w-3 border-2 border-secondary border-t-transparent rounded-full"
+                      ></span>
+                      Processing...
+                    } @else {
+                      > INITIATE_HANDSHAKE
+                    }
+                  </span>
+                </app-button>
+              </div>
+            </div>
+          }
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
