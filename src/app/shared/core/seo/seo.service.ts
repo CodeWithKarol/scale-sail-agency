@@ -56,9 +56,10 @@ export class SeoService {
   /**
    * Injects JSON-LD Schema into the head.
    * Essential for "Rich Highlights" in SERPs.
+   * @param scriptId - Unique ID for the script tag to allow multiple schemas (e.g. 'json-ld-faq', 'json-ld-org')
    */
-  public setSchema(schema: JsonLdSchema): void {
-    this.injectSchemaScript('json-ld-schema', schema);
+  public setSchema(schema: JsonLdSchema, scriptId = 'json-ld-schema'): void {
+    this.injectSchemaScript(scriptId, schema);
   }
 
   public setBreadcrumbs(items: BreadcrumbItem[]): void {

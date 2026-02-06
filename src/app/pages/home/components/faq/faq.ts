@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, inject, OnInit } from '@angular/core';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
+import { SeoService } from '../../../../shared/core/seo/seo.service';
 
 interface FAQ {
   question: string;
@@ -12,7 +13,9 @@ interface FAQ {
   templateUrl: './faq.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Faq {
+export class Faq implements OnInit {
+  private seoService = inject(SeoService);
+
   faqs = signal<FAQ[]>([
     {
       question: 'Do you work with both enterprise and startups?',
@@ -44,4 +47,22 @@ export class Faq {
       answer: 'Currently booking Q1 2026 projects. Contact me to secure your slot.',
     },
   ]);
+
+  ngOnInit() {
+    this.seoService.setSchema(
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: this.faqs().map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
+      'json-ld-faq',
+    );
+  }
 }
