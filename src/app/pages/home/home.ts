@@ -40,7 +40,7 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Senior Angular Developer',
+      title: 'Senior Angular Developer | Legacy Modernization Expert',
       description:
         'Senior Angular Developer specialized in modernizing legacy apps and technical debt. Scale your enterprise frontend with audit-ready architecture.',
       slug: '',
@@ -70,7 +70,7 @@ export class Home implements OnInit {
       '@type': 'Organization',
       name: 'Scale Sail Agency',
       url: 'https://scale-sail.io',
-      logo: 'https://scale-sail.io/images/scale-sail-logo.jpeg',
+      logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
       description:
         'Senior Angular Developer specialized in modernizing legacy apps, Angular migrations, and fixing technical debt.',
       founder: {

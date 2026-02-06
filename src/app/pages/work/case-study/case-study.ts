@@ -397,6 +397,8 @@ export class CaseStudyPage {
           'Frontend Architecture',
           'Web Development',
           'Enterprise Application',
+          'Performance Optimization',
+          'Legacy Migration',
         ],
         type: 'article',
       });
