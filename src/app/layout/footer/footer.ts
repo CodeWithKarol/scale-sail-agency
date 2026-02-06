@@ -28,6 +28,11 @@ export class Footer {
 
   connect = signal([
     { name: 'Book Discovery Call', path: '/', fragment: 'contact' },
+    {
+      name: 'Micro-Engagements (Freelance)',
+      path: 'https://www.karol-modelski.scale-sail.io',
+      fragment: undefined,
+    },
     { name: 'Contact', path: '/', fragment: 'contact' },
   ]);
 
