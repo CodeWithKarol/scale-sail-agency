@@ -274,7 +274,7 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Blog | Scale Sail Agency',
+      title: 'Angular Architecture Blog | Engineering Insights',
       description:
         'Practical writing on Angular architecture, Signals/RxJS patterns, performance tuning, and engineering decisions that keep teams shipping.',
       slug: '/blog',
@@ -286,6 +286,9 @@ export class BlogListPage implements OnInit {
         'RxJS Patterns',
         'Web Performance',
         'Engineering Management',
+        'Zoneless Angular',
+        'Angular State Management',
+        'Enterprise Angular Patterns',
       ],
     });
 
