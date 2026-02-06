@@ -6,10 +6,11 @@ import { PortfolioService } from '../../../shared/domain/portfolio/portfolio.ser
 import { SeoService } from '../../../shared/core/seo/seo.service';
 import { ProjectScreenshots } from '../components/project-screenshots/project-screenshots';
 import { Button } from '../../../shared/ui/button/button';
+import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-case-study-page',
-  imports: [CommonModule, ProjectScreenshots, Button],
+  imports: [CommonModule, ProjectScreenshots, Button, BreadcrumbComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (caseStudy(); as study) {
@@ -108,6 +109,11 @@ import { Button } from '../../../shared/ui/button/button';
             ></div>
 
             <div class="layout-container text-center">
+              <!-- Breadcrumbs (Visual) -->
+              <div class="flex justify-center mb-8">
+                <app-breadcrumb />
+              </div>
+
               <div
                 class="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700"
               >

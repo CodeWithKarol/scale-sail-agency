@@ -18,6 +18,7 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { Button } from '../../shared/ui/button/button';
 import { FeaturedBlogPostComponent } from './components/featured-blog-post/featured-blog-post';
 import { BlogPostCardComponent } from './components/blog-post-card/blog-post-card';
+import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 
 type FeedState =
   | { status: 'loading' }
@@ -26,7 +27,14 @@ type FeedState =
 
 @Component({
   selector: 'app-blog-list-page',
-  imports: [CommonModule, SectionHeader, FeaturedBlogPostComponent, BlogPostCardComponent, Button],
+  imports: [
+    CommonModule,
+    SectionHeader,
+    FeaturedBlogPostComponent,
+    BlogPostCardComponent,
+    Button,
+    BreadcrumbComponent,
+  ],
   template: `
     <div class="min-h-screen bg-secondary font-sans text-white pb-24 sm:pb-32 relative isolate">
       <!-- Technical Grid Background -->
@@ -35,6 +43,9 @@ type FeedState =
       ></div>
 
       <div class="layout-container pt-24 sm:pt-32">
+        <!-- Breadcrumbs -->
+        <app-breadcrumb />
+
         <!-- Header -->
         <app-section-header
           subtitle="LOGS / ENGINEERING"

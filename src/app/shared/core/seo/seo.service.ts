@@ -18,6 +18,10 @@ export class SeoService {
   private readonly _currentCanonical = signal<string>('');
   readonly currentCanonical = this._currentCanonical.asReadonly();
 
+  // Signal to track current breadcrumbs for the active page (for UI)
+  private readonly _breadcrumbs = signal<BreadcrumbItem[]>([]);
+  readonly breadcrumbs = this._breadcrumbs.asReadonly();
+
   /**
    * Primary entry point for setting page SEO.
    * Handles strict ordering of operations to prevent race conditions or stale tags.
@@ -58,6 +62,9 @@ export class SeoService {
   }
 
   public setBreadcrumbs(items: BreadcrumbItem[]): void {
+    // Update the visual UI signal
+    this._breadcrumbs.set(items);
+
     const breadcrumbSchema: JsonLdSchema = {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
