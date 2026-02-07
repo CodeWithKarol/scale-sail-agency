@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Button } from '../../../../shared/ui/button/button';
-import { BackgroundMesh } from '../background-mesh/background-mesh';
+import { CanvasBackground } from '../../../../shared/ui/canvas-background/canvas-background';
 
 @Component({
   selector: 'app-hero',
-  imports: [Button, RouterLink, BackgroundMesh],
+  imports: [Button, RouterLink, CanvasBackground],
   templateUrl: './hero.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

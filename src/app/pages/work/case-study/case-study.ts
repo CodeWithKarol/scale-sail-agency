@@ -7,99 +7,23 @@ import { SeoService } from '../../../shared/core/seo/seo.service';
 import { ProjectScreenshots } from '../components/project-screenshots/project-screenshots';
 import { Button } from '../../../shared/ui/button/button';
 import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
+import { GeometricBackground } from '../../../shared/ui/geometric-background/geometric-background';
 
 @Component({
   selector: 'app-case-study-page',
-  imports: [CommonModule, ProjectScreenshots, Button, BreadcrumbComponent],
+  imports: [CommonModule, ProjectScreenshots, Button, BreadcrumbComponent, GeometricBackground],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (caseStudy(); as study) {
       <!-- Main wrapper -->
-      <div
-        class="relative z-[60] min-h-screen bg-secondary font-sans selection:bg-accent/30 selection:text-white"
-      >
-        <!-- Technical Grid Background -->
-        <div
-          class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none z-0"
-        ></div>
-
-        <!-- Navbar -->
-        <nav
-          class="sticky top-0 z-50 w-full border-b border-white/10 bg-secondary/80 backdrop-blur-md"
-        >
-          <div class="layout-container h-16 flex items-center justify-between">
-            <app-button
-              variant="ghost"
-              href="/"
-              class="gap-2 text-white font-mono uppercase tracking-widest text-xs"
-            >
-              <!-- ArrowLeft -->
-              <svg
-                class="h-3 w-3 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              <span class="hidden sm:inline">Back to Home</span>
-            </app-button>
-
-            <div class="flex items-center gap-3">
-              @if (study.repoUrl) {
-                <app-button
-                  variant="ghost"
-                  [href]="study.repoUrl"
-                  class="!p-2 text-white hover:text-accent border border-white/10 hover:border-accent"
-                  aria-label="View Source"
-                >
-                  <!-- Github -->
-                  <svg
-                    class="h-5 w-5"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                    ></path>
-                  </svg>
-                </app-button>
-              }
-              @if (study.demoUrl) {
-                <app-button variant="accent" size="sm" [href]="study.demoUrl">
-                  <span>Visit Site</span>
-                  <!-- ExternalLink -->
-                  <svg
-                    class="ml-2 h-3 w-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </app-button>
-              }
-            </div>
-          </div>
-        </nav>
+      <div class="relative min-h-screen font-sans selection:bg-accent/30 selection:text-white">
+        <div class="fixed inset-0 -z-10">
+          <app-geometric-background variant="subtle" />
+        </div>
 
         <main class="relative">
           <!-- Hero Section -->
-          <section class="relative pt-32 pb-32 overflow-hidden isolate">
+          <section class="relative pt-40 pb-32 overflow-hidden isolate z-10">
             <!-- Decorative elements -->
             <div
               class="absolute top-20 right-10 w-32 h-32 border-r border-t border-white/5 opacity-50"
@@ -108,49 +32,100 @@ import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
               class="absolute bottom-10 left-10 w-32 h-32 border-l border-b border-white/5 opacity-50"
             ></div>
 
-            <div class="layout-container text-center">
-              <!-- Breadcrumbs (Visual) -->
-              <div class="flex justify-center mb-8">
+            <div class="layout-container relative">
+              <!-- Breadcrumbs (Standard Flow) -->
+              <div class="flex justify-start">
                 <app-breadcrumb />
               </div>
 
-              <div
-                class="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700"
-              >
+              <div class="text-center">
                 <div
-                  class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase"
+                  class="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700"
                 >
-                  <span class="relative flex h-2 w-2">
-                    <span
-                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
-                    ></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-                  </span>
-                  CASE STUDY: {{ study.id }}
-                </div>
-              </div>
-              <h1
-                class="heading-1 text-white text-balance mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100 uppercase tracking-tight"
-              >
-                {{ study.title }}
-              </h1>
-              <p
-                class="text-balance max-w-2xl mx-auto text-lg leading-relaxed text-white/60 mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 font-light"
-              >
-                {{ study.tagline }}
-              </p>
-
-              <!-- Tech Stack Strip -->
-              <div
-                class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
-              >
-                @for (tech of study.techStack; track tech) {
                   <div
-                    class="px-3 py-1.5 bg-white/5 border border-white/10 text-xs text-white/70 font-mono uppercase tracking-wider"
+                    class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase"
                   >
-                    {{ tech }}
+                    <span class="relative flex h-2 w-2">
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
+                      ></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    </span>
+                    CASE STUDY: {{ study.id }}
                   </div>
-                }
+                </div>
+                <h1
+                  class="heading-1 text-white text-balance mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100 uppercase tracking-tight"
+                >
+                  {{ study.title }}
+                </h1>
+                <p
+                  class="text-balance max-w-2xl mx-auto text-lg leading-relaxed text-white/60 mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200 font-light"
+                >
+                  {{ study.tagline }}
+                </p>
+
+                <!-- Action Bar (Repo / Demo) -->
+                <div
+                  class="flex flex-wrap justify-center gap-4 mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300"
+                >
+                  @if (study.demoUrl) {
+                    <app-button variant="accent" size="md" [href]="study.demoUrl">
+                      <span>Visit Live Site</span>
+                      <!-- ExternalLink -->
+                      <svg
+                        class="ml-2 h-3 w-3"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </app-button>
+                  }
+                  @if (study.repoUrl) {
+                    <app-button
+                      variant="secondary"
+                      size="md"
+                      [href]="study.repoUrl"
+                      aria-label="View Source"
+                    >
+                      <span>View Code</span>
+                      <!-- Github -->
+                      <svg
+                        class="ml-2 h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                        ></path>
+                      </svg>
+                    </app-button>
+                  }
+                </div>
+
+                <!-- Tech Stack Strip -->
+                <div
+                  class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 opacity-60 hover:opacity-100 transition-opacity"
+                >
+                  @for (tech of study.techStack; track tech) {
+                    <div
+                      class="px-3 py-1.5 bg-white/5 border border-white/10 text-xs text-white/70 font-mono uppercase tracking-wider"
+                    >
+                      {{ tech }}
+                    </div>
+                  }
+                </div>
               </div>
             </div>
           </section>
@@ -311,7 +286,9 @@ import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
           </section>
 
           <!-- Technical Architecture (Dark Section) -->
-          <section class="bg-secondary py-24 relative overflow-hidden isolate">
+          <section
+            class="bg-black/20 py-24 relative overflow-hidden isolate border-t border-white/5"
+          >
             <div class="relative layout-container">
               <div class="max-w-3xl border border-white/10 p-8 md:p-12 relative bg-white/[0.02]">
                 <!-- Decoration -->
@@ -346,7 +323,7 @@ import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
 
           <!-- Footer/Next Steps -->
           <section
-            class="py-24 bg-secondary relative overflow-hidden isolate border-t border-white/10"
+            class="py-24 bg-slate-900/80 relative z-10 overflow-hidden isolate border-t border-white/10"
           >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 class="text-3xl font-bold font-mono text-white mb-8 uppercase tracking-tight">

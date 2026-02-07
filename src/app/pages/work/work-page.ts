@@ -14,17 +14,29 @@ import { Button } from '../../shared/ui/button/button';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { ProjectCardComponent } from './components/project-card/project-card';
 
+import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
+import { GeometricBackground } from '../../shared/ui/geometric-background/geometric-background';
+
 @Component({
   selector: 'app-work-page',
-  imports: [CommonModule, SectionHeader, ProjectCardComponent, Button],
+  imports: [
+    CommonModule,
+    SectionHeader,
+    ProjectCardComponent,
+    Button,
+    GeometricBackground,
+    BreadcrumbComponent,
+  ],
   template: `
-    <div class="min-h-screen bg-secondary font-sans text-white pb-24 sm:pb-32 relative isolate">
-      <!-- Technical Grid Background -->
-      <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10"
-      ></div>
+    <div class="min-h-screen font-sans text-white pb-24 sm:pb-32 relative isolate">
+      <div class="fixed inset-0 -z-10">
+        <app-geometric-background variant="hero" />
+      </div>
 
       <div class="layout-container pt-24 sm:pt-32">
+        <!-- Breadcrumbs -->
+        <app-breadcrumb />
+
         <!-- Header -->
         <app-section-header
           subtitle="INDEX / 01"

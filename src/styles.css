@@ -119,4 +119,28 @@ html {
   .input-field {
     @apply w-full rounded-lg border-neutral bg-neutral/50 px-4 py-3 text-secondary placeholder:text-secondary/40 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors;
   }
+  /* --- Surfaces & Backgrounds --- */
+  .bg-glow-radial {
+    @apply bg-slate-950 bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.4),#020617)];
+  }
+
+  .bg-grid-tech {
+    @apply bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px];
+  }
+
+  .bg-mesh-slight {
+    @apply bg-[radial-gradient(circle_at_top_right,rgba(30,58,138,0.4),transparent),radial-gradient(circle_at_bottom_left,#020617,transparent)];
+  }
+
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+  }
+
+  .obsidian-panel {
+    @apply bg-slate-950/90 border border-white/10 border-t-primary/50 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)];
+  }
+
+  .card-neon-floating {
+    @apply bg-slate-950/80 backdrop-blur-sm border border-white/5 transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_-10px_rgba(0,123,255,0.3)] hover:-translate-y-1;
+  }
 }
