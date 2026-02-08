@@ -25,12 +25,12 @@ export class CaseStudies {
       tag: 'High-Performance Real-Time Analytics',
       title: 'Modern Enterprise Admin Dashboard',
       description:
-        'Real-time analytics collapsing under scale fixed with Angular Signals and Tailwind CSS 4.',
+        'Real-time analytics collapsing under Scale fixed with Angular Signals and Tailwind CSS 4.',
       imageUrl: 'images/admin-panel.webp',
       link: '/work/modern-enterprise-admin-dashboard',
     },
     {
-      tag: 'Next-Gen Angular E-Commerce Architecture',
+      tag: 'Scale-Ready E-Commerce Architecture',
       title: 'QuickCart E-Commerce',
       description:
         '"Smart Shell" architecture with Signals handling complex cart state without bloat.',

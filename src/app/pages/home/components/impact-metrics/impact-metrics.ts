@@ -20,26 +20,25 @@ interface Metric {
 export class ImpactMetrics {
   protected readonly metrics = signal<Metric[]>([
     {
-      value: '40%',
-      suffix: '+',
-      label: 'Performance Boost',
-      description: 'Average Core Web Vitals improvement after Angular architecture refactoring.',
+      value: '$997',
+      label: 'Risk-Free Audit',
+      description: 'Fee is 100% credited towards your first modernization sprint.',
     },
     {
-      value: '3x',
-      label: 'Faster Delivery',
-      description: 'Feature velocity increase through Nx component standardization.',
+      value: '2-Wk',
+      label: 'Sprint Cycles',
+      description: 'Predictable delivery cadence with fixed scope and pricing.',
     },
     {
       value: '60%',
       suffix: '-',
-      label: 'Less Tech Debt',
-      description: 'Reduction in legacy dependencies and RxJS complexity.',
+      label: 'Reduced Technical Debt',
+      description: 'Reduction in legacy dependencies and spaghetti code.',
     },
     {
       value: '100%',
-      label: 'Audit Ready',
-      description: 'Codebases delivered with strict typing, testing, and documentation.',
+      label: 'Scale-Ready Stability',
+      description: 'Codebases delivered with strict typing and zero critical regressions.',
     },
   ]);
 }

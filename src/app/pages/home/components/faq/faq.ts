@@ -20,12 +20,12 @@ export class Faq implements OnInit {
     {
       question: 'Do you work with both enterprise and startups?',
       answer:
-        'Yes. Enterprise clients hire me for modernization, audits, and fractional tech leadership. Startups hire me to build their SaaS product end-to-end or as a technical advisor. Both get the same quality bar—audit-ready code and measurable performance wins.',
+        "I partner primarily with scale-ups and enterprises where 'slow engineering' has become a blocker to Scale. Whether you're a Series B startup needing to stabilize for growth or an enterprise needing to modernize legacy core systems, I provide the architectural leadership to restore velocity.",
     },
     {
       question: "What's included in a discovery call?",
       answer:
-        "I'll review your current state (codebase, product requirements, or goals), identify key bottlenecks or risks, and propose a clear scope with timeline and outcomes. No sales pitch—just engineering clarity.",
+        "The discovery call is a 15-minute qualification chat. The real value starts with the Audit ($997). I'll review your codebase, identify bottlenecks, and give you a roadmap. If you hire me for Sprints, the Audit fee is 100% credited back.",
     },
     {
       question: 'Do you work with existing teams?',
@@ -40,7 +40,7 @@ export class Faq implements OnInit {
     {
       question: 'What is your typical engagement model?',
       answer:
-        'I work on a project basis (fixed scope/timeline) or retainer for long-term advisory. Audits are fixed-price packages. All engagements start with a discovery call to assess fit.',
+        'We start with the Audit ($997) to define the roadmap. Then, we move to "Velocity Sprints" ($4k / 2-weeks) to execute the work. No hourly billing, no surprises.',
     },
     {
       question: "What's your availability?",

@@ -21,41 +21,43 @@ interface ServiceTier {
 export class ServiceArchitecture {
   tiers = signal<ServiceTier[]>([
     {
-      name: 'Enterprise Angular Modernization',
+      name: 'The Scale-Blocker Audit',
       description:
-        'I transform slow, tangled legacy frontends into clean, modular Angular systems.',
+        'The entry point. I analyze your codebase and process to identify exactly why velocity has slowed. You get a prioritized Roadmap PDF and an Executive Debrief.',
       features: [
-        'Angular migrations (Legacy → v21)',
-        'Nx Monorepo Architecture',
-        'Zoneless Performance Tuning',
-        'Refactoring & Technical Debt Removal',
+        '5-Day Turnaround',
+        'Root Cause Analysis (Tech & Process)',
+        'Prioritized Remediation Roadmap',
+        '100% Credited towards first Sprint',
       ],
-      ctaText: 'Book Discovery Call',
+      ctaText: 'Book Audit ($997)',
       ctaLink: '/#contact',
     },
     {
-      name: 'Angular SaaS Engineering',
-      description: 'End-to-end delivery for scalable SaaS products.',
+      name: 'Velocity Sprints',
+      description:
+        'Execute the roadmap in predictable 2-week cycles. We fix the blockers, modernize the stack, and ship features without the overhead of full-time hiring.',
       features: [
-        'Complex Data Visualization',
-        'Predictable State (NgRx / Signals)',
-        'Server-side & hybrid rendering, Incremental Hydration',
-        'Rapid Iteration Support',
+        'Fixed Price ($4k / Sprint)',
+        'Scope Locked at Start',
+        'Bi-Weekly Deliverables',
+        'No Long-Term Contract',
       ],
-      ctaText: 'Book Discovery Call',
+      ctaText: 'Start Sprint',
       ctaLink: '/#contact',
       featured: true,
     },
     {
-      name: 'Angular Performance Audits',
-      description: 'Deep-dive profiling to uncover bottlenecks in load time and runtime speed.',
+      name: 'Fractional Architect',
+      description:
+        'For teams that need ongoing leadership. I join your slack, review PRs, and guide architecture decisions to ensure you never hit a wall again.',
       features: [
-        'Core Web Vitals Optimization',
-        'NgRx Store Architecture Review',
-        'Change Detection Profiling',
-        'Architecture Health Check',
+        'Weekly Strategy Calls',
+        'Code Review Leadership',
+        'Hiring & Team Mentorship',
+        'Retainer Model ($2k / Month)',
       ],
-      ctaText: 'Book Audit',
+      ctaText: 'Discuss Role',
       ctaLink: '/#contact',
     },
   ]);

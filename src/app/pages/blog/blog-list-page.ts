@@ -50,8 +50,8 @@ type FeedState =
         <!-- Header -->
         <app-section-header
           subtitle="LOGS / ENGINEERING"
-          title="Insights & Engineering"
-          description="Practical writing on Angular architecture, Signals/RxJS patterns, performance tuning, and engineering decisions."
+          title="Engineering Strategy"
+          description="Technical deep dives and strategic thinking for growing platforms. From low-level memory tuning to high-level architecture decisions."
         />
 
         <!-- Content Area -->
@@ -286,9 +286,9 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Angular Architecture Blog | Engineering Insights',
+      title: 'Engineering Strategy Blog | Angular & Scale',
       description:
-        'Practical writing on Angular architecture, Signals/RxJS patterns, performance tuning, and engineering decisions that keep teams shipping.',
+        'Strategic insights on scaling Angular architecture. Learn how to eliminate technical debt and build high-velocity engineering systems.',
       slug: '/blog',
       type: 'article',
       keywords: [
