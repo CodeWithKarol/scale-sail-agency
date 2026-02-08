@@ -10,11 +10,11 @@ import { Button } from '../../../../shared/ui/button/button';
 export class FounderStory {
   founder = signal({
     name: 'Karol Modelski',
-    role: 'Senior Angular Developer & Founder',
+    role: 'Enterprise System Architect',
     image: 'images/karol-modelski.webp',
-    headline: 'Angular Architecture for Scale & Performance',
+    headline: 'Restoring Velocity to Scale Engineering Teams',
     bio: [
-      'Delivering modernization and performance improvements at scale—from regulated enterprise platforms to high-velocity product teams.',
+      'Transforming struggling codebases into growth engines. I bridge the gap between product vision and technical reality for Series B/C companies attempting to Scale.',
       'Currently leading architecture for mission-critical trading platforms: Enforcing 100% test coverage policies while migrating legacy micro-frontends to a coherent Nx monorepo. Balancing enterprise compliance with developer velocity.',
       "At Silent Eight (AI Compliance SaaS), I led the frontend modernization initiative (Angular 14 → 19) and introduced 'Zoneless' architecture for 50% performance gains. Worked directly with Product Owners to accelerate feature delivery.",
       'At GOonline Platform, I delivered features for 1M+ active users. Managed the complex migration of core banking modules from AngularJS, ensuring zero downtime during high-traffic windows.',

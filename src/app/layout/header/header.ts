@@ -25,17 +25,17 @@ export class Header {
 
   navigation = [
     {
-      name: 'Expertise',
+      name: 'Strategy',
       children: [
-        { name: 'Services', path: '/', fragment: 'services' },
+        { name: 'Modernization', path: '/', fragment: 'services' },
         { name: 'Process', path: '/', fragment: 'process' },
-        { name: 'Architecture', path: '/work', fragment: undefined },
+        { name: 'Case Studies', path: '/work', fragment: undefined },
       ],
     },
     {
       name: 'Resources',
       children: [
-        { name: 'Blog', path: '/blog', fragment: undefined },
+        { name: 'Engineering Blog', path: '/blog', fragment: undefined },
         { name: 'FAQ', path: '/', fragment: 'faq' },
       ],
     },

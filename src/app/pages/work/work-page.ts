@@ -40,8 +40,8 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
         <!-- Header -->
         <app-section-header
           subtitle="INDEX / 01"
-          title="Reference Architectures"
-          description="Production-grade implementation patterns for enterprise Angular applications. Real-world examples of high-performance architecture."
+          title="Turnaround Stories"
+          description="Real examples of how I helped companies **Scale** past their bottlenecks. From sluggish legacy monoliths to high-velocity shipping engines."
         />
 
         <!-- Projects List -->
@@ -107,7 +107,7 @@ export class WorkPage {
       this.seoService.setPageMetadata({
         title: 'Work | Scale Sail Agency',
         description:
-          'Explore real-world case studies of Angular migrations, performance optimization, and scalable "Smart Shell" architecture for enterprise applications.',
+          'Case studies of engineering turnarounds. See how legacy codebases were transformed into high-velocity growth engines.',
         slug: '/work',
         keywords: [
           'Angular Portfolio',

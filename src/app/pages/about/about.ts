@@ -14,9 +14,9 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'About Karol Modelski | Senior Angular Consultant',
+      title: 'About Karol Modelski | Enterprise Angular Architect',
       description:
-        'Senior Angular Consultant & Founder of Scale Sail. Specializing in Angular 21 modernization, NgRx architecture, and high-performance engineering.',
+        'Enterprise System Architect & Founder of Scale Sail. Specializing in unblocking engineering teams through Angular modernization, Nx architecture, and technical debt liquidation.',
       slug: 'about',
       type: 'profile',
     });

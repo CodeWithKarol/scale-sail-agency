@@ -14,26 +14,26 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Enterprise Angular', path: '/', fragment: 'services' },
-    { name: 'SaaS Engineering', path: '/', fragment: 'services' },
-    { name: 'Performance Audits', path: '/', fragment: 'services' },
-    { name: 'Migration Process', path: '/', fragment: 'process' },
+    { name: 'Architecture Audit', path: '/', fragment: 'services' },
+    { name: 'Modernization Sprints', path: '/', fragment: 'services' },
+    { name: 'Retainer & Advisory', path: '/', fragment: 'services' },
+    { name: 'Engineering Strategy', path: '/', fragment: 'process' },
   ]);
 
   resources = signal([
-    { name: 'Angular Patterns', path: '/work', fragment: undefined },
+    { name: 'Case Studies', path: '/work', fragment: undefined },
     { name: 'Engineering Blog', path: '/blog', fragment: undefined },
-    { name: 'About', path: '/about', fragment: undefined },
+    { name: 'About Scale Sail', path: '/about', fragment: undefined },
   ]);
 
   connect = signal([
-    { name: 'Book Discovery Call', path: '/', fragment: 'contact' },
+    { name: 'Schedule Strategy Session', path: '/', fragment: 'contact' },
     {
-      name: 'Micro-Engagements (Freelance)',
+      name: 'Small Gigs & Fixes',
       path: 'https://www.karol-modelski.scale-sail.io',
       fragment: undefined,
     },
-    { name: 'Contact', path: '/', fragment: 'contact' },
+    { name: 'Email Direct', path: '/', fragment: 'contact' },
   ]);
 
   legal = signal<{ name: string; path: string; fragment?: string }[]>([]);

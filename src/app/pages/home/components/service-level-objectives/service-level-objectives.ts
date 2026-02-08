@@ -13,18 +13,18 @@ export class ServiceLevelObjectives {
   objectives = signal([
     {
       id: 'PERF-01',
-      label: 'Performance Score',
+      label: 'Performance Speed',
       target: '90+',
       metric: 'Lighthouse / PSI',
-      description: 'Guaranteed green metrics for Core Web Vitals on delivered pages.',
+      description: 'Guaranteed green Core Web Vitals. Velocity is impossible if the app is slow.',
       status: 'active',
     },
     {
       id: 'QUAL-02',
-      label: 'Test Coverage',
-      target: '>80%',
-      metric: 'Jest / Vitest',
-      description: 'Business logic is fully tested. No "it works on my machine".',
+      label: 'Shipping Velocity',
+      target: 'DAILY',
+      metric: 'Deploy Frequency',
+      description: 'Pipelines optimized for speed. Ship features on Fridays without fear.',
       status: 'active',
     },
     {
@@ -32,7 +32,7 @@ export class ServiceLevelObjectives {
       label: 'Type Safety',
       target: 'STRICT',
       metric: 'TypeScript 5.x',
-      description: 'Zero "any" types allowed. Strict null checks enabled by default.',
+      description: 'Zero "any" types allowed. Catches bugs at compile time, not in production.',
       status: 'active',
     },
     {
@@ -40,7 +40,7 @@ export class ServiceLevelObjectives {
       label: 'Accessibility',
       target: 'WCAG 2.1',
       metric: 'Level AA',
-      description: 'Semantic HTML and keyboard navigation built-in, not added on.',
+      description: 'Compliance built-in. Protects your brand and opens markets to all users.',
       status: 'active',
     },
   ]);
