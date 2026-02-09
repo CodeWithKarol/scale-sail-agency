@@ -32,7 +32,9 @@ export class SeoService {
     this.titleService.setTitle(processedTitle);
 
     // 2. Canonical URL (Critical for Programmatic SEO to avoid duplicate content penalties)
-    const canonicalUrl = `${this.baseUrl}${config.slug}`;
+    const normalizedSlug =
+      config.slug.startsWith('/') || !config.slug ? config.slug : `/${config.slug}`;
+    const canonicalUrl = `${this.baseUrl}${normalizedSlug}`;
     this._currentCanonical.set(canonicalUrl);
     this.updateCanonicalTag(canonicalUrl);
 
