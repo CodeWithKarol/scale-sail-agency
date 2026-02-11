@@ -48,7 +48,9 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
               project().heroImage ||
               'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80'
             "
-            alt=""
+            [alt]="project().title + ' preview'"
+            width="800"
+            height="450"
             class="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover/card:scale-105 group-hover/card:grayscale-[0.5]"
           />
 

@@ -154,6 +154,9 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
               <img
                 [src]="study.heroImage"
                 [alt]="study.title"
+                fetchpriority="high"
+                width="1280"
+                height="720"
                 class="w-full h-full object-cover object-top pt-8"
               />
 

@@ -6,8 +6,6 @@ import { ProblemSolution } from './components/problem-solution/problem-solution'
 import { ServiceArchitecture } from './components/service-architecture/service-architecture';
 import { Process } from './components/process/process';
 import { FounderStory } from './components/founder-story/founder-story';
-import { ComparisonTable } from './components/comparison-table/comparison-table';
-import { ServiceLevelObjectives } from './components/service-level-objectives/service-level-objectives';
 import { Contact } from './components/contact/contact';
 import { Faq } from './components/faq/faq';
 import { FinalCta } from './components/final-cta/final-cta';
@@ -23,8 +21,6 @@ import { IdealClientProfile } from './components/ideal-client-profile/ideal-clie
     ServiceArchitecture,
     Process,
     FounderStory,
-    ComparisonTable,
-    ServiceLevelObjectives,
     Contact,
     Faq,
     FinalCta,
@@ -40,7 +36,7 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Senior Angular Developer | Legacy Modernization Expert',
+      title: 'Angular Legacy Modernization Expert',
       description:
         'Senior Angular Developer specialized in modernizing legacy apps and technical debt. Scale your enterprise frontend with audit-ready architecture.',
       slug: '',

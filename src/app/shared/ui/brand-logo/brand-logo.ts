@@ -12,6 +12,7 @@ import { ViewportScroller } from '@angular/common';
           src="images/scale-sail-logo.webp"
           alt="Scale Sail Logo"
           [attr.loading]="loading()"
+          fetchpriority="high"
           width="32"
           height="32"
           class="h-8 w-8 rounded-sm bg-white border border-white/20 p-0.5 shadow-lg shadow-primary/10 group-hover:shadow-primary/30 group-hover:border-primary/50 transition-all duration-300"

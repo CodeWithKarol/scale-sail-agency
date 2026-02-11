@@ -32,12 +32,15 @@ import { BlogPost } from '../../blog.model';
               post().imageUrl ||
               'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
             "
-            alt=""
+            [alt]="post().title"
+            width="400"
+            height="225"
             class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:grayscale-[0.5]"
           />
           <a
             [href]="post().url"
             target="_blank"
+            rel="noopener noreferrer"
             class="absolute inset-0 focus:outline-none"
             aria-hidden="true"
             tabindex="-1"
@@ -59,7 +62,7 @@ import { BlogPost } from '../../blog.model';
         <h3
           class="text-lg font-bold leading-tight text-white group-hover:text-accent transition-colors line-clamp-2"
         >
-          <a [href]="post().url" target="_blank">
+          <a [href]="post().url" target="_blank" rel="noopener noreferrer">
             <span class="absolute inset-0"></span>
             {{ post().title }}
           </a>

@@ -7,6 +7,8 @@ interface ServiceTier {
   name: string;
   description: string;
   features: string[];
+  timeline: string;
+  investment: string;
   ctaText: string;
   ctaLink: string;
   featured?: boolean;
@@ -25,12 +27,14 @@ export class ServiceArchitecture {
       description:
         'The entry point. I analyze your codebase and process to identify exactly why velocity has slowed. You get a prioritized Roadmap PDF and an Executive Debrief.',
       features: [
-        '5-Day Turnaround',
-        'Root Cause Analysis (Tech & Process)',
+        'Root Cause Analysis',
         'Prioritized Remediation Roadmap',
+        'Process Bottleneck Identification',
         '100% Credited towards first Sprint',
       ],
-      ctaText: 'Book Audit ($997)',
+      timeline: '5 Days',
+      investment: '$997',
+      ctaText: 'Book Audit',
       ctaLink: '/#contact',
     },
     {
@@ -38,11 +42,13 @@ export class ServiceArchitecture {
       description:
         'Execute the roadmap in predictable 2-week cycles. We fix the blockers, modernize the stack, and ship features without the overhead of full-time hiring.',
       features: [
-        'Fixed Price ($4k / Sprint)',
-        'Scope Locked at Start',
-        'Bi-Weekly Deliverables',
-        'No Long-Term Contract',
+        'Clean Architecture Implementation',
+        'Legacy Migration (Angular v14->19)',
+        'Technical Debt Remediation',
+        'Feature Delivery Acceleration',
       ],
+      timeline: '2-Week Cycles',
+      investment: '$4,000 / Sprint',
       ctaText: 'Start Sprint',
       ctaLink: '/#contact',
       featured: true,
@@ -52,11 +58,13 @@ export class ServiceArchitecture {
       description:
         'For teams that need ongoing leadership. I join your slack, review PRs, and guide architecture decisions to ensure you never hit a wall again.',
       features: [
-        'Weekly Strategy Calls',
-        'Code Review Leadership',
-        'Hiring & Team Mentorship',
-        'Retainer Model ($2k / Month)',
+        'Weekly Strategy & Guidance',
+        'PR & Design Review Leadership',
+        'Engineering Mentorship',
+        'Hiring Support & Vetting',
       ],
+      timeline: 'Monthly',
+      investment: '$2,000 / Month',
       ctaText: 'Discuss Role',
       ctaLink: '/#contact',
     },
