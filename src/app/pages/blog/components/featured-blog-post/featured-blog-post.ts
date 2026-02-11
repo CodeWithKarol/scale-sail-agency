@@ -28,6 +28,7 @@ import { BlogPost } from '../../blog.model';
           <a
             [href]="post().url"
             target="_blank"
+            rel="noopener noreferrer"
             class="block h-full w-full focus:outline-none"
             aria-hidden="true"
             tabindex="-1"
@@ -37,7 +38,10 @@ import { BlogPost } from '../../blog.model';
                 post().imageUrl ||
                 'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
               "
-              alt=""
+              [alt]="post().title"
+              width="800"
+              height="450"
+              fetchpriority="high"
               class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:grayscale-[0.5]"
             />
           </a>
@@ -64,6 +68,7 @@ import { BlogPost } from '../../blog.model';
           <a
             [href]="post().url"
             target="_blank"
+            rel="noopener noreferrer"
             class="hover:text-accent transition-colors duration-300"
           >
             {{ post().title }}
@@ -80,6 +85,7 @@ import { BlogPost } from '../../blog.model';
           <a
             [href]="post().url"
             target="_blank"
+            rel="noopener noreferrer"
             class="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 group/btn hover:text-accent transition-colors"
           >
             Read article
