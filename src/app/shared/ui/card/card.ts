@@ -22,7 +22,7 @@ export class Card {
     // Base styles for Dark Glass theme
     const defaultStyle = 'bg-white/5 border border-white/10';
     const highlightStyle =
-      'bg-secondary border border-primary shadow-[0_0_30px_rgba(0,123,255,0.15)] scale-[1.02] lg:scale-105 z-10';
+      'bg-secondary border border-primary shadow-[0_0_30px_rgba(0,123,255,0.15)] z-10';
     const ghostStyle = 'bg-transparent border border-transparent';
 
     // Interactive styles (hover)

@@ -7,12 +7,12 @@
     <app-section-header
       subtitle="SYSTEM_MODULES"
       title="Engineering Services"
-      description="For Scale-Ups and Enterprises where 'slow engineering' is a business risk. I replace ad-hoc freelancing with a structured 'Stabilizer Protocol': Audit, Sprint, and Retainer. Predictable velocity, zero debt."
+      description="For Scale-Ups and Enterprises where 'slow engineering' is a business risk. I replace ad-hoc freelancing with a structured 'Stabilizer Protocol': Spark, Surgery, Engine, and Guardian. Predictable velocity, zero debt."
       class="font-mono"
     />
 
     <!-- Cards Grid -->
-    <div class="mx-auto grid max-w-lg grid-cols-1 gap-8 lg:max-w-none lg:grid-cols-3">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-8 lg:max-w-5xl lg:grid-cols-2 2xl:max-w-none 2xl:grid-cols-4">
       @for (
         tier of tiers();
         track tier.name;
@@ -23,7 +23,7 @@
         <app-card
           [variant]="tier.featured ? 'highlight' : 'default'"
           [interactive]="!tier.featured"
-          class="flex flex-col justify-between p-8 xl:p-10 relative overflow-hidden group border border-white/5 hover:border-primary/30 transition-all"
+          class="flex flex-col h-full p-6 lg:p-8 xl:p-10 relative overflow-hidden group border border-white/5 hover:border-primary/30 transition-all"
         >
           <!-- Featured Highlight -->
           @if (tier.featured) {
@@ -36,7 +36,7 @@
             ></div>
           }
 
-          <div class="relative">
+          <div class="relative flex flex-col h-full">
             <!-- Module Header -->
             <header
               class="flex items-center justify-between gap-x-4 mb-6 pb-4 border-b border-white/5"
@@ -64,12 +64,12 @@
             </header>
 
             <!-- Description -->
-            <p class="text-sm leading-6 text-white/60 font-light mb-8 min-h-12">
+            <p class="text-sm leading-6 text-white/60 font-light mb-8">
               {{ tier.description }}
             </p>
 
             <!-- Specs List -->
-            <div class="space-y-3 mb-8">
+            <div class="space-y-3 mb-8 flex-grow">
               <div
                 class="text-[10px] font-mono text-white/30 uppercase tracking-widest border-b border-white/5 pb-1 mb-3"
               >
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Metrics Footer -->
-            <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/5">
+            <div class="grid grid-cols-2 gap-4 pt-6 border-t border-white/5 mt-auto">
               <div>
                 <span class="block text-[9px] font-mono text-white/30 uppercase tracking-widest"
                   >Timeline</span
