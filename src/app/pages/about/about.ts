@@ -23,9 +23,18 @@ export class About implements OnInit {
   }
 
   techStack = [
-    { category: 'Fundamenty', items: ['Angular', 'TypeScript', 'Automatyzacja'] },
-    { category: 'Szybkość', items: ['Aplikacje mobilne', 'Powiadomienia SMS', 'Chmura'] },
-    { category: 'Jakość', items: ['Bazy danych', 'Bezpieczeństwo', 'Wydajność'] },
+    {
+      category: 'Fundamenty',
+      items: ['Angular, TypeScript', 'Aplikacje webowe i mobilne'],
+    },
+    {
+      category: 'Możliwości',
+      items: ['Automatyzacja, powiadomienia SMS', 'Chmura i bazy danych'],
+    },
+    {
+      category: 'Standardy',
+      items: ['Bezpieczeństwo, wydajność, jakość', 'Standardy z sektora bankowego'],
+    },
   ];
 
   experience = [
@@ -33,7 +42,7 @@ export class About implements OnInit {
       role: 'Senior Frontend Developer',
       company: 'GFT Technologies (Citi)',
       period: 'Mar 2025 - Obecnie',
-      desc: 'Buduję systemy dla największych banków na świecie. Tutaj nauczyłem się, jak tworzyć oprogramowanie, które nigdy nie zawodzi i obsługuje miliony operacji.',
+      desc: 'Buduję systemy dla dużych banków (Citi). Tam nauczyłem się, jak robić oprogramowanie, które po prostu musi działać – bez "zawieszek" i bez przestojów.',
     },
     {
       role: 'Frontend Developer',
@@ -45,13 +54,13 @@ export class About implements OnInit {
       role: 'Software Developer',
       company: 'BNP Paribas',
       period: 'Listopad 2021 - Listopad 2023',
-      desc: 'Rozwijałem bankowość internetową, z której korzysta ponad milion osób. Zarządzałem trudnymi migracjami starych systemów na nowe technologie.',
+      desc: 'Rozwijałem bankowość internetową, z której korzysta ponad milion osób. Dużo migracji ze starych, topornych systemów do nowszych – dzięki temu wiem, jak sprawnie przenosić firmy z Excela i kartek do nowoczesnego softu.',
     },
     {
       role: 'Junior Frontend Developer',
       company: 'Amway',
       period: 'Kwiecień 2019 - Październik 2021',
-      desc: 'Tworzyłem panele do zarządzania sprzedażą dla tysięcy przedsiębiorców. To tutaj zrozumiałem, jak ważne dla biznesu są przejrzyste dane.',
+      desc: 'Tworzyłem panele do zarządzania sprzedażą dla tysięcy przedsiębiorców. To tutaj zrozumiałem, jak ważne dla biznesu są przejrzyste i łatwo dostępne dane.',
     },
   ];
 }
