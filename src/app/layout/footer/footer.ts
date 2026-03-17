@@ -14,26 +14,19 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Dla Warsztatów', path: '/', fragment: 'workshop-pro' },
-    { name: 'Systemy Usługowe', path: '/', fragment: 'service-flow' },
-    { name: 'Aplikacje Dedykowane', path: '/', fragment: 'contact' },
-    { name: 'Automatyzacja SMS', path: '/', fragment: 'service-architecture' },
+    { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
+    { name: 'Jak pracuję', path: '/', fragment: 'process' },
+    { name: 'Częste pytania', path: '/', fragment: 'faq' },
+    { name: 'Realizacje', path: '/work', fragment: undefined },
   ]);
 
   resources = signal([
-    { name: 'Realizacje', path: '/work', fragment: undefined },
     { name: 'Blog / Porady', path: '/blog', fragment: undefined },
-    { name: 'O agencji', path: '/about', fragment: undefined },
+    { name: 'O mnie', path: '/about', fragment: undefined },
   ]);
 
   connect = signal([
     { name: 'Napisz do mnie', path: '/', fragment: 'contact' },
-    {
-      name: 'Sklep Gumroad',
-      path: 'https://karolmodelski.gumroad.com',
-      fragment: undefined,
-    },
-    { name: 'LinkedIn', path: 'https://linkedin.com', fragment: undefined },
   ]);
 
   legal = signal<{ name: string; path: string; fragment?: string }[]>([]);
