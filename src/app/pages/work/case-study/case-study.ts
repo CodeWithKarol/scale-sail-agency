@@ -118,13 +118,11 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                 <div
                   class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 opacity-60 hover:opacity-100 transition-opacity"
                 >
-                  @for (tech of study.techStack; track tech) {
-                    <div
-                      class="px-3 py-1.5 bg-white/5 border border-white/10 text-xs text-white/70 font-mono uppercase tracking-wider"
-                    >
-                      {{ tech }}
-                    </div>
-                  }
+                  <div
+                    class="px-3 py-1.5 bg-white/5 border border-white/10 text-xs text-white/70 font-mono uppercase tracking-wider"
+                  >
+                    // {{ study.techStack[0] }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -315,9 +313,14 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
 
                 <!-- Code decoration -->
                 <div
-                  class="mt-8 pt-6 border-t border-dashed border-white/10 text-[10px] font-mono text-white/30 flex justify-between"
+                  class="mt-8 pt-6 border-t border-dashed border-white/10 text-[10px] font-mono text-white/30 flex flex-col sm:flex-row justify-between gap-4"
                 >
-                  <span>STATUS: OPTYMALNY</span>
+                  <div class="flex flex-col gap-1">
+                    <span>STATUS: OPTYMALNY</span>
+                    <span class="opacity-50"
+                      >Technologie: Angular, TypeScript, Tailwind CSS, testy automatyczne</span
+                    >
+                  </div>
                   <span>WERSJA: 2026.03.V1</span>
                 </div>
               </div>
