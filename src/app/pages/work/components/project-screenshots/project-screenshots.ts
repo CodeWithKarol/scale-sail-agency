@@ -17,13 +17,13 @@ import { CommonModule } from '@angular/common';
           <div
             class="inline-flex items-center gap-2 px-3 py-1 mb-6 border border-white/10 bg-white/5 text-[10px] font-mono text-white/60 uppercase tracking-widest"
           >
-            Visual_Data_Log
+            DOKUMENTACJA_WIZUALNA
           </div>
           <h2 class="text-3xl font-bold font-mono text-white uppercase tracking-tight">
-            Application Interface
+            Wygląd aplikacji
           </h2>
           <p class="mt-4 text-lg text-white/60 font-light">
-            Visual inspection of key system interactions.
+            Podgląd kluczowych funkcji i paneli systemu.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ import { CommonModule } from '@angular/common';
               (keydown.enter)="openZoom(screenshot)"
               tabindex="0"
               role="button"
-              aria-label="Zoom screenshot"
+              aria-label="Powiększ zdjęcie"
             >
               <!-- Corner markers -->
               <div
@@ -62,7 +62,7 @@ import { CommonModule } from '@angular/common';
                 <div
                   class="bg-black/80 backdrop-blur-sm px-4 py-2 border border-accent/50 text-accent text-xs font-mono uppercase tracking-widest"
                 >
-                  [ INSPECT ]
+                  [ ZOBACZ ]
                 </div>
               </div>
 
@@ -70,7 +70,7 @@ import { CommonModule } from '@angular/common';
                 [src]="screenshot"
                 loading="lazy"
                 class="w-full h-auto transform transition-transform duration-700 group-hover:scale-[1.01] grayscale-[0.3] group-hover:grayscale-0"
-                alt="Project Screenshot"
+                alt="Zdjęcie projektu"
               />
             </div>
           }
@@ -96,7 +96,7 @@ import { CommonModule } from '@angular/common';
             <button
               (click)="toggleZoom($event)"
               class="flex items-center justify-center w-12 h-12 bg-black text-white hover:bg-accent hover:text-white transition-colors focus:outline-none border border-white/20 hover:border-accent shadow-2xl rounded-full cursor-pointer"
-              aria-label="Toggle zoom"
+              aria-label="Zmień powiększenie"
             >
               @if (isZoomed()) {
                 <!-- ZoomOut -->
@@ -135,7 +135,7 @@ import { CommonModule } from '@angular/common';
             <button
               (click)="closeZoom()"
               class="flex items-center justify-center w-12 h-12 bg-black text-white hover:bg-red-600 hover:text-white transition-colors focus:outline-none border border-white/20 hover:border-red-600 shadow-2xl rounded-full cursor-pointer"
-              aria-label="Close"
+              aria-label="Zamknij"
             >
               <!-- X -->
               <svg
@@ -180,7 +180,7 @@ import { CommonModule } from '@angular/common';
                         d="M8 9l4-4 4 4m0 6l-4 4-4-4"
                       />
                     </svg>
-                    Scroll to scan
+                    Przewiń, aby zobaczyć całość
                   </div>
                 </div>
               }
@@ -193,7 +193,7 @@ import { CommonModule } from '@angular/common';
                     ? 'w-full max-w-7xl cursor-zoom-out h-auto'
                     : 'max-h-[85vh] w-auto cursor-zoom-in'
                 "
-                alt="Enlarged screenshot"
+                alt="Powiększone zdjęcie projektu"
                 (click)="toggleZoom($event)"
                 (keyup.enter)="toggleZoom($event)"
                 tabindex="0"

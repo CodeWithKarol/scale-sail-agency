@@ -390,8 +390,8 @@ export class CaseStudyPage {
       });
 
       this.seoService.setBreadcrumbs([
-        { name: 'Home', path: '/' },
-        { name: 'Architecture', path: '/work' },
+        { name: 'Start', path: '/' },
+        { name: 'Realizacje', path: '/work' },
         { name: study.title, path: `/work/${study.id}` },
       ]);
 
