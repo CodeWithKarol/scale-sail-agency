@@ -12,10 +12,12 @@ import { SectionHeader } from '../../../../shared/ui/section-header/section-head
 })
 export class IdealClientProfile {
   protected readonly idealClients = signal<string[]>([
-    'Właściciele warsztatów samochodowych',
-    'Małe firmy sprzątające',
-    'Salony beauty i fryzjerskie',
-    'Osoby zarządzające kilkoma mieszkaniami na wynajem',
+    'Warsztaty i serwisy (samochodowe, rowerowe, GSM, AGD)',
+    'Firmy usługowe (sprzątanie, montaż okien, klimatyzacja)',
+    'Salony beauty i fryzjerskie (koniec z papierowym zeszytem)',
+    'Osoby zarządzające mieszkaniami na wynajem',
+    'Właściciele zmęczeni szukaniem kartek i gubieniem zleceń',
+    'Firmy, które chcą wyglądać profesjonalnie przed klientem',
   ]);
 
   protected readonly antiPatterns = signal<string[]>([
