@@ -25,14 +25,14 @@ export class ImpactMetrics {
       description: 'Pierwsza rozmowa (15 min) jest zawsze bezpłatna. Sprawdzimy, czy możemy Ci pomóc.',
     },
     {
-      value: '14 dni',
-      label: 'Czas wdrożenia',
-      description: 'Tyle średnio zajmuje nam uruchomienie pierwszej wersji Twojej aplikacji.',
+      value: 'do 14 dni',
+      label: 'Pierwsza wersja',
+      description: 'Tyle zazwyczaj zajmuje nam uruchomienie najważniejszych funkcji dla Twojej firmy.',
     },
     {
-      value: '80%',
+      value: 'do 80%',
       label: 'Mniej telefonów',
-      description: 'O tyle może spaść liczba telefonów od klientów z pytaniem "Na kiedy?".',
+      description: 'O tyle może spaść liczba pytań od klientów "na kiedy?" po wdrożeniu systemu.',
     },
     {
       value: '100%',

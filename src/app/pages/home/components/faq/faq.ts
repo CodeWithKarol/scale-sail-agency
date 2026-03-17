@@ -40,7 +40,7 @@ export class Faq implements OnInit {
     {
       question: 'Ile to kosztuje? Czy są jakieś miesięczne opłaty?',
       answer:
-        'Stosuję prosty model: płacisz raz za przygotowanie i wdrożenie systemu (zazwyczaj od 1500 zł netto). Potem ponosisz jedynie minimalne koszty utrzymania serwera i wysyłki SMS-ów (kilkadziesiąt złotych miesięcznie). Żadnych ukrytych abonamentów.',
+        'Stosuję prosty model: płacisz raz za przygotowanie i wdrożenie systemu (zazwyczaj od 1500 zł netto). Potem ponosisz jedynie minimalne koszty utrzymania serwera i wysyłki SMS-ów (kilkadziesiąt złotych miesięcznie). Jeśli kiedyś będziesz chciał dalej rozwijać system, możemy umówić się na prosty miesięczny abonament za opiekę – ale nie jest on wymagany, żeby system działał.',
     },
     {
       question: 'Mam już swoje dane w Excelu. Czy da się je przenieść?',
