@@ -18,25 +18,25 @@ interface Problem {
 export class ProblemSolution {
   problems = signal<Problem[]>([
     {
-      title: 'Chaos w papierach',
+      title: 'Warsztaty: kolejka aut zamiast kartek',
       description:
-        'Wieczorem szukasz wymiętej kartki, żeby sprawdzić, co właściwie obiecałeś na jutro. Zlecenia się gubią, a pismo staje się nieczytelne.',
-      icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
-      theme: 'red',
-    },
-    {
-      title: 'Ciągłe telefony',
-      description:
-        'Kolejny klient dzwoni, gdy masz ręce pełne roboty, żeby zapytać o status naprawy. Każdy taki telefon to przerwanie pracy i strata czasu.',
-      icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
+        'Tworzę prosty panel dla warsztatu, w którym na jednym ekranie widać wszystkie auta, ich status i historię napraw. Klient zamiast dzwonić pięć razy, dostaje SMS, kiedy auto jest gotowe.',
+      icon: 'M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v2a1 1 0 01-1 1h-1m-4-14l-2 4h5l-1 1',
       theme: 'orange',
     },
     {
-      title: 'Excel, który przeszkadza',
+      title: 'Rezerwacje i kalendarz online',
       description:
-        'Niby masz tabelkę, ale nikt nie ma czasu jej uzupełniać. Jest zbyt skomplikowana, niefunkcjonalna i zamiast pomagać, tylko dokłada roboty.',
-      icon: 'M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+        'Zamieniam telefony na prosty system rezerwacji z przypomnieniami SMS. Klienci sami wybierają termin (np. u fryzjera), a Ty widzisz pełny kalendarz – bez przepisywania wizyt z notesu.',
+      icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
       theme: 'indigo',
+    },
+    {
+      title: 'Koniec z bałaganem w danych',
+      description:
+        'Wszystkie zlecenia, rozliczenia i kontakty do klientów masz w jednej, lekkiej aplikacji. Działa na telefonie i komputerze, więc zawsze wiesz, co jest do zrobienia na jutro.',
+      icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
+      theme: 'red',
     },
   ]);
 

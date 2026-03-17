@@ -14,13 +14,13 @@
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="DIAGNOZA_TWOJEJ_FIRMY"
-      title="Znasz to uczucie?"
+      subtitle="ZAKRES_POMOCY"
+      title="W czym dokładnie pomagam"
       class="font-mono"
     />
 
     <p class="text-center text-white/60 -mt-8 mb-16 max-w-2xl mx-auto font-light">
-      Najczęściej słyszę od właścicieli warsztatów i firm usługowych trzy rzeczy:
+      Projektuję narzędzia, które rozwiązują Twoje największe codzienne problemy:
     </p>
 
     <!-- Cards Layout -->
@@ -36,7 +36,7 @@
               <div
                 class="flex items-center justify-between mb-6 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors"
               >
-                <span class="font-mono text-xs text-white/40">SCENARIUSZ_0{{ index + 1 }}</span>
+                <span class="font-mono text-xs text-white/40">ZADANIE_0{{ index + 1 }}</span>
                 <div
                   class="h-1.5 w-1.5 rounded-sm"
                   [class]="
@@ -86,12 +86,12 @@
                 {{ problem.description }}
               </p>
 
-              <!-- Footer Status -->
+              <!-- Footer Action -->
               <div
-                class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-red-400/80"
+                class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-primary/60"
               >
-                <span class="inline-block w-1 h-1 bg-red-400 rounded-full animate-pulse"></span>
-                Wymaga zmiany
+                <span class="inline-block w-1 h-1 bg-primary rounded-full animate-pulse"></span>
+                Dowiedz się więcej
               </div>
             </app-card>
           </li>
