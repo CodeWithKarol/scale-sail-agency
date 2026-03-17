@@ -36,8 +36,8 @@ export class ImpactMetrics {
     },
     {
       value: '100%',
-      label: 'Spokój ducha',
-      description: 'Wszystkie zlecenia i dane klientów bezpiecznie w jednym miejscu.',
+      label: 'Wszystko w jednym miejscu',
+      description: 'Wszystkie zlecenia i dane klientów bezpiecznie w Twoim telefonie.',
     },
   ]);
 }

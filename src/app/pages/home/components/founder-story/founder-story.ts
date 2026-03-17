@@ -16,7 +16,7 @@ export class FounderStory {
     bio: [
       'Od lat pomagam firmom porządkować ich cyfrowy świat. Wierzę, że technologia nie musi być skomplikowana, aby dawać ogromne efekty. Moim celem jest tworzenie narzędzi, które po prostu działają i rozwiązują realne problemy.',
       'Zamiast skomplikowanych korporacyjnych systemów, dostarczam proste i intuicyjne aplikacje. Rozumiem, że w Twojej pracy liczy się czas i konkretne rozwiązanie, a nie techniczny żargon.',
-      'Pomagam przejść z ery kartek i Excela do nowoczesnego warsztatu, w którym wszystko masz pod ręką – w telefonie lub na komputerze.',
+      'Pomagam przejść z ery kartek i Excela do nowoczesnego warsztatu lub firmy usługowej, w której wszystko masz pod ręką – w telefonie lub na komputerze.',
     ],
     badges: ['Programista (6+ lat)', 'Właściciel agencji', 'Ekspert od automatyzacji'],
   });
