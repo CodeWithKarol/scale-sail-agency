@@ -41,8 +41,14 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
         <app-section-header
           subtitle="REALIZACJE / 01"
           title="Wybrane Realizacje"
-          description="Zobacz, jak pomogłem innym firmom zamienić chaos w poukładany proces. Od prostych systemów dla warsztatów po dedykowane aplikacje dla usług."
+          description="Zobacz przykładowe projekty, na bazie których możesz zobaczyć, jak myślę o systemach dla firm – od paneli administracyjnych po lekkie narzędzia dla warsztatów i usług."
         />
+
+        <p class="text-white/60 font-light max-w-3xl mt-8 font-mono text-sm leading-relaxed border-l-2 border-primary/30 pl-6">
+          Część poniższych projektów to przykładowe realizacje stworzone na potrzeby portfolio –
+          pokazują poziom złożoności, jakość frontendu i podejście do projektowania paneli, z których
+          później korzystają prawdziwi użytkownicy.
+        </p>
 
         <!-- Projects List -->
         <div class="mt-24 sm:mt-32 border-t border-white/10">

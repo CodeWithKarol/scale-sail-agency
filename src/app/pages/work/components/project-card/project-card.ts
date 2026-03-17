@@ -39,7 +39,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
             <div class="w-2 h-2 rounded-full bg-white/20"></div>
             <div class="w-2 h-2 rounded-full bg-white/20"></div>
             <div class="ml-auto font-mono text-[10px] text-white/40 tracking-wider">
-              PROJECT_ID: {{ project().id }}
+              ID_PROJEKTU: {{ project().id }}
             </div>
           </div>
 
@@ -48,7 +48,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
               project().heroImage ||
               'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80'
             "
-            [alt]="project().title + ' preview'"
+            [alt]="project().title + ' - podgląd'"
             width="800"
             height="450"
             class="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover/card:scale-105 group-hover/card:grayscale-[0.5]"
@@ -64,7 +64,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
             class="absolute inset-0 focus:outline-none z-20"
             tabindex="-1"
           >
-            <span class="sr-only">View Case Study</span>
+            <span class="sr-only">Zobacz Szczegóły</span>
           </a>
         </div>
       </div>
@@ -81,7 +81,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
               ></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            CASE STUDY
+            REALIZACJA
           </div>
           <div class="h-px flex-1 bg-white/10"></div>
           @if (project().techStack.length > 0) {
@@ -111,7 +111,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
         <!-- Tech Stack Tags -->
         <div class="mt-10">
           <div class="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-3">
-            Technologies
+            Główne cechy
           </div>
           <ul class="flex flex-wrap gap-2 list-none p-0">
             @for (tech of project().techStack.slice(0, 4); track tech) {
@@ -136,7 +136,7 @@ import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service
             class="group/link inline-flex items-center gap-2 text-sm font-bold text-white hover:text-accent transition-colors uppercase tracking-wide"
           >
             <span class="w-8 h-[1px] bg-current transition-all group-hover/link:w-12"></span>
-            Read Case Study
+            Czytaj więcej
           </a>
         </div>
       </div>

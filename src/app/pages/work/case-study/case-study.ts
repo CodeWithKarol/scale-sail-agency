@@ -51,7 +51,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                       ></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                     </span>
-                    CASE STUDY: {{ study.id }}
+                    REALIZACJA: {{ study.id }}
                   </div>
                 </div>
                 <h1
@@ -71,7 +71,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                 >
                   @if (study.demoUrl) {
                     <app-button variant="accent" size="md" [href]="study.demoUrl">
-                      <span>Visit Live Site</span>
+                      <span>Zobacz na żywo</span>
                       <!-- ExternalLink -->
                       <svg
                         class="ml-2 h-3 w-3"
@@ -93,9 +93,9 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                       variant="secondary"
                       size="md"
                       [href]="study.repoUrl"
-                      aria-label="View Source"
+                      aria-label="Zobacz kod"
                     >
-                      <span>View Code</span>
+                      <span>Zobacz kod</span>
                       <!-- Github -->
                       <svg
                         class="ml-2 h-4 w-4"
@@ -184,7 +184,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                   ></div>
                   <div class="flex items-center gap-4 mb-6">
                     <h2 class="text-xl font-bold text-white font-mono uppercase tracking-widest">
-                      01 // The Challenge
+                      01 // Wyzwanie
                     </h2>
                   </div>
                   <div
@@ -201,7 +201,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                   ></div>
                   <div class="flex items-center gap-4 mb-6">
                     <h2 class="text-xl font-bold text-white font-mono uppercase tracking-widest">
-                      02 // The Solution
+                      02 // Rozwiązanie
                     </h2>
                   </div>
                   <div
@@ -236,7 +236,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                       >
                         <!-- Trophy -->
                         <span class="w-2 h-2 bg-accent rounded-full"></span>
-                        Key Outcomes
+                        Główne efekty
                       </h3>
                       <ul class="space-y-6">
                         @for (result of study.results; track result) {
@@ -255,7 +255,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                         <p
                           class="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-2 font-mono"
                         >
-                          Tech Specs
+                          Specyfikacja
                         </p>
                         <div class="flex flex-wrap gap-2">
                           @for (tech of study.techStack; track tech) {
@@ -280,7 +280,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
               <h3
                 class="text-xs font-bold font-mono tracking-widest text-white/40 uppercase mb-8 border-l-2 border-accent pl-4"
               >
-                Interface Logs
+                Widok aplikacji
               </h3>
             </div>
             @if (study.screenshots.length) {
@@ -298,7 +298,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                 <div
                   class="absolute -top-3 left-8 px-4 py-1 bg-secondary text-xs font-mono text-accent border border-white/10"
                 >
-                  SYSTEM_ARCHITECTURE
+                  ARCHITEKTURA_SYSTEMU
                 </div>
 
                 <div
@@ -307,9 +307,9 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                   @if (study.technicalApproach) {
                     {{ study.technicalApproach }}
                   } @else {
-                    Built with modern Angular architecture leveraging Signals for granular
-                    reactivity. The state management strategy ensures type-safe, predictable data
-                    flow while maintaining exceptional runtime performance.
+                    System zbudowany z użyciem nowoczesnych standardów, zapewniający
+                    maksymalną szybkość działania i bezpieczeństwo danych. 
+                    Reaktywny interfejs gwarantuje płynność nawet przy dużej ilości danych.
                   }
                 </div>
 
@@ -317,8 +317,8 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                 <div
                   class="mt-8 pt-6 border-t border-dashed border-white/10 text-[10px] font-mono text-white/30 flex justify-between"
                 >
-                  <span>STATUS: OPTIMIZED</span>
-                  <span>RUNTIME: ANGULAR_19</span>
+                  <span>STATUS: OPTYMALNY</span>
+                  <span>WERSJA: 2026.03.V1</span>
                 </div>
               </div>
             </div>
@@ -330,9 +330,9 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
           >
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 class="text-3xl font-bold font-mono text-white mb-8 uppercase tracking-tight">
-                End of File
+                Koniec pliku
               </h2>
-              <app-button variant="secondary" size="lg" href="/">
+              <app-button variant="secondary" size="lg" href="/work">
                 <!-- ArrowLeft -->
                 <svg
                   class="h-4 w-4 mr-2"
@@ -347,7 +347,7 @@ import { GeometricBackground } from '../../../shared/ui/geometric-background/geo
                     d="M10 19l-7-7m0 0l7-7m-7 7h18"
                   />
                 </svg>
-                Return to Index
+                Powrót do listy
               </app-button>
             </div>
           </section>
