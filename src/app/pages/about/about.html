@@ -1,115 +1,153 @@
-<div class="min-h-screen bg-secondary font-sans text-white relative isolate pt-24 pb-24">
-  <!-- Background Grid -->
-  <div
-    class="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"
-  ></div>
+<div class="min-h-screen bg-slate-950 text-slate-200 relative isolate pt-32 pb-24 overflow-hidden">
+  <!-- Background Grid & Grain -->
+  <div class="absolute inset-0 -z-10 bg-grid-tech opacity-30"></div>
+  <div class="absolute inset-0 -z-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] pointer-events-none"></div>
 
-  <div class="layout-container">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-      <!-- Left: Bio & Story -->
-      <div class="lg:col-span-7 space-y-16">
-        <!-- Header -->
-        <div>
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-xs font-mono tracking-wider uppercase mb-6 rounded-sm"
-          >
-            <span class="w-2 h-2 rounded-full bg-primary"></span>
-            SYLWETKA_TWÓRCY
+  <div class="layout-container relative z-10">
+    <!-- Hero Intro -->
+    <div class="max-w-4xl mx-auto text-center mb-24 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <div
+        class="inline-flex items-center gap-3 px-4 py-1.5 bg-slate-900 border border-slate-800 text-accent text-[10px] font-black tracking-[0.4em] uppercase mb-10 rounded-sm shadow-[0_0_20px_rgba(255,111,60,0.1)]"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_#ff6f3c]"></span>
+        SYLWETKA TWÓRCY
+      </div>
+      <h1 class="text-4xl sm:text-7xl font-extrabold tracking-tighter text-white mb-10 leading-[1.05]">
+        Buduję narzędzia, które <br />
+        <span class="text-accent underline decoration-accent/20 underline-offset-8">zdejmują ciężar</span>&nbsp;<span class="text-slate-400">z Twoich barków.</span>
+      </h1>
+      <p class="text-xl sm:text-2xl text-slate-300 leading-relaxed font-light max-w-3xl mx-auto">
+        Nazywam się Karol Modelski. Od lat pomagam firmom wychodzić z ery kartek i Excela, budując systemy, które są <strong>proste jak młotek i solidne jak szwajcarski zegarek</strong>.
+      </p>
+    </div>
+
+    <!-- Craftsman Principles (Zasady Rzemieślnika) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-32 relative">
+      <!-- Decorative separator line -->
+      <div class="hidden lg:block absolute -top-12 left-0 w-full h-px bg-slate-800/50"></div>
+      
+      @for (principle of principles; track principle.title) {
+        <div class="bg-slate-900/60 border border-slate-800 p-10 relative group hover:border-accent/40 transition-all duration-500 rounded-sm">
+          <!-- Small accent line -->
+          <div class="absolute top-10 left-0 w-1 h-8 bg-accent group-hover:h-12 transition-all"></div>
+          
+          <h3 class="text-sm font-black uppercase tracking-[0.2em] text-white mb-6 group-hover:text-accent transition-colors">
+            {{ principle.title }}
+          </h3>
+          <p class="text-base text-slate-300 leading-relaxed font-light">
+            {{ principle.desc }}
+          </p>
+        </div>
+      }
+    </div>
+
+    <!-- Personal Touch & Photo -->
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center mb-32">
+      <div class="lg:col-span-7">
+        <div class="space-y-8">
+          <h2 class="text-[10px] font-black uppercase tracking-[0.3em] text-accent flex items-center gap-4">
+            KRÓTKA HISTORIA <span class="h-px flex-1 bg-accent/20"></span>
+          </h2>
+          <div class="prose prose-invert prose-slate max-w-none">
+            <p class="text-lg text-slate-200 leading-relaxed font-light">
+              Przez lata budowałem systemy dla największych instytucji finansowych. Tam nauczyłem się, że w technologii nie liczy się „błysk”, ale <strong>niezawodność i bezpieczeństwo danych</strong>.
+            </p>
+            <p class="text-lg text-slate-200 leading-relaxed font-light">
+              Dziś tę samą „bankową” jakość przenoszę do małych i średnich firm. Wiem, że Twoja firma to Twój dorobek życia – dlatego nie bawię się w półśrodki. Jeśli coś buduję, to tak, byś mógł o tym zapomnieć, bo po prostu działa.
+            </p>
           </div>
-          <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
-            Buduję narzędzia, <br />
-            <span class="text-white/40">które ułatwiają pracę małym firmom usługowym.</span>
-          </h1>
-          <p class="text-lg text-white/60 leading-relaxed font-light">
-            Nazywam się Karol Modelski. Przez lata budowałem systemy dla największych banków i
-            firm technologicznych. Dziś to doświadczenie wykorzystuję, by pomagać mniejszym firmom
-            <strong>porządkować ich biznesy</strong>. Tworzę proste, niezawodne narzędzia, które
-            zastępują stosy kartek i skomplikowane tabele. Dziś największą frajdę daje mi moment,
-            kiedy właściciel warsztatu albo małej firmy mówi: „wreszcie nie muszę szukać wszystkiego
-            po kartkach”.
-          </p>
-        </div>
-
-        <!-- Philosophy -->
-        <div class="border-l-2 border-white/10 pl-8 py-2">
-          <h2 class="text-sm font-mono uppercase tracking-widest text-white/40 mb-4">
-            MOJA_FILOZOFIA
-          </h2>
-          <p class="text-white/80 leading-relaxed">
-            Technologia powinna być przezroczysta. Moim celem jest stworzenie systemu, o którym
-            nie musisz myśleć – on po prostu ma działać w tle, automatyzować nudne zadania
-            i pozwalać Ci skupić się na tym, co robisz najlepiej. Czy to naprawa aut, czy
-            ogarnianie ekipy sprzątającej – system ma pomagać, a nie przeszkadzać.
-          </p>
-        </div>
-
-        <!-- Experience Timeline -->
-        <div>
-          <h2 class="text-sm font-mono uppercase tracking-widest text-white/40 mb-8">
-            MOJA_DROGA
-          </h2>
-          <div class="space-y-12 border-l border-white/10 ml-3 pl-8 relative">
-            @for (job of experience; track job.role) {
-              <div class="relative">
-                <span
-                  class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-[#0d1117] border border-white/20"
-                ></span>
-                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
-                  <h4 class="text-lg font-bold text-white">{{ job.role }}</h4>
-                  <span class="text-primary font-mono text-sm">@ {{ job.company }}</span>
-                </div>
-                <div class="text-xs font-mono text-white/40 mb-3">{{ job.period }}</div>
-                <p class="text-sm text-white/60 leading-relaxed max-w-xl">{{ job.desc }}</p>
-              </div>
-            }
+          
+          <div class="pt-6 border-l-4 border-accent pl-8 bg-accent/5 py-4 rounded-r-sm">
+            <p class="text-2xl font-bold text-white italic tracking-tight leading-snug">
+              „Wreszcie nie muszę szukać wszystkiego po kartkach”
+            </p>
+            <p class="text-sm text-accent font-mono mt-2 uppercase tracking-widest">>> cel moich wdrożeń</p>
           </div>
         </div>
       </div>
 
-      <!-- Right: Tech Stack & Stats -->
-      <div class="lg:col-span-5 space-y-12">
-        <!-- Image / Avatar -->
-        <div
-          class="relative aspect-square w-full max-w-md mx-auto lg:mx-0 overflow-hidden rounded-sm border border-white/10 group bg-[#0d1117]"
-        >
-          <div class="absolute inset-0 bg-grid-white/[0.05]"></div>
-
-          <img
-            class="absolute inset-0 h-full w-full object-cover filter grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
-            width="400"
-            height="400"
-            src="images/karol-modelski.webp"
-            alt="Karol Modelski - Twórca Scale Sail"
-          />
-
-          <!-- Tech Overlay -->
-          <div
-            class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent"
-          >
-            <div class="font-mono text-xs text-primary">>> STATUS: AKTYWNY</div>
+      <div class="lg:col-span-5">
+        <div class="relative group">
+          <!-- Heavy border decoration -->
+          <div class="absolute -inset-4 border border-accent/10 pointer-events-none transition-all duration-700 group-hover:-inset-2 group-hover:border-accent/30"></div>
+          
+          <div class="relative aspect-[4/5] bg-slate-900 border border-slate-800 p-2 overflow-hidden shadow-2xl">
+            <img
+              class="w-full h-full object-cover filter grayscale contrast-110 group-hover:grayscale-0 transition-all duration-1000"
+              src="images/karol-modelski.webp"
+              alt="Karol Modelski"
+            />
+            
+            <!-- Technical Status Overlay -->
+            <div class="absolute bottom-6 left-6 right-6 p-4 bg-slate-950/90 backdrop-blur-md border border-accent/30 flex items-center justify-between shadow-2xl">
+              <div class="flex items-center gap-3">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-accent shadow-[0_0_8px_#ff6f3c]"></span>
+                </span>
+                <span class="text-[10px] font-black text-white uppercase tracking-widest">STATUS: AKTYWNY</span>
+              </div>
+              <span class="text-[9px] font-mono text-accent/60">VER. 2026.03</span>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Tech Stack Grid -->
-        <div class="grid grid-cols-2 gap-6">
-          @for (stack of techStack; track stack.category) {
-            <div
-              class="p-4 bg-white/[0.02] border border-white/5 hover:border-white/10 transition-colors"
-            >
-              <h4 class="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-3">
-                {{ stack.category }}
-              </h4>
-              <ul class="space-y-1">
-                @for (item of stack.items; track item) {
-                  <li class="text-sm text-white/80 font-mono flex items-center gap-2">
-                    <span class="w-1 h-1 bg-primary/50 rounded-full"></span>
-                    {{ item }}
-                  </li>
-                }
-              </ul>
+    <!-- Quality Specs (Experience) -->
+    <div class="mb-32">
+      <div class="flex items-center gap-6 mb-16">
+        <h2 class="text-[10px] font-black uppercase tracking-[0.3em] text-accent whitespace-nowrap">SPECYFIKACJA STANDARDÓW</h2>
+        <div class="h-px w-full bg-accent/20"></div>
+      </div>
+
+      <div class="space-y-4">
+        @for (job of experience; track job.role) {
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-8 bg-slate-900/40 border border-slate-800 hover:bg-slate-900/60 hover:border-accent/40 transition-all duration-300 rounded-sm group">
+            <div class="lg:col-span-3">
+              <div class="text-[10px] font-black text-accent uppercase tracking-widest mb-2">{{ job.period }}</div>
+              <h4 class="text-lg font-bold text-white uppercase tracking-tight group-hover:text-accent transition-colors">{{ job.role }}</h4>
             </div>
-          }
-        </div>
+            <div class="lg:col-span-3">
+              <div class="inline-block px-3 py-1 bg-slate-950 border border-slate-800 text-slate-300 text-[10px] font-bold uppercase tracking-widest rounded-sm">
+                @ {{ job.company }}
+              </div>
+            </div>
+            <div class="lg:col-span-4">
+              <p class="text-sm text-slate-300 leading-relaxed group-hover:text-slate-100 transition-colors">
+                {{ job.desc }}
+              </p>
+            </div>
+            <div class="lg:col-span-2 flex lg:justify-end items-center">
+              <div class="flex items-center gap-2 px-3 py-1 border border-accent/40 bg-accent/10 text-accent text-[9px] font-black uppercase tracking-widest rounded-sm">
+                <span class="w-1 h-1 bg-accent rounded-full animate-pulse"></span>
+                {{ job.qualityMark }}
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Narzędziownia -->
+    <div class="pt-16 border-t border-accent/20">
+      <h2 class="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-12 text-center">NARZĘDZIOWNIA TECHNICZNA</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        @for (stack of techStack; track stack.category) {
+          <div class="text-center lg:text-left bg-slate-900/20 p-8 border border-white/5 rounded-sm hover:border-accent/20 transition-colors group">
+            <h4 class="text-xs font-black uppercase tracking-widest text-accent mb-8 border-b border-accent/20 pb-4 inline-block lg:block">
+              {{ stack.category }}
+            </h4>
+            <ul class="space-y-4">
+              @for (item of stack.items; track item) {
+                <li class="text-sm text-slate-300 flex items-center justify-center lg:justify-start gap-3 group/item">
+                  <span class="w-1.5 h-1.5 rounded-full bg-accent/20 group-hover/item:bg-accent transition-all shadow-[0_0_10px_transparent] group-hover/item:shadow-accent/50"></span>
+                  <span class="group-hover/item:text-white transition-colors">{{ item }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        }
       </div>
     </div>
   </div>
