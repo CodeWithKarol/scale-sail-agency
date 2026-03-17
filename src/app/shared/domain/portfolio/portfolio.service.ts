@@ -36,11 +36,11 @@ const CASE_STUDIES: CaseStudy[] = [
       'Przejrzystość: Intuicyjny panel, który nie wymaga szkolenia pracowników',
     ],
     techStack: [
-      'Angular 21 & Signals',
-      'TypeScript 5.9',
-      'Tailwind CSS 4',
-      'Vitest (Szybkie testy)',
-      'Chart.js (Wykresy)',
+      'Panel z kluczowymi liczbami biznesowymi',
+      'Najważniejsze liczby biznesowe na jednym ekranie',
+      'Dane odświeżane na bieżąco (bez ręcznego odświeżania)',
+      'Czytelny podgląd tego, co dzieje się w firmie dziś i w najbliższych dniach',
+      'Układ, który łatwo dostosować pod konkretną branżę',
     ],
     screenshots: [
       '/images/admin-panel/admin-panel-1.webp',
@@ -74,11 +74,11 @@ const CASE_STUDIES: CaseStudy[] = [
       'Bezpieczeństwo: Solidna ochrona danych klientów i historii zakupów',
     ],
     techStack: [
-      'Angular',
-      'Signals',
-      'Standalone Components',
-      'Tailwind CSS',
-      'WCAG 2.1 (Dostępność)',
+      'Sklep odporny na duży ruch',
+      'Szybkie działanie nawet przy dużej liczbie użytkowników',
+      'Stabilność – system nie „pęka”, gdy jest więcej zamówień',
+      'Czytelny podział na koszyk, zamówienia i płatności',
+      'Architektura, którą można później łatwo rozbudować',
     ],
     screenshots: [
       '/images/quick-cart/quick-cart-1.webp',
