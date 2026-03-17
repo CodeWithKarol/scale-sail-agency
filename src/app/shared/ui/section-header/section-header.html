@@ -1,19 +1,24 @@
 <header
-  class="mx-auto max-w-4xl mb-16 lg:mb-24"
-  [class.text-center]="alignment() === 'center' || alignment() === 'left'"
-  [class.lg:text-left]="alignment() === 'left'"
-  [class.text-left]="false"
+  class="mx-auto max-w-5xl mb-20 lg:mb-28"
+  [class.text-center]="alignment() === 'center'"
+  [class.text-left]="alignment() === 'left'"
 >
   @if (subtitle()) {
-    <h2 class="text-sm font-mono font-bold leading-7 text-accent uppercase tracking-widest">
-      {{ subtitle() }}
-    </h2>
+    <div class="mb-6 flex" [class.justify-center]="alignment() === 'center'">
+      <div class="status-badge status-badge-dark ring-4 ring-secondary/5">
+        {{ subtitle() }}
+      </div>
+    </div>
   }
-  <h2 class="mt-2 heading-2 text-white text-balance">
+
+  <h2 class="mt-4 heading-2 text-secondary text-balance uppercase tracking-[-0.02em]">
     {{ title() }}
   </h2>
+
   @if (description()) {
-    <p class="mx-auto mt-6 max-w-2xl text-body text-white/60 text-pretty">
+    <p
+      class="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-secondary/70 text-pretty font-medium"
+    >
       {{ description() }}
     </p>
   }

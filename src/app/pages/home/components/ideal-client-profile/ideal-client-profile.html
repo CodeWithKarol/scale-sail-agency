@@ -1,30 +1,28 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10 shadow-none"
 >
-  <!-- Technical Grid Background -->
-  <div class="absolute inset-0 -z-10 bg-grid-tech"></div>
+  <!-- Technical Grid Background & Noise -->
+  <div class="absolute inset-0 -z-10 bg-grid-workshop opacity-50"></div>
+  <div class="absolute inset-0 -z-10 bg-noise pointer-events-none"></div>
 
   <div class="layout-container relative z-10">
     <app-section-header
-      subtitle="SYSTEM_COMPATIBILITY"
-      title="Partnership Criteria"
-      description="I partner with Scale-Ups where 'slow engineering' is a business risk. I don't sell hours or quick hacks. I sell a standardized protocol for restoring velocity and stability."
-      class="font-mono mb-16"
+      subtitle="PROFIL KLIENTA"
+      title="Z kim pracuję"
+      description="Skupiam się na małych firmach usługowych, które na co dzień ogarniają wszystko na papierze, w zeszycie albo prostym Excelu. Jeśli Twoja firma działa lokalnie, masz powtarzalne zlecenia lub wizyty, a chaos w kalendarzu i papierach zaczyna Cię przerastać – prawdopodobnie mogę pomóc."
     />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
       <!-- Compatible (Who it is for) -->
-      <app-card
-        class="relative overflow-hidden border border-primary/20 bg-primary/5 p-8 sm:p-10 flex flex-col h-full group transition-all duration-300 hover:border-primary/40"
-      >
+      <app-card class="card-workshop h-full flex flex-col p-10 group shadow-none">
         <!-- Header -->
-        <div class="flex items-center gap-3 mb-8 border-b border-primary/10 pb-6">
+        <div class="flex items-center gap-4 mb-10 border-b-2 border-secondary/10 pb-8">
           <div
-            class="flex items-center justify-center w-10 h-10 rounded-sm bg-primary/10 border border-primary/20 text-primary"
+            class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-6 h-6"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -36,22 +34,20 @@
             </svg>
           </div>
           <div>
-            <div class="text-[10px] font-mono uppercase tracking-widest text-primary/80 mb-0.5">
-              Target Profile
-            </div>
-            <h3 class="text-xl font-mono text-white">Ideal Partners</h3>
+            <div class="text-small text-primary mb-1">IDEALNY PROFIL</div>
+            <h3 class="heading-3 text-secondary">Dla kogo tak</h3>
           </div>
         </div>
 
         <!-- List -->
-        <ul class="space-y-4 flex-1">
+        <ul class="space-y-6 flex-1">
           @for (item of idealClients(); track item) {
-            <li class="flex gap-3 items-start group/item">
+            <li class="flex gap-4 items-start group/item">
               <span
-                class="mt-1.5 w-1.5 h-1.5 rounded-sm bg-primary shadow-[0_0_8px_rgba(var(--primary-rgb),0.5)]"
+                class="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 transition-all duration-300 group-hover/item:scale-150 group-hover/item:bg-accent group-hover/item:shadow-none flex-shrink-0"
               ></span>
               <span
-                class="text-sm text-white/90 font-mono leading-relaxed group-hover/item:text-white transition-colors"
+                class="text-base text-secondary/70 leading-relaxed group-hover/item:text-secondary transition-colors"
               >
                 {{ item }}
               </span>
@@ -61,7 +57,7 @@
 
         <!-- Status -->
         <div
-          class="mt-10 pt-6 border-t border-primary/10 flex items-center gap-2 text-xs font-mono text-primary uppercase tracking-wider"
+          class="mt-12 pt-8 border-t-2 border-secondary/10 flex items-center gap-3 text-small text-primary"
         >
           <span class="relative flex h-2 w-2">
             <span
@@ -69,22 +65,19 @@
             ></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
           </span>
-          Priority Support Active
+          Wsparcie priorytetowe aktywne
         </div>
       </app-card>
 
-      <!-- Incompatible (Who it is NOT for) -->
-      <app-card
-        class="relative overflow-hidden border border-white/5 bg-white/[0.02] p-8 sm:p-10 flex flex-col h-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-      >
+      <app-card class="card-workshop h-full flex flex-col p-10 shadow-none">
         <!-- Header -->
-        <div class="flex items-center gap-3 mb-8 border-b border-white/5 pb-6">
+        <div class="flex items-center gap-4 mb-10 border-b-2 border-secondary/10 pb-8">
           <div
-            class="flex items-center justify-center w-10 h-10 rounded-sm bg-white/5 border border-white/10 text-white/40"
+            class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary/50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5"
+              class="w-6 h-6"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -97,20 +90,20 @@
             </svg>
           </div>
           <div>
-            <div class="text-[10px] font-mono uppercase tracking-widest text-white/40 mb-0.5">
-              Out of Scope
-            </div>
-            <h3 class="text-xl font-mono text-white/60">Not a Match</h3>
+            <div class="text-small text-secondary/50 mb-1">POZA ZAKRESEM</div>
+            <h3 class="heading-3 text-secondary/70">Dla kogo nie</h3>
           </div>
         </div>
 
         <!-- List -->
-        <ul class="space-y-4 flex-1">
+        <ul class="space-y-6 flex-1">
           @for (item of antiPatterns(); track item) {
-            <li class="flex gap-3 items-start group/item">
-              <span class="mt-1.5 w-1.5 h-1.5 rounded-sm bg-white/20"></span>
+            <li class="flex gap-4 items-start group/item">
               <span
-                class="text-sm text-white/50 font-mono leading-relaxed group-hover/item:text-white/70 transition-colors"
+                class="mt-2 w-1.5 h-1.5 rounded-full bg-secondary/40 transition-transform group-hover/item:scale-125 flex-shrink-0"
+              ></span>
+              <span
+                class="text-base text-secondary/70 leading-relaxed group-hover/item:text-secondary/70 transition-colors"
               >
                 {{ item }}
               </span>
@@ -120,10 +113,10 @@
 
         <!-- Status -->
         <div
-          class="mt-10 pt-6 border-t border-white/5 flex items-center gap-2 text-xs font-mono text-white/30 uppercase tracking-wider"
+          class="mt-12 pt-8 border-t-2 border-secondary/10 flex items-center gap-3 text-small text-secondary/60"
         >
-          <span class="w-2 h-2 rounded-full bg-white/20"></span>
-          Request Declined
+          <span class="w-2 h-2 rounded-full bg-neutral"></span>
+          Brak wolnych terminów
         </div>
       </app-card>
     </div>

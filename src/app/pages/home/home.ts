@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SeoService } from '../../shared/core/seo/seo.service';
 import { Hero } from './components/hero/hero';
 import { ProblemSolution } from './components/problem-solution/problem-solution';
-import { ServiceArchitecture } from './components/service-architecture/service-architecture';
 import { Process } from './components/process/process';
 import { FounderStory } from './components/founder-story/founder-story';
 import { Contact } from './components/contact/contact';
@@ -18,7 +17,6 @@ import { IdealClientProfile } from './components/ideal-client-profile/ideal-clie
     CommonModule,
     Hero,
     ProblemSolution,
-    ServiceArchitecture,
     Process,
     FounderStory,
     Contact,
@@ -36,50 +34,33 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Angular Legacy Modernization Expert',
+      title: 'Proste aplikacje dla warsztatów i firm usługowych | Scale Sail',
       description:
-        'Senior Angular Developer specialized in modernizing legacy apps and technical debt. Scale your enterprise frontend with audit-ready architecture.',
+        'Pomagam małym firmom wyjść z ery kartek i Excela. Tworzę proste systemy do zarządzania zleceniami i automatyzacji kontaktu z klientem.',
       slug: '',
       type: 'website',
       keywords: [
-        // Short-tail (High Volume)
-        'Angular Developer',
-        'Frontend Architect',
-        'Angular Consultant',
-        // Mid-tail (Targeted Services)
-        'Angular Migration',
-        'Enterprise Angular',
-        'Performance Optimization',
-        'Code Refactoring',
-        'Technical Debt',
-        // Long-tail (High Intent/Specific Problems)
-        'Legacy Application Modernization',
-        'AngularJS to Angular Upgrade',
-        'Fix Slow Angular Application',
-        'Scalable Frontend Architecture',
-        'Zoneless Angular Migration',
+        'aplikacja dla warsztatu',
+        'program dla warsztatu samochodowego',
+        'zarządzanie zleceniami',
+        'automatyzacja firmy usługowej',
+        'system dla serwisu',
+        'cyfryzacja małej firmy',
+        'powiadomienia sms dla klientów',
       ],
     });
 
-    this.seoService.setSchema({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
+    this.seoService.setLocalBusinessSchema({
       name: 'Scale Sail Agency',
+      description:
+        'Pomagam małym firmom usługowym i warsztatom w cyfrowej transformacji i automatyzacji pracy.',
       url: 'https://scale-sail.io',
       logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
-      description:
-        'Senior Angular Developer specialized in modernizing legacy apps, Angular migrations, and fixing technical debt.',
       founder: {
-        '@type': 'Person',
         name: 'Karol Modelski',
-        jobTitle: 'Senior Frontend Developer & Founder',
+        jobTitle: 'Twórca rozwiązań cyfrowych & Założyciel',
       },
-      areaServed: 'Worldwide',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer support',
-        email: 'contact@scale-sail.io',
-      },
+      areaServed: 'Poland',
     });
   }
 }

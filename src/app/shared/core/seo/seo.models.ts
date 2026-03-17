@@ -18,3 +18,34 @@ export interface JsonLdSchema {
   '@type'?: string;
   [key: string]: unknown;
 }
+
+export interface LocalBusinessConfig {
+  name: string;
+  description: string;
+  url: string;
+  logo: string;
+  address?: {
+    streetAddress?: string;
+    addressLocality?: string;
+    postalCode?: string;
+    addressCountry?: string;
+  };
+  geo?: {
+    latitude: number;
+    longitude: number;
+  };
+  telephone?: string;
+  priceRange?: string;
+  openingHours?: string[];
+  founder?: {
+    name: string;
+    jobTitle: string;
+  };
+  areaServed?: string;
+  sameAs?: string[];
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}

@@ -1,14 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
 @theme {
-  --color-primary: #007bff;
-  --color-secondary: #0a1f44;
-  --color-accent: #ff6f3c;
-  --color-neutral: #f4f6f8;
+  --color-primary: #007bff; /* Electric Blue */
+  --color-secondary: #0a1f44; /* Deep Navy */
+  --color-accent: #ff6f3c; /* Vibrant Orange */
+  --color-neutral: #f4f6f8; /* Light Gray */
 
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --animate-loading: loading 2s ease-in-out infinite;
 
@@ -27,7 +26,7 @@
 
 body {
   font-family: var(--font-sans);
-  @apply bg-white text-secondary antialiased;
+  @apply bg-neutral text-secondary antialiased selection:bg-primary/20 selection:text-primary;
 }
 
 html {
@@ -36,7 +35,7 @@ html {
 
 @layer components {
   /* ==========================================
-     SCALE SAIL DESIGN SYSTEM
+     SCALE SAIL - MODERN WORKSHOP SYSTEM
      ========================================== */
 
   /* --- Layout & Container --- */
@@ -45,53 +44,58 @@ html {
   }
 
   .section-padding {
-    @apply py-16 lg:py-24;
+    @apply py-20 lg:py-32;
   }
 
   /* --- Typography --- */
   .heading-1 {
-    @apply font-bold text-4xl lg:text-5xl tracking-tight text-secondary leading-tight;
+    @apply font-black text-4xl lg:text-7xl uppercase tracking-[-0.03em] text-secondary leading-[0.95];
   }
 
   .heading-2 {
-    @apply font-bold text-3xl lg:text-4xl tracking-tight text-secondary leading-tight;
+    @apply font-black text-3xl lg:text-5xl uppercase tracking-[-0.02em] text-secondary leading-[1.1];
   }
 
   .heading-3 {
-    @apply font-bold text-2xl lg:text-3xl tracking-tight text-secondary;
+    @apply font-bold text-xl lg:text-2xl uppercase tracking-tight text-secondary;
   }
 
   .text-body {
-    @apply text-base text-secondary/80 leading-relaxed;
+    @apply text-lg text-secondary/80 leading-relaxed font-normal;
   }
 
   .text-small {
-    @apply text-sm text-secondary/60;
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-primary;
   }
 
-  /* --- Buttons --- */
-  .btn,
-  .btn-primary,
-  .btn-secondary,
-  .btn-accent,
-  .btn-ghost {
-    @apply inline-flex items-center justify-center font-bold uppercase tracking-wider font-mono transition-all duration-300 rounded-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-1 focus:ring-offset-1;
+  /* --- Industrial Elements --- */
+  .industrial-border {
+    @apply border-2 border-secondary/10;
+  }
+
+  .industrial-border-thick {
+    @apply border-4 border-secondary;
+  }
+
+  /* --- Buttons (Modern Workshop Style) --- */
+  .btn {
+    @apply inline-flex items-center justify-center font-black uppercase tracking-[0.1em] transition-all duration-200 rounded-none disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 active:scale-[0.97] cursor-pointer;
   }
 
   .btn-primary {
-    @apply bg-primary text-white border border-primary hover:bg-transparent hover:text-primary shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+    @apply bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary shadow-[4px_4px_0px_0px_rgba(0,123,255,0.2)];
   }
 
   .btn-secondary {
-    @apply bg-white/5 text-white border border-white/10 hover:bg-white/10 hover:border-white/30 backdrop-blur-sm;
+    @apply bg-secondary text-white border-2 border-secondary hover:bg-white hover:text-secondary shadow-[4px_4px_0px_0px_rgba(10,31,68,0.2)];
   }
 
   .btn-accent {
-    @apply bg-accent text-white border border-accent hover:bg-transparent hover:text-accent shadow-[4px_4px_0_0_rgba(0,0,0,0.2)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px];
+    @apply bg-accent text-white border-2 border-secondary hover:bg-secondary hover:text-accent shadow-[8px_8px_0px_0px_rgba(10,31,68,1)];
   }
 
   .btn-ghost {
-    @apply text-white/60 hover:text-accent hover:bg-white/5 border border-transparent hover:border-white/10;
+    @apply text-secondary border-2 border-transparent hover:border-secondary/20;
   }
 
   .btn-lg {
@@ -99,48 +103,49 @@ html {
   }
 
   .btn-md {
-    @apply px-8 py-3 text-xs;
+    @apply px-6 py-3 text-xs;
   }
 
   .btn-sm {
-    @apply px-6 py-2 text-xs;
+    @apply px-4 py-2 text-[10px];
   }
 
   /* --- Cards & Surfaces --- */
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-neutral/50 overflow-hidden transition-all duration-300;
+    @apply bg-white rounded-none border-2 border-secondary/10 overflow-hidden transition-all duration-300 shadow-none;
   }
 
-  .card-hover {
-    @apply hover:shadow-md hover:-translate-y-1 hover:border-primary/20;
+  .card-workshop {
+    @apply border-2 border-secondary/10 bg-white hover:border-primary transition-colors relative;
+  }
+
+  .card-workshop::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-primary opacity-0 transition-opacity;
+  }
+
+  .card-workshop:hover::before {
+    @apply opacity-100;
   }
 
   /* --- Forms --- */
   .input-field {
-    @apply w-full rounded-lg border-neutral bg-neutral/50 px-4 py-3 text-secondary placeholder:text-secondary/40 focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors;
-  }
-  /* --- Surfaces & Backgrounds --- */
-  .bg-glow-radial {
-    @apply bg-slate-950 bg-[radial-gradient(circle_at_center,rgba(30,58,138,0.4),#020617)];
+    @apply w-full rounded-none border-2 border-secondary/10 bg-white px-5 py-4 text-secondary placeholder:text-secondary/30 font-mono text-sm focus:border-primary focus:outline-none transition-colors;
   }
 
-  .bg-grid-tech {
-    @apply bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px];
+  /* --- Technical Patterns --- */
+  .bg-grid-workshop {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(10, 31, 68, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(10, 31, 68, 0.03) 1px, transparent 1px);
   }
 
-  .bg-mesh-slight {
-    @apply bg-[radial-gradient(circle_at_top_right,rgba(30,58,138,0.4),transparent),radial-gradient(circle_at_bottom_left,#020617,transparent)];
+  .status-badge {
+    @apply font-mono text-[10px] font-bold px-3 py-1 bg-white text-secondary border-2 border-secondary/10 uppercase tracking-widest inline-flex items-center gap-2;
   }
 
-  .glass-panel {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
-  }
-
-  .obsidian-panel {
-    @apply bg-slate-950/90 border border-white/10 border-t-primary/50 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)];
-  }
-
-  .card-neon-floating {
-    @apply bg-slate-950/80 backdrop-blur-sm border border-white/5 transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_30px_-10px_rgba(0,123,255,0.3)] hover:-translate-y-1;
+  .status-badge-dark {
+    @apply bg-secondary text-white border-secondary;
   }
 }

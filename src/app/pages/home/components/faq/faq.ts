@@ -18,51 +18,43 @@ export class Faq implements OnInit {
 
   faqs = signal<FAQ[]>([
     {
-      question: 'Do you work with both enterprise and startups?',
+      question: 'Czym Twój system różni się od gotowego oprogramowania dla warsztatu?',
       answer:
-        "I partner primarily with scale-ups and enterprises where 'slow engineering' has become a blocker to Scale. Whether you're a Series B startup needing to stabilize for growth or an enterprise needing to modernize legacy core systems, I provide the architectural leadership to restore velocity.",
+        'Gotowe systemy często są przeładowane funkcjami, których nie potrzebujesz, i wymagają opłacania dożywotniego abonamentu. Ja buduję dedykowaną aplikację dla Twojej firmy na własność – płacisz raz za wdrożenie, a system jest prosty, szybki i zawiera dokładnie to, czego używasz w codziennej pracy.',
     },
     {
-      question: "What's included in a discovery call?",
+      question: 'Czy ja i moi pracownicy poradzimy sobie z obsługą?',
       answer:
-        "The discovery call is a 15-minute qualification chat. The real value starts with the Audit ($997). I'll review your codebase, identify bottlenecks, and give you a roadmap. If you hire me for Sprints, the Audit fee is 100% credited back.",
+        'Tak. Projektuję aplikacje tak, aby były prostsze niż wysłanie SMS-a. Nie ma tu zbędnych przycisków ani skomplikowanych tabel. Jeśli potrafisz obsługiwać Facebooka lub bankowość w telefonie, poradzisz sobie bez problemu.',
     },
     {
-      question: 'Do you work with existing teams?',
+      question: 'Czy moi klienci muszą coś instalować na telefonie?',
       answer:
-        "Yes. I often integrate as a Fractional Tech Lead or Senior Architect to guide internal teams through complex migrations or architecture decisions. I don't just write code; I elevate your team's standards.",
+        'Nie. Klient dostaje od Ciebie zwykły link w wiadomości SMS. Klika go i od razu widzi status swojego zlecenia w przeglądarce. Zero haseł, zero zakładania kont, zero instalowania czegokolwiek.',
     },
     {
-      question: 'What frameworks do you specialize in?',
+      question: 'Czy to zadziała na moim telefonie/tablecie?',
       answer:
-        'I specialize exclusively in Angular (Legacy → v21 migrations, NgRx/Signals, Server-side & hybrid rendering, Incremental Hydration, Nx monorepos). This focus allows me to solve problems generalist frontend developers struggle with.',
+        'Tak, aplikacja działa na każdym urządzeniu z dostępem do internetu – od najnowszego iPhone’a po starsze telefony z Androidem. Możesz z niej korzystać na komputerze w biurze i na telefonie, gdy jesteś pod samochodem lub u klienta.',
     },
     {
-      question: 'What is your typical engagement model?',
+      question: 'Ile czasu trwa wdrożenie takiego systemu?',
       answer:
-        'We start with the Audit ($997) to define the roadmap. Then, we move to "Velocity Sprints" ($4k / 2-weeks) to execute the work. No hourly billing, no surprises.',
+        'Proste systemy (np. dla warsztatu) uruchamiam zazwyczaj w 7-14 dni. Moim celem jest, abyś jak najszybciej odczuł ulgę i przestał marnować czas na telefony.',
     },
     {
-      question: "What's your availability?",
-      answer: 'Currently booking Q1 2026 projects. Contact me to secure your slot.',
+      question: 'Ile to kosztuje? Czy są jakieś miesięczne opłaty?',
+      answer:
+        'Stosuję prosty model: płacisz raz za przygotowanie i wdrożenie. Tworzę wyłącznie dedykowane, solidne systemy, których ceny zaczynają się od 5 000 zł netto (typowe wdrożenia mieszczą się w przedziale 5 000 – 15 000 zł). Potem ponosisz jedynie minimalne koszty utrzymania serwera i wysyłki SMS-ów (kilkadziesiąt złotych miesięcznie). Jeśli kiedyś będziesz chciał dalej rozwijać system, możemy umówić się na prosty miesięczny abonament za opiekę – ale nie jest on wymagany, żeby system działał.',
+    },
+    {
+      question: 'Mam już swoje dane w Excelu. Czy da się je przenieść?',
+      answer:
+        'Oczywiście. Pomagam przenieść bazę klientów i historię zleceń z Excela lub kartek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
     },
   ]);
 
   ngOnInit() {
-    this.seoService.setSchema(
-      {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: this.faqs().map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
-        })),
-      },
-      'json-ld-faq',
-    );
+    this.seoService.setFaqSchema(this.faqs());
   }
 }

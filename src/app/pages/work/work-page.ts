@@ -15,39 +15,41 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { ProjectCardComponent } from './components/project-card/project-card';
 
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
-import { GeometricBackground } from '../../shared/ui/geometric-background/geometric-background';
 
 @Component({
   selector: 'app-work-page',
-  imports: [
-    CommonModule,
-    SectionHeader,
-    ProjectCardComponent,
-    Button,
-    GeometricBackground,
-    BreadcrumbComponent,
-  ],
+  imports: [CommonModule, SectionHeader, ProjectCardComponent, Button, BreadcrumbComponent],
   template: `
-    <div class="min-h-screen font-sans text-white pb-24 sm:pb-32 relative isolate">
-      <div class="fixed inset-0 -z-10">
-        <app-geometric-background variant="hero" />
-      </div>
+    <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
+      <!-- Technical Grid Background -->
+      <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
-      <div class="layout-container pt-24 sm:pt-32">
+      <div class="layout-container relative z-10 pt-32 sm:pt-40">
         <!-- Breadcrumbs -->
         <app-breadcrumb />
 
         <!-- Header -->
         <app-section-header
-          subtitle="INDEX / 01"
-          title="Turnaround Stories"
-          description="Real examples of how I helped companies **Scale** past their bottlenecks. From sluggish legacy monoliths to high-velocity shipping engines."
+          subtitle="PORTFOLIO"
+          title="Wybrane Realizacje"
+          description="Zobacz przykładowe projekty, na bazie których możesz zobaczyć, jak myślę o systemach dla firm – od paneli administracyjnych po lekkie narzędzia dla warsztatów i usług."
         />
 
+        <div
+          class="max-w-4xl border-l-8 border-primary/10 pl-10 py-8 bg-white/5 mb-24 animate-in fade-in slide-in-from-left-4 duration-700 delay-200"
+        >
+          <p class="text-body sm:text-lg text-secondary/70 italic">
+            Część poniższych projektów to przykładowe realizacje stworzone na potrzeby portfolio –
+            pokazują poziom złożoności, jakość frontendu i podejście do projektowania paneli, z
+            których później korzystają prawdziwi użytkownicy.
+          </p>
+          <div class="mt-6 text-small text-secondary/30">GWARANCJA JAKOŚCI: WYSOKI STANDARD</div>
+        </div>
+
         <!-- Projects List -->
-        <div class="mt-24 sm:mt-32 border-t border-white/10">
+        <div class="mt-24 sm:mt-32 border-t-4 border-secondary/10">
           @if (hasProjects()) {
-            <ul class="list-none p-0 divide-y divide-white/5">
+            <ul class="list-none p-0 divide-y-4 divide-secondary/5">
               @for (
                 project of visibleProjects();
                 track project.id;
@@ -62,15 +64,16 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
 
             <!-- Load More -->
             @if (hasMoreProjects()) {
-              <div class="mt-32 flex justify-center">
+              <div class="mt-32 flex justify-center pt-20 border-t-2 border-secondary/10 relative">
+                <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary"></div>
                 <app-button variant="secondary" size="lg" (click)="loadMore()">
-                  Load more projects
+                  POKAŻ WIĘCEJ PROJEKTÓW
                 </app-button>
               </div>
             }
           } @else {
-            <div class="text-center py-24">
-              <p class="text-white/40">Coming soon.</p>
+            <div class="text-center py-32 bg-white border-2 border-dashed border-secondary/10">
+              <p class="text-small text-secondary/40">Wkrótce pojawią się nowe opisy.</p>
             </div>
           }
         </div>
@@ -105,23 +108,22 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Work | Scale Sail Agency',
+        title: 'Realizacje | Scale Sail',
         description:
-          'Case studies of engineering turnarounds. See how legacy codebases were transformed into high-velocity growth engines.',
+          'Case studies wdrożeń systemów dla firm usługowych. Zobacz jak cyfrowa transformacja pomogła realnym biznesom.',
         slug: '/work',
         keywords: [
-          'Angular Portfolio',
-          'Case Studies',
-          'Enterprise Angular',
-          'System Architecture',
-          'SaaS Development',
-          'Frontend Modernization',
+          'Portfolio',
+          'Realizacje IT',
+          'Aplikacje dla warsztatów',
+          'Systemy usługowe',
+          'Automatyzacja firm',
         ],
       });
 
       this.seoService.setBreadcrumbs([
-        { name: 'Home', path: '/' },
-        { name: 'Work', path: '/work' },
+        { name: 'Start', path: '/' },
+        { name: 'Realizacje', path: '/work' },
       ]);
 
       const projects = this.projects();
@@ -131,9 +133,9 @@ export class WorkPage {
           '@graph': [
             {
               '@type': 'CollectionPage',
-              name: 'Selected Work | Scale Sail Agency',
+              name: 'Wybrane Realizacje | Scale Sail Agency',
               description:
-                'Case studies focused on modernization, performance wins, and scalable architecture.',
+                'Historie wdrożeń systemów, które usprawniły pracę w firmach usługowych.',
               url: 'https://scale-sail.io/work',
               mainEntity: {
                 '@type': 'ItemList',

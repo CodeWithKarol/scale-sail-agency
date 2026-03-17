@@ -1,57 +1,50 @@
-<section class="relative bg-glow-radial section-padding overflow-hidden border-t border-white/5">
+<section
+  class="relative bg-neutral section-padding overflow-hidden border-t-2 border-secondary/10 bg-grid-workshop"
+>
   <!-- Technical Grid Background -->
-  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
-  <div class="absolute inset-0 -z-10 bg-secondary/95"></div>
-
-  <!-- Decorative elements -->
-  <div
-    class="absolute top-0 right-0 w-1/3 h-px bg-gradient-to-l from-primary/20 to-transparent"
-  ></div>
-  <div
-    class="absolute bottom-0 left-0 w-1/3 h-px bg-gradient-to-r from-primary/20 to-transparent"
-  ></div>
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="SYSTEM_DIAGNOSTICS"
-      title="Critical Failures Detected"
-      class="font-mono"
+      subtitle="ZAKRES POMOCY"
+      title="Automatyzacja pracy i zarządzanie zleceniami"
     />
+
+    <p class="text-center text-small max-w-2xl mx-auto -mt-8 mb-16 text-secondary/70">
+      PROJEKTUJĘ NARZĘDZIA DO ROZWIĄZYWANIA CODZIENNYCH PROBLEMÓW OPERACYJNYCH
+    </p>
 
     <!-- Cards Layout -->
     <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
       <ul class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
         @for (problem of problems(); track problem.title; let index = $index; let last = $last) {
           <li>
-            <app-card
-              [interactive]="true"
-              class="h-full flex flex-col p-6 lg:p-8 bg-black/20 backdrop-blur-sm border border-white/5 hover:border-primary/30 transition-all group"
-            >
-              <!-- Technical Header -->
+            <app-card [interactive]="true" class="card-workshop h-full flex flex-col p-8 group">
+              <!-- Utility Header -->
               <div
-                class="flex items-center justify-between mb-6 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors"
+                class="flex items-center justify-between mb-8 pb-4 border-b-2 border-secondary/10 group-hover:border-primary/20 transition-colors"
               >
-                <span class="font-mono text-xs text-white/40">ERR_0{{ index + 1 }}</span>
+                <span class="text-small text-secondary/50">Zadanie 0{{ index + 1 }}</span>
                 <div
-                  class="h-1.5 w-1.5 rounded-sm"
+                  class="h-1.5 w-1.5 rounded-none"
                   [class]="
-                    problem.theme === 'red'
-                      ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
-                      : problem.theme === 'orange'
-                        ? 'bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]'
-                        : 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]'
+                    problem.theme === 'secondary'
+                      ? 'bg-secondary'
+                      : problem.theme === 'accent'
+                        ? 'bg-accent'
+                        : 'bg-primary'
                   "
                 ></div>
               </div>
 
               <!-- Icon & Title -->
-              <div class="flex items-start gap-4 mb-4">
+              <div class="flex flex-col gap-6 mb-4">
                 <div
-                  class="relative shrink-0 flex items-center justify-center w-10 h-10 border border-white/10 bg-white/5 text-white/60 group-hover:text-white group-hover:border-primary/50 transition-colors"
+                  class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary/70 group-hover:text-primary group-hover:border-primary transition-all"
                 >
                   <svg
-                    class="h-5 w-5"
+                    class="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -59,36 +52,19 @@
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
                   </svg>
-                  <!-- Corner accents -->
-                  <div
-                    class="absolute top-0 left-0 w-1 h-1 border-t border-l border-white/20"
-                  ></div>
-                  <div
-                    class="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-white/20"
-                  ></div>
                 </div>
 
-                <h3
-                  class="text-lg font-mono uppercase tracking-tight text-white group-hover:text-primary transition-colors pt-1"
-                >
+                <h3 class="heading-3 text-secondary group-hover:text-primary transition-colors">
                   {{ problem.title }}
                 </h3>
               </div>
 
               <!-- Description -->
               <p
-                class="mt-2 flex-1 text-sm leading-6 text-white/60 font-light group-hover:text-white/80 transition-colors border-l border-white/5 pl-4 ml-5"
+                class="mt-2 flex-1 text-sm leading-relaxed text-secondary/70 font-normal group-hover:text-secondary/70 transition-colors"
               >
                 {{ problem.description }}
               </p>
-
-              <!-- Footer Status -->
-              <div
-                class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-red-400/80"
-              >
-                <span class="inline-block w-1 h-1 bg-red-400 rounded-full animate-pulse"></span>
-                Action Required
-              </div>
             </app-card>
           </li>
         }
@@ -97,41 +73,24 @@
 
     <!-- Bottom Action / Summary Banner -->
     <div class="mt-16 sm:mt-20 lg:mt-24">
-      <div class="relative overflow-hidden bg-black/40 border border-white/10 p-1">
-        <!-- Scanlines -->
-        <div
-          class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDAsIDAsIDAsIDAuMykiLz4KPC9zdmc+')] pointer-events-none z-10 opacity-20"
-        ></div>
-
-        <div class="px-6 py-10 sm:px-12 xl:py-16 relative z-20">
-          <!-- Background glow -->
-          <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[600px] bg-primary/5 blur-3xl rounded-full -z-10"
-          ></div>
-
+      <div
+        class="relative overflow-hidden bg-white border-2 border-secondary/10 p-1 rounded-none shadow-none transition-shadow"
+      >
+        <div class="px-6 py-12 sm:px-12 xl:py-20 relative z-20">
           <div class="mx-auto max-w-3xl text-center">
-            <h3 class="text-lg font-mono leading-8 text-white/80 text-pretty">
-              <span class="text-primary">></span> Whether you need a
-              <span class="text-white">Scale-Blocker Audit</span>,
-              <span class="text-white">Velocity Sprints</span>, or
-              <span class="text-white">Fractional Leadership</span>,
-              <span class="text-white border-b border-primary/50 pb-0.5"
-                >you're choosing the same elite engineering standards</span
+            <h3 class="heading-3 text-secondary text-pretty">
+              Niezależnie czy potrzebujesz
+              <span class="text-primary underline decoration-primary/30 underline-offset-8"
+                >automatycznych SMS-ów</span
+              >, cyfrowej bazy zleceń, czy prostego panelu dla klienta,
+              <span class="text-secondary/50 font-normal"
+                >buduję rozwiązania, które po prostu działają</span
               >
-              <span class="text-primary"><</span>
             </h3>
 
-            <div class="mt-6 text-xs font-mono text-white/30 uppercase tracking-[0.2em]">
-              // End of Diagnostics Report //
-            </div>
+            <div class="mt-10 text-small text-secondary/50">Twoja firma na nowym silniku</div>
           </div>
         </div>
-
-        <!-- Corner brackets -->
-        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary/30"></div>
-        <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-primary/30"></div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-primary/30"></div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary/30"></div>
       </div>
     </div>
   </div>
