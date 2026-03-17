@@ -2,10 +2,9 @@
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="EFEKTY_WSPÓŁPRACY"
+      subtitle="EFEKTY WSPÓŁPRACY"
       title="Mierzalne korzyści"
       description="Nowoczesna aplikacja to nie tylko wygoda, to przede wszystkim oszczędność czasu i lepszy wizerunek Twojej firmy. Oto co zazwyczaj udaje nam się osiągnąć."
-      class="font-mono"
     />
 
     <!-- Metrics Grid -->
@@ -13,35 +12,18 @@
       @for (metric of metrics(); track metric.label; let index = $index) {
         <app-card
           [interactive]="true"
-          class="group relative overflow-hidden card-neon-floating p-8 flex flex-col items-center text-center"
+          class="group relative overflow-hidden bg-slate-900/40 border border-slate-800 p-10 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:bg-slate-900/60"
         >
-          <!-- Background Glow -->
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          ></div>
-
-          <!-- Decorative Top Bar -->
-          <div
-            class="absolute top-0 left-0 w-full h-1 bg-white/5 group-hover:bg-primary/50 transition-colors duration-300"
-          ></div>
-
-          <!-- Index Badge -->
-          <div
-            class="absolute top-4 right-4 text-[10px] font-mono text-white/20 group-hover:text-primary/60 transition-colors"
-          >
-            M_0{{ index + 1 }}
-          </div>
-
           <!-- Value -->
-          <div class="relative mb-2">
+          <div class="relative mb-4">
             <span
-              class="text-4xl md:text-5xl font-mono font-bold text-white group-hover:text-primary transition-colors tracking-tight"
+              class="text-4xl md:text-5xl font-extrabold text-white group-hover:text-primary transition-colors tracking-tighter"
             >
               {{ metric.value }}
             </span>
             @if (metric.suffix) {
               <span
-                class="absolute -top-2 -right-4 text-sm font-mono text-primary/80 animate-pulse"
+                class="absolute -top-2 -right-4 text-sm font-bold text-primary/80"
               >
                 {{ metric.suffix }}
               </span>
@@ -50,14 +32,14 @@
 
           <!-- Label -->
           <h3
-            class="text-sm font-mono uppercase tracking-widest text-white/80 mb-4 group-hover:text-white transition-colors"
+            class="text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400 mb-4 group-hover:text-white transition-colors"
           >
             {{ metric.label }}
           </h3>
 
           <!-- Description -->
           <p
-            class="text-xs text-white/50 leading-relaxed max-w-[200px] group-hover:text-white/70 transition-colors"
+            class="text-sm text-slate-500 leading-relaxed max-w-[220px] group-hover:text-slate-300 transition-colors font-light"
           >
             {{ metric.description }}
           </p>

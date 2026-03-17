@@ -14,12 +14,11 @@
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="ZAKRES_POMOCY"
+      subtitle="ZAKRES POMOCY"
       title="W czym dokładnie pomagam"
-      class="font-mono"
     />
 
-    <p class="text-center text-white/60 -mt-8 mb-16 max-w-2xl mx-auto font-light">
+    <p class="text-center text-slate-400 -mt-8 mb-16 max-w-2xl mx-auto font-light">
       Projektuję narzędzia, które rozwiązują Twoje największe codzienne problemy:
     </p>
 
@@ -30,32 +29,32 @@
           <li>
             <app-card
               [interactive]="true"
-              class="h-full flex flex-col p-6 lg:p-8 bg-black/20 backdrop-blur-sm border border-white/5 hover:border-primary/30 transition-all group"
+              class="h-full flex flex-col p-8 bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-primary transition-all group"
             >
-              <!-- Technical Header -->
+              <!-- Utility Header -->
               <div
-                class="flex items-center justify-between mb-6 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors"
+                class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800 group-hover:border-slate-700 transition-colors"
               >
-                <span class="font-mono text-xs text-white/40">ZADANIE_0{{ index + 1 }}</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Zadanie 0{{ index + 1 }}</span>
                 <div
-                  class="h-1.5 w-1.5 rounded-sm"
+                  class="h-1.5 w-1.5 rounded-full"
                   [class]="
                     problem.theme === 'red'
                       ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
                       : problem.theme === 'orange'
                         ? 'bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]'
-                        : 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]'
+                        : 'bg-primary shadow-[0_0_10px_rgba(0,102,255,0.5)]'
                   "
                 ></div>
               </div>
 
               <!-- Icon & Title -->
-              <div class="flex items-start gap-4 mb-4">
+              <div class="flex flex-col gap-6 mb-4">
                 <div
-                  class="relative shrink-0 flex items-center justify-center w-10 h-10 border border-white/10 bg-white/5 text-white/60 group-hover:text-white group-hover:border-primary/50 transition-colors"
+                  class="flex items-center justify-center w-12 h-12 rounded-sm bg-slate-800 border border-slate-700 text-slate-400 group-hover:text-primary group-hover:border-primary transition-all"
                 >
                   <svg
-                    class="h-5 w-5"
+                    class="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -63,17 +62,10 @@
                   >
                     <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="problem.icon" />
                   </svg>
-                  <!-- Corner accents -->
-                  <div
-                    class="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/20"
-                  ></div>
-                  <div
-                    class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/20"
-                  ></div>
                 </div>
 
                 <h3
-                  class="text-lg font-mono uppercase tracking-tight text-white group-hover:text-primary transition-colors pt-1"
+                  class="text-xl font-bold text-white group-hover:text-primary transition-colors"
                 >
                   {{ problem.title }}
                 </h3>
@@ -81,16 +73,16 @@
 
               <!-- Description -->
               <p
-                class="mt-2 flex-1 text-sm leading-6 text-white/60 font-light group-hover:text-white/80 transition-colors border-l border-white/5 pl-4 ml-5"
+                class="mt-2 flex-1 text-sm leading-relaxed text-slate-400 font-light group-hover:text-slate-300 transition-colors"
               >
                 {{ problem.description }}
               </p>
 
               <!-- Footer Action -->
               <div
-                class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-primary/60"
+                class="mt-10 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary/60 group-hover:text-primary transition-colors"
               >
-                <span class="inline-block w-1 h-1 bg-primary rounded-full animate-pulse"></span>
+                <span class="inline-block w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
                 Dowiedz się więcej
               </div>
             </app-card>
@@ -101,41 +93,26 @@
 
     <!-- Bottom Action / Summary Banner -->
     <div class="mt-16 sm:mt-20 lg:mt-24">
-      <div class="relative overflow-hidden bg-black/40 border border-white/10 p-1">
-        <!-- Scanlines -->
-        <div
-          class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxIiBmaWxsPSJyZ2JhKDAsIDAsIDAsIDAuMykiLz4KPC9zdmc+')] pointer-events-none z-10 opacity-20"
-        ></div>
-
-        <div class="px-6 py-10 sm:px-12 xl:py-16 relative z-20">
+      <div class="relative overflow-hidden bg-slate-900/80 border border-slate-800 p-1 rounded-sm shadow-2xl">
+        <div class="px-6 py-12 sm:px-12 xl:py-20 relative z-20">
           <!-- Background glow -->
           <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[600px] bg-primary/5 blur-3xl rounded-full -z-10"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[600px] bg-primary/10 blur-3xl rounded-full -z-10"
           ></div>
 
           <div class="mx-auto max-w-3xl text-center">
-            <h3 class="text-lg font-mono leading-8 text-white/80 text-pretty">
-              <span class="text-primary">></span> Niezależnie czy potrzebujesz
-              <span class="text-white">automatycznych SMS-ów</span>,
-              <span class="text-white">cyfrowej bazy zleceń</span>, czy
-              <span class="text-white">prostego panelu dla klienta</span>,
-              <span class="text-white border-b border-primary/50 pb-0.5"
-                >buduję rozwiązania, które po prostu działają</span
-              >
-              <span class="text-primary"><</span>
+            <h3 class="text-xl lg:text-2xl font-bold leading-relaxed text-white text-pretty">
+              Niezależnie czy potrzebujesz
+              <span class="text-primary underline decoration-primary/30 underline-offset-8">automatycznych SMS-ów</span>,
+              cyfrowej bazy zleceń, czy prostego panelu dla klienta,
+              <span class="text-slate-100">buduję rozwiązania, które po prostu działają</span>
             </h3>
 
-            <div class="mt-6 text-xs font-mono text-white/30 uppercase tracking-[0.2em]">
-              // Twoja firma na nowym silniku //
+            <div class="mt-10 text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em]">
+              Twoja firma na nowym silniku
             </div>
           </div>
         </div>
-
-        <!-- Corner brackets -->
-        <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary/30"></div>
-        <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-primary/30"></div>
-        <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-primary/30"></div>
-        <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary/30"></div>
       </div>
     </div>
   </div>

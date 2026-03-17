@@ -1,138 +1,71 @@
 <footer class="bg-slate-950 relative border-t border-white/5 text-white mt-auto overflow-hidden">
   <!-- Technical Grid Background -->
-  <div class="absolute inset-0 -z-10 bg-grid-tech"></div>
-  <div
-    class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"
-  ></div>
+  <div class="absolute inset-0 -z-10 bg-grid-tech opacity-30"></div>
 
-  <div class="layout-container pt-16 pb-8 lg:pt-24 lg:pb-12">
-    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-      <div class="space-y-8">
-        <!-- Brand -->
-        <div class="flex flex-col gap-4">
-          <app-brand-logo loading="lazy" />
-        </div>
+  <div class="layout-container py-16 lg:py-24">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-12">
+      <!-- Brand Column -->
+      <div class="space-y-10">
+        <app-brand-logo></app-brand-logo>
 
-        <p class="text-sm font-mono leading-6 text-white/80 border-l-2 border-primary/40 pl-4">
+        <p class="text-base leading-relaxed text-slate-400 border-l-4 border-primary/40 pl-6 font-light">
           Pomagam małym firmom rosnąć dzięki technologii. <br />
           Zamień kartki i Excela na proste aplikacje.
         </p>
 
-        <p class="text-xs leading-5 text-white/50 max-w-sm font-mono">
-          // Tworzę dedykowane systemy dla warsztatów i firm usługowych. Pomagam odzyskać czas,
+        <p class="text-sm leading-relaxed text-slate-500 max-w-sm font-light">
+          Tworzę dedykowane systemy dla warsztatów i firm usługowych. Pomagam odzyskać czas,
           porządkuję dokumentację i automatyzuję kontakt z Twoimi klientami.
         </p>
 
         <!-- Status Indicator -->
         <div
-          class="inline-flex items-center gap-2 px-3 py-1.5 bg-white/[0.02] border border-white/5 rounded-sm"
+          class="inline-flex items-center gap-3 px-4 py-2 bg-slate-900 border border-slate-800 rounded-sm"
         >
-          <div class="flex gap-1">
-            <div class="w-1.5 h-1.5 rounded-full bg-green-500/50 animate-pulse"></div>
-            <div class="w-1.5 h-1.5 rounded-full bg-green-500/20"></div>
+          <div class="flex gap-1.5">
+            <div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
           </div>
-          <span class="text-[9px] font-mono uppercase tracking-widest text-white/40"
-            >AKTYWNY</span
+          <span class="text-[10px] font-black uppercase tracking-widest text-slate-400"
+            >AGENCJA AKTYWNA</span
           >
         </div>
       </div>
 
-      <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0 xl:grid-cols-3">
+      <div class="mt-16 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
         <div>
-          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
-            Rozwiązania
+          <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 mb-8">
+            ROZWIĄZANIA
           </h3>
-          <ul class="space-y-3">
+          <ul class="space-y-4">
             @for (item of services(); track item.name) {
               <li>
-                @if (item.path.startsWith('/') && !item.path.includes('#')) {
-                  <a
-                    [routerLink]="item.path"
-                    [fragment]="item.fragment"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                } @else {
-                  <a
-                    [href]="item.path"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                }
+                <a
+                  [routerLink]="item.path"
+                  [fragment]="item.fragment"
+                  class="group flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-all cursor-pointer"
+                >
+                  <span class="w-1.5 h-px bg-slate-800 group-hover:w-4 group-hover:bg-primary transition-all"></span>
+                  {{ item.name }}
+                </a>
               </li>
             }
           </ul>
         </div>
         <div>
-          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
-            Baza wiedzy
+          <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 mb-8">
+            KONTAKT
           </h3>
-          <ul class="space-y-3">
-            @for (item of resources(); track item.name) {
-              <li>
-                @if (item.path.startsWith('/') && !item.path.includes('#')) {
-                  <a
-                    [routerLink]="item.path"
-                    [fragment]="item.fragment"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                } @else {
-                  <a
-                    [href]="item.path"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                }
-              </li>
-            }
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-[10px] font-mono font-bold uppercase tracking-widest text-white/30 mb-6">
-            Kontakt
-          </h3>
-          <ul class="space-y-3">
+          <ul class="space-y-4">
             @for (item of connect(); track item.name) {
               <li>
-                @if (item.path.startsWith('/') && !item.path.includes('#')) {
-                  <a
-                    [routerLink]="item.path"
-                    [fragment]="item.fragment"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors cursor-pointer"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                } @else {
-                  <a
-                    [href]="item.path"
-                    class="group flex items-center gap-2 text-xs font-mono text-white/60 hover:text-primary transition-colors"
-                  >
-                    <span class="opacity-0 group-hover:opacity-100 transition-opacity text-primary"
-                      >></span
-                    >
-                    {{ item.name }}
-                  </a>
-                }
+                <a
+                  [routerLink]="item.path"
+                  [fragment]="item.fragment"
+                  class="group flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-all cursor-pointer"
+                >
+                  <span class="w-1.5 h-px bg-slate-800 group-hover:w-4 group-hover:bg-primary transition-all"></span>
+                  {{ item.name }}
+                </a>
               </li>
             }
           </ul>
@@ -140,22 +73,21 @@
       </div>
     </div>
 
-    <div
-      class="mt-16 border-t border-white/5 pt-8 sm:mt-20 lg:mt-24 flex flex-col items-center justify-between gap-y-4 md:flex-row"
-    >
+    <!-- Bottom Bar -->
+    <div class="mt-16 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
       <div
-        class="flex flex-col md:flex-row items-center gap-4 text-[10px] font-mono text-white/30 uppercase tracking-wider"
+        class="flex flex-col md:flex-row items-center gap-4 text-[10px] font-bold text-slate-600 uppercase tracking-widest"
       >
-        <p>&copy; {{ currentYear }} Scale_Sail Agency Systems.</p>
-        <span class="hidden md:inline text-white/10">|</span>
+        <p>&copy; {{ currentYear }} Scale Sail Agency.</p>
+        <span class="hidden md:inline text-slate-800">|</span>
         <p>Wszelkie prawa zastrzeżone</p>
       </div>
 
-      <div class="flex gap-x-8">
-        @for (item of legal(); track item.name) {
+      <div class="flex gap-6">
+        @for (item of resources(); track item.name) {
           <a
-            [href]="item.path"
-            class="text-[10px] font-mono uppercase tracking-wider text-white/30 hover:text-white transition-colors"
+            [routerLink]="item.path"
+            class="text-[10px] font-bold uppercase tracking-widest text-slate-600 hover:text-white transition-colors"
             >{{ item.name }}</a
           >
         }

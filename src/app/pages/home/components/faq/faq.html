@@ -1,52 +1,47 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-glow-radial border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-slate-900/20 border-t border-white/5"
 >
   <div class="layout-container">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-12">
       <!-- Header Section -->
-      <div class="lg:col-span-4 lg:sticky lg:top-8 self-start text-center lg:text-left">
+      <div class="lg:col-span-4 lg:sticky lg:top-32 self-start text-center lg:text-left mb-16 lg:mb-0">
         <app-section-header
           alignment="left"
-          subtitle="BAZA_WIEDZY"
+          subtitle="BAZA WIEDZY"
           title="Częste pytania"
-          class="font-mono"
         >
-          <p class="mt-4 text-sm leading-7 text-white/60 font-mono">
-            // MASZ_PYTANIA?
+          <p class="mt-6 text-base leading-7 text-slate-500">
+            Masz dodatkowe pytania?
             <br />
             <a
               href="mailto:contact@scale-sail.io"
-              class="font-semibold text-primary hover:text-white transition-colors underline decoration-dashed decoration-primary/50 underline-offset-4"
-              >Napisz do mnie</a
+              class="font-bold text-primary hover:text-white transition-colors underline decoration-primary/30 underline-offset-8"
+              >Napisz bezpośrednio do mnie</a
             >
           </p>
         </app-section-header>
       </div>
 
-      <!-- FAQ List -->
-      <div class="mt-16 sm:mt-20 lg:col-span-8 lg:mt-0">
-        <ul class="space-y-4">
+      <!-- FAQ Items -->
+      <div class="lg:col-span-8">
+        <ul class="space-y-4 list-none p-0">
           @for (faq of faqs(); track faq.question; let index = $index) {
-            <li>
+            <li class="animate-in fade-in slide-in-from-bottom-2 duration-500" [style.delay.ms]="index * 100">
               <div
-                class="block border border-white/10 bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-6 sm:p-8"
+                class="group bg-slate-900/40 border border-slate-800 hover:border-slate-700 transition-all duration-300"
               >
-                <div class="flex gap-4">
-                  <!-- Q Index -->
-                  <div class="shrink-0 font-mono text-xs text-white/30 pt-1.5">
-                    0{{ index + 1 }}
-                  </div>
-
-                  <div class="space-y-4">
-                    <h3
-                      class="text-base font-bold leading-7 text-white font-mono uppercase tracking-tight"
-                    >
-                      {{ faq.question }}
-                    </h3>
-                    <div
-                      class="text-sm leading-7 text-white/70 font-light border-l border-white/10 pl-4"
-                    >
-                      {{ faq.answer }}
+                <div class="p-8">
+                  <div class="flex items-start gap-6">
+                    <span class="flex-shrink-0 text-xs font-bold text-primary/40 mt-1">
+                      0{{ index + 1 }}
+                    </span>
+                    <div class="flex-grow">
+                      <h3 class="text-lg font-bold text-white mb-4 group-hover:text-primary transition-colors">
+                        {{ faq.question }}
+                      </h3>
+                      <div class="text-base text-slate-400 leading-relaxed font-light">
+                        {{ faq.answer }}
+                      </div>
                     </div>
                   </div>
                 </div>

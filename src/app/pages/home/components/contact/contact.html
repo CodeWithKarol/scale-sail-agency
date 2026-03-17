@@ -1,74 +1,70 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-mesh-slight border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
 >
   <div class="layout-container">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
       <!-- Left: Context & Info -->
-      <div>
+      <div class="animate-in fade-in slide-in-from-left-4 duration-700">
         <app-section-header
-          subtitle="ZACZNIJMY_TUTAJ"
+          subtitle="ZACZNIJMY TUTAJ"
           title="Zrób pierwszy krok do świętego spokoju"
           description="Napisz do mnie – porozmawiamy o Twojej firmie jak partner z partnerem. Bez ofert na siłę i bez technicznego żargonu. Po prostu opowiesz mi, co dziś zabiera Ci najwięcej czasu, a ja powiem Ci szczerze, czy potrafię to ułatwić."
-          class="mb-10"
+          class="mb-12"
+          alignment="left"
         />
 
-        <div class="space-y-8 font-mono">
+        <div class="space-y-10">
           <!-- Availability Status -->
           <div
-            class="p-6 bg-white/[0.02] border border-white/10 rounded-sm relative overflow-hidden group hover:border-primary/30 transition-colors"
+            class="p-8 bg-slate-900/40 border border-slate-800 rounded-sm relative overflow-hidden group hover:border-primary transition-all duration-300"
           >
-            <div class="absolute inset-0 bg-grid-white/[0.02] -z-10"></div>
+            <div class="absolute inset-0 bg-grid-tech opacity-20 -z-10"></div>
 
-            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">MOJA DOSTĘPNOŚĆ</h3>
+            <h3 class="text-[10px] font-extrabold uppercase tracking-[0.3em] text-slate-500 mb-6">MOJA DOSTĘPNOŚĆ</h3>
             <div class="flex items-center gap-4">
               <div class="relative flex h-3 w-3">
                 <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
                 ></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
               </div>
-              <span class="text-sm text-white font-bold">Przyjmuję nowe projekty</span>
+              <span class="text-lg text-white font-bold">Przyjmuję nowe projekty</span>
             </div>
-            <p class="mt-4 text-xs text-white/60 leading-relaxed">
+            <p class="mt-4 text-sm text-slate-400 leading-relaxed font-light">
               Aktualnie mam czas na 1-2 wdrożenia w tym miesiącu. Odpowiadam zazwyczaj w ciągu kilku godzin.
             </p>
           </div>
 
           <!-- Direct Contact Info -->
-          <div class="space-y-4">
-            <div class="flex flex-col gap-1">
-              <span class="text-[10px] uppercase tracking-widest text-white/30">Adres e-mail</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2">
+            <div class="flex flex-col gap-2">
+              <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Adres e-mail</span>
               <a
                 href="mailto:contact@scale-sail.io"
-                class="text-lg text-white hover:text-primary transition-colors flex items-center gap-2 group"
+                class="text-base text-white hover:text-primary transition-colors flex items-center gap-2 group"
               >
                 contact@scale-sail.io
                 <span
-                  class="opacity-0 group-hover:opacity-100 transition-opacity text-primary text-xs"
-                  >-></span
+                  class="opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0 text-primary"
+                  >→</span
                 >
               </a>
             </div>
 
-            <div class="flex flex-col gap-1">
-              <span class="text-[10px] uppercase tracking-widest text-white/30">Lokalizacja</span>
-              <span class="text-lg text-white/60">Warszawa, PL (CET) / Zdalnie</span>
+            <div class="flex flex-col gap-2">
+              <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Lokalizacja</span>
+              <span class="text-base text-slate-300">Warszawa / Zdalnie</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Right: Terminal Form -->
-      <div class="relative">
-        <!-- Decorational Form Border -->
-        <div
-          class="absolute -inset-0.5 bg-gradient-to-br from-white/10 to-transparent opacity-50 rounded-sm blur-sm -z-10"
-        ></div>
-
+      <div class="relative animate-in fade-in slide-in-from-right-4 duration-700 delay-200">
         <form
           [formGroup]="form"
           (ngSubmit)="onSubmit()"
-          class="bg-[#0d1117] border border-white/10 p-4 sm:p-8 rounded-sm shadow-2xl relative overflow-hidden group"
+          class="bg-slate-900 border border-slate-800 p-8 sm:p-12 rounded-sm shadow-2xl relative overflow-hidden"
         >
           <!-- Hidden Honeypot -->
           <input
@@ -80,91 +76,35 @@
             tabindex="-1"
           />
 
-          <!-- Top Bar -->
-          <div
-            class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary/50 via-primary to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-          ></div>
-
-          <!-- Scanline -->
-          <div
-            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wIDBoNHYxSDB6IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiLz48L3N2Zz4')] opacity-20 pointer-events-none"
-          ></div>
-
           @if (isSuccess()) {
-            <!-- Success State: Terminal Output -->
-            <div class="h-[400px] flex flex-col justify-center font-mono text-sm">
-              <div class="text-green-400 mb-4 text-lg">>> TRANSMISSION_SUCCESSFUL</div>
-              <div class="space-y-2">
-                @for (log of successLogs(); track log) {
-                  <div class="flex gap-2">
-                    <span class="text-white/30">
-                      [{{ log.timestamp | date: 'HH:mm:ss' : '+0000' }}]
-                    </span>
-                    <span
-                      class="text-white/80 animate-in fade-in slide-in-from-left-2 duration-300"
-                      >{{ log.message }}</span
-                    >
-                  </div>
-                }
+            <!-- Success State -->
+            <div class="h-[450px] flex flex-col justify-center text-center">
+              <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
               </div>
-              <div class="mt-8 pt-6 border-t border-white/10">
-                <button
-                  type="button"
-                  (click)="isSuccess.set(false)"
-                  class="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors"
-                >
-                  [ Send_Another_Transmission ]
-                </button>
-              </div>
+              <h3 class="text-2xl font-bold text-white mb-4">Wiadomość wysłana!</h3>
+              <p class="text-slate-400 font-light mb-10 leading-relaxed">
+                Dziękuję za kontakt. Odezwię się do Ciebie najszybciej jak to możliwe, zazwyczaj zajmuje mi to kilka godzin.
+              </p>
+              <app-button
+                type="button"
+                (click)="isSuccess.set(false)"
+                variant="secondary"
+                styleClass="mx-auto uppercase tracking-widest text-[10px]"
+              >
+                Wyślij kolejną wiadomość
+              </app-button>
             </div>
           } @else {
             <!-- Form Fields -->
-            <div class="space-y-6 relative z-10">
-              <!-- Project Type Selector -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1 bg-white/5 rounded-sm mb-8">
-                <button
-                  type="button"
-                  (click)="f.projectType.setValue('audit')"
-                  [class]="
-                    f.projectType.value === 'audit'
-                      ? 'bg-primary text-secondary shadow-sm'
-                      : 'text-white/40 hover:text-white'
-                  "
-                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
-                >
-                  Dla Warsztatu
-                </button>
-                <button
-                  type="button"
-                  (click)="f.projectType.setValue('modernization')"
-                  [class]="
-                    f.projectType.value === 'modernization'
-                      ? 'bg-primary text-secondary shadow-sm'
-                      : 'text-white/40 hover:text-white'
-                  "
-                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
-                >
-                  System Usługowy
-                </button>
-                <button
-                  type="button"
-                  (click)="f.projectType.setValue('staff-aug')"
-                  [class]="
-                    f.projectType.value === 'staff-aug'
-                      ? 'bg-primary text-secondary shadow-sm'
-                      : 'text-white/40 hover:text-white'
-                  "
-                  class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
-                >
-                  Inny Pomysł
-                </button>
-              </div>
-
+            <div class="space-y-8 relative z-10">
               <!-- Name Input -->
               <div class="group/field">
                 <label
                   for="name"
-                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
                 >
                   Z kim mam przyjemność rozmawiać?
                 </label>
@@ -173,12 +113,12 @@
                   id="name"
                   formControlName="name"
                   placeholder="Twoje imię lub nazwa firmy"
-                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
+                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all rounded-sm"
                   [class.border-red-500]="f.name.invalid && f.name.touched"
                 />
                 @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
-                  <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> Podaj proszę swoje imię</span
+                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
+                    >Podaj proszę swoje imię</span
                   >
                 }
               </div>
@@ -187,7 +127,7 @@
               <div class="group/field">
                 <label
                   for="email"
-                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
                 >
                   Gdzie mam odpowiedzieć?
                 </label>
@@ -196,12 +136,12 @@
                   id="email"
                   formControlName="email"
                   placeholder="twój e-mail lub numer telefonu"
-                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
+                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all rounded-sm"
                   [class.border-red-500]="f.email.invalid && f.email.touched"
                 />
                 @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
-                  <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> Kontakt jest niezbędny, bym mógł odpowiedzieć</span
+                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
+                    >Kontakt jest niezbędny, bym mógł odpowiedzieć</span
                   >
                 }
               </div>
@@ -210,21 +150,20 @@
               <div class="group/field">
                 <label
                   for="message"
-                  class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
+                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
                 >
                   Co najbardziej denerwuje Cię w dzisiejszym ogarnianiu firmy?
                 </label>
                 <textarea
                   id="message"
                   formControlName="message"
-                  rows="4"
+                  rows="5"
                   placeholder="Opisz krótko swój problem (np. mam warsztat, 3 mechaników i tonę kartek)..."
-                  class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all resize-none"
+                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all resize-none rounded-sm"
                   [class.border-red-500]="f.message.invalid && f.message.touched"
                 ></textarea>
-                <p class="mt-2 text-[10px] text-white/30 font-mono italic">
-                  * Im więcej napiszesz, tym konkretniej będę mógł pomóc – ale możesz zacząć od
-                  jednego zdania.
+                <p class="mt-3 text-[10px] text-slate-500 font-bold italic opacity-60">
+                  * Im więcej napiszesz, tym konkretniej będę mógł pomóc – ale możesz zacząć od jednego zdania.
                 </p>
                 @if (
                   f.message.invalid &&
@@ -232,41 +171,41 @@
                   f.message.errors &&
                   f.message.errors['required']
                 ) {
-                  <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> Napisz chociaż dwa słowa o swoim wyzwaniu</span
+                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
+                    >Napisz chociaż dwa słowa o swoim wyzwaniu</span
                   >
                 }
               </div>
 
               <!-- Submit Action -->
-              <div
-                class="pt-4 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-0"
-              >
-                <div
-                  class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono text-white/30 uppercase w-full sm:w-auto"
-                >
-                  <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
-                  Twoje dane są u mnie bezpieczne
-                </div>
-
+              <div class="pt-6 flex flex-col items-stretch gap-6">
                 <app-button
                   type="submit"
                   variant="primary"
                   size="lg"
                   [disabled]="isSubmitting() || form.invalid"
-                  styleClass="w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                  styleClass="w-full uppercase tracking-widest text-xs font-black shadow-2xl"
                 >
-                  <span class="flex items-center gap-2">
+                  <span class="flex items-center gap-3">
                     @if (isSubmitting()) {
                       <span
-                        class="animate-spin h-3 w-3 border-2 border-secondary border-t-transparent rounded-full"
+                        class="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"
                       ></span>
                       Wysyłanie...
                     } @else {
-                      > CHCĘ ODZYSKAĆ CZAS
+                      CHCĘ ODZYSKAĆ CZAS
                     }
                   </span>
                 </app-button>
+
+                <div
+                  class="flex items-center justify-center gap-2 text-[9px] font-bold text-slate-600 uppercase tracking-widest"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Twoje dane są u mnie bezpieczne
+                </div>
               </div>
             </div>
           }

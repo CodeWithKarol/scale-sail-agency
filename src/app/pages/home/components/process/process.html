@@ -1,52 +1,38 @@
-<section class="section-padding bg-glow-radial relative overflow-hidden border-t border-white/5">
+<section class="section-padding bg-slate-950 relative overflow-hidden border-t border-white/5">
   <!-- Technical Background -->
-  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
+  <div class="absolute inset-0 -z-10 bg-grid-tech opacity-30"></div>
 
   <div class="layout-container relative z-10">
     <app-section-header
-      subtitle="ETAPY_WSPÓŁPRACY"
+      subtitle="ETAPY WSPÓŁPRACY"
       title="Jak wygląda wdrożenie?"
       description="Prosty i przejrzysty proces budowy Twojej aplikacji. Od pierwszej rozmowy po gotowy system, który ułatwia Ci codzienną pracę."
-      class="font-mono"
     />
 
     <div class="mx-auto mt-16 lg:mt-24">
-      <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+      <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Connector Line (Desktop) -->
         <div
-          class="hidden lg:block absolute top-12 left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-white/10 to-transparent border-t border-dashed border-white/5 -z-10"
+          class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-slate-800 -z-10"
         ></div>
 
         <ol class="contents">
-          @for (step of steps(); track step.number) {
+          @for (step of steps(); track step.number; let i = $index) {
             <li class="relative group h-full">
               <!-- Card Container -->
               <div
-                class="h-full bg-black/40 border border-white/5 p-6 md:p-8 hover:border-primary/50 hover:bg-black/60 transition-all duration-300 backdrop-blur-sm flex flex-col relative overflow-hidden"
+                class="h-full bg-slate-900/40 border border-slate-800 p-10 hover:border-primary hover:bg-slate-900/60 transition-all duration-300 backdrop-blur-sm flex flex-col relative"
               >
-                <!-- Scanline Effect -->
-                <div
-                  class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent translate-y-[-100%] group-hover:translate-y-[100%] transition-transform duration-1000 ease-in-out pointer-events-none z-0"
-                ></div>
-
-                <!-- Corner Markers -->
-                <div
-                  class="absolute top-0 left-0 w-3 h-3 border-t border-l border-white/20 group-hover:border-primary transition-colors z-10"
-                ></div>
-                <div
-                  class="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-white/20 group-hover:border-primary transition-colors z-10"
-                ></div>
-
                 <!-- Header: Number & Status -->
-                <div class="flex justify-between items-start mb-6 z-10 relative">
+                <div class="flex justify-between items-start mb-10">
                   <div class="flex flex-col gap-2">
-                    <span class="text-xs font-mono text-primary/80 tracking-widest"
-                      >KROK_{{ step.number }}</span>
+                    <span class="text-[10px] font-extrabold text-primary uppercase tracking-[0.3em]"
+                      >KROK {{ step.number }}</span
                     >
                     <div class="flex items-center gap-2">
-                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                       <span
-                        class="text-[10px] uppercase tracking-widest text-white/40 bg-white/5 px-2 py-0.5 rounded-sm w-fit border border-white/5"
+                        class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
                         >{{ step.status }}</span
                       >
                     </div>
@@ -54,10 +40,10 @@
 
                   <!-- Icon Box -->
                   <div
-                    class="w-12 h-12 flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-primary/10 group-hover:border-primary/50 transition-colors"
+                    class="w-14 h-14 flex items-center justify-center bg-slate-800 border border-slate-700 text-slate-400 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all"
                   >
                     <svg
-                      class="w-6 h-6 text-white/80 group-hover:text-primary transition-colors"
+                      class="w-7 h-7"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke-width="1.5"
@@ -73,17 +59,17 @@
                 </div>
 
                 <!-- Content -->
-                <div class="flex-grow z-10 relative">
-                  <span class="block text-xs font-mono text-white/40 mb-2 tracking-wider">{{
+                <div class="flex-grow">
+                  <div class="text-[10px] font-bold text-slate-500 mb-2 tracking-widest uppercase">{{
                     step.subtitle
-                  }}</span>
+                  }}</div>
                   <h3
-                    class="text-xl font-bold text-white mb-3 uppercase tracking-tight group-hover:text-primary transition-colors"
+                    class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors"
                   >
                     {{ step.title }}
                   </h3>
                   <p
-                    class="text-sm text-white/60 leading-relaxed font-mono border-l-2 border-white/5 pl-4 group-hover:border-primary/30 transition-colors"
+                    class="text-base text-slate-400 leading-relaxed font-light"
                   >
                     {{ step.description }}
                   </p>
@@ -91,11 +77,11 @@
 
                 <!-- Footer: Duration -->
                 <div
-                  class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-white/40 z-10 relative"
+                  class="mt-10 pt-6 border-t border-white/5 flex items-center justify-between text-[10px] font-bold text-slate-500"
                 >
-                  <span>CZAS TRWANIA:</span>
+                  <span class="tracking-widest uppercase">PRZEWIDYWANY CZAS:</span>
                   <span
-                    class="text-white/80 group-hover:text-primary transition-colors bg-white/5 px-2 py-0.5 rounded"
+                    class="text-slate-200 bg-slate-800 px-2 py-1 rounded-sm border border-slate-700"
                     >{{ step.duration }}</span
                   >
                 </div>
