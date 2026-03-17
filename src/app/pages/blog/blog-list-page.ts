@@ -49,9 +49,9 @@ type FeedState =
 
         <!-- Header -->
         <app-section-header
-          subtitle="LOGS / ENGINEERING"
-          title="Engineering Strategy"
-          description="Technical deep dives and strategic thinking for growing platforms. From low-level memory tuning to high-level architecture decisions."
+          subtitle="BAZA_WIEDZY / PORADY"
+          title="Wiedza i Automatyzacja"
+          description="Praktyczne wskazówki, jak wykorzystać technologię do rozwoju Twojej firmy. Od prostych sposobów na Excela po budowę dedykowanych systemów."
         />
 
         <!-- Content Area -->
@@ -66,7 +66,7 @@ type FeedState =
                   ></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
                 </span>
-                <span class="text-sm tracking-widest uppercase">Initializing Data Stream</span>
+                <span class="text-sm tracking-widest uppercase">Inicjalizacja strumienia danych</span>
               </div>
 
               <!-- Progress Bar -->
@@ -75,7 +75,7 @@ type FeedState =
               </div>
 
               <div class="mt-4 text-[10px] text-white/40 uppercase tracking-widest">
-                Fetching resources from remote...
+                Pobieranie zasobów z serwera...
               </div>
             </div>
           }
@@ -95,12 +95,12 @@ type FeedState =
                 <div
                   class="text-red-500 font-mono text-xs uppercase tracking-widest mb-4 border border-red-500/30 px-3 py-1"
                 >
-                  System Error: 503
+                  Błąd Systemu: 503
                 </div>
 
-                <h3 class="text-xl font-bold text-white mb-2 font-mono">CONNECTION FAILURE</h3>
+                <h3 class="text-xl font-bold text-white mb-2 font-mono">BRAK POŁĄCZENIA</h3>
                 <p class="text-white/60 text-sm mb-8 font-light">
-                  Unable to establish uplink with Medium.com feed.
+                  Nie udało się połączyć z bazą artykułów na Medium.com.
                 </p>
 
                 <a
@@ -109,7 +109,7 @@ type FeedState =
                   class="inline-flex items-center gap-2 px-6 py-3 bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500 hover:text-white transition-all duration-300 text-xs font-mono uppercase tracking-wider"
                 >
                   <span class="w-1 h-1 bg-current"></span>
-                  Direct Uplink
+                  Połączenie bezpośrednie
                   <!-- ArrowRight -->
                   <svg
                     class="h-3 w-3"
@@ -157,7 +157,7 @@ type FeedState =
                 <div class="absolute top-0 right-0 w-2 h-[2px] bg-accent"></div>
 
                 <app-button variant="secondary" size="lg" (click)="loadMore()">
-                  Load more articles
+                  Pokaż więcej artykułów
                 </app-button>
               </div>
             }
@@ -208,7 +208,7 @@ export class BlogListPage implements OnInit {
         date: new Date(item.pubDate).toISOString(),
         slug: item.guid,
         imageUrl: imageUrl,
-        category: item.categories?.length ? item.categories[0] : 'Tech',
+        category: item.categories?.length ? item.categories[0] : 'Porady',
         url: item.link,
       };
     });
@@ -246,10 +246,10 @@ export class BlogListPage implements OnInit {
         '@graph': [
           {
             '@type': 'Blog',
-            headline: 'Angular Blog - Architecture, Signals & Performance',
-            name: 'Angular Blog - Architecture, Signals & Performance',
+            headline: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
+            name: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
             description:
-              'Practical writing on Angular architecture, Signals/RxJS patterns, performance tuning, and engineering decisions that keep teams shipping.',
+              'Praktyczne artykuły o automatyzacji pracy, budowie systemów dla warsztatów i firm usługowych oraz o tym, jak technologia może ułatwić Ci życie.',
             author: {
               '@type': 'Person',
               name: 'Karol Modelski',
@@ -277,7 +277,7 @@ export class BlogListPage implements OnInit {
               '@type': 'WebPage',
               '@id': 'https://scale-sail.io/blog',
             },
-            inLanguage: 'en-US',
+            inLanguage: 'pl-PL',
           },
         ],
       });
@@ -286,27 +286,25 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Engineering Strategy Blog | Angular & Scale',
+      title: 'Baza Wiedzy i Porady | Scale Sail Agency',
       description:
-        'Strategic insights on scaling Angular architecture. Learn how to eliminate technical debt and build high-velocity engineering systems.',
+        'Dowiedz się, jak proste aplikacje i automatyzacja mogą oszczędzić Twój czas. Praktyczne wskazówki dla właścicieli warsztatów i firm usługowych.',
       slug: '/blog',
       type: 'article',
       keywords: [
-        'Angular Blog',
-        'Frontend Architecture',
-        'Angular Signals',
-        'RxJS Patterns',
-        'Web Performance',
-        'Engineering Management',
-        'Zoneless Angular',
-        'Angular State Management',
-        'Enterprise Angular Patterns',
+        'Automatyzacja warsztatu',
+        'Aplikacja dla firmy usługowej',
+        'Zarządzanie zleceniami',
+        'Excel w firmie',
+        'Porady dla przedsiębiorców',
+        'Cyfryzacja biznesu',
       ],
     });
 
     this.seoService.setBreadcrumbs([
-      { name: 'Home', path: '/' },
+      { name: 'Start', path: '/' },
       { name: 'Blog', path: '/blog' },
     ]);
   }
 }
+

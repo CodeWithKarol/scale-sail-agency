@@ -44,7 +44,7 @@ import { BlogPost } from '../../blog.model';
             class="absolute inset-0 focus:outline-none"
             aria-hidden="true"
             tabindex="-1"
-            ><span class="sr-only">Read post</span></a
+            ><span class="sr-only">Czytaj wpis</span></a
           >
         </div>
       </div>
@@ -78,7 +78,7 @@ import { BlogPost } from '../../blog.model';
           <div
             class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white/40 group-hover:text-accent transition-colors"
           >
-            Read
+            Czytaj
             <!-- ArrowRight -->
             <svg
               class="h-3 w-3 transition-transform group-hover:translate-x-1"

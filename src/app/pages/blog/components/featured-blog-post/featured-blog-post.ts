@@ -22,7 +22,7 @@ import { BlogPost } from '../../blog.model';
           <div
             class="absolute top-4 left-4 z-20 px-2 py-1 bg-black/60 backdrop-blur text-[10px] font-mono text-accent border border-accent/20 uppercase tracking-widest"
           >
-            LATEST_ENTRY
+            NAJNOWSZY_WPIS
           </div>
 
           <a
@@ -88,7 +88,7 @@ import { BlogPost } from '../../blog.model';
             rel="noopener noreferrer"
             class="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 group/btn hover:text-accent transition-colors"
           >
-            Read article
+            Czytaj artykuł
             <!-- ArrowRight -->
             <svg
               class="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
