@@ -6,9 +6,9 @@
       <!-- Left: Context & Info -->
       <div>
         <app-section-header
-          subtitle="KONTAKT_BEZPOŚREDNI"
-          title="Porozmawiajmy o Twojej firmie"
-          description="Masz dość chaosu w papierach? Chcesz odciążyć telefon i zyskać więcej czasu? Napisz do mnie – chętnie podpowiem, jak prosta aplikacja może to zmienić. Jeśli prowadzisz warsztat, napisz w wiadomości, ile aut mniej więcej macie dziennie – od tego zaczniemy."
+          subtitle="ZACZNIJMY_TUTAJ"
+          title="Zrób pierwszy krok do świętego spokoju"
+          description="Napisz do mnie – porozmawiamy o Twojej firmie jak partner z partnerem. Bez ofert na siłę i bez technicznego żargonu. Po prostu opowiesz mi, co dziś zabiera Ci najwięcej czasu, a ja powiem Ci szczerze, czy potrafię to ułatwić."
           class="mb-10"
         />
 
@@ -19,7 +19,7 @@
           >
             <div class="absolute inset-0 bg-grid-white/[0.02] -z-10"></div>
 
-            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">Dostępność</h3>
+            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">MOJA DOSTĘPNOŚĆ</h3>
             <div class="flex items-center gap-4">
               <div class="relative flex h-3 w-3">
                 <span
@@ -30,7 +30,7 @@
               <span class="text-sm text-white font-bold">Przyjmuję nowe projekty</span>
             </div>
             <p class="mt-4 text-xs text-white/60 leading-relaxed">
-              Obecnie mam czas na 1-2 wdrożenia w tym miesiącu. Odpisuję zazwyczaj w ciągu 24h.
+              Aktualnie mam czas na 1-2 wdrożenia w tym miesiącu. Odpowiadam zazwyczaj w ciągu kilku godzin.
             </p>
           </div>
 
@@ -166,19 +166,19 @@
                   for="name"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Twoje imię / Nazwa firmy
+                  Z kim mam przyjemność rozmawiać?
                 </label>
                 <input
                   type="text"
                   id="name"
                   formControlName="name"
-                  placeholder="Jak się nazywasz?"
+                  placeholder="Twoje imię lub nazwa firmy"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
                   [class.border-red-500]="f.name.invalid && f.name.touched"
                 />
                 @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: Podaj swoje imię</span
+                    >>> Podaj proszę swoje imię</span
                   >
                 }
               </div>
@@ -189,19 +189,19 @@
                   for="email"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Adres e-mail lub telefon
+                  Gdzie mam odpowiedzieć?
                 </label>
                 <input
                   type="text"
                   id="email"
                   formControlName="email"
-                  placeholder="twoj@email.pl lub nr telefonu"
+                  placeholder="twój e-mail lub numer telefonu"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
                   [class.border-red-500]="f.email.invalid && f.email.touched"
                 />
                 @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: Kontakt jest wymagany</span
+                    >>> Kontakt jest niezbędny, bym mógł odpowiedzieć</span
                   >
                 }
               </div>
@@ -212,16 +212,20 @@
                   for="message"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // W czym mogę pomóc?
+                  Co najbardziej denerwuje Cię w dzisiejszym ogarnianiu firmy?
                 </label>
                 <textarea
                   id="message"
                   formControlName="message"
                   rows="4"
-                  placeholder="Napisz krótko, czym zajmuje się Twoja firma i jaki masz problem z papierami lub telefonami..."
+                  placeholder="Opisz krótko swój problem (np. mam warsztat, 3 mechaników i tonę kartek)..."
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all resize-none"
                   [class.border-red-500]="f.message.invalid && f.message.touched"
                 ></textarea>
+                <p class="mt-2 text-[10px] text-white/30 font-mono italic">
+                  * Im więcej napiszesz, tym konkretniej będę mógł pomóc – ale możesz zacząć od
+                  jednego zdania.
+                </p>
                 @if (
                   f.message.invalid &&
                   f.message.touched &&
@@ -229,7 +233,7 @@
                   f.message.errors['required']
                 ) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: Treść wiadomości jest wymagana</span
+                    >>> Napisz chociaż dwa słowa o swoim wyzwaniu</span
                   >
                 }
               </div>
@@ -242,7 +246,7 @@
                   class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono text-white/30 uppercase w-full sm:w-auto"
                 >
                   <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
-                  Połączenie szyfrowane
+                  Twoje dane są u mnie bezpieczne
                 </div>
 
                 <app-button
@@ -259,7 +263,7 @@
                       ></span>
                       Wysyłanie...
                     } @else {
-                      > WYŚLIJ WIADOMOŚĆ
+                      > CHCĘ ODZYSKAĆ CZAS
                     }
                   </span>
                 </app-button>
