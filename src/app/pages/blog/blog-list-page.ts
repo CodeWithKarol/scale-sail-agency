@@ -58,24 +58,24 @@ type FeedState =
         <div class="mt-16 sm:mt-24 space-y-20">
           <!-- Loading State -->
           @if (isLoading()) {
-            <div class="flex flex-col justify-center items-center h-64 font-mono">
-              <div class="flex items-center gap-2 text-accent mb-4">
+            <div class="flex flex-col justify-center items-center h-64">
+              <div class="flex items-center gap-3 text-accent mb-6">
                 <span class="relative flex h-3 w-3">
                   <span
                     class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
                   ></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
                 </span>
-                <span class="text-sm tracking-widest uppercase">Inicjalizacja strumienia danych</span>
+                <span class="text-xs font-black tracking-[0.3em] uppercase">Pobieranie bazy wiedzy</span>
               </div>
 
               <!-- Progress Bar -->
-              <div class="w-64 h-1 bg-white/10 overflow-hidden">
+              <div class="w-64 h-1 bg-slate-800 overflow-hidden rounded-full">
                 <div class="h-full bg-accent animate-[loading_2s_ease-in-out_infinite] w-1/2"></div>
               </div>
 
-              <div class="mt-4 text-[10px] text-white/40 uppercase tracking-widest">
-                Pobieranie zasobów z serwera...
+              <div class="mt-6 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                Łączenie z serwerem danych...
               </div>
             </div>
           }
@@ -83,48 +83,32 @@ type FeedState =
           <!-- Error State -->
           @else if (error()) {
             <div
-              class="mx-auto max-w-lg border border-red-500/50 bg-red-900/5 p-8 relative overflow-hidden group"
+              class="mx-auto max-w-lg border border-slate-800 bg-slate-900/40 p-10 relative overflow-hidden group rounded-sm"
             >
               <!-- Error decoration -->
-              <div class="absolute top-0 left-0 w-2 h-2 border-l border-t border-red-500"></div>
-              <div class="absolute top-0 right-0 w-2 h-2 border-r border-t border-red-500"></div>
-              <div class="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-red-500"></div>
-              <div class="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-red-500"></div>
+              <div class="absolute top-0 left-0 w-1 h-8 bg-red-500/50"></div>
 
               <div class="flex flex-col items-center text-center">
                 <div
-                  class="text-red-500 font-mono text-xs uppercase tracking-widest mb-4 border border-red-500/30 px-3 py-1"
+                  class="text-red-500 text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-red-500/20 px-4 py-1.5"
                 >
-                  Błąd Systemu: 503
+                  Błąd Połączenia
                 </div>
 
-                <h3 class="text-xl font-bold text-white mb-2 font-mono">BRAK POŁĄCZENIA</h3>
-                <p class="text-white/60 text-sm mb-8 font-light">
-                  Nie udało się połączyć z bazą artykułów na Medium.com.
+                <h3 class="text-xl font-bold text-white mb-4 uppercase tracking-tight">Baza artykułów niedostępna</h3>
+                <p class="text-slate-400 text-sm mb-10 font-light leading-relaxed">
+                  Wystąpił problem z pobraniem artykułów z serwisu Medium.com. Możesz spróbować połączyć się bezpośrednio.
                 </p>
 
-                <a
+                <app-button
                   href="https://karol-modelski.medium.com/"
                   target="_blank"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500 hover:text-white transition-all duration-300 text-xs font-mono uppercase tracking-wider"
+                  variant="secondary"
+                  size="md"
+                  styleClass="uppercase tracking-widest text-[10px]"
                 >
-                  <span class="w-1 h-1 bg-current"></span>
-                  Połączenie bezpośrednie
-                  <!-- ArrowRight -->
-                  <svg
-                    class="h-3 w-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
+                  Odwiedź Medium.com
+                </app-button>
               </div>
             </div>
           }
@@ -149,14 +133,12 @@ type FeedState =
 
             <!-- Pagination -->
             @if (hasMorePosts()) {
-              <div class="flex justify-center relative mt-24 pt-12">
+              <div class="flex justify-center relative mt-32 pt-16">
                 <!-- Technical Separator -->
-                <div class="absolute top-0 left-0 w-full h-px bg-white/10"></div>
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-accent"></div>
-                <div class="absolute top-0 left-0 w-2 h-[2px] bg-accent"></div>
-                <div class="absolute top-0 right-0 w-2 h-[2px] bg-accent"></div>
+                <div class="absolute top-0 left-0 w-full h-px bg-slate-800/50"></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-accent"></div>
 
-                <app-button variant="secondary" size="lg" (click)="loadMore()">
+                <app-button variant="secondary" size="lg" (click)="loadMore()" styleClass="uppercase tracking-widest text-xs font-black">
                   Pokaż więcej artykułów
                 </app-button>
               </div>

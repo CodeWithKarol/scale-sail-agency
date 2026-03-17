@@ -15,52 +15,48 @@ import { BlogPost } from '../../blog.model';
   ],
   template: `
     <article
-      class="relative flex flex-col items-start justify-between group h-full bg-white/5 border border-white/5 hover:border-accent/40 transition-colors duration-300 p-6"
+      class="group relative flex flex-col items-start bg-slate-900/40 border border-slate-800 hover:border-primary/40 transition-all duration-500 rounded-sm overflow-hidden h-full"
     >
-      <!-- Date Badge (Top Right) -->
-      <div
-        class="absolute top-0 right-0 px-3 py-1 bg-white/5 border-l border-b border-white/10 text-[10px] font-mono text-white/40"
-      >
-        {{ post().date | date: 'yyyy.MM.dd' }}
-      </div>
-
       <!-- Card Image -->
-      <div class="relative w-full mb-6 mt-2">
-        <div class="aspect-[16/9] w-full overflow-hidden bg-secondary ring-1 ring-white/10">
-          <img
-            [src]="
-              post().imageUrl ||
-              'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
-            "
-            [alt]="post().title"
-            width="400"
-            height="225"
-            class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105 group-hover:grayscale-[0.5]"
-          />
-          <a
-            [href]="post().url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="absolute inset-0 focus:outline-none"
-            aria-hidden="true"
-            tabindex="-1"
-            ><span class="sr-only">Czytaj wpis</span></a
-          >
-        </div>
+      <div class="relative w-full aspect-[16/9] overflow-hidden bg-slate-900 border-b border-slate-800">
+        <img
+          [src]="
+            post().imageUrl ||
+            'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
+          "
+          [alt]="post().title"
+          class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+        <a
+          [href]="post().url"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="absolute inset-0 z-10 focus:outline-none"
+          aria-hidden="true"
+          tabindex="-1"
+          ><span class="sr-only">Czytaj wpis</span></a
+        >
       </div>
 
       <!-- Card Content -->
-      <div class="flex flex-col h-full w-full">
-        <div class="flex items-center gap-x-4 text-xs font-medium text-white/60 mb-4">
+      <div class="flex flex-col p-8 h-full w-full">
+        <div class="flex items-center gap-x-3 mb-6">
           <span
-            class="px-2 py-0.5 text-[10px] uppercase tracking-wider text-accent border border-accent/20 font-mono"
+            class="px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-primary bg-primary/5 border border-primary/20 rounded-sm"
           >
             {{ post().category }}
           </span>
+          <div class="h-px w-4 bg-slate-800"></div>
+          <time
+            [attr.datetime]="post().date"
+            class="text-[9px] font-bold text-slate-500 uppercase tracking-widest"
+          >
+            {{ post().date | date: 'yyyy.MM.dd' }}
+          </time>
         </div>
 
         <h3
-          class="text-lg font-bold leading-tight text-white group-hover:text-accent transition-colors line-clamp-2"
+          class="text-xl font-bold leading-tight text-white group-hover:text-primary transition-colors line-clamp-2 uppercase tracking-tight"
         >
           <a [href]="post().url" target="_blank" rel="noopener noreferrer">
             <span class="absolute inset-0"></span>
@@ -69,26 +65,17 @@ import { BlogPost } from '../../blog.model';
         </h3>
 
         <p
-          class="mt-4 flex-auto line-clamp-3 text-sm leading-relaxed text-white/60 font-light border-l border-white/10 pl-3"
+          class="mt-4 flex-auto line-clamp-3 text-sm leading-relaxed text-slate-400 font-light border-l-2 border-slate-800 pl-4 group-hover:border-primary/30 transition-colors"
         >
           {{ post().excerpt }}
         </p>
 
-        <div class="mt-6 flex items-center pt-4 w-full">
+        <div class="mt-8 flex items-center pt-4 w-full border-t border-slate-800/50">
           <div
-            class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white/40 group-hover:text-accent transition-colors"
+            class="group/link inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 group-hover:text-primary transition-colors"
           >
             Czytaj
-            <!-- ArrowRight -->
-            <svg
-              class="h-3 w-3 transition-transform group-hover:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <span class="h-px w-6 bg-slate-800 transition-all group-hover:w-10 group-hover:bg-primary"></span>
           </div>
         </div>
       </div>

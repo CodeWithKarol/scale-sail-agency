@@ -7,22 +7,17 @@ import { BlogPost } from '../../blog.model';
   imports: [CommonModule, DatePipe],
   template: `
     <article
-      class="group relative isolate flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-16 border-b border-white/10 pb-16 lg:pb-24"
+      class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b border-slate-800 pb-20 lg:pb-32"
     >
       <!-- Image -->
       <div class="relative w-full lg:w-1/2 lg:shrink-0">
         <div
-          class="aspect-[16/9] w-full overflow-hidden bg-secondary ring-1 ring-white/10 transition-all duration-500 group-hover:ring-accent/50"
+          class="aspect-[16/9] w-full overflow-hidden bg-slate-900 border border-slate-800 transition-all duration-500 hover:border-primary/40 shadow-2xl"
         >
-          <!-- Tech overlay -->
           <div
-            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0wIDBoNHYxSDB6IiBmaWxsPSIjMDAwIiBmaWxsLW9wYWNpdHk9IjAuMiIvPjwvc3ZnPg==')] opacity-10 pointer-events-none z-10"
-          ></div>
-
-          <div
-            class="absolute top-4 left-4 z-20 px-2 py-1 bg-black/60 backdrop-blur text-[10px] font-mono text-accent border border-accent/20 uppercase tracking-widest"
+            class="absolute top-6 left-6 z-20 px-3 py-1 bg-slate-950 border border-slate-800 text-[9px] font-black text-accent uppercase tracking-[0.3em] rounded-sm shadow-2xl"
           >
-            NAJNOWSZY_WPIS
+            NAJNOWSZY WPIS
           </div>
 
           <a
@@ -42,7 +37,7 @@ import { BlogPost } from '../../blog.model';
               width="800"
               height="450"
               fetchpriority="high"
-              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:grayscale-[0.5]"
+              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
             />
           </a>
         </div>
@@ -50,55 +45,47 @@ import { BlogPost } from '../../blog.model';
 
       <!-- Content -->
       <div class="w-full lg:w-1/2 flex flex-col justify-center">
-        <div class="flex items-center gap-x-4 text-xs font-medium mb-6">
-          <span
-            class="relative z-10 px-3 py-1 bg-white/5 border border-white/10 text-white/80 font-mono text-[10px] uppercase tracking-wider"
+        <div class="flex items-center gap-x-4 mb-8">
+          <div
+            class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black tracking-widest uppercase rounded-sm"
           >
             {{ post().category }}
-          </span>
+          </div>
+          <div class="h-px w-8 bg-slate-800"></div>
           <time
             [attr.datetime]="post().date"
-            class="text-accent font-mono text-[10px] uppercase tracking-wider"
+            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest"
           >
-            // {{ post().date | date: 'yyyy.MM.dd' }}
+            {{ post().date | date: 'yyyy.MM.dd' }}
           </time>
         </div>
 
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl uppercase leading-tight">
           <a
             [href]="post().url"
             target="_blank"
             rel="noopener noreferrer"
-            class="hover:text-accent transition-colors duration-300"
+            class="hover:text-primary transition-colors duration-300"
           >
             {{ post().title }}
           </a>
         </h2>
 
         <p
-          class="mt-6 text-lg leading-relaxed text-white/60 font-light border-l border-white/10 pl-4"
+          class="mt-8 text-lg leading-relaxed text-slate-400 font-light border-l-4 border-primary/20 pl-8"
         >
           {{ post().excerpt }}
         </p>
 
-        <div class="mt-8">
+        <div class="mt-10">
           <a
             [href]="post().url"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm font-bold uppercase tracking-wider text-white flex items-center gap-2 group/btn hover:text-accent transition-colors"
+            class="group/btn inline-flex items-center gap-3 text-xs font-black text-white hover:text-primary transition-colors uppercase tracking-[0.2em]"
           >
             Czytaj artykuł
-            <!-- ArrowRight -->
-            <svg
-              class="h-4 w-4 transition-transform group-hover/btn:translate-x-1"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <span class="h-px w-12 bg-slate-700 transition-all group-hover/btn:w-16 group-hover:bg-primary"></span>
           </a>
         </div>
       </div>
