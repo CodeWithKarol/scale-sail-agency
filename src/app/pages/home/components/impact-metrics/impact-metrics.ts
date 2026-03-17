@@ -21,8 +21,8 @@ export class ImpactMetrics {
   protected readonly metrics = signal<Metric[]>([
     {
       value: '0 zł',
-      label: 'Konsultacja',
-      description: 'Pierwsza rozmowa (15 min) jest zawsze bezpłatna. Sprawdzimy, czy możemy Ci pomóc.',
+      label: 'Abonamentu',
+      description: 'Płacisz raz za wdrożenie. Nie musisz co miesiąc płacić "haraczu" za dostęp do własnych danych.',
     },
     {
       value: 'do 14 dni',
@@ -36,8 +36,8 @@ export class ImpactMetrics {
     },
     {
       value: '100%',
-      label: 'Wszystko w jednym miejscu',
-      description: 'Wszystkie zlecenia i dane klientów bezpiecznie w Twoim telefonie.',
+      label: 'Twoja własność',
+      description: 'System i baza danych należą do Ciebie. Masz do nich dostęp zawsze, bez żadnych opłat miesięcznych.',
     },
   ]);
 }
