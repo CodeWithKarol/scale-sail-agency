@@ -5,7 +5,7 @@
   <div class="absolute inset-0 -z-10 bg-grid-tech"></div>
 
   <div class="layout-container relative z-10">
-    <app-section-header subtitle="ENGAGEMENT_MATRIX" title="Service Tiers" class="font-mono" />
+    <app-section-header subtitle="PORÓWNANIE_ROZWIĄZAŃ" title="Zacznij działać nowocześnie" class="font-mono" />
 
     <!-- Mobile View (Styled Cards) -->
     <div class="grid grid-cols-1 gap-8 lg:hidden">
@@ -19,7 +19,7 @@
               <div
                 class="absolute top-0 right-0 bg-primary/20 text-primary px-3 py-1 text-[10px] font-mono uppercase tracking-wider border-b border-l border-primary/20"
               >
-                RECOMMENDED
+                REKOMENDOWANE
               </div>
             }
 
@@ -35,12 +35,12 @@
 
             <ul class="mt-8 space-y-4 text-xs leading-6 text-white/60 font-mono">
               <li class="flex justify-between border-b border-white/5 pb-2">
-                <span class="text-white/40 uppercase tracking-wider">Timeline:</span>
+                <span class="text-white/40 uppercase tracking-wider">Czas:</span>
                 <span class="text-white">{{ tier.timeline }}</span>
               </li>
               <li class="flex justify-between border-b border-white/5 pb-2">
-                <span class="text-white/40 uppercase tracking-wider">Investment:</span>
-                <span class="text-white">{{ tier.investment }}</span>
+                <span class="text-white/40 uppercase tracking-wider">Efekt:</span>
+                <span class="text-white">{{ tier.result }}</span>
               </li>
             </ul>
 
@@ -69,10 +69,10 @@
         role="rowgroup"
       >
         <div class="contents" role="row">
-          <span class="col-span-3" role="columnheader">Service_Module</span>
-          <span class="col-span-4" role="columnheader">Target_Outcome</span>
-          <span class="col-span-2 text-center" role="columnheader">Duration</span>
-          <span class="col-span-2 text-center" role="columnheader">Cost_Basis</span>
+          <span class="col-span-3" role="columnheader">Metoda_Pracy</span>
+          <span class="col-span-4" role="columnheader">Dla_Kogo</span>
+          <span class="col-span-2 text-center" role="columnheader">Czas</span>
+          <span class="col-span-2 text-center" role="columnheader">Efekt_Końcowy</span>
           <span class="col-span-1" role="columnheader"><span class="sr-only">Init</span></span>
         </div>
       </div>
@@ -116,12 +116,12 @@
               </div>
             </div>
 
-            <!-- Investment -->
+            <!-- Result -->
             <div
               class="col-span-2 text-center text-xs font-mono font-semibold text-white/80"
               role="cell"
             >
-              {{ tier.investment }}
+              {{ tier.result }}
             </div>
 
             <!-- Action -->

@@ -39,9 +39,9 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
 
         <!-- Header -->
         <app-section-header
-          subtitle="INDEX / 01"
-          title="Turnaround Stories"
-          description="Real examples of how I helped companies **Scale** past their bottlenecks. From sluggish legacy monoliths to high-velocity shipping engines."
+          subtitle="REALIZACJE / 01"
+          title="Wybrane Realizacje"
+          description="Zobacz, jak pomogłem innym firmom zamienić chaos w poukładany proces. Od prostych systemów dla warsztatów po dedykowane aplikacje dla usług."
         />
 
         <!-- Projects List -->
@@ -64,13 +64,13 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
             @if (hasMoreProjects()) {
               <div class="mt-32 flex justify-center">
                 <app-button variant="secondary" size="lg" (click)="loadMore()">
-                  Load more projects
+                  Pokaż więcej projektów
                 </app-button>
               </div>
             }
           } @else {
             <div class="text-center py-24">
-              <p class="text-white/40">Coming soon.</p>
+              <p class="text-white/40">Wkrótce pojawią się nowe opisy.</p>
             </div>
           }
         </div>
@@ -105,23 +105,22 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Work | Scale Sail Agency',
+        title: 'Realizacje | Scale Sail Agency',
         description:
-          'Case studies of engineering turnarounds. See how legacy codebases were transformed into high-velocity growth engines.',
+          'Case studies wdrożeń systemów dla firm usługowych. Zobacz jak cyfrowa transformacja pomogła realnym biznesom.',
         slug: '/work',
         keywords: [
-          'Angular Portfolio',
-          'Case Studies',
-          'Enterprise Angular',
-          'System Architecture',
-          'SaaS Development',
-          'Frontend Modernization',
+          'Portfolio',
+          'Realizacje IT',
+          'Aplikacje dla warsztatów',
+          'Systemy usługowe',
+          'Automatyzacja firm',
         ],
       });
 
       this.seoService.setBreadcrumbs([
-        { name: 'Home', path: '/' },
-        { name: 'Work', path: '/work' },
+        { name: 'Start', path: '/' },
+        { name: 'Realizacje', path: '/work' },
       ]);
 
       const projects = this.projects();
@@ -131,9 +130,9 @@ export class WorkPage {
           '@graph': [
             {
               '@type': 'CollectionPage',
-              name: 'Selected Work | Scale Sail Agency',
+              name: 'Wybrane Realizacje | Scale Sail Agency',
               description:
-                'Case studies focused on modernization, performance wins, and scalable architecture.',
+                'Historie wdrożeń systemów, które usprawniły pracę w firmach usługowych.',
               url: 'https://scale-sail.io/work',
               mainEntity: {
                 '@type': 'ItemList',

@@ -166,7 +166,7 @@
                   for="name"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Twoje imię i nazwisko
+                  // Twoje imię / Nazwa firmy
                 </label>
                 <input
                   type="text"
@@ -178,7 +178,7 @@
                 />
                 @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: Imię jest wymagane</span
+                    >>> BŁĄD: Podaj swoje imię</span
                   >
                 }
               </div>
@@ -189,24 +189,19 @@
                   for="email"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Adres e-mail
+                  // Adres e-mail lub telefon
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   id="email"
                   formControlName="email"
-                  placeholder="twoj@email.pl"
+                  placeholder="twoj@email.pl lub nr telefonu"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
                   [class.border-red-500]="f.email.invalid && f.email.touched"
                 />
                 @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: E-mail jest wymagany</span
-                  >
-                }
-                @if (f.email.invalid && f.email.touched && f.email.errors?.['email']) {
-                  <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> BŁĄD: Niepoprawny format e-mail</span
+                    >>> BŁĄD: Kontakt jest wymagany</span
                   >
                 }
               </div>
@@ -272,28 +267,6 @@
             </div>
           }
         </form>
-
-        <!-- Downsell / Freelance Link -->
-        <div class="mt-6 pt-6 border-t border-white/5 text-center font-mono">
-          <p class="text-[10px] text-white/30 uppercase tracking-widest mb-3">
-            // System_Overkill?
-          </p>
-          <div
-            class="bg-white/[0.02] border border-white/5 p-4 rounded-sm hover:border-primary/20 transition-colors group/downsell"
-          >
-            <p class="text-xs text-white/60 mb-3 leading-relaxed">
-              For code reviews, audits, and single components, visit my personal portfolio.
-            </p>
-            <a
-              href="https://www.karol-modelski.scale-sail.io"
-              class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary hover:text-white transition-colors"
-            >
-              <span>&gt;</span>
-              View_Micro_Engagements
-              <span class="opacity-0 group-hover/downsell:opacity-100 transition-opacity">_</span>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -14,45 +14,44 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'About Karol Modelski | Enterprise Angular Architect',
+      title: 'O mnie | Karol Modelski — Scale Sail',
       description:
-        'Enterprise System Architect & Founder of Scale Sail. Specializing in unblocking engineering teams through Angular modernization, Nx architecture, and technical debt liquidation.',
+        'Pomagam małym firmom usługowym i warsztatom wychodzić z ery kartek i Excela. Wykorzystuję doświadczenie z największych projektów IT, by budować proste i solidne aplikacje.',
       slug: 'about',
       type: 'profile',
     });
   }
 
   techStack = [
-    { category: 'Core', items: ['Angular 21', 'TypeScript', 'RxJS', 'Nx'] },
-    { category: 'State', items: ['NgRx', 'Signals', 'Store', 'Component Store'] },
-    { category: 'Performance', items: ['SSR / SSG', 'Incremental Hydration', 'Zoneless'] },
-    { category: 'Testing', items: ['Jest', 'Cypress', 'Vitest'] },
+    { category: 'Fundamenty', items: ['Angular', 'TypeScript', 'Automatyzacja'] },
+    { category: 'Szybkość', items: ['Aplikacje mobilne', 'Powiadomienia SMS', 'Chmura'] },
+    { category: 'Jakość', items: ['Bazy danych', 'Bezpieczeństwo', 'Wydajność'] },
   ];
 
   experience = [
     {
       role: 'Senior Frontend Developer',
       company: 'GFT Technologies (Citi)',
-      period: 'Mar 2025 - Present',
-      desc: 'Leading architecture for mission-critical trading platforms. Enforcing 100% test coverage policies while migrating legacy micro-frontends to a coherent Nx monorepo. Balancing enterprise compliance with developer velocity.',
+      period: 'Mar 2025 - Obecnie',
+      desc: 'Buduję systemy dla największych banków na świecie. Tutaj nauczyłem się, jak tworzyć oprogramowanie, które nigdy nie zawodzi i obsługuje miliony operacji.',
     },
     {
       role: 'Frontend Developer',
       company: 'Silent Eight',
-      period: 'Dec 2023 - Feb 2025',
-      desc: 'AI Compliance SaaS. Led the frontend modernization initiative (Angular 14 → 19) and introduced "Zoneless" architecture for 50% performance gains. Worked directly with Product Owners to accelerate feature delivery.',
+      period: 'Grudzień 2023 - Luty 2025',
+      desc: 'Praca nad systemami AI dla sektora finansowego. Skupiłem się na maksymalnej szybkości działania aplikacji i intuicyjności dla użytkownika.',
     },
     {
       role: 'Software Developer',
       company: 'BNP Paribas',
-      period: 'Nov 2021 - Nov 2023',
-      desc: 'GOonline Platform. Delivered features for 1M+ active users. Managed the complex migration of core banking modules from AngularJS, ensuring zero downtime during high-traffic windows.',
+      period: 'Listopad 2021 - Listopad 2023',
+      desc: 'Rozwijałem bankowość internetową, z której korzysta ponad milion osób. Zarządzałem trudnymi migracjami starych systemów na nowe technologie.',
     },
     {
       role: 'Junior Frontend Developer',
       company: 'Amway',
-      period: 'Apr 2019 - Oct 2021',
-      desc: 'Global E-commerce. Built high-traffic dashboards for business owners. Optimized data visualization components handling millions of records.',
+      period: 'Kwiecień 2019 - Październik 2021',
+      desc: 'Tworzyłem panele do zarządzania sprzedażą dla tysięcy przedsiębiorców. To tutaj zrozumiałem, jak ważne dla biznesu są przejrzyste dane.',
     },
   ];
 }

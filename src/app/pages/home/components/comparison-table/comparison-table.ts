@@ -9,7 +9,7 @@ interface ComparisonTier {
   name: string;
   bestFor: string;
   timeline: string;
-  investment: string;
+  result: string;
   ctaText: string;
   ctaLink: string;
   highlighted?: boolean;
@@ -24,31 +24,31 @@ interface ComparisonTier {
 export class ComparisonTable {
   tiers = signal<ComparisonTier[]>([
     {
-      id: 'audit',
-      name: 'Scale-Blocker Audit',
-      bestFor: 'Diagnosing root causes & Roadmap',
-      timeline: '5 Days',
-      investment: '$997 (Credited)',
-      ctaText: 'Book Audit',
+      id: 'paper',
+      name: 'Kartki i Notatki',
+      bestFor: 'Mały bałagan',
+      timeline: 'Cały dzień',
+      result: 'Zgubione zlecenia, brudne papiery, chaos.',
+      ctaText: 'Zmień to',
+      ctaLink: '/#contact',
+    },
+    {
+      id: 'app',
+      name: 'Twoja Aplikacja',
+      bestFor: 'Profesjonalny Warsztat',
+      timeline: '1 kliknięcie',
+      result: 'Automatyczne SMS-y, porządek, święty spokój.',
+      ctaText: 'Chcę taką',
       ctaLink: '/#contact',
       highlighted: true,
     },
     {
-      id: 'sprints',
-      name: 'Velocity Sprints',
-      bestFor: 'Executing the Roadmap & Fixes',
-      timeline: '2-Week Cycles',
-      investment: '$4,000 / Sprint',
-      ctaText: 'Start Sprint',
-      ctaLink: '/#contact',
-    },
-    {
-      id: 'retainer',
-      name: 'Fractional Architect',
-      bestFor: 'Ongoing Leadership & QA',
-      timeline: 'Monthly',
-      investment: '$2,000 / Month',
-      ctaText: 'Discuss Role',
+      id: 'excel',
+      name: 'Zawiły Excel',
+      bestFor: 'Analiza po nocach',
+      timeline: '3 godziny dziennie',
+      result: 'Błędy w danych, brak dostępu z telefonu.',
+      ctaText: 'Uprość to',
       ctaLink: '/#contact',
     },
   ]);

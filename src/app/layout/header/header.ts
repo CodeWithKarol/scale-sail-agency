@@ -25,22 +25,21 @@ export class Header {
 
   navigation = [
     {
-      name: 'Strategy',
+      name: 'Oferta',
       children: [
-        { name: 'Modernization', path: '/', fragment: 'services' },
-        { name: 'Process', path: '/', fragment: 'process' },
-        { name: 'Case Studies', path: '/work', fragment: undefined },
+        { name: 'Jak działamy', path: '/', fragment: 'process' },
+        { name: 'Realizacje', path: '/work', fragment: undefined },
+        { name: 'Częste pytania', path: '/', fragment: 'faq' },
       ],
     },
     {
-      name: 'Resources',
+      name: 'Wiedza',
       children: [
-        { name: 'Engineering Blog', path: '/blog', fragment: undefined },
-        { name: 'FAQ', path: '/', fragment: 'faq' },
+        { name: 'Blog / Porady', path: '/blog', fragment: undefined },
       ],
     },
-    { name: 'About', path: '/about', fragment: undefined },
-    { name: 'Contact', path: '/', fragment: 'contact' },
+    { name: 'O mnie', path: '/about', fragment: undefined },
+    { name: 'Kontakt', path: '/', fragment: 'contact' },
   ];
 
   openDropdown = signal<string | null>(null);
