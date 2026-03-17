@@ -39,21 +39,21 @@ import { GeometricBackground } from '../../shared/ui/geometric-background/geomet
 
         <!-- Header -->
         <app-section-header
-          subtitle="REALIZACJE / 01"
+          subtitle="REALIZACJE 01"
           title="Wybrane Realizacje"
           description="Zobacz przykładowe projekty, na bazie których możesz zobaczyć, jak myślę o systemach dla firm – od paneli administracyjnych po lekkie narzędzia dla warsztatów i usług."
         />
 
-        <p class="text-white/60 font-light max-w-3xl mt-8 font-mono text-sm leading-relaxed border-l-2 border-primary/30 pl-6">
+        <p class="text-slate-400 font-light max-w-3xl mt-8 text-base leading-relaxed border-l-4 border-accent/40 pl-8 bg-accent/5 py-4 rounded-r-sm animate-in fade-in slide-in-from-left-4 duration-700 delay-200">
           Część poniższych projektów to przykładowe realizacje stworzone na potrzeby portfolio –
           pokazują poziom złożoności, jakość frontendu i podejście do projektowania paneli, z których
           później korzystają prawdziwi użytkownicy.
         </p>
 
         <!-- Projects List -->
-        <div class="mt-24 sm:mt-32 border-t border-white/10">
+        <div class="mt-24 sm:mt-32 border-t border-slate-800">
           @if (hasProjects()) {
-            <ul class="list-none p-0 divide-y divide-white/5">
+            <ul class="list-none p-0 divide-y divide-slate-800/50">
               @for (
                 project of visibleProjects();
                 track project.id;
