@@ -1,4 +1,4 @@
-export type CurrencyCode = 'EUR';
+export type CurrencyCode = 'EUR' | 'PLN';
 
 export interface Money {
   /**

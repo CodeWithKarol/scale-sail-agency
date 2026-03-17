@@ -14,10 +14,14 @@
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="SYSTEM_DIAGNOSTICS"
-      title="Critical Failures Detected"
+      subtitle="DIAGNOZA_TWOJEJ_FIRMY"
+      title="Znasz to uczucie?"
       class="font-mono"
     />
+
+    <p class="text-center text-white/60 -mt-8 mb-16 max-w-2xl mx-auto font-light">
+      Jeśli prowadzisz warsztat lub firmę usługową, pewnie brzmi to znajomo:
+    </p>
 
     <!-- Cards Layout -->
     <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
@@ -32,7 +36,7 @@
               <div
                 class="flex items-center justify-between mb-6 pb-4 border-b border-white/5 group-hover:border-white/10 transition-colors"
               >
-                <span class="font-mono text-xs text-white/40">ERR_0{{ index + 1 }}</span>
+                <span class="font-mono text-xs text-white/40">SCENARIUSZ_0{{ index + 1 }}</span>
                 <div
                   class="h-1.5 w-1.5 rounded-sm"
                   [class]="
@@ -61,10 +65,10 @@
                   </svg>
                   <!-- Corner accents -->
                   <div
-                    class="absolute top-0 left-0 w-1 h-1 border-t border-l border-white/20"
+                    class="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/20"
                   ></div>
                   <div
-                    class="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-white/20"
+                    class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/20"
                   ></div>
                 </div>
 
@@ -87,7 +91,7 @@
                 class="mt-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-wider text-red-400/80"
               >
                 <span class="inline-block w-1 h-1 bg-red-400 rounded-full animate-pulse"></span>
-                Action Required
+                Wymaga zmiany
               </div>
             </app-card>
           </li>
@@ -111,18 +115,18 @@
 
           <div class="mx-auto max-w-3xl text-center">
             <h3 class="text-lg font-mono leading-8 text-white/80 text-pretty">
-              <span class="text-primary">></span> Whether you need a
-              <span class="text-white">Scale-Blocker Audit</span>,
-              <span class="text-white">Velocity Sprints</span>, or
-              <span class="text-white">Fractional Leadership</span>,
+              <span class="text-primary">></span> Niezależnie czy potrzebujesz
+              <span class="text-white">automatycznych SMS-ów</span>,
+              <span class="text-white">cyfrowej bazy zleceń</span>, czy
+              <span class="text-white">prostego panelu dla klienta</span>,
               <span class="text-white border-b border-primary/50 pb-0.5"
-                >you're choosing the same elite engineering standards</span
+                >buduję rozwiązania, które po prostu działają</span
               >
               <span class="text-primary"><</span>
             </h3>
 
             <div class="mt-6 text-xs font-mono text-white/30 uppercase tracking-[0.2em]">
-              // End of Diagnostics Report //
+              // Twoja firma na nowym silniku //
             </div>
           </div>
         </div>

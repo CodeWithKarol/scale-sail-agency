@@ -14,26 +14,26 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Architecture Audit', path: '/', fragment: 'services' },
-    { name: 'Modernization Sprints', path: '/', fragment: 'services' },
-    { name: 'Retainer & Advisory', path: '/', fragment: 'services' },
-    { name: 'Engineering Strategy', path: '/', fragment: 'process' },
+    { name: 'Dla Warsztatów', path: '/', fragment: 'workshop-pro' },
+    { name: 'Systemy Usługowe', path: '/', fragment: 'service-flow' },
+    { name: 'Aplikacje Dedykowane', path: '/', fragment: 'contact' },
+    { name: 'Automatyzacja SMS', path: '/', fragment: 'service-architecture' },
   ]);
 
   resources = signal([
-    { name: 'Case Studies', path: '/work', fragment: undefined },
-    { name: 'Engineering Blog', path: '/blog', fragment: undefined },
-    { name: 'About Scale Sail', path: '/about', fragment: undefined },
+    { name: 'Realizacje', path: '/work', fragment: undefined },
+    { name: 'Blog / Porady', path: '/blog', fragment: undefined },
+    { name: 'O agencji', path: '/about', fragment: undefined },
   ]);
 
   connect = signal([
-    { name: 'Schedule Strategy Session', path: '/', fragment: 'contact' },
+    { name: 'Napisz do mnie', path: '/', fragment: 'contact' },
     {
-      name: 'Small Gigs & Fixes',
-      path: 'https://www.karol-modelski.scale-sail.io',
+      name: 'Sklep Gumroad',
+      path: 'https://karolmodelski.gumroad.com',
       fragment: undefined,
     },
-    { name: 'Email Direct', path: '/', fragment: 'contact' },
+    { name: 'LinkedIn', path: 'https://linkedin.com', fragment: undefined },
   ]);
 
   legal = signal<{ name: string; path: string; fragment?: string }[]>([]);

@@ -6,9 +6,9 @@
       <!-- Left: Context & Info -->
       <div>
         <app-section-header
-          subtitle="COMMUNICATION_UPLINK"
-          title="Initialize Engagement"
-          description="Ready to stop managing debt and start managing growth? Direct line to engineering strategy—no sales intermediaries."
+          subtitle="KONTAKT_BEZPOŚREDNI"
+          title="Porozmawiajmy o Twojej firmie"
+          description="Masz dość chaosu w papierach? Chcesz odciążyć telefon i zyskać więcej czasu? Napisz do mnie – chętnie podpowiem, jak prosta aplikacja może to zmienić."
           class="mb-10"
         />
 
@@ -19,7 +19,7 @@
           >
             <div class="absolute inset-0 bg-grid-white/[0.02] -z-10"></div>
 
-            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">Current_Bandwidth</h3>
+            <h3 class="text-xs uppercase tracking-widest text-white/40 mb-4">Dostępność</h3>
             <div class="flex items-center gap-4">
               <div class="relative flex h-3 w-3">
                 <span
@@ -27,11 +27,10 @@
                 ></span>
                 <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </div>
-              <span class="text-sm text-white font-bold">Q1 Openings Available</span>
+              <span class="text-sm text-white font-bold">Przyjmuję nowe projekty</span>
             </div>
             <p class="mt-4 text-xs text-white/60 leading-relaxed">
-              Currently accepting new modernization audits and retainer partnerships for the
-              upcoming quarter.
+              Obecnie mam czas na 1-2 wdrożenia w tym miesiącu. Odpisuję zazwyczaj w ciągu 24h.
             </p>
           </div>
 
@@ -133,7 +132,7 @@
                   "
                   class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
                 >
-                  Audit ($997)
+                  Dla Warsztatu
                 </button>
                 <button
                   type="button"
@@ -145,7 +144,7 @@
                   "
                   class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
                 >
-                  Sprints ($4k)
+                  System Usługowy
                 </button>
                 <button
                   type="button"
@@ -157,7 +156,7 @@
                   "
                   class="py-2 text-[10px] font-mono uppercase tracking-widest transition-all rounded-sm"
                 >
-                  Retainer ($2k)
+                  Inny Pomysł
                 </button>
               </div>
 
@@ -167,19 +166,19 @@
                   for="name"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // User_Identity
+                  // Twoje imię i nazwisko
                 </label>
                 <input
                   type="text"
                   id="name"
                   formControlName="name"
-                  placeholder="Enter your name"
+                  placeholder="Jak się nazywasz?"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
                   [class.border-red-500]="f.name.invalid && f.name.touched"
                 />
                 @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> ERROR: Name is required</span
+                    >>> BŁĄD: Imię jest wymagane</span
                   >
                 }
               </div>
@@ -190,24 +189,24 @@
                   for="email"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Contact_Point
+                  // Adres e-mail
                 </label>
                 <input
                   type="email"
                   id="email"
                   formControlName="email"
-                  placeholder="name@company.com"
+                  placeholder="twoj@email.pl"
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all"
                   [class.border-red-500]="f.email.invalid && f.email.touched"
                 />
                 @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> ERROR: Email is required</span
+                    >>> BŁĄD: E-mail jest wymagany</span
                   >
                 }
                 @if (f.email.invalid && f.email.touched && f.email.errors?.['email']) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> ERROR: Invalid Email Format</span
+                    >>> BŁĄD: Niepoprawny format e-mail</span
                   >
                 }
               </div>
@@ -218,13 +217,13 @@
                   for="message"
                   class="block text-[10px] font-mono uppercase tracking-widest text-white/40 mb-2 group-focus-within/field:text-primary transition-colors"
                 >
-                  // Project_Parameters
+                  // W czym mogę pomóc?
                 </label>
                 <textarea
                   id="message"
                   formControlName="message"
                   rows="4"
-                  placeholder="Describe your architecture challenges..."
+                  placeholder="Napisz krótko, czym zajmuje się Twoja firma i jaki masz problem z papierami lub telefonami..."
                   class="w-full bg-black/20 border border-white/10 text-white placeholder:text-white/20 px-4 py-3 font-mono text-sm focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all resize-none"
                   [class.border-red-500]="f.message.invalid && f.message.touched"
                 ></textarea>
@@ -235,17 +234,7 @@
                   f.message.errors['required']
                 ) {
                   <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> ERROR: Message is required</span
-                  >
-                }
-                @if (
-                  f.message.invalid &&
-                  f.message.touched &&
-                  f.message.errors &&
-                  f.message.errors['minlength']
-                ) {
-                  <span class="text-[9px] text-red-500 font-mono mt-1"
-                    >>> ERROR: Minimum 20 chars required</span
+                    >>> BŁĄD: Treść wiadomości jest wymagana</span
                   >
                 }
               </div>
@@ -258,7 +247,7 @@
                   class="flex items-center justify-center sm:justify-start gap-2 text-[10px] font-mono text-white/30 uppercase w-full sm:w-auto"
                 >
                   <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
-                  Encrypted_SSL
+                  Połączenie szyfrowane
                 </div>
 
                 <app-button
@@ -273,9 +262,9 @@
                       <span
                         class="animate-spin h-3 w-3 border-2 border-secondary border-t-transparent rounded-full"
                       ></span>
-                      Processing...
+                      Wysyłanie...
                     } @else {
-                      > INITIATE_HANDSHAKE
+                      > WYŚLIJ WIADOMOŚĆ
                     }
                   </span>
                 </app-button>

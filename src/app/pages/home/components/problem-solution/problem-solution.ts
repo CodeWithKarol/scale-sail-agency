@@ -18,24 +18,24 @@ interface Problem {
 export class ProblemSolution {
   problems = signal<Problem[]>([
     {
-      title: 'Stalled Engineering',
+      title: 'Chaos w papierach',
       description:
-        'Your roadmap says "Scale," but your codebase says "Stop." Velocity has flatlined because every new feature breaks something else.',
-      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+        'Wieczorem szukasz wymiętej kartki, żeby sprawdzić, co właściwie obiecałeś na jutro. Zlecenia się gubią, a pismo staje się nieczytelne.',
+      icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z',
       theme: 'red',
     },
     {
-      title: 'Performance Liability',
+      title: 'Ciągłe telefony',
       description:
-        'Your platform is too slow for modern users. Core Web Vitals are failing, customers are complaining, and you risk losing market share to faster competitors.',
-      icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+        'Kolejny klient dzwoni, gdy masz ręce pełne roboty, żeby zapytać o status naprawy. Każdy taki telefon to przerwanie pracy i strata czasu.',
+      icon: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
       theme: 'orange',
     },
     {
-      title: 'Missing Technical Leadership',
+      title: 'Excel, który przeszkadza',
       description:
-        'You have developers, but you lack an architect. You need someone to set the standards, enforce the quality, and guarantee that the system scales with the business.',
-      icon: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+        'Niby masz tabelkę, ale nikt nie ma czasu jej uzupełniać. Jest zbyt skomplikowana, niefunkcjonalna i zamiast pomagać, tylko dokłada roboty.',
+      icon: 'M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
       theme: 'indigo',
     },
   ]);
