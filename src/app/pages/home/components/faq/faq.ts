@@ -18,6 +18,11 @@ export class Faq implements OnInit {
 
   faqs = signal<FAQ[]>([
     {
+      question: 'Czym Twój system różni się od gotowego oprogramowania dla warsztatu?',
+      answer:
+        'Gotowe systemy często są przeładowane funkcjami, których nie potrzebujesz, i wymagają opłacania dożywotniego abonamentu. Ja buduję dedykowaną aplikację dla Twojej firmy na własność – płacisz raz za wdrożenie, a system jest prosty, szybki i zawiera dokładnie to, czego używasz w codziennej pracy.',
+    },
+    {
       question: 'Czy ja i moi pracownicy poradzimy sobie z obsługą?',
       answer:
         'Tak. Projektuję aplikacje tak, aby były prostsze niż wysłanie SMS-a. Nie ma tu zbędnych przycisków ani skomplikowanych tabel. Jeśli potrafisz obsługiwać Facebooka lub bankowość w telefonie, poradzisz sobie bez problemu.',
@@ -44,25 +49,12 @@ export class Faq implements OnInit {
     },
     {
       question: 'Mam już swoje dane w Excelu. Czy da się je przenieść?',
-      answer: 'Oczywiście. Pomagam przenieść bazę klientów i historię zleceń z Excela lub kartek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
+      answer:
+        'Oczywiście. Pomagam przenieść bazę klientów i historię zleceń z Excela lub kartek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
     },
   ]);
 
   ngOnInit() {
-    this.seoService.setSchema(
-      {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: this.faqs().map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
-        })),
-      },
-      'json-ld-faq',
-    );
+    this.seoService.setFaqSchema(this.faqs());
   }
 }

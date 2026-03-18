@@ -1,5 +1,5 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10 shadow-none"
 >
   <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
     <div
@@ -9,31 +9,30 @@
       <div class="lg:pr-4">
         <div class="relative lg:max-w-lg">
           <div class="animate-in fade-in slide-in-from-left-4 duration-700">
-            <p
-              class="text-[10px] font-extrabold leading-7 text-accent uppercase tracking-[0.3em] mb-4"
-            >
-              SYLWETKA TWÓRCY
-            </p>
-            <h2
-              class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl uppercase mb-6"
-            >
+            <div class="mb-8 flex">
+              <div class="status-badge status-badge-dark ring-4 ring-secondary/5">
+                SYLWETKA TWÓRCY
+              </div>
+            </div>
+            <h2 class="heading-2 text-secondary mb-10">
               {{ founder().headline }}
             </h2>
 
             <div
-              class="mt-10 text-xl leading-8 text-white border-l-4 border-primary/20 pl-6"
+              class="mt-12 text-xl leading-relaxed text-secondary border-l-4 border-primary pl-8 font-bold italic"
             >
               {{ founder().name }}
-              <span class="block text-sm font-bold text-slate-500 mt-2 uppercase tracking-widest">{{
-                founder().role
-              }}</span>
+              <span
+                class="block font-mono text-[10px] font-black text-secondary/40 mt-3 uppercase tracking-[0.3em]"
+                >{{ founder().role }}</span
+              >
             </div>
 
             <!-- Badges -->
             <div class="mt-8 flex flex-wrap gap-3">
               @for (badge of founder().badges; track $index) {
                 <div
-                  class="px-3 py-1 bg-slate-800 border border-slate-700 text-[10px] font-bold uppercase tracking-widest text-slate-300 rounded-sm"
+                  class="px-3 py-1 bg-neutral border-2 border-secondary/10 text-[10px] font-mono font-bold uppercase tracking-widest text-secondary/70 rounded-none"
                 >
                   {{ badge }}
                 </div>
@@ -48,7 +47,7 @@
         class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
       >
         <div class="lg:pr-4">
-          <div class="max-w-xl text-lg leading-relaxed text-slate-400 lg:max-w-lg font-light">
+          <div class="max-w-xl text-lg leading-relaxed text-secondary/70 lg:max-w-lg font-normal">
             @for (paragraph of founder().bio; track $index) {
               <p class="mb-6 last:mb-0">{{ paragraph }}</p>
             }
@@ -62,7 +61,7 @@
                 route="/work"
                 variant="primary"
                 size="lg"
-                styleClass="justify-center uppercase tracking-widest text-xs"
+                styleClass="btn btn-primary btn-lg justify-center uppercase tracking-widest text-xs shadow-none"
               >
                 Zobacz Realizacje
               </app-button>
@@ -70,7 +69,7 @@
                 route="/about"
                 variant="secondary"
                 size="lg"
-                styleClass="justify-center uppercase tracking-widest text-xs"
+                styleClass="btn btn-secondary btn-lg justify-center uppercase tracking-widest text-xs shadow-none"
               >
                 Pełny profil
               </app-button>
@@ -84,7 +83,7 @@
         class="lg:-ml-12 lg:-mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden"
       >
         <div
-          class="relative aspect-[4/5] bg-slate-900 border border-white/10 p-2 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group shadow-2xl"
+          class="relative aspect-[4/5] bg-white border-2 border-secondary/10 p-2 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group shadow-none"
         >
           <img
             class="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)] object-cover filter grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
@@ -97,22 +96,24 @@
 
           <!-- Quick stats overlaid -->
           <div
-            class="absolute bottom-10 left-10 right-10 p-6 bg-slate-950/90 backdrop-blur-md border border-slate-800 z-20 shadow-2xl"
+            class="absolute bottom-10 left-10 right-10 p-6 bg-white/95 backdrop-blur-md border-2 border-secondary/10 rounded-none z-20 shadow-none"
           >
             <div class="flex items-center gap-4">
               <div
-                class="h-10 w-10 flex-shrink-0 bg-primary flex items-center justify-center text-white font-black text-sm"
+                class="h-10 w-10 flex-shrink-0 bg-primary flex items-center justify-center text-secondary font-black text-sm"
                 aria-hidden="true"
               >
                 KM
               </div>
               <div>
                 <p
-                  class="text-[9px] text-primary uppercase font-bold tracking-[0.2em] leading-none mb-1"
+                  class="text-[9px] text-primary uppercase font-mono font-bold tracking-[0.2em] leading-none mb-1"
                 >
                   MOJA ZASADA
                 </p>
-                <p class="text-xs font-extrabold text-white leading-tight uppercase tracking-wide">
+                <p
+                  class="text-xs font-extrabold text-secondary leading-tight uppercase tracking-wide"
+                >
                   Rozwiązania blisko biznesu
                 </p>
               </div>

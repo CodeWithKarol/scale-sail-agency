@@ -16,7 +16,8 @@ export class ServiceLevelObjectives {
       label: 'Dostęp z każdego miejsca',
       target: '100%',
       metric: 'Telefon / Tablet',
-      description: 'Aplikacja działa płynnie na każdym urządzeniu. Sprawdzasz status zlecenia pod autem lub u klienta.',
+      description:
+        'Aplikacja działa płynnie na każdym urządzeniu. Sprawdzasz status zlecenia pod autem lub u klienta.',
       status: 'active',
     },
     {
@@ -32,7 +33,8 @@ export class ServiceLevelObjectives {
       label: 'Bezpieczeństwo danych',
       target: 'SSL/SZYFR',
       metric: 'Twoja Baza',
-      description: 'Twoja baza klientów jest bezpieczna i dostępna tylko dla Ciebie. Żadnych kartek, które mogą zginąć.',
+      description:
+        'Twoja baza klientów jest bezpieczna i dostępna tylko dla Ciebie. Żadnych kartek, które mogą zginąć.',
       status: 'active',
     },
     {

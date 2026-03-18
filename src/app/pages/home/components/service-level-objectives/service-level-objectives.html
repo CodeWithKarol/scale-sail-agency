@@ -1,12 +1,12 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10"
 >
   <!-- Background Grid -->
-  <div class="absolute inset-0 -z-10 bg-grid-tech"></div>
+  <div class="absolute inset-0 -z-10 bg-grid-workshop"></div>
 
   <div class="layout-container">
     <app-section-header
-      subtitle="QUALITY_ASSURANCE_PROTOCOLS"
+      subtitle="MOJE STANDARDY PRACY"
       title="Service Level Objectives"
       description="I don't ask for trust. I guarantee results. Every engagement is bound by these engineering standards."
       class="mb-16"
@@ -15,30 +15,30 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       @for (slo of objectives(); track slo.id) {
         <div
-          class="group relative overflow-hidden bg-[#0d1117] border border-white/10 p-6 sm:p-8 hover:border-primary/50 transition-all duration-300"
+          class="card-workshop group relative overflow-hidden bg-white border-2 border-secondary/10 p-6 sm:p-8 hover:border-primary/50 transition-all duration-300 rounded-none"
         >
           <!-- Decorational Corners -->
           <div
-            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/10 group-hover:border-primary transition-colors"
+            class="absolute top-0 right-0 w-2 h-2 border-t border-r border-secondary/10 group-hover:border-primary transition-colors"
           ></div>
           <div
-            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/10 group-hover:border-primary transition-colors"
+            class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-secondary/10 group-hover:border-primary transition-colors"
           ></div>
 
           <!-- Header -->
           <div class="flex items-start justify-between mb-6">
             <div class="flex flex-col gap-1">
-              <span class="text-[10px] font-mono text-white/30 uppercase tracking-widest">
+              <span class="font-mono text-xs uppercase text-secondary/30 tracking-widest">
                 ID: {{ slo.id }}
               </span>
-              <h3 class="text-lg font-mono text-white group-hover:text-primary transition-colors">
+              <h3 class="heading-3 text-secondary group-hover:text-primary transition-colors">
                 {{ slo.label }}
               </h3>
             </div>
 
             <!-- Live Indicator -->
             <div
-              class="flex items-center gap-2 px-2 py-1 bg-green-500/10 border border-green-500/20 rounded-sm"
+              class="flex items-center gap-2 px-2 py-1 bg-green-500/10 border border-green-500/20 rounded-none"
             >
               <span class="relative flex h-1.5 w-1.5">
                 <span
@@ -46,33 +46,33 @@
                 ></span>
                 <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
               </span>
-              <span class="text-[9px] font-mono text-green-500 uppercase tracking-wider"
+              <span class="font-mono text-[9px] text-green-500 uppercase tracking-wider"
                 >MONITORED</span
               >
             </div>
           </div>
 
           <!-- Main Metric -->
-          <div class="flex items-baseline gap-2 mb-6 border-b border-white/5 pb-6">
-            <span class="text-4xl sm:text-5xl font-mono font-bold text-white tracking-tighter">
+          <div class="flex items-baseline gap-2 mb-6 border-b-2 border-secondary/10 pb-6">
+            <span class="text-4xl sm:text-5xl font-mono font-bold text-secondary tracking-tighter">
               {{ slo.target }}
             </span>
-            <span class="text-xs font-mono text-white/40 uppercase tracking-widest">
+            <span class="font-mono text-xs text-secondary/40 uppercase tracking-widest">
               / {{ slo.metric }}
             </span>
           </div>
 
           <!-- Description -->
-          <p class="text-sm text-white/60 font-mono leading-relaxed max-w-sm">
+          <p class="text-sm text-secondary/60 font-mono leading-relaxed max-w-sm">
             > {{ slo.description }}
           </p>
 
           <!-- Footer -->
           <div
-            class="mt-6 pt-4 border-t border-dashed border-white/5 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="mt-6 pt-4 border-t-2 border-dashed border-secondary/10 flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
-            <span class="text-[9px] font-mono text-primary uppercase tracking-widest">
-              [ VERIFIED_BY_DEFAULT ]
+            <span class="font-mono text-[9px] text-primary uppercase tracking-widest">
+              GWARANCJA SOLIDNOŚCI
             </span>
           </div>
         </div>
@@ -82,9 +82,9 @@
     <!-- Guarantee Badge -->
     <div class="mt-16 flex justify-center">
       <div
-        class="inline-flex items-center gap-4 px-6 py-4 bg-white/[0.02] border border-white/10 rounded-sm max-w-2xl text-center md:text-left flex-col md:flex-row"
+        class="card-workshop inline-flex items-center gap-4 px-6 py-4 bg-white border-2 border-secondary/10 rounded-none max-w-2xl text-center md:text-left flex-col md:flex-row"
       >
-        <div class="p-3 bg-primary/10 rounded-full border border-primary/20 text-primary">
+        <div class="p-3 bg-primary/10 rounded-none border border-primary/20 text-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-6 h-6"
@@ -99,12 +99,12 @@
           </svg>
         </div>
         <div>
-          <h4 class="text-sm font-mono text-white uppercase tracking-wider mb-1">
+          <h4 class="font-mono text-xs uppercase text-secondary tracking-wider mb-1">
             Risk-Free Engineering Protocol
           </h4>
-          <p class="text-xs text-white/50 leading-relaxed">
+          <p class="text-xs text-secondary/50 leading-relaxed">
             The engagement model is simple:
-            <span class="text-white decoration-primary underline underline-offset-4"
+            <span class="text-secondary decoration-primary underline underline-offset-4"
               >Your Audit fee is 100% credited</span
             >
             towards your first Sprint. You get the Roadmap for free when you partner with me to

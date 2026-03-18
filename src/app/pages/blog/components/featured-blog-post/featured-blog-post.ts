@@ -7,24 +7,22 @@ import { BlogPost } from '../../blog.model';
   imports: [CommonModule, DatePipe],
   template: `
     <article
-      class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b border-slate-800 pb-20 lg:pb-32"
+      class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b-4 border-secondary/10 pb-20 lg:pb-32"
     >
-      <!-- Image -->
+      <!-- Image (Industrial Frame) -->
       <div class="relative w-full lg:w-1/2 lg:shrink-0">
         <div
-          class="aspect-[16/9] w-full overflow-hidden bg-slate-900 border border-slate-800 transition-all duration-500 hover:border-primary/40 shadow-2xl"
+          class="aspect-[16/9] w-full overflow-hidden bg-white border-2 border-secondary/10 p-2 transition-all duration-500 hover:border-primary group-hover:shadow-[12px_12px_0px_0px_rgba(10,31,68,0.05)]"
         >
-          <div
-            class="absolute top-6 left-6 z-20 px-3 py-1 bg-slate-950 border border-slate-800 text-[9px] font-black text-accent uppercase tracking-[0.3em] rounded-sm shadow-2xl"
-          >
-            NAJNOWSZY WPIS
+          <div class="absolute top-6 left-6 z-20">
+            <div class="status-badge status-badge-dark ring-4 ring-secondary/5">NAJNOWSZY WPIS</div>
           </div>
 
           <a
             [href]="post().url"
             target="_blank"
             rel="noopener noreferrer"
-            class="block h-full w-full focus:outline-none"
+            class="block h-full w-full focus:outline-none relative overflow-hidden"
             aria-hidden="true"
             tabindex="-1"
           >
@@ -37,7 +35,7 @@ import { BlogPost } from '../../blog.model';
               width="800"
               height="450"
               fetchpriority="high"
-              class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              class="absolute inset-0 h-full w-full object-cover transition duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
             />
           </a>
         </div>
@@ -45,47 +43,46 @@ import { BlogPost } from '../../blog.model';
 
       <!-- Content -->
       <div class="w-full lg:w-1/2 flex flex-col justify-center">
-        <div class="flex items-center gap-x-4 mb-8">
-          <div
-            class="px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-black tracking-widest uppercase rounded-sm"
-          >
+        <div class="flex items-center gap-x-6 mb-8">
+          <div class="status-badge ring-4 ring-secondary/5">
             {{ post().category }}
           </div>
-          <div class="h-px w-8 bg-slate-800"></div>
+          <div class="h-px w-12 bg-secondary/10"></div>
           <time
             [attr.datetime]="post().date"
-            class="text-[10px] font-bold text-slate-500 uppercase tracking-widest"
+            class="font-mono text-[10px] font-black text-secondary/40 uppercase tracking-[0.2em]"
           >
-            {{ post().date | date: 'yyyy.MM.dd' }}
+            OPUBLIKOWANO: {{ post().date | date: 'yyyy.MM.dd' }}
           </time>
         </div>
 
-        <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-5xl uppercase leading-tight">
-          <a
-            [href]="post().url"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="hover:text-primary transition-colors duration-300"
-          >
+        <h2
+          class="heading-2 text-secondary sm:text-5xl group-hover:text-primary transition-colors duration-300"
+        >
+          <a [href]="post().url" target="_blank" rel="noopener noreferrer">
             {{ post().title }}
           </a>
         </h2>
 
         <p
-          class="mt-8 text-lg leading-relaxed text-slate-400 font-light border-l-4 border-primary/20 pl-8"
+          class="mt-10 text-xl leading-relaxed text-secondary/70 border-l-8 border-primary/10 pl-10 font-medium italic"
         >
           {{ post().excerpt }}
         </p>
 
-        <div class="mt-10">
+        <div class="mt-12">
           <a
             [href]="post().url"
             target="_blank"
             rel="noopener noreferrer"
-            class="group/btn inline-flex items-center gap-3 text-xs font-black text-white hover:text-primary transition-colors uppercase tracking-[0.2em]"
+            class="btn btn-secondary btn-lg group/btn"
           >
-            Czytaj artykuł
-            <span class="h-px w-12 bg-slate-700 transition-all group-hover/btn:w-16 group-hover:bg-primary"></span>
+            <span class="flex items-center gap-4">
+              CZYTAJ ARTYKUŁ
+              <span
+                class="h-px w-10 bg-white/30 group-hover/btn:w-16 group-hover/btn:bg-secondary transition-all"
+              ></span>
+            </span>
           </a>
         </div>
       </div>

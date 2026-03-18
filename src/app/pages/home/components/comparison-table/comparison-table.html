@@ -1,58 +1,56 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10"
 >
   <!-- Technical Grid -->
-  <div class="absolute inset-0 -z-10 bg-grid-tech"></div>
+  <div class="absolute inset-0 -z-10 bg-grid-workshop"></div>
 
   <div class="layout-container relative z-10">
-    <app-section-header subtitle="PORÓWNANIE_ROZWIĄZAŃ" title="Zacznij działać nowocześnie" class="font-mono" />
+    <app-section-header
+      subtitle="PORÓWNANIE MOŻLIWOŚCI"
+      title="Zacznij działać nowocześnie"
+      class="font-mono"
+    />
 
     <!-- Mobile View (Styled Cards) -->
     <div class="grid grid-cols-1 gap-8 lg:hidden">
       @for (tier of tiers(); track tier.name) {
         <app-card
           [variant]="tier.highlighted ? 'highlight' : 'default'"
-          class="border border-white/10"
+          class="card-workshop rounded-none"
         >
           <div class="p-8">
             @if (tier.highlighted) {
               <div
-                class="absolute top-0 right-0 bg-primary/20 text-primary px-3 py-1 text-[10px] font-mono uppercase tracking-wider border-b border-l border-primary/20"
+                class="absolute top-0 right-0 bg-primary/20 text-primary px-3 py-1 font-mono text-xs uppercase tracking-wider border-b-2 border-l-2 border-secondary/10"
               >
                 REKOMENDOWANE
               </div>
             }
 
-            <h3
-              id="{{ tier.id }}-mobile"
-              class="text-lg font-mono font-bold leading-8 text-white uppercase"
-            >
+            <h3 id="{{ tier.id }}-mobile" class="heading-3 text-secondary uppercase">
               {{ tier.name }}
             </h3>
-            <p class="mt-4 text-sm leading-6 text-white/60 font-mono border-l border-white/10 pl-3">
+            <p
+              class="mt-4 text-sm leading-6 text-secondary/60 font-mono border-l-2 border-secondary/10 pl-3"
+            >
               {{ tier.bestFor }}
             </p>
 
-            <ul class="mt-8 space-y-4 text-xs leading-6 text-white/60 font-mono">
-              <li class="flex justify-between border-b border-white/5 pb-2">
-                <span class="text-white/40 uppercase tracking-wider">Czas:</span>
-                <span class="text-white">{{ tier.timeline }}</span>
+            <ul class="mt-8 space-y-4 text-xs leading-6 text-secondary/60 font-mono">
+              <li class="flex justify-between border-b-2 border-secondary/10 pb-2">
+                <span class="text-secondary/40 uppercase tracking-wider">Czas:</span>
+                <span class="text-secondary">{{ tier.timeline }}</span>
               </li>
-              <li class="flex justify-between border-b border-white/5 pb-2">
-                <span class="text-white/40 uppercase tracking-wider">Efekt:</span>
-                <span class="text-white">{{ tier.result }}</span>
+              <li class="flex justify-between border-b-2 border-secondary/10 pb-2">
+                <span class="text-secondary/40 uppercase tracking-wider">Efekt:</span>
+                <span class="text-secondary">{{ tier.result }}</span>
               </li>
             </ul>
 
             <app-button
               [href]="tier.ctaLink"
               [variant]="tier.highlighted ? 'primary' : 'ghost'"
-              [styleClass]="
-                'mt-8 w-full font-mono text-xs uppercase tracking-widest ' +
-                (tier.highlighted
-                  ? ''
-                  : 'border border-white/10 text-white hover:bg-white/10 hover:text-white hover:border-white/30')
-              "
+              styleClass="mt-8 w-full uppercase rounded-none"
             >
               {{ tier.ctaText }}
             </app-button>
@@ -65,36 +63,36 @@
     <div class="hidden lg:block space-y-2" role="table" aria-label="Comparison of Service Options">
       <!-- Header -->
       <div
-        class="grid grid-cols-12 gap-4 px-6 py-3 text-xs font-mono font-semibold text-white/30 uppercase tracking-widest border-b border-white/10"
+        class="grid grid-cols-12 gap-4 px-6 py-3 font-mono text-xs font-semibold text-secondary/30 uppercase tracking-widest border-b-2 border-secondary/10"
         role="rowgroup"
       >
         <div class="contents" role="row">
-          <span class="col-span-3" role="columnheader">Metoda_Pracy</span>
-          <span class="col-span-4" role="columnheader">Dla_Kogo</span>
+          <span class="col-span-3" role="columnheader">METODA PRACY</span>
+          <span class="col-span-4" role="columnheader">DLA KOGO</span>
           <span class="col-span-2 text-center" role="columnheader">Czas</span>
-          <span class="col-span-2 text-center" role="columnheader">Efekt_Końcowy</span>
+          <span class="col-span-2 text-center" role="columnheader">EFEKT KOŃCOWY</span>
           <span class="col-span-1" role="columnheader"><span class="sr-only">Init</span></span>
         </div>
       </div>
 
       <!-- Rows -->
-      <div role="rowgroup" class="space-y-2">
+      <div role="rowgroup" class="space-y-4">
         @for (tier of tiers(); track tier.name) {
           <div
-            class="group grid grid-cols-12 gap-4 items-center p-4 bg-white/[0.02] border border-white/5 hover:border-primary/30 transition-all hover:bg-white/[0.04]"
-            [class.border-primary-50]="tier.highlighted"
+            class="group grid grid-cols-12 gap-4 items-center p-4 bg-white rounded-none border-2 border-secondary/10 hover:border-primary/40 transition-all"
+            [class.border-primary]="tier.highlighted"
             role="row"
           >
             <!-- Service Name -->
             <div class="col-span-3" role="cell">
               <div class="flex items-center gap-3">
                 @if (tier.highlighted) {
-                  <div class="w-1.5 h-1.5 bg-primary animate-pulse rounded-sm"></div>
+                  <div class="w-1.5 h-1.5 bg-primary animate-pulse rounded-none"></div>
                 } @else {
-                  <div class="w-1.5 h-1.5 bg-white/20 rounded-sm"></div>
+                  <div class="w-1.5 h-1.5 bg-secondary/20 rounded-none"></div>
                 }
                 <h3
-                  class="text-sm font-mono font-bold text-white uppercase group-hover:text-primary transition-colors"
+                  class="text-sm font-mono font-bold text-secondary uppercase group-hover:text-primary transition-colors"
                   id="{{ tier.id }}-desktop"
                 >
                   {{ tier.name }}
@@ -103,14 +101,14 @@
             </div>
 
             <!-- Best For -->
-            <div class="col-span-4 text-xs font-mono text-white/60 leading-relaxed" role="cell">
+            <div class="col-span-4 font-mono text-xs text-secondary/60 leading-relaxed" role="cell">
               {{ tier.bestFor }}
             </div>
 
             <!-- Timeline -->
             <div class="col-span-2 text-center" role="cell">
               <div
-                class="inline-block px-2 py-1 bg-white/5 rounded-sm text-[10px] font-mono text-white/80 border border-white/10"
+                class="inline-block px-2 py-1 bg-neutral rounded-none text-[10px] font-mono text-secondary/80 border-2 border-secondary/10"
               >
                 {{ tier.timeline }}
               </div>
@@ -118,7 +116,7 @@
 
             <!-- Result -->
             <div
-              class="col-span-2 text-center text-xs font-mono font-semibold text-white/80"
+              class="col-span-2 text-center font-mono text-xs font-semibold text-secondary/80"
               role="cell"
             >
               {{ tier.result }}
@@ -129,7 +127,7 @@
               @if (tier.ctaLink.startsWith('/')) {
                 <a
                   [routerLink]="tier.ctaLink"
-                  class="p-2 text-white/40 hover:text-primary transition-colors hover:bg-white/5 rounded-sm"
+                  class="p-2 text-secondary/40 hover:text-primary transition-colors hover:bg-neutral rounded-none"
                 >
                   <span class="sr-only">{{ tier.ctaText }}</span>
                   <svg
@@ -150,7 +148,7 @@
               } @else {
                 <a
                   [href]="tier.ctaLink"
-                  class="p-2 text-white/40 hover:text-primary transition-colors hover:bg-white/5 rounded-sm"
+                  class="p-2 text-secondary/40 hover:text-primary transition-colors hover:bg-neutral rounded-none"
                   target="_blank"
                 >
                   <span class="sr-only">{{ tier.ctaText }}</span>

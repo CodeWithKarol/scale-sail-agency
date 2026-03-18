@@ -1,38 +1,39 @@
-<section class="section-padding bg-slate-950 relative overflow-hidden border-t border-white/5">
+<section
+  class="section-padding bg-neutral relative overflow-hidden border-t-2 border-secondary/10 shadow-none"
+>
   <!-- Technical Background -->
   <div class="absolute inset-0 -z-10 bg-grid-tech opacity-30"></div>
 
   <div class="layout-container relative z-10">
     <app-section-header
       subtitle="ETAPY WSPÓŁPRACY"
-      title="Jak wygląda wdrożenie?"
+      title="Wdrożenie systemu w Twojej firmie"
       description="Prosty i przejrzysty proces budowy Twojej aplikacji. Od pierwszej rozmowy po gotowy system, który ułatwia Ci codzienną pracę."
     />
 
     <div class="mx-auto mt-16 lg:mt-24">
       <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Connector Line (Desktop) -->
-        <div
-          class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-slate-800 -z-10"
-        ></div>
+        <div class="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-neutral -z-10"></div>
 
         <ol class="contents">
           @for (step of steps(); track step.number; let i = $index) {
             <li class="relative group h-full">
               <!-- Card Container -->
               <div
-                class="h-full bg-slate-900/40 border border-slate-800 p-10 hover:border-primary hover:bg-slate-900/60 transition-all duration-300 backdrop-blur-sm flex flex-col relative"
+                class="card-workshop h-full bg-white border-2 border-secondary/10 shadow-none p-10 hover:border-primary transition-all duration-300 flex flex-col relative"
               >
                 <!-- Header: Number & Status -->
                 <div class="flex justify-between items-start mb-10">
                   <div class="flex flex-col gap-2">
-                    <span class="text-[10px] font-extrabold text-primary uppercase tracking-[0.3em]"
+                    <span
+                      class="text-[10px] font-mono font-extrabold text-primary uppercase tracking-[0.3em]"
                       >KROK {{ step.number }}</span
                     >
                     <div class="flex items-center gap-2">
                       <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                       <span
-                        class="text-[10px] font-bold uppercase tracking-widest text-slate-500"
+                        class="text-[10px] font-mono font-bold uppercase tracking-widest text-secondary/50"
                         >{{ step.status }}</span
                       >
                     </div>
@@ -40,7 +41,7 @@
 
                   <!-- Icon Box -->
                   <div
-                    class="w-14 h-14 flex items-center justify-center bg-slate-800 border border-slate-700 text-slate-400 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all"
+                    class="w-14 h-14 flex items-center justify-center bg-neutral border-2 border-secondary/10 text-secondary/70 group-hover:bg-primary group-hover:border-primary group-hover:text-secondary transition-all rounded-none"
                   >
                     <svg
                       class="w-7 h-7"
@@ -60,28 +61,28 @@
 
                 <!-- Content -->
                 <div class="flex-grow">
-                  <div class="text-[10px] font-bold text-slate-500 mb-2 tracking-widest uppercase">{{
-                    step.subtitle
-                  }}</div>
+                  <div
+                    class="text-[10px] font-mono font-bold text-secondary/50 mb-2 tracking-widest uppercase"
+                  >
+                    {{ step.subtitle }}
+                  </div>
                   <h3
-                    class="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors"
+                    class="heading-3 text-secondary mb-4 group-hover:text-primary transition-colors"
                   >
                     {{ step.title }}
                   </h3>
-                  <p
-                    class="text-base text-slate-400 leading-relaxed font-light"
-                  >
+                  <p class="text-base text-secondary/70 leading-relaxed font-normal">
                     {{ step.description }}
                   </p>
                 </div>
 
                 <!-- Footer: Duration -->
                 <div
-                  class="mt-10 pt-6 border-t border-white/5 flex items-center justify-between text-[10px] font-bold text-slate-500"
+                  class="mt-10 pt-6 border-t-2 border-secondary/10 flex items-center justify-between text-[10px] font-mono font-bold text-secondary/50"
                 >
                   <span class="tracking-widest uppercase">PRZEWIDYWANY CZAS:</span>
                   <span
-                    class="text-slate-200 bg-slate-800 px-2 py-1 rounded-sm border border-slate-700"
+                    class="text-secondary/70 bg-neutral px-2 py-1 rounded-none border-2 border-secondary/10 tracking-wider"
                     >{{ step.duration }}</span
                   >
                 </div>

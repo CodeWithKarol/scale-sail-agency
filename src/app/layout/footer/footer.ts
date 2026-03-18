@@ -25,9 +25,7 @@ export class Footer {
     { name: 'O mnie', path: '/about', fragment: undefined },
   ]);
 
-  connect = signal([
-    { name: 'Napisz do mnie', path: '/', fragment: 'contact' },
-  ]);
+  connect = signal([{ name: 'Napisz do mnie', path: '/', fragment: 'contact' }]);
 
   legal = signal<{ name: string; path: string; fragment?: string }[]>([]);
 

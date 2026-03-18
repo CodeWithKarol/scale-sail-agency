@@ -50,25 +50,17 @@ export class Home implements OnInit {
       ],
     });
 
-    this.seoService.setSchema({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
+    this.seoService.setLocalBusinessSchema({
       name: 'Scale Sail Agency',
-      url: 'https://scale-sail.io',
-      logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
       description:
         'Pomagam małym firmom usługowym i warsztatom w cyfrowej transformacji i automatyzacji pracy.',
+      url: 'https://scale-sail.io',
+      logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
       founder: {
-        '@type': 'Person',
         name: 'Karol Modelski',
         jobTitle: 'Twórca rozwiązań cyfrowych & Założyciel',
       },
       areaServed: 'Poland',
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer support',
-        email: 'contact@scale-sail.io',
-      },
     });
   }
 }

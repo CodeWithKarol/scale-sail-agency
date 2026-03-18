@@ -1,50 +1,57 @@
-<footer class="bg-slate-950 relative border-t border-white/5 text-white mt-auto overflow-hidden">
+<footer
+  class="bg-neutral relative border-t-2 border-secondary/10 text-secondary mt-auto overflow-hidden"
+>
   <!-- Technical Grid Background -->
-  <div class="absolute inset-0 -z-10 bg-grid-tech opacity-30"></div>
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
-  <div class="layout-container py-16 lg:py-24">
-    <div class="xl:grid xl:grid-cols-3 xl:gap-12">
+  <div class="layout-container relative z-10 py-16 lg:py-24">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-20">
       <!-- Brand Column -->
-      <div class="space-y-10">
+      <div class="space-y-12">
         <app-brand-logo></app-brand-logo>
 
-        <p class="text-base leading-relaxed text-slate-400 border-l-4 border-primary/40 pl-6 font-light">
+        <p
+          class="text-lg leading-relaxed text-secondary/70 border-l-4 border-primary pl-8 font-medium italic"
+        >
           Pomagam małym firmom rosnąć dzięki technologii. <br />
-          Zamień kartki i Excela na proste aplikacje.
+          Zamień kartki i Excela na
+          <span class="text-secondary font-black">solidne narzędzia</span>.
         </p>
 
-        <p class="text-sm leading-relaxed text-slate-500 max-w-sm font-light">
+        <p
+          class="font-mono text-xs leading-relaxed text-secondary/40 max-w-sm uppercase tracking-wider"
+        >
           Tworzę dedykowane systemy dla warsztatów i firm usługowych. Pomagam odzyskać czas,
           porządkuję dokumentację i automatyzuję kontakt z Twoimi klientami.
         </p>
 
         <!-- Status Indicator -->
-        <div
-          class="inline-flex items-center gap-3 px-4 py-2 bg-slate-900 border border-slate-800 rounded-sm"
-        >
+        <div class="status-badge ring-4 ring-secondary/5 bg-white border-2 border-secondary/10">
           <div class="flex gap-1.5">
-            <div class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]"></div>
+            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
           </div>
-          <span class="text-[10px] font-black uppercase tracking-widest text-slate-400"
-            >AGENCJA AKTYWNA</span
-          >
+          STATUS: AGENCJA GOTOWA
         </div>
       </div>
 
-      <div class="mt-16 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
+      <div class="mt-20 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
         <div>
-          <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 mb-8">
-            ROZWIĄZANIA
+          <h3
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/30 mb-10"
+          >
+            KONKRETNE ROZWIĄZANIA
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-5">
             @for (item of services(); track item.name) {
               <li>
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/50 hover:text-primary transition-all cursor-pointer"
                 >
-                  <span class="w-1.5 h-px bg-slate-800 group-hover:w-4 group-hover:bg-primary transition-all"></span>
+                  <span
+                    class="w-6 h-0.5 bg-secondary/10 group-hover:w-10 group-hover:bg-primary transition-all"
+                  ></span>
                   {{ item.name }}
                 </a>
               </li>
@@ -52,18 +59,22 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-600 mb-8">
-            KONTAKT
+          <h3
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/30 mb-10"
+          >
+            KONTAKT I WSPÓŁPRACA
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-5">
             @for (item of connect(); track item.name) {
               <li>
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/50 hover:text-primary transition-all cursor-pointer"
                 >
-                  <span class="w-1.5 h-px bg-slate-800 group-hover:w-4 group-hover:bg-primary transition-all"></span>
+                  <span
+                    class="w-6 h-0.5 bg-secondary/10 group-hover:w-10 group-hover:bg-primary transition-all"
+                  ></span>
                   {{ item.name }}
                 </a>
               </li>
@@ -74,22 +85,25 @@
     </div>
 
     <!-- Bottom Bar -->
-    <div class="mt-16 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div
+      class="mt-20 pt-12 border-t-2 border-secondary/10 flex flex-col md:flex-row items-center justify-between gap-8"
+    >
       <div
-        class="flex flex-col md:flex-row items-center gap-4 text-[10px] font-bold text-slate-600 uppercase tracking-widest"
+        class="flex flex-col md:flex-row items-center gap-6 font-mono text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em]"
       >
-        <p>&copy; {{ currentYear }} Scale Sail Agency.</p>
-        <span class="hidden md:inline text-slate-800">|</span>
-        <p>Wszelkie prawa zastrzeżone</p>
+        <p>&copy; {{ currentYear }} SCALE SAIL.</p>
+        <span class="hidden md:inline text-secondary/10">|</span>
+        <p>WSZELKIE PRAWA ZASTRZEŻONE</p>
       </div>
 
-      <div class="flex gap-6">
+      <div class="flex gap-8">
         @for (item of resources(); track item.name) {
           <a
             [routerLink]="item.path"
-            class="text-[10px] font-bold uppercase tracking-widest text-slate-600 hover:text-white transition-colors"
-            >{{ item.name }}</a
+            class="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/30 hover:text-secondary transition-colors"
           >
+            {{ item.name }}
+          </a>
         }
       </div>
     </div>

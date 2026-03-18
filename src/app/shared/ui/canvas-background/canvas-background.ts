@@ -15,7 +15,9 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-canvas-background',
   standalone: true,
-  template: ` <canvas #canvas class="absolute inset-0 w-full h-full -z-10 bg-slate-950"></canvas> `,
+  template: `
+    <canvas #canvas class="absolute inset-0 w-full h-full -z-10 bg-transparent"></canvas>
+  `,
   styles: [
     `
       :host {
@@ -133,7 +135,7 @@ export class CanvasBackground implements OnInit, OnDestroy {
     this.time += 0.005; // Time step
 
     // Clear
-    this.ctx.fillStyle = '#020617'; // slate-950
+    this.ctx.fillStyle = 'rgba(248, 250, 252, 0.6)'; // slate-50 with some transparency to show CSS gradient
     this.ctx.fillRect(0, 0, this.width, this.height);
 
     // Update and Draw Particles
@@ -165,7 +167,7 @@ export class CanvasBackground implements OnInit, OnDestroy {
 
         if (dist < distThreshold) {
           const opacity = 1 - dist / distThreshold;
-          this.ctx.strokeStyle = `rgba(56, 189, 248, ${opacity * 0.3})`; // Moderate line opacity
+          this.ctx.strokeStyle = `rgba(0, 123, 255, ${opacity * 0.3})`; // Primary blue line opacity
 
           this.ctx.beginPath();
           this.ctx.moveTo(p1.x, p1.y);
@@ -253,7 +255,7 @@ class Particle {
   }
 
   draw(ctx: CanvasRenderingContext2D) {
-    ctx.fillStyle = `rgba(56, 189, 248, ${0.4 + Math.random() * 0.3})`;
+    ctx.fillStyle = `rgba(0, 123, 255, ${0.4 + Math.random() * 0.3})`;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
     ctx.fill();

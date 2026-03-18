@@ -1,4 +1,6 @@
-<section class="section-padding relative isolate overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-8 z-20">
+<section
+  class="section-padding relative isolate overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-8 z-20 border-t-2 border-secondary/10"
+>
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
@@ -12,19 +14,17 @@
       @for (metric of metrics(); track metric.label; let index = $index) {
         <app-card
           [interactive]="true"
-          class="group relative overflow-hidden bg-slate-900/40 border border-slate-800 p-10 flex flex-col items-center text-center transition-all duration-300 hover:border-primary hover:bg-slate-900/60"
+          class="card-workshop group relative overflow-hidden p-10 flex flex-col items-center text-center shadow-none"
         >
           <!-- Value -->
           <div class="relative mb-4">
             <span
-              class="text-4xl md:text-5xl font-extrabold text-white group-hover:text-primary transition-colors tracking-tighter"
+              class="text-4xl md:text-5xl font-mono font-extrabold text-secondary group-hover:text-primary transition-colors tracking-tighter"
             >
               {{ metric.value }}
             </span>
             @if (metric.suffix) {
-              <span
-                class="absolute -top-2 -right-4 text-sm font-bold text-primary/80"
-              >
+              <span class="absolute -top-2 -right-4 text-sm font-mono font-bold text-primary/80">
                 {{ metric.suffix }}
               </span>
             }
@@ -32,19 +32,26 @@
 
           <!-- Label -->
           <h3
-            class="text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400 mb-4 group-hover:text-white transition-colors"
+            class="heading-3 text-xs tracking-[0.2em] text-secondary/70 mb-4 group-hover:text-secondary transition-colors"
           >
             {{ metric.label }}
           </h3>
 
           <!-- Description -->
           <p
-            class="text-sm text-slate-500 leading-relaxed max-w-[220px] group-hover:text-slate-300 transition-colors font-light"
+            class="text-sm text-secondary/70 leading-relaxed max-w-[220px] group-hover:text-secondary transition-colors font-medium"
           >
             {{ metric.description }}
           </p>
         </app-card>
       }
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="mt-12 text-center">
+      <p class="text-[10px] font-mono font-bold text-secondary/30 uppercase tracking-[0.2em]">
+        *wartości orientacyjne, zależne od specyfiki Twojej firmy
+      </p>
     </div>
   </div>
 </section>

@@ -20,22 +20,22 @@ export class ProblemSolution {
     {
       title: 'Warsztaty: kolejka aut zamiast kartek',
       description:
-        'Koniec z szukaniem numeru klienta na skrawku papieru zalanym olejem. Masz czytelny podgląd wszystkich aut w serwisie, a system sam wyśle SMS-a, gdy robota będzie skończona.',
-      icon: 'M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v2a1 1 0 01-1 1h-1m-4-14l-2 4h5l-1 1',
+        'Koniec z szukaniem numeru klienta na skrawku papieru zalanym olejem. To lekki system do zarządzania warsztatem samochodowym: kolejka aut, zlecenia, statusy i SMS-y do klientów.',
+      icon: 'M3 11l2-4h14l2 4M2 11v6a1 1 0 001 1h2m14 0h2a1 1 0 001-1v-6M5 11h14 M7 18a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z',
       theme: 'orange',
     },
     {
       title: 'Rezerwacje i kalendarz online',
       description:
-        'Twój telefon dzwoni rzadziej, bo klienci sami zapisują się przez stronę. Widzisz pełny grafik na telefonie – bez skreśleń w zeszycie i nakładających się terminów.',
-      icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
+        'Twój telefon dzwoni rzadziej, bo klienci sami zapisują się przez stronę. System sam przypomni im o wizycie przez SMS, żebyś nie stał nad pustym podnośnikiem.',
+      icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z',
       theme: 'orange',
     },
     {
       title: 'Koniec z pracą po godzinach',
       description:
         'Zamiast siedzieć po nocach nad Excelami i rozliczeniami, masz wszystko pod jednym palcem. Wszystkie zlecenia i kontakty są bezpieczne i poukładane za Ciebie.',
-      icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
+      icon: 'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Zm0-14v6l4 2',
       theme: 'red',
     },
   ]);

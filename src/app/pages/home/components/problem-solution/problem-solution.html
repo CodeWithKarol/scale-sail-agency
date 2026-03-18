@@ -1,25 +1,20 @@
-<section class="relative bg-glow-radial section-padding overflow-hidden border-t border-white/5">
+<section
+  class="relative bg-neutral section-padding overflow-hidden border-t-2 border-secondary/10 bg-grid-workshop"
+>
   <!-- Technical Grid Background -->
-  <div class="absolute inset-0 -z-10 bg-[size:40px_40px] bg-grid-white/[0.02]"></div>
-  <div class="absolute inset-0 -z-10 bg-secondary/95"></div>
-
-  <!-- Decorative elements -->
-  <div
-    class="absolute top-0 right-0 w-1/3 h-px bg-gradient-to-l from-primary/20 to-transparent"
-  ></div>
-  <div
-    class="absolute bottom-0 left-0 w-1/3 h-px bg-gradient-to-r from-primary/20 to-transparent"
-  ></div>
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
       subtitle="ZAKRES POMOCY"
-      title="W czym dokładnie pomagam"
+      title="Automatyzacja pracy i zarządzanie zleceniami"
     />
 
-    <p class="text-center text-slate-400 -mt-8 mb-16 max-w-2xl mx-auto font-light">
-      Projektuję narzędzia, które rozwiązują Twoje największe codzienne problemy:
+    <p
+      class="text-center text-secondary/70 -mt-8 mb-16 max-w-2xl mx-auto font-mono text-xs uppercase tracking-widest"
+    >
+      PROJEKTUJĘ NARZĘDZIA DO ROZWIĄZYWANIA CODZIENNYCH PROBLEMÓW OPERACYJNYCH
     </p>
 
     <!-- Cards Layout -->
@@ -27,23 +22,23 @@
       <ul class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3">
         @for (problem of problems(); track problem.title; let index = $index; let last = $last) {
           <li>
-            <app-card
-              [interactive]="true"
-              class="h-full flex flex-col p-8 bg-slate-900/40 backdrop-blur-sm border border-slate-800 hover:border-primary transition-all group"
-            >
+            <app-card [interactive]="true" class="card-workshop h-full flex flex-col p-8 group">
               <!-- Utility Header -->
               <div
-                class="flex items-center justify-between mb-8 pb-4 border-b border-slate-800 group-hover:border-slate-700 transition-colors"
+                class="flex items-center justify-between mb-8 pb-4 border-b-2 border-secondary/10 group-hover:border-primary/20 transition-colors"
               >
-                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Zadanie 0{{ index + 1 }}</span>
+                <span
+                  class="text-[10px] font-mono font-bold text-secondary/50 uppercase tracking-widest"
+                  >Zadanie 0{{ index + 1 }}</span
+                >
                 <div
                   class="h-1.5 w-1.5 rounded-full"
                   [class]="
                     problem.theme === 'red'
-                      ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
+                      ? 'bg-red-500 shadow-none'
                       : problem.theme === 'orange'
-                        ? 'bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]'
-                        : 'bg-primary shadow-[0_0_10px_rgba(0,102,255,0.5)]'
+                        ? 'bg-orange-500 shadow-none'
+                        : 'bg-primary shadow-none'
                   "
                 ></div>
               </div>
@@ -51,7 +46,7 @@
               <!-- Icon & Title -->
               <div class="flex flex-col gap-6 mb-4">
                 <div
-                  class="flex items-center justify-center w-12 h-12 rounded-sm bg-slate-800 border border-slate-700 text-slate-400 group-hover:text-primary group-hover:border-primary transition-all"
+                  class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary/70 group-hover:text-primary group-hover:border-primary transition-all"
                 >
                   <svg
                     class="h-6 w-6"
@@ -64,23 +59,21 @@
                   </svg>
                 </div>
 
-                <h3
-                  class="text-xl font-bold text-white group-hover:text-primary transition-colors"
-                >
+                <h3 class="heading-3 text-secondary group-hover:text-primary transition-colors">
                   {{ problem.title }}
                 </h3>
               </div>
 
               <!-- Description -->
               <p
-                class="mt-2 flex-1 text-sm leading-relaxed text-slate-400 font-light group-hover:text-slate-300 transition-colors"
+                class="mt-2 flex-1 text-sm leading-relaxed text-secondary/70 font-normal group-hover:text-secondary/70 transition-colors"
               >
                 {{ problem.description }}
               </p>
 
               <!-- Footer Action -->
               <div
-                class="mt-10 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-primary/60 group-hover:text-primary transition-colors"
+                class="mt-10 flex items-center gap-2 text-[10px] font-mono font-bold uppercase tracking-widest text-primary/60 group-hover:text-primary transition-colors"
               >
                 <span class="inline-block w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
                 Dowiedz się więcej
@@ -93,22 +86,24 @@
 
     <!-- Bottom Action / Summary Banner -->
     <div class="mt-16 sm:mt-20 lg:mt-24">
-      <div class="relative overflow-hidden bg-slate-900/80 border border-slate-800 p-1 rounded-sm shadow-2xl">
+      <div
+        class="relative overflow-hidden bg-white border-2 border-secondary/10 p-1 rounded-none shadow-none transition-shadow"
+      >
         <div class="px-6 py-12 sm:px-12 xl:py-20 relative z-20">
-          <!-- Background glow -->
-          <div
-            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-[600px] bg-primary/10 blur-3xl rounded-full -z-10"
-          ></div>
-
           <div class="mx-auto max-w-3xl text-center">
-            <h3 class="text-xl lg:text-2xl font-bold leading-relaxed text-white text-pretty">
+            <h3 class="heading-3 text-secondary text-pretty">
               Niezależnie czy potrzebujesz
-              <span class="text-primary underline decoration-primary/30 underline-offset-8">automatycznych SMS-ów</span>,
-              cyfrowej bazy zleceń, czy prostego panelu dla klienta,
-              <span class="text-slate-100">buduję rozwiązania, które po prostu działają</span>
+              <span class="text-primary underline decoration-primary/30 underline-offset-8"
+                >automatycznych SMS-ów</span
+              >, cyfrowej bazy zleceń, czy prostego panelu dla klienta,
+              <span class="text-secondary/50 font-normal"
+                >buduję rozwiązania, które po prostu działają</span
+              >
             </h3>
 
-            <div class="mt-10 text-[10px] font-bold text-slate-500 uppercase tracking-[0.3em]">
+            <div
+              class="mt-10 text-[10px] font-mono font-bold text-secondary/50 uppercase tracking-[0.3em]"
+            >
               Twoja firma na nowym silniku
             </div>
           </div>

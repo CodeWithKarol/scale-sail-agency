@@ -9,23 +9,31 @@ import { SeoService } from '../../core/seo/seo.service';
     @if (breadcrumbs().length > 1) {
       <nav
         aria-label="Breadcrumb"
-        class="font-mono text-[10px] uppercase tracking-widest text-white/40 mb-8 animate-in fade-in slide-in-from-left-2 duration-500"
+        class="inline-flex items-center bg-neutral border-2 border-secondary/10 px-5 py-2.5 mb-16 animate-in fade-in slide-in-from-left-2 duration-500"
       >
-        <ol class="flex flex-wrap items-center gap-2">
-          @for (item of breadcrumbs(); track item.path; let last = $last) {
-            <li class="flex items-center gap-2">
+        <ol class="flex flex-wrap items-center gap-4">
+          @for (item of breadcrumbs(); track item.path; let last = $last; let index = $index) {
+            <li class="flex items-center gap-4">
               @if (!last) {
                 <a
                   [routerLink]="item.path"
-                  class="hover:text-primary transition-colors hover:underline decoration-primary/50 underline-offset-4"
+                  class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 hover:text-primary transition-all flex items-center gap-2 group"
                 >
-                  {{ item.name }}
+                  <span class="text-secondary/20">0{{ index + 1 }}</span>
+                  <span class="border-b border-transparent group-hover:border-primary">{{
+                    item.name
+                  }}</span>
                 </a>
-                <span class="text-white/20" aria-hidden="true">/</span>
+                <span class="text-secondary/10 font-mono text-[10px]" aria-hidden="true">//</span>
               } @else {
-                <span class="text-primary/80" aria-current="page">
-                  {{ item.name }}
-                </span>
+                <div
+                  class="flex items-center gap-2 font-mono text-[10px] font-black uppercase tracking-[0.2em]"
+                >
+                  <span class="text-secondary/20">0{{ index + 1 }}</span>
+                  <span class="text-secondary" aria-current="page">
+                    {{ item.name }}
+                  </span>
+                </div>
               }
             </li>
           }

@@ -45,10 +45,12 @@ export class Process {
       number: '03',
       title: 'Wsparcie i rozwój',
       subtitle: 'FINAŁ',
-      description: 'Przekazuję Ci gotową aplikację, szkolę pracowników i pomagam rozwijać go dalej, gdy firma rośnie.',
-      iconPath: 'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-2-10 2 2 4-4',
+      description:
+        'Przekazuję Ci gotową aplikację, szkolę pracowników i pomagam rozwijać go dalej, gdy firma rośnie.',
+      iconPath:
+        'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-2-10 2 2 4-4',
       duration: 'STAŁA OPIEKA',
-      status: 'SYSTEM_GOTOWY',
+      status: 'GOTOWY DO PRACY',
     },
   ]);
 }

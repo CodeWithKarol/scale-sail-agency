@@ -1,214 +1,162 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-slate-950 border-t border-white/5"
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10 bg-grid-workshop"
 >
-  <div class="layout-container">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
+
+  <div class="layout-container relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
       <!-- Left: Context & Info -->
       <div class="animate-in fade-in slide-in-from-left-4 duration-700">
         <app-section-header
           subtitle="ZACZNIJMY TUTAJ"
           title="Zrób pierwszy krok do świętego spokoju"
-          description="Napisz do mnie – porozmawiamy o Twojej firmie jak partner z partnerem. Bez ofert na siłę i bez technicznego żargonu. Po prostu opowiesz mi, co dziś zabiera Ci najwięcej czasu, a ja powiem Ci szczerze, czy potrafię to ułatwić."
-          class="mb-12"
+          description="Napisz do mnie – porozmawiamy o Twojej firmie jak partner z partnerem. W 15 minut przejdziemy przez to, jak dziś ogarniasz zlecenia i papiery. Jeśli będę w stanie pomóc – zaproponuję konkretny, mały krok. Jeśli nie – powiem Ci to wprost."
+          class="mb-16"
           alignment="left"
         />
 
-        <div class="space-y-10">
-          <!-- Availability Status -->
+        <div class="space-y-12">
+          <!-- Availability Card (Modern Workshop Style) -->
           <div
-            class="p-8 bg-slate-900/40 border border-slate-800 rounded-sm relative overflow-hidden group hover:border-primary transition-all duration-300"
+            class="card-workshop p-10 bg-white border-2 border-secondary/10 relative overflow-hidden group"
           >
-            <div class="absolute inset-0 bg-grid-tech opacity-20 -z-10"></div>
+            <div
+              class="absolute inset-0 bg-grid-workshop opacity-10 -z-10 pointer-events-none"
+            ></div>
 
-            <h3 class="text-[10px] font-extrabold uppercase tracking-[0.3em] text-slate-500 mb-6">MOJA DOSTĘPNOŚĆ</h3>
-            <div class="flex items-center gap-4">
-              <div class="relative flex h-3 w-3">
+            <div class="status-badge status-badge-dark ring-4 ring-secondary/5 mb-8">
+              <span class="relative flex h-2 w-2">
                 <span
                   class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
                 ></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </div>
-              <span class="text-lg text-white font-bold">Przyjmuję nowe projekty</span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              STATUS: DOSTĘPNY NA PROJEKTY
             </div>
-            <p class="mt-4 text-sm text-slate-400 leading-relaxed font-light">
-              Aktualnie mam czas na 1-2 wdrożenia w tym miesiącu. Odpowiadam zazwyczaj w ciągu kilku godzin.
+
+            <h3 class="heading-3 text-secondary mb-4 uppercase tracking-tight">
+              Przyjmuję nowe wdrożenia
+            </h3>
+            <p class="text-secondary/70 text-lg leading-relaxed font-medium">
+              Aktualnie mam czas na <span class="text-secondary font-black">1-2 projekty</span> w
+              tym miesiącu. Odpowiadam zazwyczaj w ciągu kilku godzin.
             </p>
+
+            <!-- Technical line accent -->
+            <div class="mt-8 h-1 w-20 bg-primary opacity-20"></div>
           </div>
 
           <!-- Direct Contact Info -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 px-2">
-            <div class="flex flex-col gap-2">
-              <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Adres e-mail</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 px-2">
+            <div class="flex flex-col gap-4">
+              <span
+                class="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-secondary/40"
+                >KANAŁ_KOMUNIKACJI</span
+              >
               <a
                 href="mailto:contact@scale-sail.io"
-                class="text-base text-white hover:text-primary transition-colors flex items-center gap-2 group"
+                class="text-lg text-secondary hover:text-primary transition-all flex items-center gap-3 group font-mono font-bold"
               >
                 contact@scale-sail.io
                 <span
-                  class="opacity-0 group-hover:opacity-100 transition-all translate-x-[-4px] group-hover:translate-x-0 text-primary"
+                  class="opacity-0 group-hover:opacity-100 transition-all translate-x-[-8px] group-hover:translate-x-0 text-primary"
                   >→</span
                 >
               </a>
             </div>
 
-            <div class="flex flex-col gap-2">
-              <span class="text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500">Lokalizacja</span>
-              <span class="text-base text-slate-300">Warszawa / Zdalnie</span>
+            <div class="flex flex-col gap-4">
+              <span
+                class="font-mono text-[10px] font-black uppercase tracking-[0.3em] text-secondary/40"
+                >LOKALIZACJA</span
+              >
+              <span class="text-lg text-secondary font-mono font-bold uppercase tracking-wider"
+                >Warszawa / Zdalnie</span
+              >
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right: Terminal Form -->
+      <!-- Right: Form Section (Kept consistent with generalist's update but refined) -->
       <div class="relative animate-in fade-in slide-in-from-right-4 duration-700 delay-200">
         <form
           [formGroup]="form"
           (ngSubmit)="onSubmit()"
-          class="bg-slate-900 border border-slate-800 p-8 sm:p-12 rounded-sm shadow-2xl relative overflow-hidden"
+          class="bg-white border-4 border-secondary p-8 sm:p-16 rounded-none shadow-[12px_12px_0px_0px_rgba(10,31,68,0.05)] relative overflow-hidden"
         >
-          <!-- Hidden Honeypot -->
-          <input
-            type="checkbox"
-            formControlName="botcheck"
-            class="hidden"
-            style="display: none"
-            aria-hidden="true"
-            tabindex="-1"
-          />
+          <!-- Form Header -->
+          <div class="mb-12 border-b-2 border-secondary/10 pb-8">
+            <h3 class="heading-3 text-secondary mb-2 uppercase">Formularz kontaktowy</h3>
+            <p class="font-mono text-[10px] text-secondary/40 uppercase tracking-widest">
+              Wypełnij dane, a odezwę się do Ciebie
+            </p>
+          </div>
 
-          @if (isSuccess()) {
-            <!-- Success State -->
-            <div class="h-[450px] flex flex-col justify-center text-center">
-              <div class="w-16 h-16 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h3 class="text-2xl font-bold text-white mb-4">Wiadomość wysłana!</h3>
-              <p class="text-slate-400 font-light mb-10 leading-relaxed">
-                Dziękuję za kontakt. Odezwię się do Ciebie najszybciej jak to możliwe, zazwyczaj zajmuje mi to kilka godzin.
-              </p>
-              <app-button
-                type="button"
-                (click)="isSuccess.set(false)"
-                variant="secondary"
-                styleClass="mx-auto uppercase tracking-widest text-[10px]"
+          <div class="grid grid-cols-1 gap-y-10">
+            <div>
+              <label
+                for="name"
+                class="block font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 mb-3"
+                >TWOJE IMIĘ</label
               >
-                Wyślij kolejną wiadomość
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="input-field"
+                placeholder="np. Jan Kowalski"
+              />
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 mb-3"
+                >ADRES E-MAIL</label
+              >
+              <input
+                type="email"
+                id="email"
+                formControlName="email"
+                class="input-field"
+                placeholder="np. jan@warsztat.pl"
+              />
+            </div>
+
+            <div>
+              <label
+                for="message"
+                class="block font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 mb-3"
+                >W CZYM MOGĘ POMÓC?</label
+              >
+              <textarea
+                id="message"
+                formControlName="message"
+                rows="4"
+                class="input-field resize-none"
+                placeholder="Opisz krótko swój problem..."
+              ></textarea>
+            </div>
+
+            <div class="pt-4">
+              <app-button
+                type="submit"
+                variant="primary"
+                size="lg"
+                [disabled]="form.invalid || isSubmitting()"
+                styleClass="w-full"
+              >
+                <span class="text-lg">WYŚLIJ WIADOMOŚĆ</span>
               </app-button>
+              <p
+                class="mt-6 text-center font-mono text-[10px] text-secondary/30 uppercase tracking-widest"
+              >
+                BEZ SPAMU • KONKRETNE ODPOWIEDZI • SZACUNEK DO CZASU
+              </p>
             </div>
-          } @else {
-            <!-- Form Fields -->
-            <div class="space-y-8 relative z-10">
-              <!-- Name Input -->
-              <div class="group/field">
-                <label
-                  for="name"
-                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
-                >
-                  Z kim mam przyjemność rozmawiać?
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  formControlName="name"
-                  placeholder="Twoje imię lub nazwa firmy"
-                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all rounded-sm"
-                  [class.border-red-500]="f.name.invalid && f.name.touched"
-                />
-                @if (f.name.invalid && f.name.touched && f.name.errors?.['required']) {
-                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
-                    >Podaj proszę swoje imię</span
-                  >
-                }
-              </div>
-
-              <!-- Email Input -->
-              <div class="group/field">
-                <label
-                  for="email"
-                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
-                >
-                  Gdzie mam odpowiedzieć?
-                </label>
-                <input
-                  type="text"
-                  id="email"
-                  formControlName="email"
-                  placeholder="twój e-mail lub numer telefonu"
-                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all rounded-sm"
-                  [class.border-red-500]="f.email.invalid && f.email.touched"
-                />
-                @if (f.email.invalid && f.email.touched && f.email.errors?.['required']) {
-                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
-                    >Kontakt jest niezbędny, bym mógł odpowiedzieć</span
-                  >
-                }
-              </div>
-
-              <!-- Message Input -->
-              <div class="group/field">
-                <label
-                  for="message"
-                  class="block text-[10px] font-extrabold uppercase tracking-[0.2em] text-slate-500 mb-3 group-focus-within/field:text-primary transition-colors"
-                >
-                  Co najbardziej denerwuje Cię w dzisiejszym ogarnianiu firmy?
-                </label>
-                <textarea
-                  id="message"
-                  formControlName="message"
-                  rows="5"
-                  placeholder="Opisz krótko swój problem (np. mam warsztat, 3 mechaników i tonę kartek)..."
-                  class="w-full bg-slate-950 border border-slate-800 text-white placeholder:text-slate-700 px-5 py-4 text-sm focus:outline-none focus:border-primary transition-all resize-none rounded-sm"
-                  [class.border-red-500]="f.message.invalid && f.message.touched"
-                ></textarea>
-                <p class="mt-3 text-[10px] text-slate-500 font-bold italic opacity-60">
-                  * Im więcej napiszesz, tym konkretniej będę mógł pomóc – ale możesz zacząć od jednego zdania.
-                </p>
-                @if (
-                  f.message.invalid &&
-                  f.message.touched &&
-                  f.message.errors &&
-                  f.message.errors['required']
-                ) {
-                  <span class="text-[10px] text-red-500 font-bold mt-2 block"
-                    >Napisz chociaż dwa słowa o swoim wyzwaniu</span
-                  >
-                }
-              </div>
-
-              <!-- Submit Action -->
-              <div class="pt-6 flex flex-col items-stretch gap-6">
-                <app-button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  [disabled]="isSubmitting() || form.invalid"
-                  styleClass="w-full uppercase tracking-widest text-xs font-black shadow-2xl"
-                >
-                  <span class="flex items-center gap-3">
-                    @if (isSubmitting()) {
-                      <span
-                        class="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"
-                      ></span>
-                      Wysyłanie...
-                    } @else {
-                      CHCĘ ODZYSKAĆ CZAS
-                    }
-                  </span>
-                </app-button>
-
-                <div
-                  class="flex items-center justify-center gap-2 text-[9px] font-bold text-slate-600 uppercase tracking-widest"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  Twoje dane są u mnie bezpieczne
-                </div>
-              </div>
-            </div>
-          }
+          </div>
         </form>
       </div>
     </div>

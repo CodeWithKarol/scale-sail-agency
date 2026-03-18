@@ -10,23 +10,25 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Card {
-  // Styles the container with glassmorphism
+  // Styles the container with industrial theme
   variant = input<'default' | 'highlight' | 'ghost'>('default');
 
   // Adds hover effects
   interactive = input(false);
 
   protected computedClasses = computed(() => {
-    const base = 'relative block rounded-none transition-all duration-300';
+    const base = 'card-workshop relative transition-all duration-300';
 
-    // Base styles for Dark Glass theme
-    const defaultStyle = 'bg-white/5 border border-white/10';
+    // Industrial styles
+    const defaultStyle = 'bg-white border-2 border-secondary/10';
     const highlightStyle =
-      'bg-secondary border border-primary shadow-[0_0_30px_rgba(0,123,255,0.15)] scale-[1.02] lg:scale-105 z-10';
-    const ghostStyle = 'bg-transparent border border-transparent';
+      'bg-white border-4 border-secondary shadow-[8px_8px_0px_0px_rgba(10,31,68,0.1)] z-10';
+    const ghostStyle = 'bg-transparent border-2 border-transparent shadow-none';
 
     // Interactive styles (hover)
-    const hoverStyle = this.interactive() ? 'hover:bg-white/10 hover:border-white/20 group' : '';
+    const hoverStyle = this.interactive()
+      ? 'group hover:border-primary hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,123,255,0.1)]'
+      : '';
 
     let variantStyle = defaultStyle;
     if (this.variant() === 'highlight') variantStyle = highlightStyle;

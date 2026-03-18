@@ -19,10 +19,10 @@ export interface CaseStudy {
 
 const CASE_STUDIES: CaseStudy[] = [
   {
-    id: 'modern-enterprise-admin-dashboard',
-    title: 'Koncept panelu zarządzania firmą – wszystko na jednym ekranie',
+    id: 'admin-panel',
+    title: 'Jak ogarnąć 50 000 danych bez zacięcia',
     tagline:
-      'Koncept panelu administracyjnego dla dużej firmy, który w czasie rzeczywistym pokazuje najważniejsze liczby biznesowe. Dokładnie ten sam pomysł wykorzystuję w małych firmach usługowych – tylko zamiast wykresów są auta, zlecenia, terminy i statusy napraw.',
+      'Lekcje z dużych systemów korporacyjnych przełożone na proste narzędzia dla małych firm usługowych.',
     heroImage: '/images/admin-panel/admin-panel.webp',
     challenge:
       'Systemy dla dużych firm często stają się powolne i trudne w obsłudze przy dużej ilości danych. Klient potrzebował rozwiązania, które pozwoli błyskawicznie zarządzać tysiącami operacji bez błędów i opóźnień.',
@@ -56,10 +56,10 @@ const CASE_STUDIES: CaseStudy[] = [
     repoUrl: 'https://github.com/CodeWithKarol/admin-panel',
   },
   {
-    id: 'quickcart-ecommerce',
-    title: 'Koncept sklepu, który nie pęka przy większym ruchu',
+    id: 'quick-cart',
+    title: 'Niezawodność warta milionów odwiedzin',
     tagline:
-      'Koncept architektury sklepu internetowego, która wytrzymuje duże obciążenie i jest łatwa w rozwoju. To doświadczenie przenoszę do małych systemów – po to, żeby Twoja aplikacja dla warsztatu działała szybko i nie „wieszała się” w najgorszym momencie.',
+      'Przenoszę standardy bankowe do Twojego warsztatu, aby system nigdy nie zawiódł Cię w szczycie sezonu.',
     heroImage: '/images/quick-cart/quick-cart.webp',
     challenge:
       'W dużych sklepach internetowych błędy w koszyku lub wolne działanie strony to realne straty finansowe. Klient potrzebował platformy, która będzie działać bezbłędnie nawet przy milionach odwiedzin.',

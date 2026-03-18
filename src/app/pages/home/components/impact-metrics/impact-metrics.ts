@@ -20,14 +20,16 @@ interface Metric {
 export class ImpactMetrics {
   protected readonly metrics = signal<Metric[]>([
     {
-      value: '0 zł',
-      label: 'Abonamentu',
-      description: 'Płacisz raz za wdrożenie. Nie musisz co miesiąc płacić "haraczu" za dostęp do własnych danych.',
+      value: 'BRAK',
+      label: 'OBOWIĄZKOWEGO ABONAMENTU',
+      description:
+        'Brak obowiązkowych opłat miesięcznych. Płacisz raz za wdrożenie i masz spokój na lata.',
     },
     {
       value: 'do 14 dni',
       label: 'Pierwsza wersja',
-      description: 'Tyle zazwyczaj zajmuje nam uruchomienie najważniejszych funkcji dla Twojej firmy.',
+      description:
+        'Tyle zazwyczaj zajmuje nam uruchomienie najważniejszych funkcji dla Twojej firmy.',
     },
     {
       value: 'do 80%',
@@ -37,7 +39,8 @@ export class ImpactMetrics {
     {
       value: '100%',
       label: 'Twoja własność',
-      description: 'System i baza danych należą do Ciebie. Masz do nich dostęp zawsze, bez żadnych opłat miesięcznych.',
+      description:
+        'Nie uzależniasz się od platform. System stawiamy na Twoich zasadach – masz do niego dostęp na zawsze.',
     },
   ]);
 }
