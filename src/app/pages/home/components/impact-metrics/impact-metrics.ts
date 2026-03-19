@@ -20,25 +20,26 @@ interface Metric {
 export class ImpactMetrics {
   protected readonly metrics = signal<Metric[]>([
     {
-      value: '$997',
-      label: 'Risk-Free Audit',
-      description: 'Fee is 100% credited towards your first modernization sprint.',
+      value: 'BRAK',
+      label: 'OBOWIĄZKOWEGO ABONAMENTU',
+      description:
+        'Brak obowiązkowych opłat miesięcznych. Płacisz raz za wdrożenie i masz spokój na lata.',
     },
     {
-      value: '2-Wk',
-      label: 'Sprint Cycles',
-      description: 'Predictable delivery cadence with fixed scope and pricing.',
+      value: 'do 14 dni',
+      label: 'Uruchomienie pierwszej wersji',
+      description: 'Tyle zazwyczaj zajmuje nam wdrożenie najważniejszych funkcji dla Twojej firmy.',
     },
     {
-      value: '60%',
-      suffix: '-',
-      label: 'Reduced Technical Debt',
-      description: 'Reduction in legacy dependencies and spaghetti code.',
+      value: 'do 80%',
+      label: 'Mniej telefonów',
+      description: 'O tyle może spaść liczba pytań od klientów "na kiedy?" po wdrożeniu systemu.',
     },
     {
       value: '100%',
-      label: 'Scale-Ready Stability',
-      description: 'Codebases delivered with strict typing and zero critical regressions.',
+      label: 'Twoja własność',
+      description:
+        'Nie uzależniasz się od platform. System stawiamy na Twoich zasadach – masz do niego dostęp na zawsze.',
     },
   ]);
 }

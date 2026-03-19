@@ -1,11 +1,12 @@
-<section class="section-padding relative isolate overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-8 z-20">
+<section
+  class="section-padding relative isolate overflow-hidden mx-4 sm:mx-6 lg:mx-8 mt-8 z-20 border-t-2 border-secondary/10"
+>
   <div class="layout-container relative z-10">
     <!-- Header -->
     <app-section-header
-      subtitle="PERFORMANCE_METRICS"
-      title="Measurable Impact"
-      description="Modernization isn't just about cleaner code—it's about business velocity. Here are the typical outcomes I deliver within the first 90 days."
-      class="font-mono mb-16"
+      subtitle="EFEKTY WSPÓŁPRACY"
+      title="Mierzalne korzyści"
+      description="Nowoczesna aplikacja to nie tylko wygoda, to przede wszystkim oszczędność czasu i lepszy wizerunek Twojej firmy. Oto co zazwyczaj udaje nam się osiągnąć."
     />
 
     <!-- Metrics Grid -->
@@ -13,36 +14,15 @@
       @for (metric of metrics(); track metric.label; let index = $index) {
         <app-card
           [interactive]="true"
-          class="group relative overflow-hidden card-neon-floating p-8 flex flex-col items-center text-center"
+          class="card-workshop group relative overflow-hidden p-10 flex flex-col items-center text-center shadow-none"
         >
-          <!-- Background Glow -->
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          ></div>
-
-          <!-- Decorative Top Bar -->
-          <div
-            class="absolute top-0 left-0 w-full h-1 bg-white/5 group-hover:bg-primary/50 transition-colors duration-300"
-          ></div>
-
-          <!-- Index Badge -->
-          <div
-            class="absolute top-4 right-4 text-[10px] font-mono text-white/20 group-hover:text-primary/60 transition-colors"
-          >
-            M_0{{ index + 1 }}
-          </div>
-
           <!-- Value -->
-          <div class="relative mb-2">
-            <span
-              class="text-4xl md:text-5xl font-mono font-bold text-white group-hover:text-primary transition-colors tracking-tight"
-            >
+          <div class="relative mb-4">
+            <span class="heading-2 text-secondary group-hover:text-primary transition-colors">
               {{ metric.value }}
             </span>
             @if (metric.suffix) {
-              <span
-                class="absolute -top-2 -right-4 text-sm font-mono text-primary/80 animate-pulse"
-              >
+              <span class="absolute -top-2 -right-4 text-small text-primary/80">
                 {{ metric.suffix }}
               </span>
             }
@@ -50,19 +30,26 @@
 
           <!-- Label -->
           <h3
-            class="text-sm font-mono uppercase tracking-widest text-white/80 mb-4 group-hover:text-white transition-colors"
+            class="text-small text-secondary/70 mb-4 group-hover:text-secondary transition-colors"
           >
             {{ metric.label }}
           </h3>
 
           <!-- Description -->
           <p
-            class="text-xs text-white/50 leading-relaxed max-w-[200px] group-hover:text-white/70 transition-colors"
+            class="text-body max-w-[220px] mx-auto text-secondary/70 group-hover:text-secondary transition-colors"
           >
             {{ metric.description }}
           </p>
         </app-card>
       }
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="mt-12 text-center">
+      <p class="text-small text-secondary/30">
+        *wartości orientacyjne, zależne od specyfiki Twojej firmy
+      </p>
     </div>
   </div>
 </section>

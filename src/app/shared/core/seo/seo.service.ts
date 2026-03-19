@@ -1,7 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, inject, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { BreadcrumbItem, JsonLdSchema, SeoConfig } from './seo.models';
+import {
+  BreadcrumbItem,
+  FaqItem,
+  JsonLdSchema,
+  LocalBusinessConfig,
+  SeoConfig,
+} from './seo.models';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +33,9 @@ export class SeoService {
    * Handles strict ordering of operations to prevent race conditions or stale tags.
    */
   public setPageMetadata(config: SeoConfig): void {
+    // 0. Clean stale schemas from previous page to prevent duplicate rich results (e.g. FAQ on Blog)
+    this.clearPageSchemas();
+
     // 1. Title Strategy (Hub-and-Spoke Pattern friendly)
     const processedTitle = `${config.title} | Scale Sail Agency`;
     this.titleService.setTitle(processedTitle);
@@ -64,6 +73,62 @@ export class SeoService {
     this.injectSchemaScript(scriptId, schema);
   }
 
+  /**
+   * Generates and injects LocalBusiness or ProfessionalService schema.
+   * Critical for Local SEO and Knowledge Graph.
+   */
+  public setLocalBusinessSchema(
+    config: LocalBusinessConfig,
+    type: 'LocalBusiness' | 'ProfessionalService' = 'ProfessionalService',
+  ): void {
+    const schema: JsonLdSchema = {
+      '@context': 'https://schema.org',
+      '@type': type,
+      name: config.name,
+      description: config.description,
+      url: config.url,
+      logo: config.logo,
+      image: config.logo,
+      ...(config.address && { address: { '@type': 'PostalAddress', ...config.address } }),
+      ...(config.geo && { geo: { '@type': 'GeoCoordinates', ...config.geo } }),
+      ...(config.telephone && { telephone: config.telephone }),
+      ...(config.priceRange && { priceRange: config.priceRange }),
+      ...(config.openingHours && { openingHours: config.openingHours }),
+      ...(config.areaServed && { areaServed: config.areaServed }),
+      ...(config.sameAs && { sameAs: config.sameAs }),
+      ...(config.founder && {
+        founder: {
+          '@type': 'Person',
+          name: config.founder.name,
+          jobTitle: config.founder.jobTitle,
+        },
+      }),
+    };
+
+    this.injectSchemaScript('json-ld-local-business', schema);
+  }
+
+  /**
+   * Generates and injects FAQ schema.
+   * Increases SERP real estate through rich results.
+   */
+  public setFaqSchema(faqs: FaqItem[]): void {
+    const schema: JsonLdSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    };
+
+    this.injectSchemaScript('json-ld-faq', schema);
+  }
+
   public setBreadcrumbs(items: BreadcrumbItem[]): void {
     // Update the visual UI signal
     this._breadcrumbs.set(items);
@@ -75,11 +140,31 @@ export class SeoService {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: `${this.baseUrl}${item.path}`,
+        item: item.path.startsWith('http')
+          ? item.path
+          : `${this.baseUrl}${item.path.startsWith('/') ? item.path : '/' + item.path}`,
       })),
     };
 
     this.injectSchemaScript('json-ld-breadcrumbs', breadcrumbSchema);
+  }
+
+  private clearPageSchemas(): void {
+    const schemasToClear = [
+      'json-ld-faq',
+      'json-ld-local-business',
+      'json-ld-breadcrumbs',
+      'json-ld-schema',
+      'json-ld-person',
+      'json-ld-about-graph',
+      'json-ld-article',
+    ];
+    schemasToClear.forEach((id) => {
+      const script = this.document.getElementById(id);
+      if (script) {
+        script.remove();
+      }
+    });
   }
 
   private setOpenGraphTags(config: SeoConfig, processedTitle: string, canonicalUrl: string): void {

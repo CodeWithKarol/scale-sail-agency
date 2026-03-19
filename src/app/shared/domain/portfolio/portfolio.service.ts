@@ -19,29 +19,27 @@ export interface CaseStudy {
 
 const CASE_STUDIES: CaseStudy[] = [
   {
-    id: 'modern-enterprise-admin-dashboard',
-    title: 'Modern Enterprise Admin Dashboard',
-    tagline: 'High-Performance Real-Time Analytics',
+    id: 'admin-panel',
+    title: 'Jak ogarnąć 50 000 danych bez zacięcia',
+    tagline:
+      'Lekcje z dużych systemów korporacyjnych przełożone na proste narzędzia dla małych firm usługowych.',
     heroImage: '/images/admin-panel/admin-panel.webp',
     challenge:
-      'Enterprise dashboards often collapse under **Scale**: "spaghetti code," slow real-time rendering, and brittle test suites that block delivery. The organization was unable to ship new features because the legacy Angular architecture was too fragile. They needed a system that could handle massive data volume without slowing down velocity.',
+      'Systemy dla dużych firm często stają się powolne i trudne w obsłudze przy dużej ilości danych. Klient potrzebował rozwiązania, które pozwoli błyskawicznie zarządzać tysiącami operacji bez błędów i opóźnień.',
     solution:
-      'I built a **Scale-Ready** Angular application using Signals to keep state changes predictable and UI updates fine-grained. By shifting to a "Zoneless" architecture and leveraging Standalone Components, we eliminated the technical debt blocking growth, resulting in a system that ships features daily.',
+      'Zbudowałem nowoczesną aplikację, która natychmiast reaguje na zmiany danych. Wykorzystałem technologie, które gwarantują, że interfejs jest zawsze aktualny i czytelny, niezależnie od skali biznesu.',
     technicalApproach:
-      'The architecture follows a strictly typed, feature-based modular structure designed for **High Velocity**. We employed a hybrid state management strategy: Angular Signals for synchronous UI state and RxJS for complex data orchestration. This approach ensures the application remains performant even as it **Scales** to millions of data points.',
+      'System jest zbudowany tak, żeby odświeżać tylko te elementy ekranu, które faktycznie się zmieniają – dzięki temu działa lekko, szybko i nie „mieli” przy większej ilości danych. Użytkownik widzi zawsze aktualne informacje, bez opóźnień i bez ręcznego odświeżania. To podejście gwarantuje, że panel Twojej firmy będzie działał bezawaryjnie nawet przy bardzo dużej liczbie aktywnych zleceń. (Pod spodem wykorzystuję m.in. Angular Signals, ale dla Ciebie ważne jest po prostu to, że wszystko działa płynnie).',
     results: [
-      'Scale: Handles 50k+ real-time updates/sec without lag',
-      'Velocity: Instant test execution via Vitest (vs legacy Karma)',
-      'Stability: Zero-compromise strict typing and automated CI gates',
-      'Architecture: Fully decoupled features allowing independent deployment',
+      'Wydajność: Obsługa ponad 50 000 aktualizacji danych na sekundę bez zacięć',
+      'Stabilność: System odporny na błędy dzięki rygorystycznym testom automatycznym',
+      'Przejrzystość: Intuicyjny panel, który nie wymaga szkolenia pracowników',
     ],
     techStack: [
-      'Angular 21 & Signals',
-      'TypeScript 5.9',
-      'Tailwind CSS 4',
-      'Vitest (JSDOM)',
-      'Chart.js (ng2-charts)',
-      'Lucide Icons (Tree-shaken)',
+      'Najważniejsze liczby biznesowe na jednym ekranie',
+      'Dane odświeżane na bieżąco (bez ręcznego odświeżania)',
+      'Czytelny podgląd tego, co dzieje się w firmie dziś i w najbliższych dniach',
+      'Układ, który łatwo dostosować pod konkretną branżę',
     ],
     screenshots: [
       '/images/admin-panel/admin-panel-1.webp',
@@ -58,29 +56,27 @@ const CASE_STUDIES: CaseStudy[] = [
     repoUrl: 'https://github.com/CodeWithKarol/admin-panel',
   },
   {
-    id: 'quickcart-ecommerce',
-    title: 'QuickCart: Scale-Ready E-Commerce Architecture',
-    tagline: 'High-Velocity Angular E-Commerce Architecture',
+    id: 'quick-cart',
+    title: 'Niezawodność warta milionów odwiedzin',
+    tagline:
+      'Przenoszę standardy bankowe do Twojego warsztatu, aby system nigdy nie zawiódł Cię w szczycie sezonu.',
     heroImage: '/images/quick-cart/quick-cart.webp',
     challenge:
-      'High-scale e-commerce platforms often suffer from "black box" legacy code and fragile state sync that causes cart errors. The client needed a platform that could **Scale** to millions of users without layout thrashing or slow interactions that kill conversion rates.',
+      'W dużych sklepach internetowych błędy w koszyku lub wolne działanie strony to realne straty finansowe. Klient potrzebował platformy, która będzie działać bezbłędnie nawet przy milionach odwiedzin.',
     solution:
-      'I engineered "QuickCart" using a clean-slate "Smart Shell" architecture. Angular Signals provide stable global state without the overhead, ensuring the application remains fast and responsive. This approach proves that you can **Scale** feature richness without sacrificing performance.',
+      'Zaprojektowałem "QuickCart" – system sprzedaży skupiony na szybkości i niezawodności. Zastosowałem wzorce projektowe z sektora bankowego, aby zapewnić bezpieczeństwo transakcji i płynność działania.',
     technicalApproach:
-      'Demonstrating a "Zero-Boilerplate" philosophy, I utilized the "Smart Shell, Dumb Views" pattern with Standalone Components. \n\nKey Architectural Highlights:\n\n1. **Signal-Based Global State:** Implemented a lightweight state manager using Angular Signals to synchronize Cart and User sessions without boilerplate, reducing bundle size by ~25KB.\n2. **Optimized Change Detection:** All components use `ChangeDetectionStrategy.OnPush` to dramatically reduce Main Thread blocking time.\n3. **CLS Prevention:** Explicitly sized containers prevent content jumps, ensuring a rock-solid visual experience crucial for user trust at **Scale**.',
+      'Architektura systemu pozwala na błyskawiczne procesowanie zamówień bez obciążania urządzenia użytkownika. Nawet przy słabym połączeniu internetowym, koszyk i płatności działają stabilnie. Dokładnie takie podejście stosuję później w systemach dla warsztatów – tak, żeby panel z autami i zleceniami działał szybko i stabilnie nawet w sezonie największej liczby klientów.',
     results: [
-      'Performance: Instant Load (FCP < 0.8s)',
-      'Efficiency: Removed 150kb of unused JS via Tree-Shaking',
-      'Stability: Zero "jank" during complex mobile menu interactions',
-      'SEO: 100/100 Core Web Vitals score for improved search ranking',
+      'Szybkość: Błyskawiczne ładowanie strony (poniżej 0.8 sekundy)',
+      'Mobilność: Idealne działanie na telefonach (wynik 100/100 w testach Google)',
+      'Bezpieczeństwo: Solidna ochrona danych klientów i historii zakupów',
     ],
     techStack: [
-      'Angular',
-      'Signals',
-      'Standalone Components',
-      'Tailwind CSS',
-      'Angular Router',
-      'WCAG 2.1',
+      'Szybkie działanie nawet przy dużej liczbie użytkowników',
+      'Stabilność – system nie „pęka”, gdy jest więcej zamówień',
+      'Czytelny podział na koszyk, zamówienia i płatności',
+      'Architektura, którą można później łatwo rozbudować',
     ],
     screenshots: [
       '/images/quick-cart/quick-cart-1.webp',

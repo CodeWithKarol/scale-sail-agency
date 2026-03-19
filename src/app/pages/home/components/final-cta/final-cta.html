@@ -1,64 +1,57 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-mesh-slight border-t border-white/10"
+  class="relative section-padding overflow-hidden border-t-2 border-secondary/10 bg-grid-workshop"
 >
-  <div class="layout-container relative z-10">
-    <!-- Terminal Window Frame -->
-    <div
-      class="mx-auto max-w-3xl border border-white/20 bg-secondary rounded-sm overflow-hidden shadow-2xl"
-    >
-      <!-- Terminal Header -->
-      <div class="bg-white/5 border-b border-white/10 px-4 py-2 flex items-center justify-between">
-        <div class="flex gap-2">
-          <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-          <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-          <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-        </div>
-        <div class="font-mono text-xs text-white/30">bash — 80x24</div>
-      </div>
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
-      <!-- Terminal Body -->
-      <div class="p-8 sm:p-12 text-center">
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full font-mono text-xs mb-8"
-        >
+  <div class="layout-container relative z-10">
+    <div
+      class="mx-auto max-w-4xl bg-white border-4 border-secondary p-8 sm:p-20 text-center relative overflow-hidden shadow-[12px_12px_0px_0px_rgba(10,31,68,0.05)]"
+    >
+      <div class="relative z-20">
+        <!-- Workshop Badge -->
+        <div class="status-badge status-badge-dark ring-4 ring-secondary/5 mb-12">
           <span class="relative flex h-2 w-2">
             <span
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+              class="animate-ping absolute inline-flex h-full w-full rounded-none bg-primary opacity-75"
             ></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+            <span class="relative inline-flex rounded-none h-2 w-2 bg-primary"></span>
           </span>
-          SYSTEM_READY
+          STATUS: GOTOWY NA ZMIANĘ?
         </div>
 
-        <h2
-          class="text-3xl sm:text-4xl font-mono font-bold text-white mb-6 uppercase tracking-tight"
-        >
-          Stop Managing <span class="text-primary">Technical Debt</span>
+        <h2 class="heading-2 text-secondary mb-10">
+          Odzyskaj kontrolę nad <br />
+          <span class="text-primary italic">Twoją firmą</span>
         </h2>
 
-        <p class="text-white/60 font-mono text-sm leading-relaxed max-w-xl mx-auto mb-10">
-          > Start managing <strong>Scale</strong>. Turn your Angular platform into a high-velocity
-          asset.
-          <br class="hidden sm:block" />
-          > Eliminate the bottlenecks slowing down your roadmap today.
+        <p class="text-body text-secondary/70 max-w-2xl mx-auto mb-14">
+          Przestań marnować czas na szukanie kartek i odbieranie tych samych telefonów. Skup się na
+          swojej pracy, a technologię zostaw mi.
+          <span class="font-black text-secondary">Zbudujmy system</span>, który ułatwi Ci życie.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <app-button
-            href="/#contact"
-            variant="primary"
-            size="lg"
-            styleClass="w-full sm:w-auto font-mono uppercase tracking-widest text-xs"
-          >
-            [ BOOK_AUDIT_($997) ]
+        <div class="flex flex-col items-center justify-center">
+          <app-button href="/consultation" variant="accent" size="lg">
+            <div class="flex flex-col items-center text-center py-1">
+              <span class="text-lg">Sprawdź, jak mogę Ci pomóc</span>
+              <span class="font-mono text-xs uppercase tracking-[0.2em] text-white/90 mt-1">
+                BEZPŁATNA ANALIZA POTRZEB
+              </span>
+            </div>
           </app-button>
+
+          <p class="mt-8 text-small text-secondary/40">
+            DEDYKOWANE SYSTEMY • BRAK OBOWIĄZKOWEGO ABONAMENTU • SOLIDNE WYKONANIE
+          </p>
         </div>
       </div>
+
+      <!-- Technical indicators instead of glows -->
+      <div class="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-secondary/5"></div>
+      <div
+        class="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-secondary/5"
+      ></div>
     </div>
   </div>
-
-  <!-- Background Glow -->
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10"
-  ></div>
 </section>

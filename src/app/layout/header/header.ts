@@ -1,14 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   HostListener,
   effect,
   inject,
   signal,
 } from '@angular/core';
 import { CommonModule, DOCUMENT, ViewportScroller } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { BrandLogo } from '../../shared/ui/brand-logo/brand-logo';
 import { Button } from '../../shared/ui/button/button';
 import { MobileMenu } from './components/mobile-menu/mobile-menu';
@@ -17,74 +16,46 @@ import { MobileMenu } from './components/mobile-menu/mobile-menu';
   selector: 'app-header',
   imports: [CommonModule, RouterLink, BrandLogo, Button, MobileMenu],
   templateUrl: './header.html',
-  styleUrl: './header.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
-  mobileMenuOpen = signal(false);
+  private readonly document = inject(DOCUMENT);
+  private readonly viewportScroller = inject(ViewportScroller);
+  private readonly router = inject(Router);
 
-  navigation = [
-    {
-      name: 'Strategy',
-      children: [
-        { name: 'Modernization', path: '/', fragment: 'services' },
-        { name: 'Process', path: '/', fragment: 'process' },
-        { name: 'Case Studies', path: '/work', fragment: undefined },
-      ],
-    },
-    {
-      name: 'Resources',
-      children: [
-        { name: 'Engineering Blog', path: '/blog', fragment: undefined },
-        { name: 'FAQ', path: '/', fragment: 'faq' },
-      ],
-    },
-    { name: 'About', path: '/about', fragment: undefined },
-    { name: 'Contact', path: '/', fragment: 'contact' },
+  mobileMenuOpen = signal(false);
+  scrolled = signal(false);
+
+  // Flat navigation structure for better UX and speed
+  readonly navigation = [
+    { name: 'Realizacje', path: '/work' },
+    { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
+    { name: 'Pytania', path: '/', fragment: 'faq' },
+    { name: 'Wiedza', path: '/blog' },
+    { name: 'O mnie', path: '/about' },
   ];
 
-  openDropdown = signal<string | null>(null);
-  private elementRef = inject(ElementRef);
-
-  toggleDropdown(name: string) {
-    this.openDropdown.update((current) => (current === name ? null : name));
-  }
-
-  closeDropdown() {
-    this.openDropdown.set(null);
-  }
-
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: MouseEvent) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.closeDropdown();
-    }
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.scrolled.set(window.scrollY > 20);
   }
 
   toggleMobileMenu() {
-    this.mobileMenuOpen.update((open) => !open);
+    this.mobileMenuOpen.update((v) => !v);
   }
 
   closeMobileMenu() {
     this.mobileMenuOpen.set(false);
   }
 
-  private readonly viewportScroller = inject(ViewportScroller);
-  private readonly document = inject(DOCUMENT);
-
   constructor() {
+    // Handle body scroll locking
     effect(() => {
-      const isOpen = this.mobileMenuOpen();
-      if (isOpen) {
+      if (this.mobileMenuOpen()) {
         this.document.body.style.overflow = 'hidden';
       } else {
         this.document.body.style.overflow = '';
       }
     });
-  }
-
-  scrollToTop(event: Event) {
-    event.preventDefault();
-    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }

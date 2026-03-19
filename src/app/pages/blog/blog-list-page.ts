@@ -19,7 +19,6 @@ import { Button } from '../../shared/ui/button/button';
 import { FeaturedBlogPostComponent } from './components/featured-blog-post/featured-blog-post';
 import { BlogPostCardComponent } from './components/blog-post-card/blog-post-card';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
-import { GeometricBackground } from '../../shared/ui/geometric-background/geometric-background';
 
 type FeedState =
   | { status: 'loading' }
@@ -35,97 +34,72 @@ type FeedState =
     BlogPostCardComponent,
     Button,
     BreadcrumbComponent,
-    GeometricBackground,
   ],
   template: `
-    <div class="min-h-screen font-sans text-white pb-24 sm:pb-32 relative isolate">
-      <div class="fixed inset-0 -z-10">
-        <app-geometric-background variant="default" />
-      </div>
+    <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
+      <!-- Technical Grid Background -->
+      <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
-      <div class="layout-container pt-24 sm:pt-32">
+      <div class="layout-container relative z-10 pt-32 sm:pt-40">
         <!-- Breadcrumbs -->
         <app-breadcrumb />
 
         <!-- Header -->
         <app-section-header
-          subtitle="LOGS / ENGINEERING"
-          title="Engineering Strategy"
-          description="Technical deep dives and strategic thinking for growing platforms. From low-level memory tuning to high-level architecture decisions."
+          subtitle="BAZA WIEDZY"
+          title="Wiedza i Automatyzacja"
+          description="Praktyczne wskazówki, jak wykorzystać technologię do rozwoju Twojej firmy. Od prostych sposobów na Excela po budowę solidnych narzędzi."
         />
 
         <!-- Content Area -->
-        <div class="mt-16 sm:mt-24 space-y-20">
-          <!-- Loading State -->
+        <div class="mt-16 sm:mt-24 space-y-32">
+          <!-- Loading State (Industrial) -->
           @if (isLoading()) {
-            <div class="flex flex-col justify-center items-center h-64 font-mono">
-              <div class="flex items-center gap-2 text-accent mb-4">
-                <span class="relative flex h-3 w-3">
+            <div class="flex flex-col justify-center items-center h-64">
+              <div class="status-badge status-badge-dark mb-8 ring-4 ring-secondary/5">
+                <span class="relative flex h-2 w-2">
                   <span
-                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
+                    class="animate-ping absolute inline-flex h-full w-full rounded-none bg-primary opacity-75"
                   ></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                  <span class="relative inline-flex rounded-none h-2 w-2 bg-primary"></span>
                 </span>
-                <span class="text-sm tracking-widest uppercase">Initializing Data Stream</span>
+                POBIERANIE...
               </div>
 
-              <!-- Progress Bar -->
-              <div class="w-64 h-1 bg-white/10 overflow-hidden">
-                <div class="h-full bg-accent animate-[loading_2s_ease-in-out_infinite] w-1/2"></div>
+              <!-- Progress Bar (Workshop Style) -->
+              <div
+                class="w-64 h-2 bg-secondary/10 overflow-hidden rounded-none border-2 border-secondary/10"
+              >
+                <div
+                  class="h-full bg-primary animate-[loading_2s_ease-in-out_infinite] w-1/2"
+                ></div>
               </div>
 
-              <div class="mt-4 text-[10px] text-white/40 uppercase tracking-widest">
-                Fetching resources from remote...
-              </div>
+              <div class="mt-8 text-small text-secondary/40">ŁĄCZENIE Z SERWEREM...</div>
             </div>
           }
 
-          <!-- Error State -->
+          <!-- Error State (Industrial) -->
           @else if (error()) {
             <div
-              class="mx-auto max-w-lg border border-red-500/50 bg-red-900/5 p-8 relative overflow-hidden group"
+              class="mx-auto max-w-2xl bg-white border-4 border-secondary p-12 text-center relative overflow-hidden shadow-[12px_12px_0px_0px_rgba(10,31,68,0.05)]"
             >
-              <!-- Error decoration -->
-              <div class="absolute top-0 left-0 w-2 h-2 border-l border-t border-red-500"></div>
-              <div class="absolute top-0 right-0 w-2 h-2 border-r border-t border-red-500"></div>
-              <div class="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-red-500"></div>
-              <div class="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-red-500"></div>
+              <div class="status-badge bg-accent text-white border-accent mb-10">BŁĄD SYSTEMU</div>
 
-              <div class="flex flex-col items-center text-center">
-                <div
-                  class="text-red-500 font-mono text-xs uppercase tracking-widest mb-4 border border-red-500/30 px-3 py-1"
-                >
-                  System Error: 503
-                </div>
+              <h3 class="heading-3 text-secondary mb-6 uppercase">Baza wiedzy niedostępna</h3>
+              <p class="text-body sm:text-lg text-secondary/70 mb-12">
+                Wystąpił problem z pobraniem artykułów. Sprawdź moje publikacje bezpośrednio na
+                platformie Medium.
+              </p>
 
-                <h3 class="text-xl font-bold text-white mb-2 font-mono">CONNECTION FAILURE</h3>
-                <p class="text-white/60 text-sm mb-8 font-light">
-                  Unable to establish uplink with Medium.com feed.
-                </p>
-
-                <a
-                  href="https://karol-modelski.medium.com/"
-                  target="_blank"
-                  class="inline-flex items-center gap-2 px-6 py-3 bg-red-500/10 text-red-500 border border-red-500/30 hover:bg-red-500 hover:text-white transition-all duration-300 text-xs font-mono uppercase tracking-wider"
-                >
-                  <span class="w-1 h-1 bg-current"></span>
-                  Direct Uplink
-                  <!-- ArrowRight -->
-                  <svg
-                    class="h-3 w-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </a>
-              </div>
+              <app-button
+                href="https://karol-modelski.medium.com/"
+                target="_blank"
+                variant="primary"
+                size="lg"
+              >
+                ODWIEDŹ MEDIUM.COM
+              </app-button>
             </div>
           }
 
@@ -133,12 +107,14 @@ type FeedState =
           @else {
             <!-- Featured Post -->
             @if (featuredPost(); as featured) {
-              <app-featured-blog-post [post]="featured" />
+              <div class="mb-32">
+                <app-featured-blog-post [post]="featured" />
+              </div>
             }
 
             <!-- Post Grid -->
             <ul
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 list-none p-0"
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-20 list-none p-0"
             >
               @for (post of visiblePosts(); track post.id) {
                 <li>
@@ -147,17 +123,13 @@ type FeedState =
               }
             </ul>
 
-            <!-- Pagination -->
+            <!-- Pagination (Workshop Style) -->
             @if (hasMorePosts()) {
-              <div class="flex justify-center relative mt-24 pt-12">
-                <!-- Technical Separator -->
-                <div class="absolute top-0 left-0 w-full h-px bg-white/10"></div>
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-accent"></div>
-                <div class="absolute top-0 left-0 w-2 h-[2px] bg-accent"></div>
-                <div class="absolute top-0 right-0 w-2 h-[2px] bg-accent"></div>
+              <div class="flex justify-center relative mt-40 pt-20 border-t-4 border-secondary/10">
+                <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-24 h-2 bg-primary"></div>
 
                 <app-button variant="secondary" size="lg" (click)="loadMore()">
-                  Load more articles
+                  <span class="text-lg font-bold">POKAŻ WIĘCEJ WIEDZY</span>
                 </app-button>
               </div>
             }
@@ -208,7 +180,7 @@ export class BlogListPage implements OnInit {
         date: new Date(item.pubDate).toISOString(),
         slug: item.guid,
         imageUrl: imageUrl,
-        category: item.categories?.length ? item.categories[0] : 'Tech',
+        category: item.categories?.length ? item.categories[0] : 'Porady',
         url: item.link,
       };
     });
@@ -246,10 +218,10 @@ export class BlogListPage implements OnInit {
         '@graph': [
           {
             '@type': 'Blog',
-            headline: 'Angular Blog - Architecture, Signals & Performance',
-            name: 'Angular Blog - Architecture, Signals & Performance',
+            headline: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
+            name: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
             description:
-              'Practical writing on Angular architecture, Signals/RxJS patterns, performance tuning, and engineering decisions that keep teams shipping.',
+              'Praktyczne artykuły o automatyzacji pracy, budowie systemów dla warsztatów i firm usługowych oraz o tym, jak technologia może ułatwić Ci życie.',
             author: {
               '@type': 'Person',
               name: 'Karol Modelski',
@@ -277,7 +249,7 @@ export class BlogListPage implements OnInit {
               '@type': 'WebPage',
               '@id': 'https://scale-sail.io/blog',
             },
-            inLanguage: 'en-US',
+            inLanguage: 'pl-PL',
           },
         ],
       });
@@ -286,26 +258,23 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Engineering Strategy Blog | Angular & Scale',
+      title: 'Baza Wiedzy i Porady | Scale Sail',
       description:
-        'Strategic insights on scaling Angular architecture. Learn how to eliminate technical debt and build high-velocity engineering systems.',
+        'Dowiedz się, jak proste aplikacje i automatyzacja mogą oszczędzić Twój czas. Praktyczne wskazówki dla właścicieli warsztatów i firm usługowych.',
       slug: '/blog',
       type: 'article',
       keywords: [
-        'Angular Blog',
-        'Frontend Architecture',
-        'Angular Signals',
-        'RxJS Patterns',
-        'Web Performance',
-        'Engineering Management',
-        'Zoneless Angular',
-        'Angular State Management',
-        'Enterprise Angular Patterns',
+        'Automatyzacja warsztatu',
+        'Aplikacja dla firmy usługowej',
+        'Zarządzanie zleceniami',
+        'Excel w firmie',
+        'Porady dla przedsiębiorców',
+        'Cyfryzacja biznesu',
       ],
     });
 
     this.seoService.setBreadcrumbs([
-      { name: 'Home', path: '/' },
+      { name: 'Start', path: '/' },
       { name: 'Blog', path: '/blog' },
     ]);
   }

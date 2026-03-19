@@ -24,6 +24,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
+    path: 'consultation',
+    loadComponent: () =>
+      import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
+    title: 'Konsultacja | Scale Sail Agency',
+  },
+  {
     path: '**',
     redirectTo: '',
   },

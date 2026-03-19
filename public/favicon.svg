@@ -1,5 +1,22 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="512" height="512" rx="128" fill="#0a1f44"/>
-  <path d="M256 100L380 412H132L256 100Z" fill="#007bff"/>
-  <path d="M256 100L320 412H192L256 100Z" fill="#ff6f3c"/>
+  <!-- Solid Industrial Background -->
+  <rect width="512" height="512" fill="#0A1F44"/>
+  
+  <!-- Technical Scale Accents (The "Scale" part) -->
+  <rect x="60" y="120" width="20" height="4" fill="#007BFF" fill-opacity="0.4"/>
+  <rect x="60" y="180" width="12" height="4" fill="#007BFF" fill-opacity="0.4"/>
+  <rect x="60" y="240" width="20" height="4" fill="#007BFF" fill-opacity="0.4"/>
+  <rect x="60" y="300" width="12" height="4" fill="#007BFF" fill-opacity="0.4"/>
+  <rect x="60" y="360" width="20" height="4" fill="#007BFF" fill-opacity="0.4"/>
+
+  <!-- The Industrial Sail (Sharp, Precision-cut wedges) -->
+  <!-- Main Sail (Electric Blue) -->
+  <path d="M140 80V432H420L140 80Z" fill="#007BFF"/>
+  
+  <!-- Detail/Accent Sail (Vibrant Orange) -->
+  <path d="M140 200L300 432H140V200Z" fill="#FF6F3C"/>
+  
+  <!-- Outer Technical Frame Accent -->
+  <path d="M0 0H512V4H0V0Z" fill="#007BFF" fill-opacity="0.2"/>
+  <path d="M0 508H512V512H0V508Z" fill="#007BFF" fill-opacity="0.2"/>
 </svg>
