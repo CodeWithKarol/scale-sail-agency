@@ -7,9 +7,11 @@ import { Process } from './components/process/process';
 import { FounderStory } from './components/founder-story/founder-story';
 import { Contact } from './components/contact/contact';
 import { Faq } from './components/faq/faq';
+import { Pricing } from './components/pricing/pricing';
 import { FinalCta } from './components/final-cta/final-cta';
 import { ImpactMetrics } from './components/impact-metrics/impact-metrics';
 import { IdealClientProfile } from './components/ideal-client-profile/ideal-client-profile';
+import { LogoCloud } from './components/logo-cloud/logo-cloud';
 
 @Component({
   selector: 'app-home',
@@ -19,11 +21,13 @@ import { IdealClientProfile } from './components/ideal-client-profile/ideal-clie
     ProblemSolution,
     Process,
     FounderStory,
+    Pricing,
     Contact,
     Faq,
     FinalCta,
     ImpactMetrics,
     IdealClientProfile,
+    LogoCloud,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -34,16 +38,20 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Proste aplikacje dla warsztatów i firm usługowych | Scale Sail',
+      title: 'Proste aplikacje dla warsztatów samochodowych i małych firm | Scale Sail',
       description:
-        'Pomagam małym firmom wyjść z ery kartek i Excela. Tworzę proste systemy do zarządzania zleceniami i automatyzacji kontaktu z klientem.',
+        'Tworzę aplikacje do zarządzania zleceniami dla warsztatów samochodowych i małych firm usługowych. Wdrażam automatyzacje (Make, n8n) i integracje AI. Uwolnij się od papierologii i Excela.',
       slug: '',
       type: 'website',
       keywords: [
         'aplikacja dla warsztatu',
         'program dla warsztatu samochodowego',
         'zarządzanie zleceniami',
+        'wdrożenia n8n',
+        'automatyzacja procesów biznesowych',
+        'integracje Make.com',
         'automatyzacja firmy usługowej',
+        'wbudowana sztuczna inteligencja',
         'system dla serwisu',
         'cyfryzacja małej firmy',
         'powiadomienia sms dla klientów',
@@ -53,7 +61,7 @@ export class Home implements OnInit {
     this.seoService.setLocalBusinessSchema({
       name: 'Scale Sail Agency',
       description:
-        'Pomagam małym firmom usługowym i warsztatom w cyfrowej transformacji i automatyzacji pracy.',
+        'Tworzę aplikacje do zarządzania zleceniami dla warsztatów samochodowych i małych firm usługowych. Wdrażam automatyzacje (Make, n8n) i integracje AI. Uwolnij się od papierologii i Excela.',
       url: 'https://scale-sail.io',
       logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
       founder: {

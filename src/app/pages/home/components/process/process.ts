@@ -35,7 +35,7 @@ export class Process {
       title: 'Szybkie wdrożenie',
       subtitle: 'REALIZACJA',
       description:
-        'Buduję najważniejsze funkcje (np. kolejkę aut i SMS-y do klientów), byś mógł z nich korzystać jak najszybciej. Pracujemy w krótkich, konkretnych etapach.',
+        'Buduję najważniejsze funkcje (np. kolejkę aut i SMS-y do klientów) oraz konfiguruję automatyzacje w n8n/Make/Zapier i podstawowe funkcje AI. Pracujemy w krótkich, konkretnych etapach, tak żebyś jak najszybciej odczuł różnicę w codziennej pracy.',
       iconPath:
         'M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z',
       duration: '7-14 DNI',
@@ -46,7 +46,7 @@ export class Process {
       title: 'Wsparcie i rozwój',
       subtitle: 'FINAŁ',
       description:
-        'Przekazuję Ci gotową aplikację, szkolę pracowników i pomagam rozwijać go dalej, gdy firma rośnie.',
+        'Przekazuję Ci gotową aplikację, szkolę pracowników i pomagam rozwijać ją dalej, gdy firma rośnie.',
       iconPath:
         'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm-2-10 2 2 4-4',
       duration: 'STAŁA OPIEKA',

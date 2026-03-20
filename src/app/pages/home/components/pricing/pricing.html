@@ -1,0 +1,129 @@
+<section
+  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10 bg-grid-workshop"
+>
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
+
+  <div class="layout-container relative z-10">
+    <app-section-header
+      subtitle="JASNE ZASADY, ZERO NIESPODZIANEK"
+      title="Wybierz silnik dla Twojej firmy"
+      description="Płacisz raz za wdrożenie i zyskujesz narzędzie na własność. Brak ukrytych kruczków, brak dożywotnich subskrypcji za dostęp."
+    />
+
+    <!-- Pricing Cards Grid -->
+    <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
+        @for (pkg of packages(); track pkg.name) {
+          <div
+            class="card-workshop group bg-white border-2 p-8 transition-all duration-300 relative flex flex-col h-full"
+            [class.border-primary]="pkg.isPopular"
+            [class.border-secondary/10]="!pkg.isPopular"
+            [class.shadow-[12px_12px_0px_0px_rgba(0,123,255,0.15)]]="pkg.isPopular"
+            [class.lg:-translate-y-4]="pkg.isPopular"
+            [class.lg:scale-105]="pkg.isPopular"
+            [class.z-10]="pkg.isPopular"
+          >
+            @if (pkg.isPopular) {
+              <!-- Popular Badge -->
+              <div class="absolute -top-4 inset-x-0 flex justify-center">
+                <span
+                  class="bg-primary text-white text-xs font-black px-4 py-1 tracking-widest uppercase border-2 border-primary shadow-[4px_4px_0px_0px_rgba(10,31,68,0.2)]"
+                >
+                  Rozwiązanie dla 80% firm
+                </span>
+              </div>
+            }
+
+            <div class="mb-8">
+              <span
+                class="text-small text-secondary/50 font-black uppercase tracking-widest mb-2 block"
+              >
+                {{ pkg.tagline }}
+              </span>
+              <h3 class="heading-2 text-secondary mb-4">{{ pkg.name }}</h3>
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-4xl sm:text-5xl font-black tracking-tight text-secondary">
+                  {{ pkg.price }}
+                </span>
+                <span class="text-body font-bold text-secondary/40">{{ pkg.priceSuffix }}</span>
+              </div>
+              <p class="text-body text-secondary/70 h-24 sm:h-16">
+                {{ pkg.description }}
+              </p>
+            </div>
+
+            <!-- Divider -->
+            <div class="h-0.5 w-full bg-secondary/10 mb-8"></div>
+
+            <!-- Features List -->
+            <ul class="space-y-4 mb-10 flex-1">
+              @for (feature of pkg.features; track feature.name) {
+                <li class="flex items-start gap-3">
+                  @if (feature.included) {
+                    <svg
+                      class="h-6 w-6 text-primary shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M4.5 12.75l6 6 9-13.5"
+                      />
+                    </svg>
+                    <span class="text-secondary/90 font-bold">{{ feature.name }}</span>
+                  } @else {
+                    <svg
+                      class="h-6 w-6 text-secondary/20 shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                    <span class="text-secondary/40 line-through">{{ feature.name }}</span>
+                  }
+                </li>
+              }
+            </ul>
+
+            <!-- CTA -->
+            <div class="mt-auto pt-4">
+              <app-button
+                [href]="pkg.href"
+                [queryParams]="pkg.queryParams || {}"
+                [variant]="pkg.isPopular ? 'primary' : 'secondary'"
+                size="lg"
+              >
+                <span class="w-full text-center justify-center flex">{{ pkg.ctaText }}</span>
+              </app-button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Retainer Mention -->
+    <div
+      class="mt-20 border-2 border-secondary/10 bg-white p-8 sm:p-12 text-center max-w-4xl mx-auto card-workshop relative"
+    >
+      <div class="absolute -top-3 -left-3 w-6 h-6 bg-primary"></div>
+      <h4 class="heading-3 mb-4 text-secondary">A co po wdrożeniu? Czy zostaję z tym sam?</h4>
+      <p class="text-body text-secondary/70 max-w-2xl mx-auto">
+        Oczywiście, że nie. Zamiast wymuszać na Tobie zatrudnianie dewelopera lub agencji na etat do
+        poprawek, oferuję opcjonalny pakiet <strong>Opieki i Rozwoju (SLA)</strong> w przedziale
+        <strong>800–1500 zł netto miesięcznie</strong>. Monitoruję w tym serwery, dbam o Twoje kopie
+        zapasowe, rozbudowuję automatyzację i dodaję mikro-usprawnienia na Twoje życzenie z
+        gwarancją czasu reakcji.
+      </p>
+    </div>
+  </div>
+</section>

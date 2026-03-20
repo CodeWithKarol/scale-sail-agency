@@ -21,6 +21,7 @@ export class Button {
   size = input<ButtonSize>('md');
   href = input<string>();
   route = input<string | unknown[]>();
+  queryParams = input<Record<string, unknown>>({});
   type = input<'button' | 'submit' | 'reset'>('button');
   disabled = input(false);
 

@@ -7,6 +7,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SeoService } from '../../shared/core/seo/seo.service';
@@ -101,14 +102,14 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                       formControlName="projectType"
                       class="input-field appearance-none cursor-pointer"
                     >
-                      <option value="new-system">
-                        Potrzebuję prostego systemu do zapisów i zleceń
+                      <option value="system">
+                        Potrzebuję prostego systemu do zarządzania zleceniami
                       </option>
-                      <option value="sms-automation">Chcę zautomatyzować przypomnienia SMS</option>
-                      <option value="digitization">
-                        Chcę przenieść firmę ze starego papieru do cyfry
+                      <option value="automation">
+                        Chcę wdrożyć automatyzacje procesów (n8n/Make)
                       </option>
-                      <option value="other">Mam inny, specyficzny pomysł</option>
+                      <option value="ai">Interesuje mnie wdrożenie integracji i funkcji AI</option>
+                      <option value="sla">Mam inny pomysł / Szukam Opieki SLA</option>
                     </select>
                     <div
                       class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary"
@@ -137,27 +138,22 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     <label
                       class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
                     >
-                      <input
-                        type="radio"
-                        formControlName="budget"
-                        value="under-5k"
-                        class="sr-only"
-                      />
+                      <input type="radio" formControlName="budget" value="low" class="sr-only" />
                       <span class="flex flex-col">
                         <span
                           class="block text-sm font-black mb-1"
-                          [class.text-primary]="f['budget'].value === 'under-5k'"
-                          >Poniżej 5 000 zł</span
+                          [class.text-primary]="f['budget'].value === 'low'"
+                          >Poniżej 7 000 zł</span
                         >
                         <span class="block text-xs text-secondary/60"
-                          >Szukam najtańszego gotowca na rynku</span
+                          >Szukam tańszego gotowca SaaS</span
                         >
                       </span>
                       <!-- Active Ring overlay -->
                       <span
                         class="pointer-events-none absolute -inset-px border-2"
-                        [class.border-transparent]="f['budget'].value !== 'under-5k'"
-                        [class.border-primary]="f['budget'].value === 'under-5k'"
+                        [class.border-transparent]="f['budget'].value !== 'low'"
+                        [class.border-primary]="f['budget'].value === 'low'"
                         aria-hidden="true"
                       ></span>
                     </label>
@@ -170,10 +166,10 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                         <span
                           class="block text-sm font-black mb-1"
                           [class.text-primary]="f['budget'].value === 'mid'"
-                          >5 000 - 15 000 zł</span
+                          >7 000 - 16 000 zł</span
                         >
                         <span class="block text-xs text-secondary/60"
-                          >Potrzebuję porządnego wdrożenia dedykowanego</span
+                          >Optymalny system i automatyzacje</span
                         >
                       </span>
                       <span
@@ -192,10 +188,10 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                         <span
                           class="block text-sm font-black mb-1"
                           [class.text-primary]="f['budget'].value === 'high'"
-                          >Powyżej 15 000 zł</span
+                          >Powyżej 16 000 zł</span
                         >
                         <span class="block text-xs text-secondary/60"
-                          >Kluczowy system w centrum firmy na lata</span
+                          >Zaawansowana platforma i funkcje AI</span
                         >
                       </span>
                       <span
@@ -291,8 +287,9 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     ><span class="ml-2 font-serif font-black underline">→</span>
                   </app-button>
                   <p class="mt-4 text-xs text-secondary/40 font-mono uppercase tracking-widest">
-                    Zaznaczenie "Poniżej 5000 zł" może zaoferować alternatywną ścieżkę pomocy, aby
-                    oszczędzić Twój czas.
+                    Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki SLA) może zaoferować
+                    alternatywną ścieżkę pomocy,<br class="hidden sm:block" />
+                    aby oszczędzić Twój czas.
                   </p>
                 </div>
               </form>
@@ -400,6 +397,7 @@ export class ConsultationPage implements OnInit {
   private http = inject(HttpClient);
   private cdr = inject(ChangeDetectorRef);
   private document = inject(DOCUMENT);
+  private route = inject(ActivatedRoute);
 
   // Status Machine
   status = signal<QualificationStatus>('PENDING');
@@ -407,7 +405,7 @@ export class ConsultationPage implements OnInit {
   form = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    projectType: ['new-system', Validators.required],
+    projectType: ['system', Validators.required],
     budget: ['mid', Validators.required],
     message: ['', [Validators.required, Validators.minLength(20)]],
     botcheck: [false],
@@ -453,6 +451,18 @@ export class ConsultationPage implements OnInit {
       },
       'json-ld-contact-page',
     );
+
+    // Parse URL query parameters to pre-fill the form
+    this.route.queryParams.subscribe((params) => {
+      const pkg = params['package'];
+      if (pkg === 'small') {
+        this.form.patchValue({ budget: 'mid', projectType: 'system' });
+      } else if (pkg === 'medium') {
+        this.form.patchValue({ budget: 'mid', projectType: 'automation' });
+      } else if (pkg === 'large') {
+        this.form.patchValue({ budget: 'high', projectType: 'ai' });
+      }
+    });
   }
 
   onSubmit() {
@@ -464,7 +474,10 @@ export class ConsultationPage implements OnInit {
     this.status.set('SUBMITTING');
 
     const budgetValue = this.form.get('budget')?.value;
-    const isQualified = budgetValue === 'mid' || budgetValue === 'high';
+    const projectType = this.form.get('projectType')?.value;
+
+    // SLA package is fundamentally cheaper (800-1500) so we explicitly whitelist it.
+    const isQualified = budgetValue === 'mid' || budgetValue === 'high' || projectType === 'sla';
 
     const formData = {
       ...this.form.value,

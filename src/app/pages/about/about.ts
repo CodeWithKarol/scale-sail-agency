@@ -180,7 +180,7 @@ export class About implements OnInit {
     this.seoService.setPageMetadata({
       title: 'O mnie | Karol Modelski — Scale Sail',
       description:
-        'Pomagam małym firmom usługowym i warsztatom wychodzić z ery kartek i Excela. Wykorzystuję doświadczenie z największych projektów IT, by budować proste i solidne aplikacje.',
+        'Pomagam małym firmom usługowym i warsztatom wychodzić z ery kartek i Excela. Łączę doświadczenie z największych projektów IT z praktyką automatyzacji (n8n/Make/Zapier) i AI, żeby budować proste i solidne systemy, które realnie odciążają właściciela firmy.',
       slug: 'about',
       type: 'profile',
     });
@@ -203,7 +203,7 @@ export class About implements OnInit {
             isPartOf: { '@id': 'https://scale-sail.io/#website' },
             mainEntity: { '@id': 'https://scale-sail.io/#person' },
             description:
-              'Poznaj twórcę Scale Sail i dowiedz się, jak bankowa jakość systemów pomaga małym firmom.',
+              'Poznaj twórcę Scale Sail i dowiedz się, jak łączę doświadczenie z największych projektów IT z automatyzacją (n8n, Make, Zapier) i integracjami AI, by pomagać firmom.',
           },
           {
             '@type': 'Person',
