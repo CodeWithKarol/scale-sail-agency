@@ -33,7 +33,8 @@ export class ImpactMetrics {
     {
       value: 'do 80%',
       label: 'Mniej telefonów',
-      description: 'O tyle może spaść liczba pytań od klientów "na kiedy?" po wdrożeniu systemu.',
+      description:
+        'W warsztatach widzimy zwykle do 80% mniej telefonów „na kiedy moje auto?”, w innych firmach usługowych – mniej chaosu w grafiku i fakturach.',
     },
     {
       value: '100%',

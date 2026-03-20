@@ -84,7 +84,9 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
                   >.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80">
-                  Dziś tę samą „bankową” jakość przenoszę do małych i średnich firm. Wiem, że Twoja
+                  Dziś tę samą „bankową” jakość przenoszę do warsztatów samochodowych oraz małych i
+                  średnich firm. Znam specyfikę serwisów, gdzie liczy się szybka obsługa zlecenia,
+                  przypisywanie mechaników i podgląd na kilka stanowisk jednocześnie. Wiem, że Twoja
                   firma to Twój dorobek życia – dlatego nie bawię się w półśrodki. Jeśli coś buduję,
                   to tak, byś mógł o tym zapomnieć, bo po prostu działa.
                 </p>

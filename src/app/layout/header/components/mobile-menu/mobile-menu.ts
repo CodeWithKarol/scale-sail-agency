@@ -107,7 +107,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
               >
                 <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 bg-primary rounded-none animate-pulse"></span>
-                  STATUS: AGENCJA GOTOWA
+                  STATUS: GOTOWY NA WDROŻENIA
                 </div>
               </div>
             </div>

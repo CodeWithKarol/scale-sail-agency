@@ -12,8 +12,8 @@
     />
 
     <p class="text-center text-small max-w-2xl mx-auto -mt-8 mb-16 text-secondary/70">
-      PROJEKTUJĘ NARZĘDZIA DO ROZWIĄZYWANIA CODZIENNYCH PROBLEMÓW OPERACYJNYCH. ZOBACZ, JAK POMAGAM
-      KONKRETNYM BRANŻOM.
+      PROJEKTUJĘ NARZĘDZIA DO ROZWIĄZYWANIA CODZIENNYCH PROBLEMÓW OPERACYJNYCH W WARSZTATACH I
+      INNYCH FIRMACH USŁUGOWYCH.
     </p>
 
     <!-- Cards Layout -->
@@ -63,9 +63,8 @@
               <!-- Description -->
               <p
                 class="mt-2 flex-1 text-sm leading-relaxed text-secondary/70 font-normal group-hover:text-secondary/70 transition-colors"
-              >
-                {{ problem.description }}
-              </p>
+                [innerHTML]="problem.description"
+              ></p>
             </app-card>
           </li>
         }

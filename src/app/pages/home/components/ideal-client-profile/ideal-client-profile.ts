@@ -12,7 +12,7 @@ import { SectionHeader } from '../../../../shared/ui/section-header/section-head
 })
 export class IdealClientProfile {
   protected readonly idealClients = signal<string[]>([
-    'Warsztaty i serwisy (najpierw samochodowe, docelowo też rowerowe, GSM, AGD)',
+    'Warsztaty i serwisy samochodowe (np. warsztat z 3 stanowiskami, który gubi zlecenia w papierach)',
     'Firmy usługowe (sprzątanie, montaż okien, klimatyzacja)',
     'Salony beauty i fryzjerskie (koniec z papierowym zeszytem)',
     'Osoby zarządzające mieszkaniami na wynajem',

@@ -58,6 +58,11 @@ export class Faq implements OnInit {
       answer:
         'Oczywiście. Pomagam przenieść bazę klientów i historię zleceń z Excela lub kartek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
     },
+    {
+      question: 'Czy system obsłuży kilka stanowisk i różnych mechaników?',
+      answer:
+        'Oczywiście. Możesz przypisywać auta do konkretnych stanowisk roboczych i pracowników. Każdy mechanik może mieć podgląd tylko na swoje zlecenia, a Ty widzisz całą kolejkę warsztatu z góry.',
+    },
   ]);
 
   ngOnInit() {
