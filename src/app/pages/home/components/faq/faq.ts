@@ -18,7 +18,8 @@ export class Faq implements OnInit {
 
   faqs = signal<FAQ[]>([
     {
-      question: 'Czym Twój system różni się od gotowego oprogramowania dla warsztatu?',
+      question:
+        'Czym Twój system różni się od gotowego oprogramowania (np. dla warsztatu czy salonu)?',
       answer:
         'Gotowe systemy często są przeładowane funkcjami, których nie potrzebujesz, i wymagają opłacania dożywotniego abonamentu. Ja buduję dedykowaną aplikację dla Twojej firmy na własność – płacisz raz za wdrożenie, a system jest prosty, szybki i zawiera dokładnie to, czego używasz w codziennej pracy.',
     },
@@ -40,7 +41,7 @@ export class Faq implements OnInit {
     {
       question: 'Ile czasu trwa wdrożenie takiego systemu?',
       answer:
-        'Proste systemy (np. dla warsztatu) uruchamiam zazwyczaj w 7-14 dni. Moim celem jest, abyś jak najszybciej odczuł ulgę i przestał marnować czas na telefony.',
+        'Proste systemy (np. dedykowane dla warsztatu, salonu beauty czy serwisu) uruchamiam zazwyczaj w 7-14 dni. Moim celem jest, abyś jak najszybciej odczuł ulgę i przestał marnować czas na telefony.',
     },
     {
       question: 'Ile to kosztuje? Czy są jakieś miesięczne opłaty?',

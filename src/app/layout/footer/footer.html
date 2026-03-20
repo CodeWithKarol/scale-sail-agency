@@ -1,5 +1,5 @@
 <footer
-  class="bg-neutral relative border-t-2 border-secondary/10 text-secondary mt-auto overflow-hidden"
+  class="bg-neutral relative border-t-4 border-secondary text-secondary mt-auto overflow-hidden"
 >
   <!-- Technical Grid Background -->
   <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
@@ -15,7 +15,9 @@
         >
           Pomagam małym firmom rosnąć dzięki technologii. <br />
           Zamień kartki i Excela na
-          <span class="text-secondary font-black">solidne narzędzia</span>.
+          <span class="text-secondary font-black bg-primary/10 px-1 border border-primary/20"
+            >solidne narzędzia</span
+          >.
         </p>
 
         <p
@@ -26,7 +28,9 @@
         </p>
 
         <!-- Status Indicator -->
-        <div class="status-badge ring-4 ring-secondary/5 bg-white border-2 border-secondary/10">
+        <div
+          class="status-badge ring-0 bg-white border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(10,31,68,1)]"
+        >
           <div class="flex gap-1.5">
             <div class="w-2 h-2 rounded-none bg-primary animate-pulse"></div>
           </div>
@@ -37,7 +41,7 @@
       <div class="mt-20 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
         <div>
           <h3
-            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/30 mb-10"
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/40 mb-10"
           >
             KONKRETNE ROZWIĄZANIA
           </h3>
@@ -47,10 +51,10 @@
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/50 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/60 hover:text-primary transition-all cursor-pointer"
                 >
                   <span
-                    class="w-6 h-0.5 bg-secondary/10 group-hover:w-10 group-hover:bg-primary transition-all"
+                    class="w-4 h-4 border-2 border-secondary/20 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
                   ></span>
                   {{ item.name }}
                 </a>
@@ -60,7 +64,7 @@
         </div>
         <div>
           <h3
-            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/30 mb-10"
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/40 mb-10"
           >
             KONTAKT I WSPÓŁPRACA
           </h3>
@@ -70,10 +74,10 @@
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/50 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/60 hover:text-primary transition-all cursor-pointer"
                 >
                   <span
-                    class="w-6 h-0.5 bg-secondary/10 group-hover:w-10 group-hover:bg-primary transition-all"
+                    class="w-4 h-4 border-2 border-secondary/20 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
                   ></span>
                   {{ item.name }}
                 </a>
@@ -86,13 +90,13 @@
 
     <!-- Bottom Bar -->
     <div
-      class="mt-20 pt-12 border-t-2 border-secondary/10 flex flex-col md:flex-row items-center justify-between gap-8"
+      class="mt-20 pt-12 border-t-4 border-secondary flex flex-col md:flex-row items-center justify-between gap-8"
     >
       <div
-        class="flex flex-col md:flex-row items-center gap-6 font-mono text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em]"
+        class="flex flex-col md:flex-row items-center gap-6 font-mono text-[10px] font-bold text-secondary/40 uppercase tracking-[0.2em]"
       >
         <p>&copy; {{ currentYear }} SCALE SAIL.</p>
-        <span class="hidden md:inline text-secondary/10">|</span>
+        <span class="hidden md:inline text-secondary/20">|</span>
         <p>WSZELKIE PRAWA ZASTRZEŻONE</p>
       </div>
 
@@ -100,7 +104,7 @@
         @for (item of resources(); track item.name) {
           <a
             [routerLink]="item.path"
-            class="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/30 hover:text-secondary transition-colors"
+            class="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/40 hover:text-secondary transition-colors"
           >
             {{ item.name }}
           </a>

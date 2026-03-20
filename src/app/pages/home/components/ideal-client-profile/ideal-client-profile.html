@@ -12,111 +12,125 @@
       description="Skupiam się na małych firmach usługowych, które na co dzień ogarniają wszystko na papierze, w zeszycie albo prostym Excelu. Jeśli Twoja firma działa lokalnie, masz powtarzalne zlecenia lub wizyty, a chaos w kalendarzu i papierach zaczyna Cię przerastać – prawdopodobnie mogę pomóc."
     />
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-      <!-- Compatible (Who it is for) -->
-      <app-card class="card-workshop h-full flex flex-col p-10 group shadow-none">
-        <!-- Header -->
-        <div class="flex items-center gap-4 mb-10 border-b-2 border-secondary/10 pb-8">
-          <div
-            class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 lg:items-stretch">
+      <!-- Compatible (Who it is for) - Highlighted Neo-Brutalist Card -->
+      <app-card [variant]="'highlight'" class="h-full flex flex-col">
+        <div class="p-10 flex flex-col h-full bg-white group hover:bg-neutral/30 transition-colors">
+          <!-- Header -->
+          <div class="flex items-start gap-4 mb-10 border-b-4 border-secondary/10 pb-8">
+            <div
+              class="flex items-center justify-center w-14 h-14 rounded-none bg-primary border-2 border-secondary text-white transform group-hover:rotate-3 transition-transform shadow-[4px_4px_0px_0px_rgba(10,31,68,1)]"
             >
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <div>
-            <div class="text-small text-primary mb-1">IDEALNY PROFIL</div>
-            <h3 class="heading-3 text-secondary">Dla kogo tak</h3>
-          </div>
-        </div>
-
-        <!-- List -->
-        <ul class="space-y-6 flex-1">
-          @for (item of idealClients(); track item) {
-            <li class="flex gap-4 items-start group/item">
-              <span
-                class="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 transition-all duration-300 group-hover/item:scale-150 group-hover/item:bg-accent group-hover/item:shadow-none flex-shrink-0"
-              ></span>
-              <span
-                class="text-base text-secondary/70 leading-relaxed group-hover/item:text-secondary transition-colors"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="square"
+                stroke-linejoin="miter"
               >
-                {{ item }}
-              </span>
-            </li>
-          }
-        </ul>
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <div class="mt-1">
+              <div class="status-badge status-badge-dark ring-2 ring-primary/20 mb-3 inline-flex">
+                IDEALNY PROFIL
+              </div>
+              <h3 class="heading-2 text-secondary text-3xl">Dla kogo tak</h3>
+            </div>
+          </div>
 
-        <!-- Status -->
-        <div
-          class="mt-12 pt-8 border-t-2 border-secondary/10 flex items-center gap-3 text-small text-primary"
-        >
-          <span class="relative flex h-2 w-2">
-            <span
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
-            ></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-          </span>
-          Wsparcie priorytetowe aktywne
+          <!-- List -->
+          <ul class="space-y-6 flex-1">
+            @for (item of idealClients(); track item) {
+              <li class="flex gap-4 items-start group/item">
+                <span
+                  class="mt-1.5 w-3 h-3 border-2 border-primary bg-white transition-all duration-300 group-hover/item:bg-primary group-hover/item:translate-x-1 flex-shrink-0"
+                ></span>
+                <span
+                  class="text-lg font-medium text-secondary/80 leading-relaxed group-hover/item:text-secondary transition-colors"
+                >
+                  {{ item }}
+                </span>
+              </li>
+            }
+          </ul>
+
+          <!-- Status -->
+          <div class="mt-12 pt-8 border-t-4 border-secondary/10">
+            <div class="status-badge ring-4 ring-primary/10 inline-flex items-center bg-white">
+              <span class="relative flex h-2 w-2 mr-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-none bg-primary opacity-75"
+                ></span>
+                <span class="relative inline-flex rounded-none h-2 w-2 bg-primary"></span>
+              </span>
+              WSPARCIE PRIORYTETOWE AKTYWNE
+            </div>
+          </div>
         </div>
       </app-card>
 
-      <app-card class="card-workshop h-full flex flex-col p-10 shadow-none">
-        <!-- Header -->
-        <div class="flex items-center gap-4 mb-10 border-b-2 border-secondary/10 pb-8">
-          <div
-            class="flex items-center justify-center w-12 h-12 rounded-none bg-neutral border-2 border-secondary/10 text-secondary/50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+      <!-- Incompatible (Who it is not for) - Default Card -->
+      <app-card
+        [variant]="'default'"
+        class="h-full flex flex-col opacity-90 hover:opacity-100 transition-opacity"
+      >
+        <div class="p-10 flex flex-col h-full bg-neutral/30 group">
+          <!-- Header -->
+          <div class="flex items-start gap-4 mb-10 border-b-2 border-secondary/10 pb-8 opacity-70">
+            <div
+              class="flex items-center justify-center w-14 h-14 rounded-none bg-neutral border-2 border-secondary/20 text-secondary/50 group-hover:text-secondary/80 transition-colors"
             >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </div>
-          <div>
-            <div class="text-small text-secondary/50 mb-1">POZA ZAKRESEM</div>
-            <h3 class="heading-3 text-secondary/70">Dla kogo nie</h3>
-          </div>
-        </div>
-
-        <!-- List -->
-        <ul class="space-y-6 flex-1">
-          @for (item of antiPatterns(); track item) {
-            <li class="flex gap-4 items-start group/item">
-              <span
-                class="mt-2 w-1.5 h-1.5 rounded-full bg-secondary/40 transition-transform group-hover/item:scale-125 flex-shrink-0"
-              ></span>
-              <span
-                class="text-base text-secondary/70 leading-relaxed group-hover/item:text-secondary/70 transition-colors"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="square"
+                stroke-linejoin="miter"
               >
-                {{ item }}
-              </span>
-            </li>
-          }
-        </ul>
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <div class="mt-1">
+              <div class="text-small text-secondary/50 mb-3 tracking-[0.2em] font-bold">
+                POZA ZAKRESEM
+              </div>
+              <h3 class="heading-3 text-secondary/50">Dla kogo nie</h3>
+            </div>
+          </div>
 
-        <!-- Status -->
-        <div
-          class="mt-12 pt-8 border-t-2 border-secondary/10 flex items-center gap-3 text-small text-secondary/60"
-        >
-          <span class="w-2 h-2 rounded-full bg-neutral"></span>
-          Brak wolnych terminów
+          <!-- List -->
+          <ul class="space-y-6 flex-1 opacity-70">
+            @for (item of antiPatterns(); track item) {
+              <li class="flex gap-4 items-start group/item">
+                <span
+                  class="mt-1.5 w-2 h-2 border-2 border-secondary/30 bg-transparent transition-colors group-hover/item:border-secondary/60 flex-shrink-0"
+                ></span>
+                <span
+                  class="text-base text-secondary/60 leading-relaxed group-hover/item:text-secondary/80 transition-colors"
+                >
+                  {{ item }}
+                </span>
+              </li>
+            }
+          </ul>
+
+          <!-- Status -->
+          <div class="mt-12 pt-8 border-t-2 border-secondary/10 opacity-70">
+            <div
+              class="status-badge !bg-transparent !border-secondary/20 !text-secondary/50 inline-flex items-center"
+            >
+              <span class="w-2 h-2 rounded-none bg-secondary/30 mr-2"></span>
+              BRAK WOLNYCH TERMINÓW
+            </div>
+          </div>
         </div>
       </app-card>
     </div>

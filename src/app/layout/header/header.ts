@@ -30,6 +30,7 @@ export class Header {
   readonly navigation = [
     { name: 'Realizacje', path: '/work' },
     { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
+    { name: 'Cennik', path: '/', fragment: 'pricing' },
     { name: 'Pytania', path: '/', fragment: 'faq' },
     { name: 'Wiedza', path: '/blog' },
     { name: 'O mnie', path: '/about' },
