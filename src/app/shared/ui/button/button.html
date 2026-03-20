@@ -11,7 +11,7 @@
     <ng-container *ngTemplateOutlet="content" />
   </a>
 } @else if (route() || href()) {
-  <a [routerLink]="route() || href()" [class]="computedClasses()">
+  <a [routerLink]="route() || href()" [queryParams]="queryParams()" [class]="computedClasses()">
     <ng-container *ngTemplateOutlet="content" />
   </a>
 } @else {

@@ -46,9 +46,7 @@
                       >
                         {{ faq.question }}
                       </h3>
-                      <div class="text-body text-secondary/70">
-                        {{ faq.answer }}
-                      </div>
+                      <div class="text-body text-secondary/70" [innerHTML]="faq.answer"></div>
                     </div>
                   </div>
                 </div>
