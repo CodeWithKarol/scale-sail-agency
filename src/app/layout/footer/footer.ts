@@ -16,6 +16,7 @@ export class Footer {
   services = signal([
     { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
     { name: 'Jak pracuję', path: '/', fragment: 'process' },
+    { name: 'Cennik', path: '/', fragment: 'pricing' },
     { name: 'Częste pytania', path: '/', fragment: 'faq' },
     { name: 'Realizacje', path: '/work', fragment: undefined },
   ]);
@@ -25,7 +26,10 @@ export class Footer {
     { name: 'O mnie', path: '/about', fragment: undefined },
   ]);
 
-  connect = signal([{ name: 'Napisz do mnie', path: '/', fragment: 'contact' }]);
+  connect = signal([
+    { name: 'Darmowa Konsultacja', path: '/consultation', fragment: undefined },
+    { name: 'Napisz do mnie', path: '/', fragment: 'contact' },
+  ]);
 
   legal = signal<{ name: string; path: string; fragment?: string }[]>([]);
 
