@@ -63,9 +63,7 @@
                   >
                     {{ step.title }}
                   </h3>
-                  <p class="text-body text-secondary/70">
-                    {{ step.description }}
-                  </p>
+                  <p class="text-body text-secondary/70" [innerHTML]="step.description"></p>
                 </div>
 
                 <!-- Footer: Duration -->

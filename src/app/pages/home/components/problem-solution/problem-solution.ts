@@ -21,7 +21,7 @@ export class ProblemSolution {
     {
       title: 'Przykład przydatności systemu: w warsztacie',
       description:
-        'Koniec z szukaniem numeru klienta na skrawku papieru zalanym olejem. To lekki system do zarządzania warsztatem samochodowym: kolejka aut, zlecenia, statusy i SMS-y do klientów.',
+        'Koniec z szukaniem numeru klienta na skrawku papieru zalanym olejem. To lekki system do zarządzania warsztatem samochodowym: kolejka aut, zlecenia, statusy i SMS-y do klientów.<br><br><span class="italic font-bold text-secondary/90">Efekt: Pusty zeszyt, porządek w zleceniach i koniec ciągłych telefonów z pytaniem „kiedy auto będzie gotowe?”.</span>',
       icon: 'M3 11l2-4h14l2 4M2 11v6a1 1 0 001 1h2m14 0h2a1 1 0 001-1v-6M5 11h14 M7 18a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4z',
       theme: 'accent',
       label: 'ZARZĄDZANIE',

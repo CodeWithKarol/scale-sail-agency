@@ -35,7 +35,7 @@ export class Process {
       title: 'Szybkie wdrożenie',
       subtitle: 'REALIZACJA',
       description:
-        'Buduję najważniejsze funkcje (np. kolejkę aut i SMS-y do klientów) oraz konfiguruję automatyzacje w n8n/Make/Zapier i podstawowe funkcje AI. Pracujemy w krótkich, konkretnych etapach, tak żebyś jak najszybciej odczuł różnicę w codziennej pracy.',
+        'Buduję najważniejsze funkcje (np. kolejkę zleceń, aut w serwisie i SMS-y do klientów) oraz konfiguruję automatyzacje w n8n/Make/Zapier i podstawowe funkcje AI. Pracujemy w krótkich, konkretnych etapach, tak żebyś jak najszybciej odczuł różnicę w codziennej pracy. <strong class="font-bold text-secondary/90">Nie blokujemy Ci warsztatu na całe tygodnie.</strong>',
       iconPath:
         'M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z',
       duration: '7-14 DNI',
