@@ -262,7 +262,7 @@ export class QuoteGenerator {
       formData.append('cf-turnstile-response', this.turnstileToken() || '');
 
       // Adres Twojego webhooka z n8n/Make/Zapier
-      const WEBHOOK_URL = 'http://localhost:5678/webhook/0246b4e9-34ac-47db-9017-bfd7aed79ec8';
+      const WEBHOOK_URL = 'https://hook.eu1.make.com/yd904he1om2qyevj8aktgk35rjfr4gx9';
 
       console.log('Wysyłam zapytanie do webhooka...', formData);
 
@@ -273,6 +273,9 @@ export class QuoteGenerator {
 
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
+        headers: {
+          'x-make-apikey': '4c-BACL3YEE37Xt',
+        },
         body: formData,
       });
       if (!response.ok) {
