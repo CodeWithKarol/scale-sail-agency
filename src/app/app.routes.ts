@@ -30,6 +30,12 @@ export const routes: Routes = [
     title: 'Konsultacja | Scale Sail Agency',
   },
   {
+    path: 'free-quote-generator',
+    loadComponent: () =>
+      import('./pages/quote-generator/quote-generator').then((m) => m.QuoteGenerator),
+    title: 'Darmowy Generator Wycen (PDF) | Scale Sail',
+  },
+  {
     path: '**',
     redirectTo: '',
   },
