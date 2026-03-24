@@ -4,7 +4,7 @@
 
   <!-- Main Content Container -->
   <div
-    class="layout-container relative z-10 flex flex-col items-center justify-center min-h-[85vh] py-24"
+    class="layout-container relative z-10 flex flex-col items-center justify-center min-h-[85vh] pt-40 pb-24"
   >
     <div class="w-full max-w-5xl mx-auto text-center px-6">
       <!-- Status Badge -->
@@ -42,16 +42,39 @@
 
       <!-- CTA Actions -->
       <div class="mt-16 flex flex-col items-center justify-center">
-        <app-button href="/consultation" variant="accent" size="lg">
-          <div class="flex flex-col items-center text-center py-1">
-            <span class="text-lg">Umów 15-minutową rozmowę</span>
-            <span class="font-mono text-xs uppercase tracking-[0.2em] text-white/90 mt-1">
-              BEZPŁATNA KONSULTACJA • 0.25h
-            </span>
-          </div>
-        </app-button>
+        <div class="flex flex-col items-center justify-center gap-4 sm:flex-row mb-6 w-full">
+          <app-button
+            href="/consultation"
+            variant="accent"
+            size="lg"
+            styleClass="w-full sm:w-auto min-h-[70px]"
+          >
+            <div class="flex flex-col items-center text-center py-1">
+              <span class="text-lg">Umów 15-minutową rozmowę</span>
+              <span class="font-mono text-xs uppercase tracking-[0.2em] text-white/90 mt-1">
+                BEZPŁATNA KONSULTACJA
+              </span>
+            </div>
+          </app-button>
 
-        <p class="mt-6 text-small text-secondary/40 text-center max-w-sm">
+          <app-button
+            href="/free-quote-generator"
+            variant="ghost"
+            size="lg"
+            styleClass="w-full sm:w-auto min-h-[70px] border-2 border-secondary/20 hover:border-secondary/50 bg-transparent shadow-none hover:shadow-none translate-y-0 hover:-translate-y-1 transition-all group"
+          >
+            <div class="flex flex-col items-center text-center py-1">
+              <span class="text-[17px] font-bold text-secondary">
+                Przetestuj Darmowy Generator
+              </span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary/60 mt-1">
+                DLA WARSZTATÓW • 100% BEZPŁATNE
+              </span>
+            </div>
+          </app-button>
+        </div>
+
+        <p class="text-small text-secondary/40 text-center max-w-sm mx-auto">
           BEZ ZOBOWIĄZAŃ • PO ROZMOWIE DOSTANIESZ DIAGNOZĘ, CO WARTO ZAUTOMATYZOWAĆ NAJPIERW
         </p>
 

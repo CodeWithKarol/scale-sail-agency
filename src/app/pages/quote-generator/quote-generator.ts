@@ -150,7 +150,7 @@ export class QuoteGenerator {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const w = window as any;
       w.turnstile.render(el.nativeElement, {
-        sitekey: '1x00000000000000000000AA',
+        sitekey: '0x4AAAAAACvYRxriO7b9Ch5J',
         theme: 'light',
         callback: (token: string) => {
           this.turnstileToken.set(token);
@@ -226,8 +226,8 @@ export class QuoteGenerator {
       await new Promise((r) => setTimeout(r, 100));
 
       const imgData = await toJpeg(data, {
-        quality: 0.85,
-        pixelRatio: 2,
+        quality: 0.75,
+        pixelRatio: 1.5,
         cacheBust: true,
         skipFonts: true,
       });
@@ -273,9 +273,6 @@ export class QuoteGenerator {
 
       const response = await fetch(WEBHOOK_URL, {
         method: 'POST',
-        headers: {
-          'x-make-apikey': '4c-BACL3YEE37Xt',
-        },
         body: formData,
       });
       if (!response.ok) {

@@ -27,7 +27,7 @@ import { ViewportScroller } from '@angular/common';
         ></div>
       </div>
 
-      <div class="flex flex-col">
+      <div class="flex flex-col whitespace-nowrap">
         <!-- Brand Name - Increased weight and size -->
         <span
           class="text-xl font-mono font-black leading-none text-secondary uppercase tracking-tight group-hover:text-primary transition-colors"
