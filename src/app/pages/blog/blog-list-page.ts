@@ -135,6 +135,21 @@ type FeedState =
             }
           }
         </div>
+
+        <!-- Contextual Internal Linking (SEO & Flow) -->
+        <div class="mt-32 py-20 border-t-2 border-dashed border-secondary/10 text-center relative">
+          <h2 class="heading-2 text-secondary mb-6">Teoria brzmi dobrze, ale brakuje czasu?</h2>
+          <p class="text-lg text-secondary/70 mb-12 max-w-2xl mx-auto">
+            Czytanie o automatyzacji to jedno, ale wdrożenie bezpiecznego systemu wymaga
+            doświadczenia i skupienia. Zamiast testować na własnym organizmie, porozmawiajmy o
+            gotowym rozwiązaniu.
+          </p>
+          <div class="flex justify-center">
+            <app-button variant="primary" size="lg" href="/consultation">
+              <span class="text-lg font-bold">Zarezerwuj Wstępną Analizę 📅</span>
+            </app-button>
+          </div>
+        </div>
       </div>
     </div>
   `,
