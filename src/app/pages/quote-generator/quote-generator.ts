@@ -21,6 +21,9 @@ import {
   CarFront,
   Loader2,
   ArrowRight,
+  X,
+  Mail,
+  ShieldCheck,
 } from 'lucide-angular';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 import { SeoService } from '../../shared/core/seo/seo.service';
@@ -88,7 +91,18 @@ export class QuoteGenerator implements OnInit {
     );
   }
 
-  readonly icons = { Plus, Trash2, Download, CheckCircle, CarFront, Loader2, ArrowRight };
+  readonly icons = {
+    Plus,
+    Trash2,
+    Download,
+    CheckCircle,
+    CarFront,
+    Loader2,
+    ArrowRight,
+    X,
+    Mail,
+    ShieldCheck,
+  };
 
   quoteForm: FormGroup = this.fb.group({
     companyName: ['Dobry Serwis Janusz i Syn', Validators.required],
@@ -114,11 +128,37 @@ export class QuoteGenerator implements OnInit {
   }
 
   createPart(): FormGroup {
-    return this.fb.group({
+    const group = this.fb.group({
       name: ['', Validators.required],
-      qty: [1, Validators.required],
-      price: [0, Validators.required],
+      qty: [1, [Validators.required, Validators.min(0.1)]],
+      netPrice: [null], // Zakup netto
+      markup: [30], // Narzut %
+      price: [0, [Validators.required, Validators.min(0)]], // Detal netto szt.
     });
+
+    // Auto-calculate retail price when netPrice or markup changes
+    group.valueChanges.subscribe((val) => {
+      if (val.netPrice != null && val.markup != null) {
+        const calculatedPrice = val.netPrice * (1 + val.markup / 100);
+        if (Math.abs(calculatedPrice - (val.price || 0)) > 0.01) {
+          group.patchValue({ price: Number(calculatedPrice.toFixed(2)) }, { emitEvent: false });
+        }
+      }
+    });
+
+    // Also allow reverse calculation if they manually type the retail price
+    group.get('price')?.valueChanges.subscribe((newPrice) => {
+      const net = group.get('netPrice')?.value;
+      if (newPrice != null && net != null && net > 0) {
+        const calculatedMarkup = ((newPrice - net) / net) * 100;
+        const currentMarkup = group.get('markup')?.value || 0;
+        if (Math.abs(calculatedMarkup - currentMarkup) > 0.1) {
+          group.patchValue({ markup: Math.round(calculatedMarkup) }, { emitEvent: false });
+        }
+      }
+    });
+
+    return group;
   }
 
   createLabor(): FormGroup {

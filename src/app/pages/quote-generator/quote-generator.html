@@ -31,8 +31,8 @@
           </div>
           <form [formGroup]="quoteForm" class="card p-6 md:p-10 flex flex-col gap-8">
             <!-- General Data -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <label class="flex flex-col gap-2 md:col-span-2">
+            <div class="flex flex-col gap-5">
+              <label class="flex flex-col gap-2">
                 <span class="text-small">Nazwa Twojego Warsztatu</span>
                 <input type="text" formControlName="companyName" class="input-field bg-white" />
               </label>
@@ -51,10 +51,8 @@
               </label>
             </div>
             <!-- Vehicle Data -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
-              <div
-                class="col-span-1 md:col-span-2 heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2"
-              >
+            <div class="flex flex-col gap-5 mt-2">
+              <div class="heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2">
                 <lucide-icon [img]="icons.CarFront" size="24" class="text-primary"></lucide-icon>
                 Dane Pojazdu
               </div>
@@ -109,35 +107,85 @@
               </div>
               <div formArrayName="parts" class="flex flex-col gap-4">
                 @for (part of parts.controls; track part; let i = $index) {
-                  <div [formGroupName]="i" class="flex flex-wrap lg:flex-nowrap items-center gap-3">
-                    <input
-                      type="text"
-                      formControlName="name"
-                      placeholder="Nazwa części"
-                      class="input-field w-full lg:flex-grow"
-                    />
-                    <div class="flex flex-grow w-full lg:w-auto items-center gap-3">
+                  <div
+                    [formGroupName]="i"
+                    class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
+                  >
+                    @if (parts.length > 1) {
+                      <button
+                        type="button"
+                        (click)="removePart(i)"
+                        class="absolute -top-3 -right-3 w-8 h-8 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="14"></lucide-icon>
+                      </button>
+                    }
+
+                    <div class="flex flex-col">
+                      <span
+                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                        >Nazwa części (np. Klocki hamulcowe tył)</span
+                      >
+                      <input
+                        type="text"
+                        formControlName="name"
+                        placeholder="Wpisz nazwę"
+                        class="input-field w-full"
+                      />
+                    </div>
+
+                    <div class="flex flex-col">
+                      <span
+                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                        >Ilość (Sztuk)</span
+                      >
                       <input
                         type="number"
                         formControlName="qty"
-                        placeholder="Ilość"
-                        class="input-field w-24 text-center"
+                        placeholder="1"
+                        class="input-field w-full"
                       />
+                    </div>
+
+                    <div class="flex flex-col">
+                      <span
+                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                        >Cena Zakupu Netto (PLN)</span
+                      >
+                      <input
+                        type="number"
+                        formControlName="netPrice"
+                        placeholder="0.00"
+                        class="input-field w-full bg-secondary/5 font-medium"
+                      />
+                    </div>
+
+                    <div class="flex flex-col">
+                      <span
+                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                        >Narzut Warsztatu (%)</span
+                      >
+                      <input
+                        type="number"
+                        formControlName="markup"
+                        placeholder="30"
+                        class="input-field w-full bg-primary/5 text-primary font-bold"
+                      />
+                    </div>
+
+                    <div
+                      class="flex flex-col mt-2 pt-4 border-t-2 border-dashed border-secondary/10"
+                    >
+                      <span
+                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                        >Cena Detaliczna Netto (Dla Klienta)</span
+                      >
                       <input
                         type="number"
                         formControlName="price"
-                        placeholder="Cena szt."
-                        class="input-field w-32 flex-grow text-right"
+                        placeholder="0.00"
+                        class="input-field w-full font-bold shadow-sm"
                       />
-                      @if (parts.length > 1) {
-                        <button
-                          type="button"
-                          (click)="removePart(i)"
-                          class="btn btn-ghost text-secondary/40 hover:text-accent p-3"
-                        >
-                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
-                        </button>
-                      }
                     </div>
                   </div>
                 }
@@ -159,36 +207,58 @@
               </div>
               <div formArrayName="labor" class="flex flex-col gap-4">
                 @for (lab of labor.controls; track lab; let i = $index) {
-                  <div [formGroupName]="i" class="flex flex-wrap lg:flex-nowrap items-center gap-3">
-                    <input
-                      type="text"
-                      formControlName="name"
-                      placeholder="Opis usługi"
-                      class="input-field w-full lg:flex-grow"
-                    />
-                    <div class="flex flex-grow w-full lg:w-auto items-center gap-3">
-                      <input
-                        type="number"
-                        step="0.5"
-                        formControlName="hours"
-                        placeholder="Godziny"
-                        class="input-field w-24 text-center"
-                      />
-                      <input
-                        type="number"
-                        formControlName="rate"
-                        placeholder="Stawka/h"
-                        class="input-field w-32 flex-grow text-right"
-                      />
-                      @if (labor.length > 1) {
-                        <button
-                          type="button"
-                          (click)="removeLabor(i)"
-                          class="btn btn-ghost text-secondary/40 hover:text-accent p-3"
+                  <div
+                    [formGroupName]="i"
+                    class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
+                  >
+                    @if (labor.length > 1) {
+                      <button
+                        type="button"
+                        (click)="removeLabor(i)"
+                        class="absolute -top-3 -right-3 w-8 h-8 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="14"></lucide-icon>
+                      </button>
+                    }
+
+                    <div class="flex flex-col gap-4">
+                      <div class="flex flex-col">
+                        <span
+                          class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                          >Opis prac / robocizna</span
                         >
-                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
-                        </button>
-                      }
+                        <input
+                          type="text"
+                          formControlName="name"
+                          placeholder="np. Wymiana klocków hamulcowych tył"
+                          class="input-field w-full"
+                        />
+                      </div>
+                      <div class="flex flex-col">
+                        <span
+                          class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                          >Czas pracy (Godziny)</span
+                        >
+                        <input
+                          type="number"
+                          step="0.5"
+                          formControlName="hours"
+                          placeholder="1.5"
+                          class="input-field w-full"
+                        />
+                      </div>
+                      <div class="flex flex-col">
+                        <span
+                          class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                          >Stawka roboczogodziny (PLN Netto)</span
+                        >
+                        <input
+                          type="number"
+                          formControlName="rate"
+                          placeholder="200"
+                          class="input-field w-full bg-secondary/5 font-medium"
+                        />
+                      </div>
                     </div>
                   </div>
                 }
@@ -276,9 +346,8 @@
             style="max-height: calc(100vh - 160px)"
           >
             <div class="flex justify-center" style="zoom: 0.7; width: 100%">
-              <!-- The actual A4 div to render. Dimensions: 794px by 1123px (A4 at 96PPI) -->
               <div
-                class="bg-white min-w-[794px] w-[794px] min-h-[1123px] text-black p-12 flex flex-col relative shadow-md shrink-0"
+                class="bg-white min-w-[794px] w-[794px] min-h-[1123px] text-black p-16 flex flex-col relative shadow-md shrink-0"
                 #pdfContent
               >
                 <!-- Header -->
@@ -299,7 +368,7 @@
                     </div>
                   </div>
                   <div class="flex flex-col text-right">
-                    <div class="text-2xl font-bold text-slate-800 max-w-[300px]">
+                    <div class="text-2xl font-bold text-slate-800 max-w-[300px] break-words">
                       {{ quoteForm.get('companyName')?.value || 'Brak nazwy warsztatu' }}
                     </div>
                     <div class="text-sm mt-2 text-slate-400 italic">
@@ -316,11 +385,11 @@
                     <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
                       Dane Klienta
                     </div>
-                    <div class="font-bold text-xl text-slate-800 break-words break-all">
+                    <div class="font-bold text-xl text-slate-800 break-words">
                       {{ quoteForm.get('clientName')?.value || '_______________________' }}
                     </div>
                     @if (quoteForm.get('clientPhone')?.value) {
-                      <div class="text-slate-600 mt-2 font-medium break-all">
+                      <div class="text-slate-600 mt-2 font-medium break-words">
                         Tel: {{ quoteForm.get('clientPhone')?.value }}
                       </div>
                     }
@@ -336,7 +405,7 @@
                         <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
                           >Marka:</span
                         >
-                        <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        <span class="font-bold text-slate-800 break-words leading-tight">{{
                           quoteForm.get('vehicleMake')?.value || '---'
                         }}</span>
                       </div>
@@ -344,7 +413,7 @@
                         <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
                           >Model:</span
                         >
-                        <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        <span class="font-bold text-slate-800 break-words leading-tight">{{
                           quoteForm.get('vehicleModel')?.value || '---'
                         }}</span>
                       </div>
@@ -352,7 +421,7 @@
                         <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
                           >Nr Rej:</span
                         >
-                        <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        <span class="font-bold text-slate-800 break-words leading-tight">{{
                           quoteForm.get('vehiclePlate')?.value || '---'
                         }}</span>
                       </div>
@@ -361,7 +430,7 @@
                           >VIN:</span
                         >
                         <span
-                          class="font-mono text-[13px] text-slate-800 break-all leading-tight"
+                          class="font-mono text-[13px] text-slate-800 break-words leading-tight"
                           >{{ quoteForm.get('vehicleVin')?.value || '-----------------' }}</span
                         >
                       </div>
@@ -379,29 +448,31 @@
                   <table class="w-full text-[15px] text-left border-collapse table-fixed">
                     <thead>
                       <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
-                        <th class="p-3 w-12 text-center font-bold rounded-tl-lg">Lp.</th>
-                        <th class="p-3 font-bold break-words w-auto">Nazwa Towaru / Części</th>
-                        <th class="p-3 w-24 text-center font-bold">Ilość</th>
-                        <th class="p-3 w-28 text-right font-bold">Cena jedn.</th>
-                        <th class="p-3 w-28 text-right font-bold rounded-tr-lg">Wartość</th>
+                        <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
+                        <th class="p-3 w-[47%] font-bold break-words">Nazwa Towaru / Części</th>
+                        <th class="p-3 w-[15%] text-center font-bold break-words">Ilość</th>
+                        <th class="p-3 w-[15%] text-right font-bold break-words">Cena jedn.</th>
+                        <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
+                          Wartość
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       @for (part of parts.controls; track part; let i = $index) {
                         <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
                           <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
-                          <td class="p-3 font-semibold text-slate-800 break-all leading-tight">
+                          <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
                             {{ part.get('name')?.value || '---' }}
                           </td>
-                          <td class="p-3 text-center text-slate-600 font-medium whitespace-nowrap">
+                          <td class="p-3 text-center text-slate-600 font-medium break-words">
                             {{ part.get('qty')?.value }} szt.
                           </td>
-                          <td class="p-3 text-right text-slate-600 whitespace-nowrap">
+                          <td class="p-3 text-right text-slate-600 break-words">
                             {{
                               part.get('price')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
                             }}
                           </td>
-                          <td class="p-3 text-right font-bold text-slate-800 whitespace-nowrap">
+                          <td class="p-3 text-right font-bold text-slate-800 break-words">
                             {{
                               part.get('qty')?.value * part.get('price')?.value
                                 | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
@@ -430,29 +501,31 @@
                   <table class="w-full text-[15px] text-left border-collapse table-fixed">
                     <thead>
                       <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
-                        <th class="p-3 w-12 text-center font-bold rounded-tl-lg">Lp.</th>
-                        <th class="p-3 font-bold break-words w-auto">Opis Wykonanej Pracy</th>
-                        <th class="p-3 w-24 text-center font-bold whitespace-nowrap">Czas (h)</th>
-                        <th class="p-3 w-28 text-right font-bold">Stawka/h</th>
-                        <th class="p-3 w-28 text-right font-bold rounded-tr-lg">Wartość</th>
+                        <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
+                        <th class="p-3 w-[47%] font-bold break-words">Opis Wykonanej Pracy</th>
+                        <th class="p-3 w-[15%] text-center font-bold break-words">Czas (h)</th>
+                        <th class="p-3 w-[15%] text-right font-bold break-words">Stawka/h</th>
+                        <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
+                          Wartość
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       @for (lab of labor.controls; track lab; let i = $index) {
                         <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
                           <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
-                          <td class="p-3 font-semibold text-slate-800 break-all leading-tight">
+                          <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
                             {{ lab.get('name')?.value || '---' }}
                           </td>
-                          <td class="p-3 text-center text-slate-600 font-medium">
+                          <td class="p-3 text-center text-slate-600 font-medium break-words">
                             {{ lab.get('hours')?.value }}
                           </td>
-                          <td class="p-3 text-right text-slate-600 whitespace-nowrap">
+                          <td class="p-3 text-right text-slate-600 break-words">
                             {{
                               lab.get('rate')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
                             }}
                           </td>
-                          <td class="p-3 text-right font-bold text-slate-800 whitespace-nowrap">
+                          <td class="p-3 text-right font-bold text-slate-800 break-words">
                             {{
                               lab.get('hours')?.value * lab.get('rate')?.value
                                 | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
@@ -473,43 +546,52 @@
 
                 <!-- Totals -->
                 <div
-                  class="flex justify-between items-end pt-8 border-t-[3px] border-slate-800 mt-auto"
+                  class="flex justify-between items-end pt-8 border-t-[3px] border-slate-800 mt-auto gap-8"
                 >
                   <!-- Signatures placeholder -->
-                  <div class="flex gap-8 md:gap-12 text-slate-500 text-sm font-semibold pb-2 pr-4">
-                    <div class="w-36 text-center border-t-2 border-slate-300 pt-2">
+                  <div class="flex flex-col gap-14 text-slate-500 text-sm font-semibold pb-4">
+                    <div
+                      class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
+                    >
                       Podpis Wystawiającego
                     </div>
-                    <div class="w-36 text-center border-t-2 border-slate-300 pt-2">
+                    <div
+                      class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
+                    >
                       Podpis Akceptującego
                     </div>
                   </div>
 
                   <div
-                    class="w-72 shrink-0 flex flex-col p-6 bg-slate-100 border border-slate-200 rounded-3xl shadow-sm"
+                    class="w-full max-w-[500px] flex flex-col p-6 bg-slate-100 border border-slate-200 rounded-3xl shadow-sm gap-4 overflow-hidden"
                   >
-                    <div
-                      class="flex justify-between items-start mb-3 text-slate-600 font-bold gap-2"
-                    >
-                      <span>Kwota netto:</span>
-                      <span class="text-slate-800 text-right whitespace-nowrap">{{
-                        getSubtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                      }}</span>
-                    </div>
-                    <div
-                      class="flex justify-between items-start mb-5 text-slate-500 pb-5 border-b-2 border-slate-200 font-medium gap-2"
-                    >
-                      <span>VAT (23%):</span>
-                      <span class="text-right whitespace-nowrap">{{
-                        getVat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                      }}</span>
-                    </div>
-                    <div class="flex justify-between items-end text-2xl gap-2 mt-1">
-                      <span class="font-extrabold text-slate-900 uppercase tracking-tight"
-                        >Razem:</span
+                    <div class="flex flex-col border-b border-slate-200/50 pb-3">
+                      <span
+                        class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
+                        >Kwota netto</span
                       >
                       <span
-                        class="font-black text-rose-600 tracking-tight drop-shadow-sm text-right whitespace-nowrap"
+                        class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                        >{{ getSubtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                      >
+                    </div>
+                    <div class="flex flex-col border-b border-slate-200/50 pb-3">
+                      <span
+                        class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
+                        >VAT (23%)</span
+                      >
+                      <span
+                        class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                        >{{ getVat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                      >
+                    </div>
+                    <div class="flex flex-col pt-2">
+                      <span
+                        class="text-slate-900 uppercase text-[11px] font-black tracking-tighter mb-1"
+                        >Suma do zapłaty (Brutto)</span
+                      >
+                      <span
+                        class="font-black text-rose-600 text-lg sm:text-xl tracking-tighter drop-shadow-sm text-right whitespace-nowrap tabular-nums leading-none font-mono"
                         >{{ getTotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                       >
                     </div>
@@ -555,59 +637,99 @@
 <!-- Email Capture Modal -->
 @if (showEmailModal()) {
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-sm"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-md"
   >
     <div
-      class="card p-8 md:p-10 max-w-md w-full shadow-2xl animate-fade-in-up relative industrial-border-thick"
+      class="card p-1 bg-white max-w-lg w-full shadow-2xl animate-fade-in-up relative industrial-border-thick border-4 border-secondary/20"
     >
-      <button
-        (click)="showEmailModal.set(false)"
-        class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center text-secondary/40 hover:text-secondary hover:bg-secondary/5 rounded-none transition-colors border border-transparent hover:border-secondary/10"
-      >
-        <span class="text-2xl leading-none font-bold">&times;</span>
-      </button>
-      <div
-        class="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center mb-6 border border-primary/20"
-      >
-        <lucide-icon [img]="icons.Download" class="text-primary" size="30"></lucide-icon>
-      </div>
-      <h3 class="heading-3 text-secondary mb-3">Odbierz Wycenę PDF 📄</h3>
-      <p class="text-body mb-8 text-balance text-secondary/80">
-        Trzymasz w garści dokument, który od razu podniesie Twój autorytet. Gdzie podesłać
-        wygenerowany przed chwilą plik, abyś mógł
-        <span class="font-bold text-secondary">wysłać go klientowi?</span>
-      </p>
-      <form [formGroup]="emailForm" (ngSubmit)="submitEmail()" class="flex flex-col gap-4">
-        <input
-          type="email"
-          formControlName="email"
-          placeholder="Twój e-mail np. jan@warsztat.pl"
-          class="input-field bg-neutral"
-        />
-        <!-- Turnstile Widget Container -->
-        <div class="flex justify-center w-full min-h-[65px] my-2">
-          <div #turnstileContainer></div>
-        </div>
+      <!-- Content Wrapper -->
+      <div class="p-8 md:p-12 relative bg-neutral/40">
+        <!-- Close Button -->
         <button
-          type="submit"
-          [disabled]="!emailForm.valid || isGenerating() || !turnstileToken()"
-          class="btn btn-primary btn-lg w-full flex items-center justify-center gap-2 mt-2"
+          (click)="showEmailModal.set(false)"
+          class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-secondary/40 hover:text-secondary hover:bg-secondary/10 rounded-full transition-colors z-10"
         >
-          @if (!isGenerating()) {
-            Wyślij wycenę PDF &rarr;
-          }
-          @if (isGenerating()) {
-            <lucide-icon [img]="icons.Loader2" class="animate-spin" size="24"></lucide-icon>
-            Przetwarzanie pliku...
-          }
+          <lucide-icon [img]="icons.X" size="24"></lucide-icon>
         </button>
-      </form>
-      <p
-        class="text-[11px] text-slate-400 mt-6 text-center font-bold uppercase tracking-wider leading-relaxed flex items-center justify-center gap-2"
-      >
-        <lucide-icon [img]="icons.CheckCircle" class="text-primary" size="14"></lucide-icon>
-        Zero spamu. Wysyłamy plik i strategie zwiększania marży na usługach.
-      </p>
+
+        <!-- Icon Header -->
+        <div class="flex flex-col items-center text-center mb-8 mt-2">
+          <div
+            class="w-20 h-20 bg-primary/10 flex items-center justify-center mb-6 shadow-sm border-2 border-primary/20 transform rotate-3"
+          >
+            <lucide-icon
+              [img]="icons.Download"
+              class="text-primary transform -rotate-3"
+              size="36"
+            ></lucide-icon>
+          </div>
+          <h3 class="text-3xl font-black text-secondary uppercase tracking-tight mb-4">
+            Twój Kosztorys<br />Jest Gotowy
+          </h3>
+          <p class="text-[15px] font-medium text-secondary/70 leading-relaxed max-w-sm mx-auto">
+            Wpisz poniżej swój adres e-mail, a system natychmiast wyśle Ci wygenerowany przed chwilą
+            dokument PDF.
+          </p>
+        </div>
+
+        <form
+          [formGroup]="emailForm"
+          (ngSubmit)="submitEmail()"
+          class="flex flex-col gap-5 relative z-10"
+        >
+          <div>
+            <span class="block text-xs uppercase font-bold text-secondary/60 mb-2 ml-1"
+              >Gdzie wysłać plik?</span
+            >
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <lucide-icon [img]="icons.Mail" size="18" class="text-secondary/40"></lucide-icon>
+              </div>
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="np. warsztat@gmail.com"
+                class="input-field bg-white !pl-12 !py-5 text-base shadow-sm"
+              />
+            </div>
+          </div>
+
+          <!-- Turnstile Widget Container -->
+          <div class="flex items-center justify-center w-full min-h-[75px] mt-2 mb-2">
+            <div
+              #turnstileContainer
+              class="flex items-center justify-center mx-auto"
+              style="min-width: 300px"
+            ></div>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="!emailForm.valid || isGenerating() || !turnstileToken()"
+            class="btn btn-primary w-full flex items-center justify-center gap-3 text-[15px] py-4 shadow-md group uppercase tracking-widest transition-transform"
+          >
+            @if (!isGenerating()) {
+              <span>Odbierz plik PDF</span>
+              <lucide-icon
+                [img]="icons.ArrowRight"
+                size="20"
+                class="group-hover:translate-x-1 transition-transform"
+              ></lucide-icon>
+            }
+            @if (isGenerating()) {
+              <lucide-icon [img]="icons.Loader2" class="animate-spin" size="24"></lucide-icon>
+              <span>Generowanie...</span>
+            }
+          </button>
+        </form>
+
+        <div
+          class="mt-8 pt-6 border-t-2 border-dashed border-secondary/10 flex items-center justify-center gap-3 text-secondary/50 text-xs font-semibold uppercase tracking-wider"
+        >
+          <lucide-icon [img]="icons.ShieldCheck" size="16" class="text-primary/70"></lucide-icon>
+          Zero spamu. Gwarantujemy poufność.
+        </div>
+      </div>
     </div>
   </div>
 }
