@@ -4,7 +4,7 @@
 >
   <nav class="layout-container flex items-center justify-between py-4" aria-label="Global">
     <!-- Logo -->
-    <div class="flex xl:flex-1">
+    <div class="flex xl:flex-1 shrink-0">
       <app-brand-logo></app-brand-logo>
     </div>
 
@@ -25,7 +25,7 @@
     </div>
 
     <!-- Desktop Nav (Flat Structure) -->
-    <div class="hidden xl:flex xl:gap-x-2">
+    <div class="hidden xl:flex xl:gap-x-1">
       @for (item of navigation; track item.name; let index = $index) {
         <a
           [routerLink]="item.path"
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Desktop CTA -->
-    <div class="hidden xl:flex xl:flex-1 xl:justify-end">
+    <div class="hidden xl:flex xl:flex-1 xl:justify-end shrink-0">
       <app-button
         href="/consultation"
         variant="primary"

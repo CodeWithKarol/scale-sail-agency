@@ -14,15 +14,15 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
-    { name: 'Jak pracuję', path: '/', fragment: 'process' },
-    { name: 'Cennik', path: '/', fragment: 'pricing' },
-    { name: 'Częste pytania', path: '/', fragment: 'faq' },
-    { name: 'Realizacje', path: '/work', fragment: undefined },
+    { name: 'Darmowy Generator Wycen', path: '/free-quote-generator', fragment: undefined },
+    { name: 'Efekty i Realizacje', path: '/work', fragment: undefined },
+    { name: 'Jak pomagam (Oferta)', path: '/', fragment: 'problem-solution' },
+    { name: 'Przejrzysty Cennik', path: '/', fragment: 'pricing' },
   ]);
 
   resources = signal([
-    { name: 'Blog / Porady', path: '/blog', fragment: undefined },
+    { name: 'Częste Pytania', path: '/', fragment: 'faq' },
+    { name: 'Blog / Wiedza', path: '/blog', fragment: undefined },
     { name: 'O mnie', path: '/about', fragment: undefined },
   ]);
 
