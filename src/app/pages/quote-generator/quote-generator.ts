@@ -6,6 +6,7 @@ import {
   ChangeDetectionStrategy,
   inject,
   PLATFORM_ID,
+  OnInit,
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -21,20 +22,23 @@ import {
   Loader2,
   ArrowRight,
 } from 'lucide-angular';
+import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
+import { SeoService } from '../../shared/core/seo/seo.service';
 
 @Component({
   selector: 'app-quote-generator',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, LucideAngularModule],
+  imports: [CommonModule, ReactiveFormsModule, LucideAngularModule, BreadcrumbComponent],
   templateUrl: './quote-generator.html',
   styleUrl: './quote-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuoteGenerator {
+export class QuoteGenerator implements OnInit {
   pdfContent = viewChild<ElementRef>('pdfContent');
   turnstileElement = viewChild<ElementRef>('turnstileContainer');
 
   private fb = inject(FormBuilder);
+  private seoService = inject(SeoService);
   platformId = inject(PLATFORM_ID);
 
   turnstileToken = signal<string | null>(null);
@@ -43,6 +47,46 @@ export class QuoteGenerator {
   showThankYou = signal(false);
   isGenerating = signal(false);
   today = new Date();
+
+  ngOnInit() {
+    this.seoService.setPageMetadata({
+      title: 'Darmowy Generator Wycen dla Warsztatów | Scale Sail',
+      description:
+        'Kalkulator wycen online dla mechaników. Wpisz części i robociznę, a generator natychmiast stworzy profesjonalny PDF gotowy do wysłania klientowi.',
+      slug: 'free-quote-generator',
+      type: 'website',
+    });
+
+    this.seoService.setBreadcrumbs([
+      { name: 'Start', path: '/' },
+      { name: 'Narzędzia', path: '/free-quote-generator' },
+      { name: 'Kreator Wycen', path: '/free-quote-generator' },
+    ]);
+
+    this.seoService.setSchema(
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: 'Darmowy Generator Wycen Napraw',
+        url: 'https://scale-sail.io/free-quote-generator',
+        description:
+          'Profesjonalny kreator wycen warsztatowych z eksportem do pliku PDF na e-mail. Pozwala na zliczenie marży, robocizny i wystawienie eleganckiego dokumentu chronograficznego dla klienta warsztatu.',
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'All',
+        creator: {
+          '@type': 'Organization',
+          name: 'Scale Sail',
+          url: 'https://scale-sail.io',
+        },
+        offers: {
+          '@type': 'Offer',
+          price: '0.00',
+          priceCurrency: 'PLN',
+        },
+      },
+      'json-ld-schema',
+    );
+  }
 
   readonly icons = { Plus, Trash2, Download, CheckCircle, CarFront, Loader2, ArrowRight };
 

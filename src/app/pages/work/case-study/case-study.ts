@@ -197,26 +197,35 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
           </section>
 
           <!-- Final Action -->
-          <section class="py-40 text-center border-t-4 border-secondary/10 relative">
-            <h2 class="heading-2 text-secondary mb-16 uppercase">KONIEC PREZENTACJI</h2>
-            <app-button variant="secondary" size="lg" href="/work">
-              <span class="flex items-center gap-4">
-                <svg
-                  class="h-5 w-5 rotate-180"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-                POWRÓT DO PORTFOLIO
-              </span>
-            </app-button>
+          <section class="py-40 text-center border-t-4 border-dashed border-secondary/10 relative">
+            <h2 class="heading-2 text-secondary mb-6">Podoba Ci się ten rezultat?</h2>
+            <p class="text-lg text-secondary/70 mb-12 max-w-xl mx-auto">
+              Skoro dotarłeś aż tutaj, prawdopodobnie szukasz podobnej stabilności w swoim biznesie.
+              Przejrzeliśmy karty – teraz ruch należy do Ciebie.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+              <app-button variant="primary" size="lg" href="/consultation">
+                Zbudujmy Coś Podobnego 🚀
+              </app-button>
+              <app-button variant="secondary" size="lg" href="/work">
+                <span class="flex items-center gap-4">
+                  <svg
+                    class="h-5 w-5 rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                  Wróć do Portfolio
+                </span>
+              </app-button>
+            </div>
           </section>
         </main>
       </div>

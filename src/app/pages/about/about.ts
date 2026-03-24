@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '../../shared/core/seo/seo.service';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, BreadcrumbComponent],
+  imports: [CommonModule, BreadcrumbComponent, RouterLink],
   template: `
     <div
       class="min-h-screen bg-neutral text-secondary relative pt-40 pb-24 overflow-hidden bg-grid-workshop"
@@ -168,6 +169,25 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
                 </div>
               </div>
             }
+          </div>
+        </div>
+
+        <div
+          class="max-w-4xl mx-auto text-center py-20 animate-in fade-in slide-in-from-bottom-4 duration-1000 border-t-2 border-dashed border-secondary/10"
+        >
+          <h2 class="heading-2 text-secondary mb-6">Poznałeś moją jakość. Zobacz efekty.</h2>
+          <p class="text-lg text-secondary/70 mb-12 max-w-2xl mx-auto">
+            Wiesz już, jak podchodzę do biznesu. Sprawdź, jak ta inżynieryjna solidność przekłada
+            się na wyniki moich klientów w codziennym zarządzaniu ich firmami.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <a routerLink="/work" class="btn btn-primary btn-lg"> Ostatnie Realizacje → </a>
+            <a
+              routerLink="/consultation"
+              class="btn btn-lg bg-white text-secondary border-2 border-secondary/20 hover:bg-neutral shadow-[4px_4px_0px_0px_rgba(10,31,68,0.1)]"
+            >
+              Umów Darmową Konsultację 📅
+            </a>
           </div>
         </div>
       </div>

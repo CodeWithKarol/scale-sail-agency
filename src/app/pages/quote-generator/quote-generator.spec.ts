@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { registerLocaleData } from '@angular/common';
+import { provideRouter } from '@angular/router';
 import localePl from '@angular/common/locales/pl';
 
 import { QuoteGenerator } from './quote-generator';
@@ -13,6 +14,7 @@ describe('QuoteGenerator', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [QuoteGenerator],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(QuoteGenerator);
