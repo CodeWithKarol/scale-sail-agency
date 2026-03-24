@@ -1,0 +1,557 @@
+<section class="relative overflow-hidden bg-white min-h-screen pt-28 md:pt-32">
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
+
+  <div class="layout-container relative z-10 flex flex-col xl:flex-row gap-12 pb-16">
+    <!-- Editor Side -->
+    @if (!showThankYou()) {
+      <div class="w-full xl:w-1/2 flex flex-col gap-8">
+        <div class="flex flex-col">
+          <h1 class="heading-2 text-secondary flex items-center gap-3">Darmowy Generator Wycen</h1>
+          <p class="text-body mt-4 max-w-2xl">
+            Wypełnij poniższe pola. Twoja profesjonalna wycena aktualizuje się po prawej stronie na
+            bieżąco.
+          </p>
+        </div>
+        <form [formGroup]="quoteForm" class="card p-6 md:p-10 flex flex-col gap-8">
+          <!-- General Data -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <label class="flex flex-col gap-2 md:col-span-2">
+              <span class="text-small">Nazwa Twojego Warsztatu</span>
+              <input type="text" formControlName="companyName" class="input-field bg-white" />
+            </label>
+            <label class="flex flex-col gap-2">
+              <span class="text-small">Imię i Nazwisko / Firma Klienta</span>
+              <input type="text" formControlName="clientName" class="input-field bg-white" />
+            </label>
+            <label class="flex flex-col gap-2">
+              <span class="text-small"
+                >Numer Telefonu Klienta
+                <span class="text-secondary/40 font-medium lowercase normal-case"
+                  >(opcjonalnie)</span
+                ></span
+              >
+              <input type="text" formControlName="clientPhone" class="input-field bg-white" />
+            </label>
+          </div>
+          <!-- Vehicle Data -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-2">
+            <div
+              class="col-span-1 md:col-span-2 heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2"
+            >
+              <lucide-icon [img]="icons.CarFront" size="24" class="text-primary"></lucide-icon>
+              Dane Pojazdu
+            </div>
+            <label class="flex flex-col gap-2">
+              <span class="text-small">Marka Pojazdu</span>
+              <input
+                type="text"
+                formControlName="vehicleMake"
+                class="input-field bg-neutral"
+                placeholder="np. Toyota"
+              />
+            </label>
+            <label class="flex flex-col gap-2">
+              <span class="text-small">Model Pojazdu</span>
+              <input
+                type="text"
+                formControlName="vehicleModel"
+                class="input-field bg-neutral"
+                placeholder="np. Corolla 2.0"
+              />
+            </label>
+            <label class="flex flex-col gap-2">
+              <span class="text-small">Numer VIN</span>
+              <input
+                type="text"
+                formControlName="vehicleVin"
+                class="input-field bg-neutral uppercase"
+              />
+            </label>
+            <label class="flex flex-col gap-2">
+              <span class="text-small">Rejestracja</span>
+              <input
+                type="text"
+                formControlName="vehiclePlate"
+                class="input-field bg-neutral uppercase"
+              />
+            </label>
+          </div>
+          <!-- Parts -->
+          <div class="flex flex-col gap-5 mt-2">
+            <div class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1">
+              <h2 class="heading-3">Części i Materiały</h2>
+              <button
+                type="button"
+                (click)="addPart()"
+                class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+              >
+                <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj część
+              </button>
+            </div>
+            <div formArrayName="parts" class="flex flex-col gap-4">
+              @for (part of parts.controls; track part; let i = $index) {
+                <div [formGroupName]="i" class="flex flex-wrap lg:flex-nowrap items-center gap-3">
+                  <input
+                    type="text"
+                    formControlName="name"
+                    placeholder="Nazwa części"
+                    class="input-field w-full lg:flex-grow"
+                  />
+                  <div class="flex flex-grow w-full lg:w-auto items-center gap-3">
+                    <input
+                      type="number"
+                      formControlName="qty"
+                      placeholder="Ilość"
+                      class="input-field w-24 text-center"
+                    />
+                    <input
+                      type="number"
+                      formControlName="price"
+                      placeholder="Cena szt."
+                      class="input-field w-32 flex-grow text-right"
+                    />
+                    @if (parts.length > 1) {
+                      <button
+                        type="button"
+                        (click)="removePart(i)"
+                        class="btn btn-ghost text-secondary/40 hover:text-accent p-3"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                      </button>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+          <!-- Labor -->
+          <div class="flex flex-col gap-5 mt-2">
+            <div class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1">
+              <h2 class="heading-3">Robocizna</h2>
+              <button
+                type="button"
+                (click)="addLabor()"
+                class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+              >
+                <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj pozycję
+              </button>
+            </div>
+            <div formArrayName="labor" class="flex flex-col gap-4">
+              @for (lab of labor.controls; track lab; let i = $index) {
+                <div [formGroupName]="i" class="flex flex-wrap lg:flex-nowrap items-center gap-3">
+                  <input
+                    type="text"
+                    formControlName="name"
+                    placeholder="Opis usługi"
+                    class="input-field w-full lg:flex-grow"
+                  />
+                  <div class="flex flex-grow w-full lg:w-auto items-center gap-3">
+                    <input
+                      type="number"
+                      step="0.5"
+                      formControlName="hours"
+                      placeholder="Godziny"
+                      class="input-field w-24 text-center"
+                    />
+                    <input
+                      type="number"
+                      formControlName="rate"
+                      placeholder="Stawka/h"
+                      class="input-field w-32 flex-grow text-right"
+                    />
+                    @if (labor.length > 1) {
+                      <button
+                        type="button"
+                        (click)="removeLabor(i)"
+                        class="btn btn-ghost text-secondary/40 hover:text-accent p-3"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                      </button>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </form>
+      </div>
+    }
+
+    <!-- Thank You Side (if submitted) -->
+    @if (showThankYou()) {
+      <div
+        class="w-full xl:w-1/2 flex flex-col items-center justify-center p-6 md:p-14 text-center relative min-h-[600px] bg-[#f8f9fc] border-2 border-secondary/10"
+      >
+        <div
+          class="w-24 h-24 bg-primary text-white flex items-center justify-center mb-10 shadow-[8px_8px_0px_0px_#17253d] border-2 border-secondary z-10 transition-transform duration-500 hover:-translate-y-1 hover:shadow-[12px_12px_0px_0px_#17253d]"
+        >
+          <lucide-icon [img]="icons.CheckCircle" size="48" strokeWidth="2.5"></lucide-icon>
+        </div>
+        <h2 class="heading-2 text-secondary z-10 text-balance mb-6">
+          Wycena wysłana <br /><span class="text-primary">na Twój e-mail!</span>
+        </h2>
+        <p class="text-xl text-secondary/70 mb-14 max-w-md mx-auto z-10 text-balance font-medium">
+          Poszło do Ciebie. Zobaczysz jak profesjonalny plik to wygenerowało.
+        </p>
+        <div
+          class="card p-8 md:p-12 text-left w-full max-w-lg z-10 relative overflow-hidden bg-white"
+        >
+          <div class="absolute inset-0 bg-grid-workshop opacity-10 pointer-events-none"></div>
+          <div class="relative z-10">
+            <h3 class="heading-4 text-secondary mb-4 uppercase">
+              Zauważyłeś jednak jeden problem?
+            </h3>
+            <p class="text-body text-secondary/80 mb-8 font-medium">
+              Wypisywanie tych wszystkich cen i nazw części na bieżąco jest powolne. Gdy warsztat ma
+              dużo aut, ten czas "niszczy" zysk. Liderzy rentowności w Polsce generują wyceny na PDF
+              w
+              <strong class="text-primary font-black uppercase tracking-wider">5 sekund</strong>,
+              podpinając bazy integracyjne prosto do panelu.
+            </p>
+            <a
+              href="/consultation"
+              class="btn btn-primary btn-lg w-full flex items-center justify-center gap-2"
+            >
+              Aplikuj po Pełną Automatyzację
+              <lucide-icon [img]="icons.ArrowRight" size="20"></lucide-icon>
+            </a>
+            <button
+              (click)="resetFormAndStartOver()"
+              class="btn btn-ghost btn-lg w-full mt-4 flex items-center justify-center border-t-2 border-dashed border-secondary/10 pt-6"
+            >
+              Wróć i stwórz drugą darmową wycenę
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- Preview Side -->
+    <div class="w-full xl:w-1/2 flex flex-col">
+      <div class="sticky top-[100px] flex flex-col gap-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <h2 class="heading-4 text-secondary flex items-center gap-3">
+            Podgląd Wydruku
+            <span class="status-badge font-black">Na żywo</span>
+          </h2>
+          @if (!showThankYou()) {
+            <button
+              (click)="openDownloadModal()"
+              class="btn btn-primary btn-md flex items-center gap-2 whitespace-nowrap"
+            >
+              <lucide-icon [img]="icons.Download" size="18"></lucide-icon>
+              Wyślij PDF
+            </button>
+          }
+        </div>
+
+        <!-- The A4 Sheet Visualization container -->
+        <div
+          class="w-full bg-slate-200 py-6 sm:py-8 px-2 rounded-3xl shadow-[inset_0_2px_18px_rgba(0,0,0,0.08)] border border-slate-300 flex justify-center items-start overflow-auto"
+          style="max-height: calc(100vh - 160px)"
+        >
+          <div class="flex justify-center" style="zoom: 0.7; width: 100%">
+            <!-- The actual A4 div to render. Dimensions: 794px by 1123px (A4 at 96PPI) -->
+            <div
+              class="bg-white min-w-[794px] w-[794px] min-h-[1123px] text-black p-12 flex flex-col relative shadow-md shrink-0"
+              #pdfContent
+            >
+              <!-- Header -->
+              <div
+                class="flex justify-between items-start border-b-[3px] border-slate-800 pb-8 mb-10"
+              >
+                <div class="flex flex-col">
+                  <h1
+                    class="text-[2.5rem] leading-none font-extrabold text-slate-800 tracking-tight uppercase"
+                  >
+                    Kosztorys
+                  </h1>
+                  <div class="text-[2rem] leading-none font-bold text-slate-400 mb-2 uppercase">
+                    Naprawy
+                  </div>
+                  <div class="mt-2 text-slate-500 font-medium text-sm">
+                    Data wystawienia: {{ today | date: 'dd.MM.yyyy' }}
+                  </div>
+                </div>
+                <div class="flex flex-col text-right">
+                  <div class="text-2xl font-bold text-slate-800 max-w-[300px]">
+                    {{ quoteForm.get('companyName')?.value || 'Brak nazwy warsztatu' }}
+                  </div>
+                  <div class="text-sm mt-2 text-slate-400 italic">
+                    Dokument wygenerowany elektronicznie
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer & Vehicle -->
+              <div class="grid grid-cols-2 gap-8 mb-10">
+                <div
+                  class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
+                >
+                  <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
+                    Dane Klienta
+                  </div>
+                  <div class="font-bold text-xl text-slate-800 break-words break-all">
+                    {{ quoteForm.get('clientName')?.value || '_______________________' }}
+                  </div>
+                  @if (quoteForm.get('clientPhone')?.value) {
+                    <div class="text-slate-600 mt-2 font-medium break-all">
+                      Tel: {{ quoteForm.get('clientPhone')?.value }}
+                    </div>
+                  }
+                </div>
+                <div
+                  class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
+                >
+                  <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
+                    Dane Pojazdu
+                  </div>
+                  <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[15px] text-slate-700">
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Marka:</span
+                      >
+                      <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        quoteForm.get('vehicleMake')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Model:</span
+                      >
+                      <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        quoteForm.get('vehicleModel')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Nr Rej:</span
+                      >
+                      <span class="font-bold text-slate-800 break-all leading-tight">{{
+                        quoteForm.get('vehiclePlate')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase">VIN:</span>
+                      <span class="font-mono text-[13px] text-slate-800 break-all leading-tight">{{
+                        quoteForm.get('vehicleVin')?.value || '-----------------'
+                      }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parts Table -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4">
+                  Materiały i Części
+                </h3>
+                <table class="w-full text-[15px] text-left border-collapse table-fixed">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
+                      <th class="p-3 w-12 text-center font-bold rounded-tl-lg">Lp.</th>
+                      <th class="p-3 font-bold break-words w-auto">Nazwa Towaru / Części</th>
+                      <th class="p-3 w-24 text-center font-bold">Ilość</th>
+                      <th class="p-3 w-28 text-right font-bold">Cena jedn.</th>
+                      <th class="p-3 w-28 text-right font-bold rounded-tr-lg">Wartość</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (part of parts.controls; track part; let i = $index) {
+                      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                        <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
+                        <td class="p-3 font-semibold text-slate-800 break-all leading-tight">
+                          {{ part.get('name')?.value || '---' }}
+                        </td>
+                        <td class="p-3 text-center text-slate-600 font-medium whitespace-nowrap">
+                          {{ part.get('qty')?.value }} szt.
+                        </td>
+                        <td class="p-3 text-right text-slate-600 whitespace-nowrap">
+                          {{
+                            part.get('price')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                        <td class="p-3 text-right font-bold text-slate-800 whitespace-nowrap">
+                          {{
+                            part.get('qty')?.value * part.get('price')?.value
+                              | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                      </tr>
+                    }
+                    @if (parts.length === 0) {
+                      <tr>
+                        <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
+                          Brak części dopisanych do zlecenia.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Labor Table -->
+              <div class="mb-8 flex-grow">
+                <h3 class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4">
+                  Czynności Serwisowe (Robocizna)
+                </h3>
+                <table class="w-full text-[15px] text-left border-collapse table-fixed">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
+                      <th class="p-3 w-12 text-center font-bold rounded-tl-lg">Lp.</th>
+                      <th class="p-3 font-bold break-words w-auto">Opis Wykonanej Pracy</th>
+                      <th class="p-3 w-24 text-center font-bold whitespace-nowrap">Czas (h)</th>
+                      <th class="p-3 w-28 text-right font-bold">Stawka/h</th>
+                      <th class="p-3 w-28 text-right font-bold rounded-tr-lg">Wartość</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (lab of labor.controls; track lab; let i = $index) {
+                      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                        <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
+                        <td class="p-3 font-semibold text-slate-800 break-all leading-tight">
+                          {{ lab.get('name')?.value || '---' }}
+                        </td>
+                        <td class="p-3 text-center text-slate-600 font-medium">
+                          {{ lab.get('hours')?.value }}
+                        </td>
+                        <td class="p-3 text-right text-slate-600 whitespace-nowrap">
+                          {{ lab.get('rate')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}
+                        </td>
+                        <td class="p-3 text-right font-bold text-slate-800 whitespace-nowrap">
+                          {{
+                            lab.get('hours')?.value * lab.get('rate')?.value
+                              | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                      </tr>
+                    }
+                    @if (labor.length === 0) {
+                      <tr>
+                        <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
+                          Brak usług serwisowych dopisanych do zlecenia.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Totals -->
+              <div
+                class="flex justify-between items-end pt-8 border-t-[3px] border-slate-800 mt-auto"
+              >
+                <!-- Signatures placeholder -->
+                <div class="flex gap-8 md:gap-12 text-slate-500 text-sm font-semibold pb-2 pr-4">
+                  <div class="w-36 text-center border-t-2 border-slate-300 pt-2">
+                    Podpis Wystawiającego
+                  </div>
+                  <div class="w-36 text-center border-t-2 border-slate-300 pt-2">
+                    Podpis Akceptującego
+                  </div>
+                </div>
+
+                <div
+                  class="w-72 shrink-0 flex flex-col p-6 bg-slate-100 border border-slate-200 rounded-3xl shadow-sm"
+                >
+                  <div class="flex justify-between items-start mb-3 text-slate-600 font-bold gap-2">
+                    <span>Kwota netto:</span>
+                    <span class="text-slate-800 text-right whitespace-nowrap">{{
+                      getSubtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                    }}</span>
+                  </div>
+                  <div
+                    class="flex justify-between items-start mb-5 text-slate-500 pb-5 border-b-2 border-slate-200 font-medium gap-2"
+                  >
+                    <span>VAT (23%):</span>
+                    <span class="text-right whitespace-nowrap">{{
+                      getVat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                    }}</span>
+                  </div>
+                  <div class="flex justify-between items-end text-2xl gap-2 mt-1">
+                    <span class="font-extrabold text-slate-900 uppercase tracking-tight"
+                      >Razem:</span
+                    >
+                    <span
+                      class="font-black text-rose-600 tracking-tight drop-shadow-sm text-right whitespace-nowrap"
+                      >{{ getTotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Footer Legal -->
+              <div
+                class="mt-12 text-[11px] leading-relaxed text-justify text-slate-400 pt-5 border-t border-slate-200 uppercase tracking-wider font-bold"
+              >
+                Powyższa wycena jest wyłącznie dokumentem poglądowym (kosztorysem przednaprawczym) i
+                nie stanowi stanowczej oferty handlowej w rozumieniu Art. 66 par. 1 Kodeksu
+                Cywilnego. Warsztat zastrzega prawo do korekty kosztów ze względu na ukryte
+                uszkodzenia pojazdu, nienadzorowalne trudności demontażowe (np. zapieczone śruby)
+                oraz zmiany cen podzespołów u dostawców w trakcie trwania naprawy.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Email Capture Modal -->
+@if (showEmailModal()) {
+  <div
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-sm"
+  >
+    <div
+      class="card p-8 md:p-10 max-w-md w-full shadow-2xl animate-fade-in-up relative industrial-border-thick"
+    >
+      <button
+        (click)="showEmailModal.set(false)"
+        class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center text-secondary/40 hover:text-secondary hover:bg-secondary/5 rounded-none transition-colors border border-transparent hover:border-secondary/10"
+      >
+        <span class="text-2xl leading-none font-bold">&times;</span>
+      </button>
+      <div
+        class="w-16 h-16 bg-primary/10 rounded-none flex items-center justify-center mb-6 border border-primary/20"
+      >
+        <lucide-icon [img]="icons.Download" class="text-primary" size="30"></lucide-icon>
+      </div>
+      <h3 class="heading-3 text-secondary mb-3">Wysyłka Wyceny 📄</h3>
+      <p class="text-body mb-8 text-balance">
+        Jeden mały krok dla Ciebie. Podaj wpierw swój adres e-mail, abyśmy wysłali profesjonalny
+        plik PDF od razu na Twoją skrzynkę.
+      </p>
+      <form [formGroup]="emailForm" (ngSubmit)="submitEmail()" class="flex flex-col gap-4">
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Twój e-mail np. jan@warsztat.pl"
+          class="input-field bg-neutral"
+        />
+        <!-- Turnstile Widget Container -->
+        <div class="flex justify-center w-full min-h-[65px] my-2">
+          <div #turnstileContainer></div>
+        </div>
+        <button
+          type="submit"
+          [disabled]="!emailForm.valid || isGenerating() || !turnstileToken()"
+          class="btn btn-primary btn-lg w-full flex items-center justify-center gap-2 mt-2"
+        >
+          @if (!isGenerating()) {
+            Wyślij wycenę PDF &rarr;
+          }
+          @if (isGenerating()) {
+            <lucide-icon [img]="icons.Loader2" class="animate-spin" size="24"></lucide-icon>
+            Przetwarzanie pliku...
+          }
+        </button>
+      </form>
+      <p
+        class="text-[11px] text-slate-400 mt-6 text-center font-bold uppercase tracking-wider leading-relaxed"
+      >
+        Szanujemy Twój czas. Otrzymasz też z czasem poradnik o zarządzaniu rentownością warsztatów.
+      </p>
+    </div>
+  </div>
+}
