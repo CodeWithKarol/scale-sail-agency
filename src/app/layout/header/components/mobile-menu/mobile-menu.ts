@@ -6,7 +6,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
   selector: 'app-mobile-menu',
   imports: [BrandLogo, RouterLink],
   template: `
-    <div class="xl:hidden relative z-[60]" role="dialog" aria-modal="true">
+    <div class="xl:hidden relative z-[150]" role="dialog" aria-modal="true">
       <!-- Backdrop (More industrial contrast) -->
       <div
         class="fixed inset-0 bg-secondary/40 backdrop-blur-sm transition-opacity"
@@ -20,7 +20,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
 
       <!-- Drawer (Modern Workshop Style) -->
       <div
-        class="fixed inset-y-0 right-0 z-[60] w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm border-l-4 border-secondary shadow-none overflow-hidden"
+        class="fixed inset-y-0 right-0 z-[150] w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm border-l-4 border-secondary shadow-none overflow-hidden"
       >
         <!-- Technical Grid Background -->
         <div class="absolute inset-0 -z-10 bg-grid-workshop opacity-10 pointer-events-none"></div>

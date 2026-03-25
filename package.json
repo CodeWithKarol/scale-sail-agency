@@ -40,6 +40,7 @@
     "html-to-image": "^1.11.13",
     "jspdf": "^4.2.1",
     "lucide-angular": "^0.563.0",
+    "ngx-turnstile": "^0.2.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

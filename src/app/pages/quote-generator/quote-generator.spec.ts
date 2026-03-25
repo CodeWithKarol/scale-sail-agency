@@ -19,10 +19,51 @@ describe('QuoteGenerator', () => {
 
     fixture = TestBed.createComponent(QuoteGenerator);
     component = fixture.componentInstance;
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize with default values', () => {
+    expect(component.quoteForm.get('parts')?.value.length).toBe(1);
+    expect(component.quoteForm.get('labor')?.value.length).toBe(1);
+  });
+
+  it('should calculate initial subtotal, vat, and total correctly', () => {
+    // Initial values: 1 part (price 0) and 1 labor (1 hr x 200 rate)
+    // Actually part price is 0 initially, labor is 200.
+    const partGroup = component.parts.at(0);
+    partGroup.patchValue({ name: 'Test Part', qty: 1, price: 100 });
+
+    fixture.detectChanges();
+
+    // subtotal: 100 (part) + 200 (labor default) = 300
+    expect(component.subtotal()).toBe(300);
+    expect(component.vat()).toBe(300 * 0.23);
+    expect(component.total()).toBe(300 * 1.23);
+  });
+
+  it('should update totals when adding a part', () => {
+    component.addPart();
+    const secondPart = component.parts.at(1);
+    secondPart.patchValue({ name: 'Extra Part', qty: 2, price: 50 });
+
+    fixture.detectChanges();
+
+    // subtotal: (1*0 initial part) + (2*50 second part) + (1*200 labor) = 300
+    expect(component.subtotal()).toBe(300);
+  });
+
+  it('should calculate part price based on netPrice and markup', () => {
+    const part = component.parts.at(0);
+    part.patchValue({ netPrice: 100, markup: 30 });
+
+    // Internal valueChanges logic should update price to 130
+    fixture.detectChanges();
+    expect(part.get('price')?.value).toBe(130);
+    expect(component.subtotal()).toBe(130 + 200);
   });
 });

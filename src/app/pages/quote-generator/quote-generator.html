@@ -1,5 +1,5 @@
 <section
-  class="min-h-screen bg-neutral text-secondary relative pt-40 pb-24 overflow-hidden bg-grid-workshop"
+  class="min-h-screen bg-neutral text-secondary relative pt-28 sm:pt-40 pb-16 sm:pb-24 overflow-hidden bg-grid-workshop"
 >
   <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
@@ -34,11 +34,21 @@
             <div class="flex flex-col gap-5">
               <label class="flex flex-col gap-2">
                 <span class="text-small">Nazwa Twojego Warsztatu</span>
-                <input type="text" formControlName="companyName" class="input-field bg-white" />
+                <input
+                  type="text"
+                  formControlName="companyName"
+                  class="input-field bg-white"
+                  autocomplete="off"
+                />
               </label>
               <label class="flex flex-col gap-2">
                 <span class="text-small">Imię i Nazwisko / Firma Klienta</span>
-                <input type="text" formControlName="clientName" class="input-field bg-white" />
+                <input
+                  type="text"
+                  formControlName="clientName"
+                  class="input-field bg-white"
+                  autocomplete="off"
+                />
               </label>
               <label class="flex flex-col gap-2">
                 <span class="text-small"
@@ -47,7 +57,12 @@
                     >(opcjonalnie)</span
                   ></span
                 >
-                <input type="text" formControlName="clientPhone" class="input-field bg-white" />
+                <input
+                  type="text"
+                  formControlName="clientPhone"
+                  class="input-field bg-white"
+                  autocomplete="off"
+                />
               </label>
             </div>
             <!-- Vehicle Data -->
@@ -63,6 +78,7 @@
                   formControlName="vehicleMake"
                   class="input-field bg-neutral"
                   placeholder="np. Toyota"
+                  autocomplete="off"
                 />
               </label>
               <label class="flex flex-col gap-2">
@@ -72,6 +88,7 @@
                   formControlName="vehicleModel"
                   class="input-field bg-neutral"
                   placeholder="np. Corolla 2.0"
+                  autocomplete="off"
                 />
               </label>
               <label class="flex flex-col gap-2">
@@ -80,6 +97,7 @@
                   type="text"
                   formControlName="vehicleVin"
                   class="input-field bg-neutral uppercase"
+                  autocomplete="off"
                 />
               </label>
               <label class="flex flex-col gap-2">
@@ -88,6 +106,7 @@
                   type="text"
                   formControlName="vehiclePlate"
                   class="input-field bg-neutral uppercase"
+                  autocomplete="off"
                 />
               </label>
             </div>
@@ -131,6 +150,7 @@
                         formControlName="name"
                         placeholder="Wpisz nazwę"
                         class="input-field w-full"
+                        autocomplete="off"
                       />
                     </div>
 
@@ -144,6 +164,7 @@
                         formControlName="qty"
                         placeholder="1"
                         class="input-field w-full"
+                        autocomplete="off"
                       />
                     </div>
 
@@ -157,6 +178,7 @@
                         formControlName="netPrice"
                         placeholder="0.00"
                         class="input-field w-full bg-secondary/5 font-medium"
+                        autocomplete="off"
                       />
                     </div>
 
@@ -170,6 +192,7 @@
                         formControlName="markup"
                         placeholder="30"
                         class="input-field w-full bg-primary/5 text-primary font-bold"
+                        autocomplete="off"
                       />
                     </div>
 
@@ -185,6 +208,7 @@
                         formControlName="price"
                         placeholder="0.00"
                         class="input-field w-full font-bold shadow-sm"
+                        autocomplete="off"
                       />
                     </div>
                   </div>
@@ -232,6 +256,7 @@
                           formControlName="name"
                           placeholder="np. Wymiana klocków hamulcowych tył"
                           class="input-field w-full"
+                          autocomplete="off"
                         />
                       </div>
                       <div class="flex flex-col">
@@ -245,6 +270,7 @@
                           formControlName="hours"
                           placeholder="1.5"
                           class="input-field w-full"
+                          autocomplete="off"
                         />
                       </div>
                       <div class="flex flex-col">
@@ -257,6 +283,7 @@
                           formControlName="rate"
                           placeholder="200"
                           class="input-field w-full bg-secondary/5 font-medium"
+                          autocomplete="off"
                         />
                       </div>
                     </div>
@@ -572,7 +599,7 @@
                       >
                       <span
                         class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
-                        >{{ getSubtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                        >{{ subtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                       >
                     </div>
                     <div class="flex flex-col border-b border-slate-200/50 pb-3">
@@ -582,7 +609,7 @@
                       >
                       <span
                         class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
-                        >{{ getVat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                        >{{ vat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                       >
                     </div>
                     <div class="flex flex-col pt-2">
@@ -592,7 +619,7 @@
                       >
                       <span
                         class="font-black text-rose-600 text-lg sm:text-xl tracking-tighter drop-shadow-sm text-right whitespace-nowrap tabular-nums leading-none font-mono"
-                        >{{ getTotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                        >{{ total() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                       >
                     </div>
                   </div>
@@ -637,16 +664,16 @@
 <!-- Email Capture Modal -->
 @if (showEmailModal()) {
   <div
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-md"
+    class="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-secondary/80 backdrop-blur-md"
   >
     <div
       class="card p-1 bg-white max-w-lg w-full shadow-2xl animate-fade-in-up relative industrial-border-thick border-4 border-secondary/20"
     >
       <!-- Content Wrapper -->
-      <div class="p-8 md:p-12 relative bg-neutral/40">
+      <div class="p-6 sm:p-8 md:p-12 relative bg-neutral/40">
         <!-- Close Button -->
         <button
-          (click)="showEmailModal.set(false)"
+          (click)="closeEmailModal()"
           class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center text-secondary/40 hover:text-secondary hover:bg-secondary/10 rounded-full transition-colors z-10"
         >
           <lucide-icon [img]="icons.X" size="24"></lucide-icon>
@@ -690,17 +717,21 @@
                 formControlName="email"
                 placeholder="np. warsztat@gmail.com"
                 class="input-field bg-white !pl-12 !py-5 text-base shadow-sm"
+                autocomplete="off"
               />
             </div>
           </div>
 
           <!-- Turnstile Widget Container -->
           <div class="flex items-center justify-center w-full min-h-[75px] mt-2 mb-2">
-            <div
-              #turnstileContainer
+            <ngx-turnstile
+              [siteKey]="'0x4AAAAAACvYRxriO7b9Ch5J'"
+              theme="light"
+              (resolved)="onTurnstileResolved($event)"
+              (error)="onTurnstileError()"
               class="flex items-center justify-center mx-auto"
               style="min-width: 300px"
-            ></div>
+            ></ngx-turnstile>
           </div>
 
           <button
