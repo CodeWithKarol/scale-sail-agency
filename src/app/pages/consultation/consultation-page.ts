@@ -286,10 +286,11 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     <span class="text-lg">PRZEJDŹ DO KALENDARZA </span
                     ><span class="ml-2 font-serif font-black underline">→</span>
                   </app-button>
-                  <p class="mt-4 text-xs text-secondary/40 font-mono uppercase tracking-widest">
+                  <p
+                    class="mt-4 text-xs text-secondary/40 font-mono uppercase tracking-widest text-balance"
+                  >
                     Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki SLA) może zaoferować
-                    alternatywną ścieżkę pomocy,<br class="hidden sm:block" />
-                    aby oszczędzić Twój czas.
+                    alternatywną ścieżkę pomocy, aby oszczędzić Twój czas.
                   </p>
                 </div>
               </form>
