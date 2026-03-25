@@ -44,24 +44,24 @@ html {
   }
 
   .section-padding {
-    @apply py-20 lg:py-32;
+    @apply py-12 sm:py-20 lg:py-32;
   }
 
   /* --- Typography --- */
   .heading-1 {
-    @apply font-black text-4xl lg:text-7xl uppercase tracking-[-0.03em] text-secondary leading-[0.95];
+    @apply font-black text-3xl sm:text-4xl lg:text-7xl uppercase tracking-[-0.03em] text-secondary leading-[0.95];
   }
 
   .heading-2 {
-    @apply font-black text-3xl lg:text-5xl uppercase tracking-[-0.02em] text-secondary leading-[1.1];
+    @apply font-black text-2xl sm:text-3xl lg:text-5xl uppercase tracking-[-0.02em] text-secondary leading-[1.1];
   }
 
   .heading-3 {
-    @apply font-bold text-xl lg:text-2xl uppercase tracking-tight text-secondary;
+    @apply font-bold text-lg sm:text-xl lg:text-2xl uppercase tracking-tight text-secondary;
   }
 
   .text-body {
-    @apply text-lg text-secondary/80 leading-relaxed font-normal;
+    @apply text-base sm:text-lg text-secondary/80 leading-relaxed font-normal;
   }
 
   .text-small {

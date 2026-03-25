@@ -11,7 +11,7 @@ export class FounderStory {
   founder = signal({
     name: 'Karol Modelski',
     role: 'Twórca systemów i aplikacji',
-    image: 'images/karol-modelski.webp',
+    image: '/images/karol-modelski.webp',
     headline: 'Buduję systemy, które ułatwiają życie i pracę',
     bio: [
       'Od lat pomagam firmom porządkować ich cyfrowy świat. Wierzę, że technologia nie musi być skomplikowana, aby dawać ogromne efekty. Moim celem jest tworzenie aplikacji, które po prostu działają i rozwiązują realne problemy.',

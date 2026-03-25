@@ -3,12 +3,13 @@ import {
   ElementRef,
   viewChild,
   signal,
+  computed,
   ChangeDetectionStrategy,
   inject,
-  PLATFORM_ID,
   OnInit,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { jsPDF } from 'jspdf';
 import { toJpeg } from 'html-to-image';
@@ -27,22 +28,27 @@ import {
 } from 'lucide-angular';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 import { SeoService } from '../../shared/core/seo/seo.service';
+import { NgxTurnstileModule } from 'ngx-turnstile';
 
 @Component({
   selector: 'app-quote-generator',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, LucideAngularModule, BreadcrumbComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    LucideAngularModule,
+    BreadcrumbComponent,
+    NgxTurnstileModule,
+  ],
   templateUrl: './quote-generator.html',
   styleUrl: './quote-generator.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteGenerator implements OnInit {
   pdfContent = viewChild<ElementRef>('pdfContent');
-  turnstileElement = viewChild<ElementRef>('turnstileContainer');
 
   private fb = inject(FormBuilder);
   private seoService = inject(SeoService);
-  platformId = inject(PLATFORM_ID);
 
   turnstileToken = signal<string | null>(null);
 
@@ -120,6 +126,27 @@ export class QuoteGenerator implements OnInit {
     email: ['', [Validators.required, Validators.email]],
   });
 
+  // Reactive form values as a signal for calculations
+  private formValues = toSignal(this.quoteForm.valueChanges, {
+    initialValue: this.quoteForm.value,
+  });
+
+  // Computed totals for better performance with OnPush
+  subtotal = computed(() => {
+    const val = this.formValues();
+    let sum = 0;
+    val.parts?.forEach((part: { qty?: number; price?: number }) => {
+      sum += (part.qty || 0) * (part.price || 0);
+    });
+    val.labor?.forEach((labor: { hours?: number; rate?: number }) => {
+      sum += (labor.hours || 0) * (labor.rate || 0);
+    });
+    return sum;
+  });
+
+  vat = computed(() => this.subtotal() * 0.23);
+  total = computed(() => this.subtotal() + this.vat());
+
   get parts() {
     return this.quoteForm.get('parts') as FormArray;
   }
@@ -183,67 +210,26 @@ export class QuoteGenerator implements OnInit {
     this.labor.removeAt(i);
   }
 
-  getSubtotal(): number {
-    let subtotal = 0;
-    this.parts.controls.forEach((ctrl) => {
-      subtotal += (ctrl.get('qty')?.value || 0) * (ctrl.get('price')?.value || 0);
-    });
-    this.labor.controls.forEach((ctrl) => {
-      subtotal += (ctrl.get('hours')?.value || 0) * (ctrl.get('rate')?.value || 0);
-    });
-    return subtotal;
-  }
-
-  getVat(): number {
-    return this.getSubtotal() * 0.23;
-  }
-
-  getTotal(): number {
-    return this.getSubtotal() + this.getVat();
-  }
+  // No longer needed as we use computed signals:
+  // getSubtotal(), getVat(), getTotal()
 
   openDownloadModal() {
+    this.turnstileToken.set(null);
     this.showEmailModal.set(true);
-    setTimeout(() => {
-      this.initTurnstile();
-    }, 50);
   }
 
-  private initTurnstile() {
-    if (!isPlatformBrowser(this.platformId)) return;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const w = window as any;
-    if (w.turnstile) {
-      this.renderTurnstile();
-      return;
-    }
-    w.onloadTurnstileCallback = () => {
-      this.renderTurnstile();
-    };
-    const script = document.createElement('script');
-    script.src =
-      'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
+  closeEmailModal() {
+    this.showEmailModal.set(false);
+    this.turnstileToken.set(null);
   }
 
-  private renderTurnstile() {
-    const el = this.turnstileElement();
-    if (el) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const w = window as any;
-      w.turnstile.render(el.nativeElement, {
-        sitekey: '0x4AAAAAACvYRxriO7b9Ch5J',
-        theme: 'light',
-        callback: (token: string) => {
-          this.turnstileToken.set(token);
-        },
-        'error-callback': () => {
-          console.error('Turnstile verification failed.');
-        },
-      });
-    }
+  onTurnstileResolved(token: string | null) {
+    this.turnstileToken.set(token);
+  }
+
+  onTurnstileError() {
+    console.error('Turnstile verification failed.');
+    this.turnstileToken.set(null);
   }
 
   async submitEmail() {
@@ -251,19 +237,20 @@ export class QuoteGenerator implements OnInit {
       this.isGenerating.set(true);
       console.log('Przygotowuję PDF dla: ', this.emailForm.value.email);
 
-      // Wait a tiny bit for the modal to disappear from DOM before capturing
-      setTimeout(async () => {
-        try {
-          await this.generatePDF();
-          this.showEmailModal.set(false);
-          this.showThankYou.set(true);
-        } catch (e: unknown) {
-          const err = e as Error;
-          alert(`Błąd pliku PDF lub wysyłki: ${err?.message || err}`);
-        } finally {
-          this.isGenerating.set(false);
-        }
-      }, 50);
+      // We use requestAnimationFrame to ensure the UI has updated (e.g. loader shown)
+      // before starting the heavy PDF generation process.
+      await new Promise((r) => requestAnimationFrame(r));
+
+      try {
+        await this.generatePDF();
+        this.showEmailModal.set(false);
+        this.showThankYou.set(true);
+      } catch (e: unknown) {
+        const err = e as Error;
+        alert(`Błąd pliku PDF lub wysyłki: ${err?.message || err}`);
+      } finally {
+        this.isGenerating.set(false);
+      }
     }
   }
 
@@ -306,8 +293,8 @@ export class QuoteGenerator implements OnInit {
         scrollContainer.style.maxHeight = 'none';
       }
 
-      // Wait for browser to reflow the layout
-      await new Promise((r) => setTimeout(r, 100));
+      // Wait for browser to reflow the layout using requestAnimationFrame
+      await new Promise((r) => requestAnimationFrame(r));
 
       const imgData = await toJpeg(data, {
         quality: 0.75,
@@ -350,8 +337,8 @@ export class QuoteGenerator implements OnInit {
 
       console.log('Wysyłam zapytanie do webhooka...', formData);
 
-      // Symulacja opóźnienia sieciowego (usuń to, gdy podepniesz prawdziwy link)
-      await new Promise((r) => setTimeout(r, 1500));
+      // Symulacja opóźnienia sieciowego (usunąć w produkcji)
+      await new Promise((r) => setTimeout(r, 1000));
 
       // ODKOMENTUJ poniższy kod, aby fizycznie strzelać do webhooka:
 
