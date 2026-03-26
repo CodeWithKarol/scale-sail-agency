@@ -1,0 +1,59 @@
+@reference "../../../styles.css";
+
+/* ==========================================
+   ULTRA-SIMPLE PDF PREVIEW SYSTEM
+   ========================================== */
+
+.pdf-content-sheet {
+  /* Use simple block for flow layout */
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  
+  /* Use zoom for scaling - it's the most reliable for A4 previews */
+  zoom: 0.7;
+  transform-origin: top center;
+}
+
+/* Step Indicator Scaling & Interactivity */
+.group:hover .w-12 {
+  @apply scale-110 shadow-lg border-primary/40;
+}
+
+/* On desktop (XL), if the container is too small, we lower the zoom */
+@media (max-width: 1400px) {
+  .pdf-content-sheet {
+    zoom: 0.6;
+  }
+}
+
+/* Tablet / Large Mobile */
+@media (max-width: 1024px) {
+  .pdf-content-sheet {
+    zoom: 0.8; /* Single column layout gives us more room */
+  }
+}
+
+@media (max-width: 850px) {
+  .pdf-content-sheet {
+    zoom: 0.7; /* Increased from 0.55 for better readability in full-width step 3 */
+  }
+}
+
+@media (max-width: 640px) {
+  .pdf-content-sheet {
+    zoom: 0.6; /* Increased from 0.45 */
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-content-sheet {
+    zoom: 0.5; /* Increased from 0.4 */
+  }
+}
+
+@media (max-width: 380px) {
+  .pdf-content-sheet {
+    zoom: 0.45; /* Increased from 0.35 */
+  }
+}

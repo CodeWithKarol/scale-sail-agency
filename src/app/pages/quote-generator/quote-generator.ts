@@ -22,6 +22,8 @@ import {
   CarFront,
   Loader2,
   ArrowRight,
+  ArrowLeft,
+  ChevronRight,
   X,
   Mail,
   ShieldCheck,
@@ -56,6 +58,46 @@ export class QuoteGenerator implements OnInit {
   showThankYou = signal(false);
   isGenerating = signal(false);
   today = new Date();
+
+  // Multi-step logic
+  currentStep = signal(1); // 1: Info, 2: Items, 3: Preview
+
+  nextStep() {
+    if (this.currentStep() < 3) {
+      if (this.currentStep() === 1 && !this.isStep1Valid()) return;
+      this.currentStep.update((s) => s + 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  prevStep() {
+    if (this.currentStep() > 1) {
+      this.currentStep.update((s) => s - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  goToStep(step: number) {
+    if (step < this.currentStep()) {
+      this.currentStep.set(step);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (step > this.currentStep() && this.isStep1Valid()) {
+      this.currentStep.set(step);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  isStep1Valid(): boolean {
+    const controls = ['companyName', 'clientName'];
+    let valid = true;
+    controls.forEach((c) => {
+      if (this.quoteForm.get(c)?.invalid) {
+        this.quoteForm.get(c)?.markAsTouched();
+        valid = false;
+      }
+    });
+    return valid;
+  }
 
   ngOnInit() {
     this.seoService.setPageMetadata({
@@ -105,6 +147,8 @@ export class QuoteGenerator implements OnInit {
     CarFront,
     Loader2,
     ArrowRight,
+    ArrowLeft,
+    ChevronRight,
     X,
     Mail,
     ShieldCheck,
@@ -256,6 +300,7 @@ export class QuoteGenerator implements OnInit {
 
   resetFormAndStartOver() {
     this.showThankYou.set(false);
+    this.currentStep.set(1);
     this.turnstileToken.set(null);
     this.emailForm.reset();
     this.quoteForm.patchValue({
