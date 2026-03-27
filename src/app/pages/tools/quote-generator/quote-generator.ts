@@ -28,8 +28,8 @@ import {
   Mail,
   ShieldCheck,
 } from 'lucide-angular';
-import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
-import { SeoService } from '../../shared/core/seo/seo.service';
+import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
+import { SeoService } from '../../../shared/core/seo/seo.service';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 
 @Component({
@@ -104,14 +104,14 @@ export class QuoteGenerator implements OnInit {
       title: 'Darmowy Generator Wycen dla Warsztatów | Scale Sail',
       description:
         'Kalkulator wycen online dla mechaników. Wpisz części i robociznę, a generator natychmiast stworzy profesjonalny PDF gotowy do wysłania klientowi.',
-      slug: 'free-quote-generator',
+      slug: 'tools/free-quote-generator',
       type: 'website',
     });
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Narzędzia', path: '/free-quote-generator' },
-      { name: 'Kreator Wycen', path: '/free-quote-generator' },
+      { name: 'Narzędzia', path: '/tools' },
+      { name: 'Kreator Wycen', path: '/tools/free-quote-generator' },
     ]);
 
     this.seoService.setSchema(
@@ -119,11 +119,16 @@ export class QuoteGenerator implements OnInit {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'Darmowy Generator Wycen Napraw',
-        url: 'https://scale-sail.io/free-quote-generator',
+        url: 'https://scale-sail.io/tools/free-quote-generator',
         description:
           'Profesjonalny kreator wycen warsztatowych z eksportem do pliku PDF na e-mail. Pozwala na zliczenie marży, robocizny i wystawienie eleganckiego dokumentu chronograficznego dla klienta warsztatu.',
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'All',
+        isPartOf: {
+          '@type': 'CollectionPage',
+          name: 'Darmowe Narzędzia i Kalkulatory dla Warsztatów',
+          url: 'https://scale-sail.io/tools',
+        },
         creator: {
           '@type': 'Organization',
           name: 'Scale Sail',

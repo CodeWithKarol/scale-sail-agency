@@ -28,7 +28,7 @@ export class Header {
 
   // Flat navigation structure for better UX and speed
   readonly navigation = [
-    { name: 'Narzędzia', path: '/free-quote-generator' },
+    { name: 'Narzędzia', path: '/tools' },
     { name: 'Realizacje', path: '/work' },
     { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
     { name: 'Cennik', path: '/', fragment: 'pricing' },

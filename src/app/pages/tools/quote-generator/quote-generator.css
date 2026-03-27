@@ -1,4 +1,4 @@
-@reference "../../../styles.css";
+@reference "../../../../styles.css";
 
 /* ==========================================
    ULTRA-SIMPLE PDF PREVIEW SYSTEM
@@ -8,8 +8,10 @@
   /* Use simple block for flow layout */
   display: block;
   margin: 0 auto;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
   /* Use zoom for scaling - it's the most reliable for A4 previews */
   zoom: 0.7;
   transform-origin: top center;
