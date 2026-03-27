@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { SeoService } from '../../shared/core/seo/seo.service';
@@ -15,13 +15,21 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 import { Button } from '../../shared/ui/button/button';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { LucideAngularModule, ArrowRight, Info, LayoutGrid, Mail } from 'lucide-angular';
 
 type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
 @Component({
   selector: 'app-consultation-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, BreadcrumbComponent, Button],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    BreadcrumbComponent,
+    Button,
+    LucideAngularModule,
+    RouterLink,
+  ],
   template: `
     <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
       <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
@@ -101,6 +109,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     <select
                       formControlName="projectType"
                       class="input-field appearance-none cursor-pointer"
+                      [class.border-accent]="f['projectType'].invalid && f['projectType'].touched"
                     >
                       <option value="system">
                         Potrzebuję prostego systemu do zarządzania zleceniami
@@ -124,6 +133,11 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                       </svg>
                     </div>
                   </div>
+                  @if (f['projectType'].invalid && f['projectType'].touched) {
+                    <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                      Wybierz obszar, w którym potrzebujesz pomocy.
+                    </p>
+                  }
                 </div>
 
                 <!-- Budget -->
@@ -202,6 +216,13 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                       ></span>
                     </label>
                   </div>
+                  @if (f['budget'].invalid && f['budget'].touched) {
+                    <p
+                      class="text-accent text-xs font-bold mt-4 uppercase tracking-wide text-center"
+                    >
+                      Wybierz przybliżony budżet na start.
+                    </p>
+                  }
                 </div>
 
                 <!-- Message -->
@@ -281,17 +302,25 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     variant="primary"
                     size="lg"
                     styleClass="w-full sm:w-auto"
-                    [disabled]="form.invalid"
                   >
-                    <span class="text-lg">PRZEJDŹ DO KALENDARZA </span
-                    ><span class="ml-2 font-serif font-black underline">→</span>
+                    <span class="text-lg">PRZEJDŹ DO KALENDARZA</span>
+                    <lucide-icon
+                      [img]="icons.ArrowRight"
+                      size="20"
+                      class="ml-3 group-hover:translate-x-1 transition-transform"
+                    ></lucide-icon>
                   </app-button>
-                  <p
-                    class="mt-4 text-xs text-secondary/40 font-mono uppercase tracking-widest text-balance"
-                  >
-                    Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki SLA) może zaoferować
-                    alternatywną ścieżkę pomocy, aby oszczędzić Twój czas.
-                  </p>
+                  <div class="mt-6 flex items-center gap-3 opacity-70">
+                    <lucide-icon
+                      [img]="icons.Info"
+                      size="14"
+                      class="text-primary flex-shrink-0"
+                    ></lucide-icon>
+                    <p class="text-xs text-secondary italic leading-relaxed text-balance">
+                      Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki SLA) może zaoferować
+                      alternatywną ścieżkę pomocy, aby oszczędzić Twój czas.
+                    </p>
+                  </div>
                 </div>
               </form>
             } @else if (status() === 'SUBMITTING') {
@@ -388,12 +417,54 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 </div>
 
                 <a
-                  href="/"
+                  routerLink="/"
                   class="text-sm font-black uppercase tracking-widest text-primary hover:underline hover:text-secondary transition-colors"
                   >Wróć na stronę główną</a
                 >
               </div>
             }
+          </div>
+
+          <!-- Final CTA / Closing Section -->
+          <div
+            class="mt-20 p-8 sm:p-12 border-4 border-secondary bg-secondary text-white relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500"
+          >
+            <div
+              class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-10 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"
+            ></div>
+
+            <div class="relative z-10 max-w-2xl text-center sm:text-left">
+              <h2 class="heading-2 text-white mb-6 uppercase tracking-tight">Nadal się wahasz?</h2>
+              <p class="text-lg text-white/80 mb-10 leading-relaxed font-normal">
+                Rozumiem to. Budowa dedykowanego systemu to duża decyzja. Zobacz nasze dotychczasowe
+                realizacje, aby przekonać się, jakie konkretne problemy rozwiązaliśmy dla innych
+                warsztatów i firm usługowych.
+              </p>
+
+              <div class="flex flex-col sm:flex-row items-center gap-6">
+                <app-button
+                  variant="primary"
+                  size="lg"
+                  route="/work"
+                  styleClass="w-full sm:w-auto !bg-white !text-secondary !border-white/10 !shadow-none hover:!bg-primary hover:!text-white"
+                >
+                  <span class="mr-3">ZOBACZ NASZE REALIZACJE</span>
+                  <lucide-icon [img]="icons.LayoutGrid" size="20"></lucide-icon>
+                </app-button>
+
+                <a
+                  href="mailto:karol@scale-sail.io"
+                  class="text-sm font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors flex items-center gap-3 group"
+                >
+                  <lucide-icon
+                    [img]="icons.Mail"
+                    size="16"
+                    class="text-primary group-hover:scale-110 transition-transform"
+                  ></lucide-icon>
+                  LUB NAPISZ DO MNIE BEZPOŚREDNIO
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </main>
@@ -408,6 +479,8 @@ export class ConsultationPage implements OnInit {
   private cdr = inject(ChangeDetectorRef);
   private document = inject(DOCUMENT);
   private route = inject(ActivatedRoute);
+
+  readonly icons = { ArrowRight, Info, LayoutGrid, Mail };
 
   // Status Machine
   status = signal<QualificationStatus>('PENDING');
@@ -476,7 +549,12 @@ export class ConsultationPage implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.invalid || this.status() !== 'PENDING') return;
+    if (this.status() !== 'PENDING') return;
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
     // Pozwalamy botom wysłać formularz - Web3Forms przejmie 'botcheck: true' i zrzuci maila w pustkę,
     // odsyłając fałszywe 200 OK. Zmylimy atakującego.
