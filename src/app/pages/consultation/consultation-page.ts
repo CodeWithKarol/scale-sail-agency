@@ -378,6 +378,15 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                   </p>
                 </div>
 
+                <div class="mb-10 text-center animate-in fade-in duration-1000 delay-300">
+                  <p class="text-secondary/60 text-sm mb-4 italic">
+                    W międzyczasie sprawdź nasze darmowe rozwiązania:
+                  </p>
+                  <app-button variant="accent" size="md" route="/tools">
+                    PRZEGLĄDAJ DARMOWE NARZĘDZIA
+                  </app-button>
+                </div>
+
                 <a
                   href="/"
                   class="text-sm font-black uppercase tracking-widest text-primary hover:underline hover:text-secondary transition-colors"

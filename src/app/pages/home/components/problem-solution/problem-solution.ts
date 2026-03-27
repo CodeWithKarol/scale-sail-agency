@@ -10,9 +10,11 @@ interface Problem {
   label: string;
 }
 
+import { Button } from '../../../../shared/ui/button/button';
+
 @Component({
   selector: 'app-problem-solution',
-  imports: [SectionHeader, Card],
+  imports: [SectionHeader, Card, Button],
   templateUrl: './problem-solution.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

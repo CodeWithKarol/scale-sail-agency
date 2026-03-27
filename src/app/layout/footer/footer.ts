@@ -14,10 +14,10 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Darmowy Generator Wycen', path: '/free-quote-generator', fragment: undefined },
+    { name: 'Wszystkie Narzędzia', path: '/tools', fragment: undefined },
+    { name: 'Generator Wycen PDF', path: '/tools/free-quote-generator', fragment: undefined },
     { name: 'Efekty i Realizacje', path: '/work', fragment: undefined },
     { name: 'Jak pomagam (Oferta)', path: '/', fragment: 'problem-solution' },
-    { name: 'Przejrzysty Cennik', path: '/', fragment: 'pricing' },
   ]);
 
   resources = signal([
