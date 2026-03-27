@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { jsPDF } from 'jspdf';
 import { toJpeg } from 'html-to-image';
@@ -41,6 +42,7 @@ import { NgxTurnstileModule } from 'ngx-turnstile';
     LucideAngularModule,
     BreadcrumbComponent,
     NgxTurnstileModule,
+    RouterLink,
   ],
   templateUrl: './quote-generator.html',
   styleUrl: './quote-generator.css',
@@ -282,7 +284,12 @@ export class QuoteGenerator implements OnInit {
   }
 
   async submitEmail() {
-    if (this.emailForm.valid && this.turnstileToken()) {
+    if (this.emailForm.invalid) {
+      this.emailForm.markAllAsTouched();
+      return;
+    }
+
+    if (this.turnstileToken()) {
       this.isGenerating.set(true);
       console.log('Przygotowuję PDF dla: ', this.emailForm.value.email);
 

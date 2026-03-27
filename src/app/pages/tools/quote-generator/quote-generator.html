@@ -902,8 +902,16 @@
                 formControlName="email"
                 placeholder="np. warsztat@gmail.com"
                 class="input-field bg-white !pl-12 !py-5 text-base shadow-sm"
+                [class.border-accent]="
+                  emailForm.get('email')?.invalid && emailForm.get('email')?.touched
+                "
                 autocomplete="off"
               />
+              @if (emailForm.get('email')?.invalid && emailForm.get('email')?.touched) {
+                <p class="text-accent text-[11px] font-bold mt-2 uppercase tracking-wide">
+                  Podaj poprawny adres e-mail, aby otrzymać wycenę.
+                </p>
+              }
             </div>
           </div>
 
@@ -921,7 +929,7 @@
 
           <button
             type="submit"
-            [disabled]="!emailForm.valid || isGenerating() || !turnstileToken()"
+            [disabled]="isGenerating() || !turnstileToken()"
             class="btn btn-primary w-full flex items-center justify-center gap-3 text-[15px] py-4 shadow-md group uppercase tracking-widest transition-transform"
           >
             @if (!isGenerating()) {
