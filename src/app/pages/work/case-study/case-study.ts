@@ -103,7 +103,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
                     <h2 class="text-small text-primary">01. WYZWANIE</h2>
                     <div class="h-px flex-1 bg-secondary/10"></div>
                   </div>
-                  <p class="text-body sm:text-lg text-secondary/80">
+                  <p class="text-body sm:text-lg text-secondary/90">
                     {{ study.challenge }}
                   </p>
                 </section>
@@ -113,7 +113,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
                     <h2 class="text-small text-primary">02. ROZWIĄZANIE</h2>
                     <div class="h-px flex-1 bg-secondary/10"></div>
                   </div>
-                  <p class="text-body sm:text-lg text-secondary/80">
+                  <p class="text-body sm:text-lg text-secondary/90">
                     {{ study.solution }}
                   </p>
                 </section>
@@ -133,16 +133,16 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
                         <span
                           class="mt-2.5 w-2 h-2 bg-primary rotate-45 transition-transform group-hover:rotate-90 shrink-0"
                         ></span>
-                        <span class="text-body font-bold text-secondary/80">{{ result }}</span>
+                        <span class="text-body font-bold text-secondary/90">{{ result }}</span>
                       </li>
                     }
                   </ul>
                   <div class="mt-16 pt-12 border-t-2 border-secondary/5">
-                    <p class="text-small text-secondary/30 mb-8">SPECYFIKACJA PROJEKTU</p>
+                    <p class="text-small text-secondary/50 mb-8">SPECYFIKACJA PROJEKTU</p>
                     <div class="flex flex-col gap-3">
                       @for (tech of study.techStack; track tech) {
                         <span
-                          class="px-4 py-2 bg-neutral border border-secondary/10 text-small text-secondary/60"
+                          class="px-4 py-2 bg-neutral border border-secondary/10 text-small text-secondary/75"
                           >{{ tech }}</span
                         >
                       }
@@ -174,7 +174,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
               class="max-w-5xl mx-auto bg-white border-4 border-secondary p-12 md:p-24 shadow-[16px_16px_0px_0px_rgba(10,31,68,0.05)]"
             >
               <h2 class="text-small text-primary mb-12">CO JEST W ŚRODKU?</h2>
-              <p class="text-body sm:text-lg text-secondary/80 italic">
+              <p class="text-body sm:text-lg text-secondary/90 italic">
                 {{
                   study.technicalApproach ||
                     'System zbudowany z użyciem nowoczesnych standardów, zapewniający maksymalną szybkość działania i bezpieczeństwo danych.'
@@ -188,7 +188,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
                   STATUS: W PEŁNI ZOPTYMALIZOWANY
                 </div>
                 <div
-                  class="text-small text-secondary/40 bg-neutral px-5 py-2 border-2 border-secondary/10"
+                  class="text-small text-secondary/60 bg-neutral px-5 py-2 border-2 border-secondary/10"
                 >
                   ID PROJEKTU: {{ study.id | uppercase }}
                 </div>

@@ -48,7 +48,7 @@ import { BlogPost } from '../../blog.model';
             {{ post().category }}
           </div>
           <div class="h-px w-12 bg-secondary/10"></div>
-          <time [attr.datetime]="post().date" class="text-small text-secondary/40">
+          <time [attr.datetime]="post().date" class="text-small text-secondary/60">
             OPUBLIKOWANO: {{ post().date | date: 'yyyy.MM.dd' }}
           </time>
         </div>
@@ -62,7 +62,7 @@ import { BlogPost } from '../../blog.model';
         </h2>
 
         <p
-          class="mt-10 text-body sm:text-lg text-secondary/70 border-l-8 border-primary/10 pl-10 italic"
+          class="mt-10 text-body sm:text-lg text-secondary/85 border-l-8 border-primary/10 pl-10 italic"
         >
           {{ post().excerpt }}
         </p>

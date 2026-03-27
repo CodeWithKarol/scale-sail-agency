@@ -17,19 +17,19 @@ import { SeoService } from '../../core/seo/seo.service';
               @if (!last) {
                 <a
                   [routerLink]="item.path"
-                  class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 hover:text-primary transition-all flex items-center gap-2 group"
+                  class="font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/75 hover:text-primary transition-all flex items-center gap-2 group"
                 >
-                  <span class="text-secondary/20">0{{ index + 1 }}</span>
+                  <span class="text-secondary/55">0{{ index + 1 }}</span>
                   <span class="border-b border-transparent group-hover:border-primary">{{
                     item.name
                   }}</span>
                 </a>
-                <span class="text-secondary/10 font-mono text-[10px]" aria-hidden="true">//</span>
+                <span class="text-secondary/50 font-mono text-[10px]" aria-hidden="true">//</span>
               } @else {
                 <div
                   class="flex items-center gap-2 font-mono text-[10px] font-black uppercase tracking-[0.2em]"
                 >
-                  <span class="text-secondary/20">0{{ index + 1 }}</span>
+                  <span class="text-secondary/55">0{{ index + 1 }}</span>
                   <span class="text-secondary" aria-current="page">
                     {{ item.name }}
                   </span>
