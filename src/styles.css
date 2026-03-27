@@ -116,7 +116,7 @@ html {
   }
 
   .card-workshop {
-    @apply border-2 border-secondary/10 bg-white hover:border-primary transition-colors relative;
+    @apply border-2 border-secondary/10 bg-white hover:border-primary transition-all duration-300 relative active:scale-[0.98] cursor-pointer;
   }
 
   .card-workshop::before {
@@ -130,7 +130,7 @@ html {
 
   /* --- Forms --- */
   .input-field {
-    @apply w-full rounded-none border-2 border-secondary/10 bg-white px-5 py-4 text-secondary placeholder:text-secondary/30 font-mono text-sm focus:border-primary focus:outline-none transition-colors;
+    @apply w-full rounded-none border-2 border-secondary/10 bg-white px-5 py-4 text-secondary placeholder:text-secondary/30 font-mono text-base focus:border-primary focus:outline-none transition-colors;
   }
 
   /* --- Technical Patterns --- */

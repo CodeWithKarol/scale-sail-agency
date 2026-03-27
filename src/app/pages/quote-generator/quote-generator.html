@@ -5,291 +5,479 @@
 
   <div class="layout-container relative z-10">
     <!-- Breadcrumbs -->
-    <app-breadcrumb />
+    <app-breadcrumb></app-breadcrumb>
 
-    <div class="flex flex-col xl:flex-row gap-12 pb-16 mt-8">
+    <div class="flex flex-col gap-8 mt-12 mb-12">
+      <!-- Step Indicator -->
+      <div class="flex items-center justify-between max-w-3xl mx-auto w-full px-4 mb-4">
+        <div
+          class="flex flex-col items-center gap-3 group cursor-pointer"
+          (click)="goToStep(1)"
+          (keydown.enter)="goToStep(1)"
+          tabindex="0"
+          role="button"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
+            [class.bg-primary]="currentStep() >= 1"
+            [class.border-primary]="currentStep() >= 1"
+            [class.text-white]="currentStep() >= 1"
+            [class.bg-white]="currentStep() < 1"
+            [class.border-secondary/10]="currentStep() < 1"
+          >
+            <span class="font-black text-lg">01</span>
+          </div>
+          <span
+            class="text-[10px] uppercase font-black tracking-widest transition-colors duration-300"
+            [class.text-primary]="currentStep() >= 1"
+            [class.text-secondary/40]="currentStep() < 1"
+            >Dane</span
+          >
+        </div>
+
+        <div class="flex-grow h-0.5 bg-secondary/10 mx-4 mt-[-20px]">
+          <div
+            class="h-full bg-primary transition-all duration-500"
+            [style.width]="currentStep() > 1 ? '100%' : '0%'"
+          ></div>
+        </div>
+
+        <div
+          class="flex flex-col items-center gap-3 group cursor-pointer"
+          (click)="goToStep(2)"
+          (keydown.enter)="goToStep(2)"
+          tabindex="0"
+          role="button"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
+            [class.bg-primary]="currentStep() >= 2"
+            [class.border-primary]="currentStep() >= 2"
+            [class.text-white]="currentStep() >= 2"
+            [class.bg-white]="currentStep() < 2"
+            [class.border-secondary/10]="currentStep() < 2"
+          >
+            <span class="font-black text-lg">02</span>
+          </div>
+          <span
+            class="text-[10px] uppercase font-black tracking-widest transition-colors duration-300"
+            [class.text-primary]="currentStep() >= 2"
+            [class.text-secondary/40]="currentStep() < 2"
+            >Kosztorys</span
+          >
+        </div>
+
+        <div class="flex-grow h-0.5 bg-secondary/10 mx-4 mt-[-20px]">
+          <div
+            class="h-full bg-primary transition-all duration-500"
+            [style.width]="currentStep() > 2 ? '100%' : '0%'"
+          ></div>
+        </div>
+
+        <div
+          class="flex flex-col items-center gap-3 group cursor-pointer"
+          (click)="goToStep(3)"
+          (keydown.enter)="goToStep(3)"
+          tabindex="0"
+          role="button"
+        >
+          <div
+            class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
+            [class.bg-primary]="currentStep() >= 3"
+            [class.border-primary]="currentStep() >= 3"
+            [class.text-white]="currentStep() >= 3"
+            [class.bg-white]="currentStep() < 3"
+            [class.border-secondary/10]="currentStep() < 3"
+          >
+            <span class="font-black text-lg">03</span>
+          </div>
+          <span
+            class="text-[10px] uppercase font-black tracking-widest transition-colors duration-300"
+            [class.text-primary]="currentStep() >= 3"
+            [class.text-secondary/40]="currentStep() < 3"
+            >Wysyłka</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col xl:flex-row gap-12 pb-16"
+      [class.xl:justify-center]="currentStep() < 3"
+    >
       <!-- Editor Side -->
       @if (!showThankYou()) {
-        <div class="w-full xl:w-1/2 flex flex-col gap-8">
+        <div
+          class="w-full flex flex-col gap-8"
+          [class.xl:w-1/2]="currentStep() === 3"
+          [class.xl:max-w-2xl]="currentStep() < 3"
+        >
           <div class="flex flex-col mb-4">
             <div
               class="inline-flex self-start items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6"
             >
               <span class="w-1.5 h-1.5 bg-primary animate-pulse"></span>
-              Bezpłatne Narzędzie dla Warsztatów
+              Krok {{ currentStep() }}/3:
+              {{
+                currentStep() === 1
+                  ? 'Dane Podstawowe'
+                  : currentStep() === 2
+                    ? 'Szczegóły Wyceny'
+                    : 'Podgląd i Eksport'
+              }}
             </div>
             <h1 class="heading-2 text-secondary leading-tight">
-              Koniec z wycenami w SMS.<br />
-              <span class="text-primary italic">Generuj zaufanie</span> w 60 sekund.
+              @if (currentStep() === 1) {
+                Gdzie serwisujemy? <br />
+                <span class="text-primary italic">Dane warsztatu i klienta.</span>
+              } @else if (currentStep() === 2) {
+                Co naprawiamy? <br />
+                <span class="text-primary italic">Części i robocizna.</span>
+              } @else {
+                Wszystko gotowe? <br />
+                <span class="text-primary italic">Pobierz i wyślij PDF.</span>
+              }
             </h1>
-            <p class="text-body mt-6 max-w-2xl leading-relaxed text-secondary/80">
-              Klienci odrzucają naprawy prewencyjne, bo nie ufają chaotycznym kwotom w
-              wiadomościach. Wpisz dane poniżej, a system na żywo wygeneruje dla Ciebie
-              <span class="font-bold text-secondary">profesjonalny dokument PDF</span>, który zmieni
-              obiekcję "za drogo" w opłacony paragon.
-            </p>
           </div>
+
           <form [formGroup]="quoteForm" class="card p-6 md:p-10 flex flex-col gap-8">
-            <!-- General Data -->
-            <div class="flex flex-col gap-5">
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Nazwa Twojego Warsztatu</span>
-                <input
-                  type="text"
-                  formControlName="companyName"
-                  class="input-field bg-white"
-                  autocomplete="off"
-                />
-              </label>
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Imię i Nazwisko / Firma Klienta</span>
-                <input
-                  type="text"
-                  formControlName="clientName"
-                  class="input-field bg-white"
-                  autocomplete="off"
-                />
-              </label>
-              <label class="flex flex-col gap-2">
-                <span class="text-small"
-                  >Numer Telefonu Klienta
-                  <span class="text-secondary/40 font-medium lowercase normal-case"
-                    >(opcjonalnie)</span
-                  ></span
-                >
-                <input
-                  type="text"
-                  formControlName="clientPhone"
-                  class="input-field bg-white"
-                  autocomplete="off"
-                />
-              </label>
-            </div>
-            <!-- Vehicle Data -->
-            <div class="flex flex-col gap-5 mt-2">
-              <div class="heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2">
-                <lucide-icon [img]="icons.CarFront" size="24" class="text-primary"></lucide-icon>
-                Dane Pojazdu
-              </div>
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Marka Pojazdu</span>
-                <input
-                  type="text"
-                  formControlName="vehicleMake"
-                  class="input-field bg-neutral"
-                  placeholder="np. Toyota"
-                  autocomplete="off"
-                />
-              </label>
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Model Pojazdu</span>
-                <input
-                  type="text"
-                  formControlName="vehicleModel"
-                  class="input-field bg-neutral"
-                  placeholder="np. Corolla 2.0"
-                  autocomplete="off"
-                />
-              </label>
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Numer VIN</span>
-                <input
-                  type="text"
-                  formControlName="vehicleVin"
-                  class="input-field bg-neutral uppercase"
-                  autocomplete="off"
-                />
-              </label>
-              <label class="flex flex-col gap-2">
-                <span class="text-small">Rejestracja</span>
-                <input
-                  type="text"
-                  formControlName="vehiclePlate"
-                  class="input-field bg-neutral uppercase"
-                  autocomplete="off"
-                />
-              </label>
-            </div>
-            <!-- Parts -->
-            <div class="flex flex-col gap-5 mt-2">
-              <div
-                class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
-              >
-                <h2 class="heading-3">Części i Materiały</h2>
-                <button
-                  type="button"
-                  (click)="addPart()"
-                  class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
-                >
-                  <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj część
-                </button>
-              </div>
-              <div formArrayName="parts" class="flex flex-col gap-4">
-                @for (part of parts.controls; track part; let i = $index) {
-                  <div
-                    [formGroupName]="i"
-                    class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
-                  >
-                    @if (parts.length > 1) {
-                      <button
-                        type="button"
-                        (click)="removePart(i)"
-                        class="absolute -top-3 -right-3 w-8 h-8 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
-                      >
-                        <lucide-icon [img]="icons.Trash2" size="14"></lucide-icon>
-                      </button>
-                    }
-
-                    <div class="flex flex-col">
-                      <span
-                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                        >Nazwa części (np. Klocki hamulcowe tył)</span
-                      >
-                      <input
-                        type="text"
-                        formControlName="name"
-                        placeholder="Wpisz nazwę"
-                        class="input-field w-full"
-                        autocomplete="off"
-                      />
-                    </div>
-
-                    <div class="flex flex-col">
-                      <span
-                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                        >Ilość (Sztuk)</span
-                      >
-                      <input
-                        type="number"
-                        formControlName="qty"
-                        placeholder="1"
-                        class="input-field w-full"
-                        autocomplete="off"
-                      />
-                    </div>
-
-                    <div class="flex flex-col">
-                      <span
-                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                        >Cena Zakupu Netto (PLN)</span
-                      >
-                      <input
-                        type="number"
-                        formControlName="netPrice"
-                        placeholder="0.00"
-                        class="input-field w-full bg-secondary/5 font-medium"
-                        autocomplete="off"
-                      />
-                    </div>
-
-                    <div class="flex flex-col">
-                      <span
-                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                        >Narzut Warsztatu (%)</span
-                      >
-                      <input
-                        type="number"
-                        formControlName="markup"
-                        placeholder="30"
-                        class="input-field w-full bg-primary/5 text-primary font-bold"
-                        autocomplete="off"
-                      />
-                    </div>
-
-                    <div
-                      class="flex flex-col mt-2 pt-4 border-t-2 border-dashed border-secondary/10"
+            @if (currentStep() === 1) {
+              <!-- General Data -->
+              <div class="flex flex-col gap-5">
+                <div class="heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2">
+                  <lucide-icon [img]="icons.Mail" size="24" class="text-primary"></lucide-icon>
+                  Informacje Główne
+                </div>
+                <label class="flex flex-col gap-2">
+                  <span class="text-small">Nazwa Twojego Warsztatu</span>
+                  <input
+                    type="text"
+                    formControlName="companyName"
+                    class="input-field bg-white"
+                    autocomplete="off"
+                  />
+                  @if (
+                    quoteForm.get('companyName')?.touched && quoteForm.get('companyName')?.invalid
+                  ) {
+                    <span class="text-xs text-rose-500 font-bold uppercase mt-1"
+                      >Nazwa warsztatu jest wymagana</span
                     >
-                      <span
-                        class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                        >Cena Detaliczna Netto (Dla Klienta)</span
-                      >
-                      <input
-                        type="number"
-                        formControlName="price"
-                        placeholder="0.00"
-                        class="input-field w-full font-bold shadow-sm"
-                        autocomplete="off"
-                      />
-                    </div>
-                  </div>
-                }
-              </div>
-            </div>
-            <!-- Labor -->
-            <div class="flex flex-col gap-5 mt-2">
-              <div
-                class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
-              >
-                <h2 class="heading-3">Robocizna</h2>
-                <button
-                  type="button"
-                  (click)="addLabor()"
-                  class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
-                >
-                  <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj pozycję
-                </button>
-              </div>
-              <div formArrayName="labor" class="flex flex-col gap-4">
-                @for (lab of labor.controls; track lab; let i = $index) {
-                  <div
-                    [formGroupName]="i"
-                    class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
+                  }
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-small">Imię i Nazwisko / Firma Klienta</span>
+                  <input
+                    type="text"
+                    formControlName="clientName"
+                    class="input-field bg-white"
+                    autocomplete="off"
+                  />
+                  @if (
+                    quoteForm.get('clientName')?.touched && quoteForm.get('clientName')?.invalid
+                  ) {
+                    <span class="text-xs text-rose-500 font-bold uppercase mt-1"
+                      >Dane klienta są wymagane</span
+                    >
+                  }
+                </label>
+                <label class="flex flex-col gap-2">
+                  <span class="text-small"
+                    >Numer Telefonu Klienta
+                    <span class="text-secondary/40 font-medium lowercase normal-case"
+                      >(opcjonalnie)</span
+                    ></span
                   >
-                    @if (labor.length > 1) {
-                      <button
-                        type="button"
-                        (click)="removeLabor(i)"
-                        class="absolute -top-3 -right-3 w-8 h-8 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
-                      >
-                        <lucide-icon [img]="icons.Trash2" size="14"></lucide-icon>
-                      </button>
-                    }
+                  <input
+                    type="text"
+                    formControlName="clientPhone"
+                    class="input-field bg-white"
+                    autocomplete="off"
+                  />
+                </label>
+              </div>
+              <!-- Vehicle Data -->
+              <div class="flex flex-col gap-5 mt-2">
+                <div class="heading-3 border-b-2 border-secondary/10 pb-3 flex items-center gap-2">
+                  <lucide-icon [img]="icons.CarFront" size="24" class="text-primary"></lucide-icon>
+                  Dane Pojazdu
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <label class="flex flex-col gap-2">
+                    <span class="text-small">Marka Pojazdu</span>
+                    <input
+                      type="text"
+                      formControlName="vehicleMake"
+                      class="input-field bg-neutral"
+                      placeholder="np. Toyota"
+                      autocomplete="off"
+                    />
+                  </label>
+                  <label class="flex flex-col gap-2">
+                    <span class="text-small">Model Pojazdu</span>
+                    <input
+                      type="text"
+                      formControlName="vehicleModel"
+                      class="input-field bg-neutral"
+                      placeholder="np. Corolla 2.0"
+                      autocomplete="off"
+                    />
+                  </label>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <label class="flex flex-col gap-2">
+                    <span class="text-small">Numer VIN</span>
+                    <input
+                      type="text"
+                      formControlName="vehicleVin"
+                      class="input-field bg-neutral uppercase"
+                      autocomplete="off"
+                    />
+                  </label>
+                  <label class="flex flex-col gap-2">
+                    <span class="text-small">Rejestracja</span>
+                    <input
+                      type="text"
+                      formControlName="vehiclePlate"
+                      class="input-field bg-neutral uppercase"
+                      autocomplete="off"
+                    />
+                  </label>
+                </div>
+              </div>
+            }
 
-                    <div class="flex flex-col gap-4">
+            @if (currentStep() === 2) {
+              <!-- Parts -->
+              <div class="flex flex-col gap-5 mt-2">
+                <div
+                  class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
+                >
+                  <h2 class="heading-3">Części i Materiały</h2>
+                  <button
+                    type="button"
+                    (click)="addPart()"
+                    class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+                  >
+                    <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj część
+                  </button>
+                </div>
+                <div formArrayName="parts" class="flex flex-col gap-4">
+                  @for (part of parts.controls; track part; let i = $index) {
+                    <div
+                      [formGroupName]="i"
+                      class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
+                    >
+                      @if (parts.length > 1) {
+                        <button
+                          type="button"
+                          (click)="removePart(i)"
+                          class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                        >
+                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                        </button>
+                      }
+
                       <div class="flex flex-col">
                         <span
                           class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                          >Opis prac / robocizna</span
+                          >Nazwa części (np. Klocki hamulcowe tył)</span
                         >
                         <input
                           type="text"
                           formControlName="name"
-                          placeholder="np. Wymiana klocków hamulcowych tył"
+                          placeholder="Wpisz nazwę"
                           class="input-field w-full"
                           autocomplete="off"
                         />
                       </div>
-                      <div class="flex flex-col">
-                        <span
-                          class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                          >Czas pracy (Godziny)</span
-                        >
-                        <input
-                          type="number"
-                          step="0.5"
-                          formControlName="hours"
-                          placeholder="1.5"
-                          class="input-field w-full"
-                          autocomplete="off"
-                        />
-                      </div>
-                      <div class="flex flex-col">
-                        <span
-                          class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                          >Stawka roboczogodziny (PLN Netto)</span
-                        >
-                        <input
-                          type="number"
-                          formControlName="rate"
-                          placeholder="200"
-                          class="input-field w-full bg-secondary/5 font-medium"
-                          autocomplete="off"
-                        />
+
+                      <!-- Compact Grid for numbers on mobile -->
+                      <div class="grid grid-cols-2 gap-4">
+                        <div class="flex flex-col">
+                          <span
+                            class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                            >Ilość (Sztuk)</span
+                          >
+                          <input
+                            type="number"
+                            formControlName="qty"
+                            placeholder="1"
+                            class="input-field w-full"
+                            autocomplete="off"
+                          />
+                        </div>
+
+                        <div class="flex flex-col">
+                          <span
+                            class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                            >Cena Zakupu Netto (PLN)</span
+                          >
+                          <input
+                            type="number"
+                            formControlName="netPrice"
+                            placeholder="0.00"
+                            class="input-field w-full bg-secondary/5 font-medium"
+                            autocomplete="off"
+                          />
+                        </div>
+
+                        <div class="flex flex-col">
+                          <span
+                            class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                            >Narzut Warsztatu (%)</span
+                          >
+                          <input
+                            type="number"
+                            formControlName="markup"
+                            placeholder="30"
+                            class="input-field w-full bg-primary/5 text-primary font-bold"
+                            autocomplete="off"
+                          />
+                        </div>
+
+                        <div class="flex flex-col">
+                          <span
+                            class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                            >Cena Detaliczna Netto</span
+                          >
+                          <input
+                            type="number"
+                            formControlName="price"
+                            placeholder="0.00"
+                            class="input-field w-full font-bold shadow-sm"
+                            autocomplete="off"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                }
+                  }
+                </div>
               </div>
+              <!-- Labor -->
+              <div class="flex flex-col gap-5 mt-2">
+                <div
+                  class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
+                >
+                  <h2 class="heading-3">Robocizna</h2>
+                  <button
+                    type="button"
+                    (click)="addLabor()"
+                    class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+                  >
+                    <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj pozycję
+                  </button>
+                </div>
+                <div formArrayName="labor" class="flex flex-col gap-4">
+                  @for (lab of labor.controls; track lab; let i = $index) {
+                    <div
+                      [formGroupName]="i"
+                      class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
+                    >
+                      @if (labor.length > 1) {
+                        <button
+                          type="button"
+                          (click)="removeLabor(i)"
+                          class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                        >
+                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                        </button>
+                      }
+
+                      <div class="flex flex-col gap-4">
+                        <div class="flex flex-col">
+                          <span
+                            class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                            >Opis prac / robocizna</span
+                          >
+                          <input
+                            type="text"
+                            formControlName="name"
+                            placeholder="np. Wymiana klocków hamulcowych tył"
+                            class="input-field w-full"
+                            autocomplete="off"
+                          />
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                          <div class="flex flex-col">
+                            <span
+                              class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                              >Czas (h)</span
+                            >
+                            <input
+                              type="number"
+                              step="0.5"
+                              formControlName="hours"
+                              placeholder="1.5"
+                              class="input-field w-full"
+                              autocomplete="off"
+                            />
+                          </div>
+                          <div class="flex flex-col">
+                            <span
+                              class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
+                              >Stawka/h</span
+                            >
+                            <input
+                              type="number"
+                              formControlName="rate"
+                              placeholder="200"
+                              class="input-field w-full bg-secondary/5 font-medium"
+                              autocomplete="off"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+
+            @if (currentStep() === 3) {
+              <div class="flex flex-col gap-6">
+                <div class="bg-primary/5 p-6 border-l-4 border-primary">
+                  <p class="text-secondary/70 text-sm leading-relaxed">
+                    Sprawdź podgląd po prawej stronie (lub poniżej na telefonie). Jeśli wszystko się
+                    zgadza, kliknij przycisk
+                    <span class="font-bold text-secondary">Wyślij PDF</span>, aby otrzymać gotowy
+                    plik na e-mail.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  (click)="openDownloadModal()"
+                  class="btn btn-primary btn-lg w-full flex items-center justify-center gap-3"
+                >
+                  <lucide-icon [img]="icons.Download" size="20"></lucide-icon>
+                  Wyślij PDF na swój e-mail
+                </button>
+              </div>
+            }
+
+            <!-- Step Navigation Buttons -->
+            <div
+              class="flex items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-secondary/10"
+            >
+              @if (currentStep() > 1) {
+                <button
+                  type="button"
+                  (click)="prevStep()"
+                  class="btn btn-ghost py-4 px-6 flex items-center gap-2"
+                >
+                  <lucide-icon [img]="icons.ArrowLeft" size="18"></lucide-icon>
+                  Wstecz
+                </button>
+              }
+              @if (currentStep() < 3) {
+                <button
+                  type="button"
+                  (click)="nextStep()"
+                  class="btn btn-primary flex-grow py-4 flex items-center justify-center gap-2"
+                >
+                  Dalej
+                  <lucide-icon [img]="icons.ArrowRight" size="18"></lucide-icon>
+                </button>
+              }
             </div>
           </form>
         </div>
@@ -349,292 +537,273 @@
       }
 
       <!-- Preview Side -->
-      <div class="w-full xl:w-1/2 flex flex-col">
+      <div class="w-full xl:w-1/2 flex flex-col" [class.hidden]="currentStep() < 3">
         <div class="sticky top-[100px] flex flex-col gap-6">
           <div class="flex flex-wrap items-center justify-between gap-4">
             <h2 class="heading-4 text-secondary flex items-center gap-3">
               Podgląd Wydruku
               <span class="status-badge font-black">Na żywo</span>
             </h2>
-            @if (!showThankYou()) {
-              <button
-                (click)="openDownloadModal()"
-                class="btn btn-primary btn-md flex items-center gap-2 whitespace-nowrap"
-              >
-                <lucide-icon [img]="icons.Download" size="18"></lucide-icon>
-                Wyślij PDF
-              </button>
-            }
           </div>
 
           <!-- The A4 Sheet Visualization container -->
           <div
-            class="w-full bg-slate-200 py-6 sm:py-8 px-2 rounded-3xl shadow-[inset_0_2px_18px_rgba(0,0,0,0.08)] border border-slate-300 flex justify-center items-start overflow-auto"
+            class="w-full bg-slate-200 py-6 sm:py-8 px-4 rounded-3xl shadow-[inset_0_2px_18px_rgba(0,0,0,0.08)] border border-slate-300 overflow-x-hidden overflow-y-auto text-center"
             style="max-height: calc(100vh - 160px)"
           >
-            <div class="flex justify-center" style="zoom: 0.7; width: 100%">
+            <div
+              class="bg-white w-full max-w-[794px] min-h-[1123px] text-black p-8 sm:p-16 flex flex-col relative shadow-md pdf-content-sheet text-left mx-auto"
+              #pdfContent
+            >
+              <!-- Header -->
               <div
-                class="bg-white min-w-[794px] w-[794px] min-h-[1123px] text-black p-16 flex flex-col relative shadow-md shrink-0"
-                #pdfContent
+                class="flex justify-between items-start border-b-[3px] border-slate-800 pb-8 mb-10"
               >
-                <!-- Header -->
-                <div
-                  class="flex justify-between items-start border-b-[3px] border-slate-800 pb-8 mb-10"
-                >
-                  <div class="flex flex-col">
-                    <h1
-                      class="text-[2.5rem] leading-none font-extrabold text-slate-800 tracking-tight uppercase"
-                    >
-                      Kosztorys
-                    </h1>
-                    <div class="text-[2rem] leading-none font-bold text-slate-400 mb-2 uppercase">
-                      Naprawy
-                    </div>
-                    <div class="mt-2 text-slate-500 font-medium text-sm">
-                      Data wystawienia: {{ today | date: 'dd.MM.yyyy' }}
-                    </div>
+                <div class="flex flex-col">
+                  <h1
+                    class="text-[2.5rem] leading-none font-extrabold text-slate-800 tracking-tight uppercase"
+                  >
+                    Kosztorys
+                  </h1>
+                  <div class="text-[2rem] leading-none font-bold text-slate-400 mb-2 uppercase">
+                    Naprawy
                   </div>
-                  <div class="flex flex-col text-right">
-                    <div class="text-2xl font-bold text-slate-800 max-w-[300px] break-words">
-                      {{ quoteForm.get('companyName')?.value || 'Brak nazwy warsztatu' }}
+                  <div class="mt-2 text-slate-500 font-medium text-sm">
+                    Data wystawienia: {{ today | date: 'dd.MM.yyyy' }}
+                  </div>
+                </div>
+                <div class="flex flex-col text-right">
+                  <div class="text-2xl font-bold text-slate-800 max-w-[300px] break-words">
+                    {{ quoteForm.get('companyName')?.value || 'Brak nazwy warsztatu' }}
+                  </div>
+                  <div class="text-sm mt-2 text-slate-400 italic">
+                    Dokument wygenerowany elektronicznie
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer & Vehicle -->
+              <div class="grid grid-cols-2 gap-8 mb-10">
+                <div
+                  class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
+                >
+                  <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
+                    Dane Klienta
+                  </div>
+                  <div class="font-bold text-xl text-slate-800 break-words">
+                    {{ quoteForm.get('clientName')?.value || '_______________________' }}
+                  </div>
+                  @if (quoteForm.get('clientPhone')?.value) {
+                    <div class="text-slate-600 mt-2 font-medium break-words">
+                      Tel: {{ quoteForm.get('clientPhone')?.value }}
                     </div>
-                    <div class="text-sm mt-2 text-slate-400 italic">
-                      Dokument wygenerowany elektronicznie
+                  }
+                </div>
+                <div
+                  class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
+                >
+                  <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
+                    Dane Pojazdu
+                  </div>
+                  <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[15px] text-slate-700">
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Marka:</span
+                      >
+                      <span class="font-bold text-slate-800 break-words leading-tight">{{
+                        quoteForm.get('vehicleMake')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Model:</span
+                      >
+                      <span class="font-bold text-slate-800 break-words leading-tight">{{
+                        quoteForm.get('vehicleModel')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
+                        >Nr Rej:</span
+                      >
+                      <span class="font-bold text-slate-800 break-words leading-tight">{{
+                        quoteForm.get('vehiclePlate')?.value || '---'
+                      }}</span>
+                    </div>
+                    <div class="flex flex-col">
+                      <span class="font-semibold text-slate-500 text-xs mb-1 uppercase">VIN:</span>
+                      <span
+                        class="font-mono text-[13px] text-slate-800 break-words leading-tight"
+                        >{{ quoteForm.get('vehicleVin')?.value || '-----------------' }}</span
+                      >
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <!-- Customer & Vehicle -->
-                <div class="grid grid-cols-2 gap-8 mb-10">
-                  <div
-                    class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
-                  >
-                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
-                      Dane Klienta
-                    </div>
-                    <div class="font-bold text-xl text-slate-800 break-words">
-                      {{ quoteForm.get('clientName')?.value || '_______________________' }}
-                    </div>
-                    @if (quoteForm.get('clientPhone')?.value) {
-                      <div class="text-slate-600 mt-2 font-medium break-words">
-                        Tel: {{ quoteForm.get('clientPhone')?.value }}
-                      </div>
+              <!-- Parts Table -->
+              <div class="mb-8">
+                <h3 class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4">
+                  Materiały i Części
+                </h3>
+                <table class="w-full text-[15px] text-left border-collapse table-fixed">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
+                      <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
+                      <th class="p-3 w-[47%] font-bold break-words">Nazwa Towaru / Części</th>
+                      <th class="p-3 w-[15%] text-center font-bold break-words">Ilość</th>
+                      <th class="p-3 w-[15%] text-right font-bold break-words">Cena jedn.</th>
+                      <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
+                        Wartość
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (part of parts.controls; track part; let i = $index) {
+                      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                        <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
+                        <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
+                          {{ part.get('name')?.value || '---' }}
+                        </td>
+                        <td class="p-3 text-center text-slate-600 font-medium break-words">
+                          {{ part.get('qty')?.value }} szt.
+                        </td>
+                        <td class="p-3 text-right text-slate-600 break-words">
+                          {{
+                            part.get('price')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                        <td class="p-3 text-right font-bold text-slate-800 break-words">
+                          {{
+                            part.get('qty')?.value * part.get('price')?.value
+                              | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                      </tr>
                     }
+                    @if (parts.length === 0) {
+                      <tr>
+                        <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
+                          Brak części dopisanych do zlecenia.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Labor Table -->
+              <div class="mb-8 flex-grow">
+                <h3 class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4">
+                  Czynności Serwisowe (Robocizna)
+                </h3>
+                <table class="w-full text-[15px] text-left border-collapse table-fixed">
+                  <thead>
+                    <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
+                      <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
+                      <th class="p-3 w-[47%] font-bold break-words">Opis Wykonanej Pracy</th>
+                      <th class="p-3 w-[15%] text-center font-bold break-words">Czas (h)</th>
+                      <th class="p-3 w-[15%] text-right font-bold break-words">Stawka/h</th>
+                      <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
+                        Wartość
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (lab of labor.controls; track lab; let i = $index) {
+                      <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
+                        <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
+                        <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
+                          {{ lab.get('name')?.value || '---' }}
+                        </td>
+                        <td class="p-3 text-center text-slate-600 font-medium break-words">
+                          {{ lab.get('hours')?.value }}
+                        </td>
+                        <td class="p-3 text-right text-slate-600 break-words">
+                          {{ lab.get('rate')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}
+                        </td>
+                        <td class="p-3 text-right font-bold text-slate-800 break-words">
+                          {{
+                            lab.get('hours')?.value * lab.get('rate')?.value
+                              | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                          }}
+                        </td>
+                      </tr>
+                    }
+                    @if (labor.length === 0) {
+                      <tr>
+                        <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
+                          Brak usług serwisowych dopisanych do zlecenia.
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Totals -->
+              <div
+                class="flex justify-between items-end pt-8 border-t-[3px] border-slate-800 mt-auto gap-8"
+              >
+                <!-- Signatures placeholder -->
+                <div class="flex flex-col gap-14 text-slate-500 text-sm font-semibold pb-4">
+                  <div
+                    class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
+                  >
+                    Podpis Wystawiającego
                   </div>
                   <div
-                    class="flex flex-col p-5 bg-slate-50 border border-slate-100 rounded-xl overflow-hidden"
+                    class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
                   >
-                    <div class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3">
-                      Dane Pojazdu
-                    </div>
-                    <div class="grid grid-cols-2 gap-y-4 gap-x-2 text-[15px] text-slate-700">
-                      <div class="flex flex-col">
-                        <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
-                          >Marka:</span
-                        >
-                        <span class="font-bold text-slate-800 break-words leading-tight">{{
-                          quoteForm.get('vehicleMake')?.value || '---'
-                        }}</span>
-                      </div>
-                      <div class="flex flex-col">
-                        <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
-                          >Model:</span
-                        >
-                        <span class="font-bold text-slate-800 break-words leading-tight">{{
-                          quoteForm.get('vehicleModel')?.value || '---'
-                        }}</span>
-                      </div>
-                      <div class="flex flex-col">
-                        <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
-                          >Nr Rej:</span
-                        >
-                        <span class="font-bold text-slate-800 break-words leading-tight">{{
-                          quoteForm.get('vehiclePlate')?.value || '---'
-                        }}</span>
-                      </div>
-                      <div class="flex flex-col">
-                        <span class="font-semibold text-slate-500 text-xs mb-1 uppercase"
-                          >VIN:</span
-                        >
-                        <span
-                          class="font-mono text-[13px] text-slate-800 break-words leading-tight"
-                          >{{ quoteForm.get('vehicleVin')?.value || '-----------------' }}</span
-                        >
-                      </div>
-                    </div>
+                    Podpis Akceptującego
                   </div>
                 </div>
 
-                <!-- Parts Table -->
-                <div class="mb-8">
-                  <h3
-                    class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4"
-                  >
-                    Materiały i Części
-                  </h3>
-                  <table class="w-full text-[15px] text-left border-collapse table-fixed">
-                    <thead>
-                      <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
-                        <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
-                        <th class="p-3 w-[47%] font-bold break-words">Nazwa Towaru / Części</th>
-                        <th class="p-3 w-[15%] text-center font-bold break-words">Ilość</th>
-                        <th class="p-3 w-[15%] text-right font-bold break-words">Cena jedn.</th>
-                        <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
-                          Wartość
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @for (part of parts.controls; track part; let i = $index) {
-                        <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
-                          <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
-                          <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
-                            {{ part.get('name')?.value || '---' }}
-                          </td>
-                          <td class="p-3 text-center text-slate-600 font-medium break-words">
-                            {{ part.get('qty')?.value }} szt.
-                          </td>
-                          <td class="p-3 text-right text-slate-600 break-words">
-                            {{
-                              part.get('price')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                            }}
-                          </td>
-                          <td class="p-3 text-right font-bold text-slate-800 break-words">
-                            {{
-                              part.get('qty')?.value * part.get('price')?.value
-                                | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                            }}
-                          </td>
-                        </tr>
-                      }
-                      @if (parts.length === 0) {
-                        <tr>
-                          <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
-                            Brak części dopisanych do zlecenia.
-                          </td>
-                        </tr>
-                      }
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Labor Table -->
-                <div class="mb-8 flex-grow">
-                  <h3
-                    class="text-xl font-bold text-slate-800 border-b-2 border-slate-200 pb-2 mb-4"
-                  >
-                    Czynności Serwisowe (Robocizna)
-                  </h3>
-                  <table class="w-full text-[15px] text-left border-collapse table-fixed">
-                    <thead>
-                      <tr class="bg-slate-100 text-slate-600 border-b-2 border-slate-200">
-                        <th class="p-3 w-[8%] text-center font-bold rounded-tl-lg">Lp.</th>
-                        <th class="p-3 w-[47%] font-bold break-words">Opis Wykonanej Pracy</th>
-                        <th class="p-3 w-[15%] text-center font-bold break-words">Czas (h)</th>
-                        <th class="p-3 w-[15%] text-right font-bold break-words">Stawka/h</th>
-                        <th class="p-3 w-[15%] text-right font-bold rounded-tr-lg break-words">
-                          Wartość
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @for (lab of labor.controls; track lab; let i = $index) {
-                        <tr class="border-b border-slate-100 last:border-0 hover:bg-slate-50">
-                          <td class="p-3 text-center text-slate-400 font-mono">{{ i + 1 }}</td>
-                          <td class="p-3 font-semibold text-slate-800 break-words leading-tight">
-                            {{ lab.get('name')?.value || '---' }}
-                          </td>
-                          <td class="p-3 text-center text-slate-600 font-medium break-words">
-                            {{ lab.get('hours')?.value }}
-                          </td>
-                          <td class="p-3 text-right text-slate-600 break-words">
-                            {{
-                              lab.get('rate')?.value | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                            }}
-                          </td>
-                          <td class="p-3 text-right font-bold text-slate-800 break-words">
-                            {{
-                              lab.get('hours')?.value * lab.get('rate')?.value
-                                | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
-                            }}
-                          </td>
-                        </tr>
-                      }
-                      @if (labor.length === 0) {
-                        <tr>
-                          <td colspan="5" class="p-6 text-center text-slate-400 italic font-medium">
-                            Brak usług serwisowych dopisanych do zlecenia.
-                          </td>
-                        </tr>
-                      }
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Totals -->
                 <div
-                  class="flex justify-between items-end pt-8 border-t-[3px] border-slate-800 mt-auto gap-8"
+                  class="w-full max-w-[500px] flex flex-col p-6 bg-slate-100 border border-slate-200 rounded-3xl shadow-sm gap-4 overflow-hidden"
                 >
-                  <!-- Signatures placeholder -->
-                  <div class="flex flex-col gap-14 text-slate-500 text-sm font-semibold pb-4">
-                    <div
-                      class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
+                  <div class="flex flex-col border-b border-slate-200/50 pb-3">
+                    <span
+                      class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
+                      >Kwota netto</span
                     >
-                      Podpis Wystawiającego
-                    </div>
-                    <div
-                      class="w-48 border-t-2 border-slate-300 pt-2 text-center text-[10px] uppercase tracking-wider"
+                    <span
+                      class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                      >{{ subtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                     >
-                      Podpis Akceptującego
-                    </div>
                   </div>
-
-                  <div
-                    class="w-full max-w-[500px] flex flex-col p-6 bg-slate-100 border border-slate-200 rounded-3xl shadow-sm gap-4 overflow-hidden"
-                  >
-                    <div class="flex flex-col border-b border-slate-200/50 pb-3">
-                      <span
-                        class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
-                        >Kwota netto</span
-                      >
-                      <span
-                        class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
-                        >{{ subtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
-                      >
-                    </div>
-                    <div class="flex flex-col border-b border-slate-200/50 pb-3">
-                      <span
-                        class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
-                        >VAT (23%)</span
-                      >
-                      <span
-                        class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
-                        >{{ vat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
-                      >
-                    </div>
-                    <div class="flex flex-col pt-2">
-                      <span
-                        class="text-slate-900 uppercase text-[11px] font-black tracking-tighter mb-1"
-                        >Suma do zapłaty (Brutto)</span
-                      >
-                      <span
-                        class="font-black text-rose-600 text-lg sm:text-xl tracking-tighter drop-shadow-sm text-right whitespace-nowrap tabular-nums leading-none font-mono"
-                        >{{ total() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
-                      >
-                    </div>
+                  <div class="flex flex-col border-b border-slate-200/50 pb-3">
+                    <span
+                      class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
+                      >VAT (23%)</span
+                    >
+                    <span
+                      class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                      >{{ vat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                    >
+                  </div>
+                  <div class="flex flex-col pt-2">
+                    <span
+                      class="text-slate-900 uppercase text-[11px] font-black tracking-tighter mb-1"
+                      >Suma do zapłaty (Brutto)</span
+                    >
+                    <span
+                      class="font-black text-rose-600 text-lg sm:text-xl tracking-tighter drop-shadow-sm text-right whitespace-nowrap tabular-nums leading-none font-mono"
+                      >{{ total() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
+                    >
                   </div>
                 </div>
+              </div>
 
-                <!-- Footer Legal -->
-                <div
-                  class="mt-12 text-[11px] leading-relaxed text-justify text-slate-400 pt-5 border-t border-slate-200 uppercase tracking-wider font-bold"
-                >
-                  Powyższa wycena jest wyłącznie dokumentem poglądowym (kosztorysem przednaprawczym)
-                  i nie stanowi stanowczej oferty handlowej w rozumieniu Art. 66 par. 1 Kodeksu
-                  Cywilnego. Warsztat zastrzega prawo do korekty kosztów ze względu na ukryte
-                  uszkodzenia pojazdu, nienadzorowalne trudności demontażowe (np. zapieczone śruby)
-                  oraz zmiany cen podzespołów u dostawców w trakcie trwania naprawy.
-                </div>
+              <!-- Footer Legal -->
+              <div
+                class="mt-12 text-[11px] leading-relaxed text-justify text-slate-400 pt-5 border-t border-slate-200 uppercase tracking-wider font-bold"
+              >
+                Powyższa wycena jest wyłącznie dokumentem poglądowym (kosztorysem przednaprawczym) i
+                nie stanowi stanowczej oferty handlowej w rozumieniu Art. 66 par. 1 Kodeksu
+                Cywilnego. Warsztat zastrzega prawo do korekty kosztów ze względu na ukryte
+                uszkodzenia pojazdu, nienadzorowalne trudności demontażowe (np. zapieczone śruby)
+                oraz zmiany cen podzespołów u dostawców w trakcie trwania naprawy.
               </div>
             </div>
           </div>

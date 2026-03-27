@@ -9,7 +9,7 @@
     </div>
 
     <!-- Mobile Menu Button -->
-    <div class="flex xl:hidden">
+    <div class="flex lg:hidden">
       <button
         type="button"
         class="inline-flex items-center justify-center p-3 text-secondary hover:text-primary hover:bg-neutral transition-all border-2 border-transparent hover:border-secondary/10 group rounded-none"
@@ -25,26 +25,27 @@
     </div>
 
     <!-- Desktop Nav (Flat Structure) -->
-    <div class="hidden xl:flex xl:gap-x-1">
+    <div class="hidden lg:flex lg:items-center lg:gap-x-0">
       @for (item of navigation; track item.name; let index = $index) {
         <a
           [routerLink]="item.path"
           [fragment]="item.fragment"
-          class="relative px-4 py-2 font-mono text-[10px] font-black uppercase tracking-[0.2em] text-secondary/60 hover:text-primary transition-all group cursor-pointer flex items-center"
+          class="relative px-2 xl:px-4 py-2 font-mono text-[9px] xl:text-[10px] font-black uppercase tracking-widest xl:tracking-[0.2em] text-secondary/60 hover:text-primary transition-all group cursor-pointer flex items-center"
         >
-          <span class="text-secondary/10 mr-2 group-hover:text-primary/30 transition-colors"
+          <span
+            class="hidden xl:inline text-secondary/10 mr-2 group-hover:text-primary/30 transition-colors"
             >0{{ index + 1 }}</span
           >
           {{ item.name }}
           <span
-            class="absolute bottom-0 left-4 right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+            class="absolute bottom-0 left-2 xl:left-4 right-2 xl:right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
           ></span>
         </a>
       }
     </div>
 
     <!-- Desktop CTA -->
-    <div class="hidden xl:flex xl:flex-1 xl:justify-end shrink-0">
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end shrink-0">
       <app-button
         href="/consultation"
         variant="primary"
