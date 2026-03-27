@@ -47,7 +47,7 @@ import { BlogPost } from '../../blog.model';
             {{ post().category }}
           </div>
           <div class="h-px w-6 bg-secondary/10"></div>
-          <time [attr.datetime]="post().date" class="text-small text-secondary/40">
+          <time [attr.datetime]="post().date" class="text-small text-secondary/60">
             {{ post().date | date: 'yyyy.MM.dd' }}
           </time>
         </div>
@@ -62,14 +62,14 @@ import { BlogPost } from '../../blog.model';
         </h3>
 
         <p
-          class="mt-6 flex-auto line-clamp-3 text-body text-secondary/70 border-l-4 border-secondary/10 pl-5 group-hover:border-primary/30 transition-colors"
+          class="mt-6 flex-auto line-clamp-3 text-body text-secondary/85 border-l-4 border-secondary/10 pl-5 group-hover:border-primary/30 transition-colors"
         >
           {{ post().excerpt }}
         </p>
 
         <div class="mt-10 flex items-center pt-6 w-full border-t-2 border-secondary/5">
           <div
-            class="group/link inline-flex items-center gap-3 text-small text-secondary/40 group-hover:text-primary transition-colors"
+            class="group/link inline-flex items-center gap-3 text-small text-secondary/60 group-hover:text-primary transition-colors"
           >
             CZYTAJ ARTYKUŁ
             <span

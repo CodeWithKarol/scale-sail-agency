@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
+export interface Screenshot {
+  url: string;
+  description: string;
+}
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -12,7 +17,7 @@ export interface CaseStudy {
   technicalApproach: string;
   results: string[];
   techStack: string[];
-  screenshots: string[];
+  screenshots: (string | Screenshot)[];
   demoUrl?: string;
   repoUrl?: string;
 }
@@ -42,15 +47,46 @@ const CASE_STUDIES: CaseStudy[] = [
       'Układ, który łatwo dostosować pod konkretną branżę',
     ],
     screenshots: [
-      '/images/admin-panel/admin-panel-1.webp',
-      '/images/admin-panel/admin-panel-2.webp',
-      '/images/admin-panel/admin-panel-3.webp',
-      '/images/admin-panel/admin-panel-4.webp',
-      '/images/admin-panel/admin-panel-5.webp',
-      '/images/admin-panel/admin-panel-6.webp',
-      '/images/admin-panel/admin-panel-7.webp',
-      '/images/admin-panel/admin-panel-8.webp',
-      '/images/admin-panel/admin-panel-9.webp',
+      {
+        url: '/images/admin-panel/admin-panel-1.webp',
+        description:
+          'Główny dashboard: Agregacja kluczowych wskaźników biznesowych w czasie rzeczywistym.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-2.webp',
+        description:
+          'Zaawansowane filtrowanie: Błyskawiczne wyszukiwanie w zbiorze ponad 50 000 rekordów.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-3.webp',
+        description: 'Widok kalendarza: Intuicyjne zarządzanie harmonogramem i zasobami firmy.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-4.webp',
+        description: 'Szczegóły operacji: Pełna historia i śledzenie zmian dla każdego zlecenia.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-5.webp',
+        description: 'Raporty i analityka: Automatyczne generowanie zestawień finansowych.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-6.webp',
+        description:
+          'Tryb ciemny: Zoptymalizowany interfejs zapewniający komfort pracy przy słabym oświetleniu.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-7.webp',
+        description: 'Zarządzanie użytkownikami: Elastyczny system ról i uprawnień dostępu.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-8.webp',
+        description: 'Integracje zewnętrzne: Automatyczny import danych z systemów kurierskich.',
+      },
+      {
+        url: '/images/admin-panel/admin-panel-9.webp',
+        description:
+          'Weryfikacja danych: System automatycznych alertów przy wykryciu nieścisłości.',
+      },
     ],
     demoUrl: 'https://www.admin-panel.scale-sail.io/',
     repoUrl: 'https://github.com/CodeWithKarol/admin-panel',

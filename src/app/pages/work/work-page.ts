@@ -38,12 +38,12 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
         <div
           class="max-w-4xl border-l-8 border-primary/10 pl-10 py-8 bg-white/5 mb-24 animate-in fade-in slide-in-from-left-4 duration-700 delay-200"
         >
-          <p class="text-body sm:text-lg text-secondary/70 italic">
+          <p class="text-body sm:text-lg text-secondary/90 italic">
             Część poniższych projektów to przykładowe realizacje stworzone na potrzeby portfolio –
             pokazują poziom złożoności, jakość frontendu i podejście do projektowania paneli, z
             których później korzystają prawdziwi użytkownicy.
           </p>
-          <div class="mt-6 text-small text-secondary/30">GWARANCJA JAKOŚCI: WYSOKI STANDARD</div>
+          <div class="mt-6 text-small text-secondary/75">GWARANCJA JAKOŚCI: WYSOKI STANDARD</div>
         </div>
 
         <!-- Projects List -->
@@ -81,7 +81,7 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
         <!-- Contextual Internal Linking (SEO & Flow) -->
         <div class="mt-32 py-20 border-t-2 border-dashed border-secondary/10 text-center relative">
           <h2 class="heading-2 text-secondary mb-6">Widzisz tu logikę, której szukasz?</h2>
-          <p class="text-lg text-secondary/70 mb-12 max-w-2xl mx-auto">
+          <p class="text-lg text-secondary/90 mb-12 max-w-2xl mx-auto">
             Jeśli chcesz przenieść tę inżynieryjną stabilność do swojego systemu operacyjnego,
             porozmawiajmy o tym, co możemy zautomatyzować.
           </p>
