@@ -12,8 +12,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
-import { jsPDF } from 'jspdf';
-import { toJpeg } from 'html-to-image';
 import {
   LucideAngularModule,
   Plus,
@@ -80,6 +78,10 @@ export class QuoteGenerator implements OnInit {
   }
 
   goToStep(step: number) {
+    if (this.showThankYou()) {
+      this.showThankYou.set(false);
+    }
+
     if (step < this.currentStep()) {
       this.currentStep.set(step);
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -261,9 +263,6 @@ export class QuoteGenerator implements OnInit {
     this.labor.removeAt(i);
   }
 
-  // No longer needed as we use computed signals:
-  // getSubtotal(), getVat(), getTotal()
-
   openDownloadModal() {
     this.turnstileToken.set(null);
     this.showEmailModal.set(true);
@@ -291,23 +290,24 @@ export class QuoteGenerator implements OnInit {
 
     if (this.turnstileToken()) {
       this.isGenerating.set(true);
-      console.log('Przygotowuję PDF dla: ', this.emailForm.value.email);
-
-      // We use requestAnimationFrame to ensure the UI has updated (e.g. loader shown)
-      // before starting the heavy PDF generation process.
-      await new Promise((r) => requestAnimationFrame(r));
 
       try {
-        await this.generatePDF();
+        await this.sendQuoteDataToWebhook();
         this.showEmailModal.set(false);
         this.showThankYou.set(true);
       } catch (e: unknown) {
         const err = e as Error;
-        alert(`Błąd pliku PDF lub wysyłki: ${err?.message || err}`);
+        alert(`Wystąpił błąd podczas wysyłania wyceny: ${err?.message || err}`);
       } finally {
         this.isGenerating.set(false);
       }
     }
+  }
+
+  editCurrentQuote() {
+    this.showThankYou.set(false);
+    this.currentStep.set(2);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   resetFormAndStartOver() {
@@ -329,94 +329,34 @@ export class QuoteGenerator implements OnInit {
     this.addLabor();
   }
 
-  async generatePDF() {
-    const contentRef = this.pdfContent();
-    if (!contentRef) return;
-    const data = contentRef.nativeElement;
+  async sendQuoteDataToWebhook() {
+    const payload = {
+      email: this.emailForm.value.email,
+      turnstileToken: this.turnstileToken(),
+      quote: {
+        ...this.quoteForm.value,
+        totals: {
+          subtotal: this.subtotal(),
+          vat: this.vat(),
+          total: this.total(),
+        },
+      },
+    };
 
-    // Grabbing wrappers to disable scroll clipping and zoom
-    const zoomWrapper = data.parentElement;
-    const scrollContainer = zoomWrapper?.parentElement;
+    const WEBHOOK_URL = 'https://hook.eu1.make.com/fy4l7t5fxbm1fi42hxw2za4ttn3uqpoy';
 
-    const originalZoom = zoomWrapper ? zoomWrapper.style.zoom : '';
-    const originalOverflow = scrollContainer ? scrollContainer.style.overflow : '';
-    const originalMaxHeight = scrollContainer ? scrollContainer.style.maxHeight : '';
+    console.log('Wysyłam JSON do webhooka Make...', payload);
 
-    try {
-      // 1. Un-constrain the DOM so html-to-image can capture the full height without scroll clipping
-      if (zoomWrapper) zoomWrapper.style.zoom = '1';
-      if (scrollContainer) {
-        scrollContainer.style.overflow = 'visible';
-        scrollContainer.style.maxHeight = 'none';
-      }
+    const response = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
 
-      // Wait for browser to reflow the layout using requestAnimationFrame
-      await new Promise((r) => requestAnimationFrame(r));
-
-      const imgData = await toJpeg(data, {
-        quality: 0.75,
-        pixelRatio: 1.5,
-        cacheBust: true,
-        skipFonts: true,
-      });
-
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgProps = pdf.getImageProperties(imgData);
-
-      const pdfPageWidth = pdf.internal.pageSize.getWidth(); // A4 width ~ 210mm
-      const pdfPageHeight = pdf.internal.pageSize.getHeight(); // A4 height ~ 297mm
-
-      // 2. Scale proportionally to fit entirely on ONE page
-      let finalWidth = pdfPageWidth;
-      let finalHeight = (imgProps.height * pdfPageWidth) / imgProps.width;
-
-      if (finalHeight > pdfPageHeight) {
-        finalHeight = pdfPageHeight;
-        finalWidth = (imgProps.width * pdfPageHeight) / imgProps.height;
-      }
-
-      const xOffset = (pdfPageWidth - finalWidth) / 2;
-
-      pdf.addImage(imgData, 'JPEG', xOffset, 0, finalWidth, finalHeight);
-
-      // === NOWE: Przygotowanie paczki dla Webhooka zamiast pobierania ===
-      const pdfBlob = pdf.output('blob');
-      const formData = new FormData();
-      // Zmiana nazwy pola na 'data' – tego domyślnie oczekuje n8n w swoich modułach (np. Gmail)
-      formData.append('data', pdfBlob, `Wycena_${this.quoteForm.value.clientName || 'Klient'}.pdf`);
-      formData.append('email', this.emailForm.value.email);
-      formData.append('companyName', this.quoteForm.value.companyName || '');
-      formData.append('clientName', this.quoteForm.value.clientName || '');
-      formData.append('cf-turnstile-response', this.turnstileToken() || '');
-
-      // Adres Twojego webhooka z n8n/Make/Zapier
-      const WEBHOOK_URL = 'https://hook.eu1.make.com/yd904he1om2qyevj8aktgk35rjfr4gx9';
-
-      console.log('Wysyłam zapytanie do webhooka...', formData);
-
-      // Symulacja opóźnienia sieciowego (usunąć w produkcji)
-      await new Promise((r) => setTimeout(r, 1000));
-
-      // ODKOMENTUJ poniższy kod, aby fizycznie strzelać do webhooka:
-
-      const response = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        body: formData,
-      });
-      if (!response.ok) {
-        throw new Error('Błąd komunikacji z Webhookiem');
-      }
-    } catch (e: unknown) {
-      const err = e as Error;
-      console.error('Failed to generate PDF', err);
-      throw err;
-    } finally {
-      // 3. Restore all original styles
-      if (zoomWrapper) zoomWrapper.style.zoom = originalZoom;
-      if (scrollContainer) {
-        scrollContainer.style.overflow = originalOverflow;
-        scrollContainer.style.maxHeight = originalMaxHeight;
-      }
+    if (!response.ok) {
+      throw new Error('Błąd serwera. Spróbuj ponownie.');
     }
   }
 }
