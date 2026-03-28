@@ -293,7 +293,7 @@
 
                       <!-- Compact Grid for numbers on mobile -->
                       <div class="grid grid-cols-2 gap-4">
-                        <div class="flex flex-col">
+                        <div class="flex flex-col justify-end">
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                             >Ilość (Sztuk)</span
@@ -307,7 +307,7 @@
                           />
                         </div>
 
-                        <div class="flex flex-col">
+                        <div class="flex flex-col justify-end">
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                             >Cena Zakupu Netto (PLN)</span
@@ -321,7 +321,7 @@
                           />
                         </div>
 
-                        <div class="flex flex-col">
+                        <div class="flex flex-col justify-end">
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                             >Narzut Warsztatu (%)</span
@@ -335,7 +335,7 @@
                           />
                         </div>
 
-                        <div class="flex flex-col">
+                        <div class="flex flex-col justify-end">
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                             >Cena Detaliczna Netto</span
@@ -398,7 +398,7 @@
                           />
                         </div>
                         <div class="grid grid-cols-2 gap-4">
-                          <div class="flex flex-col">
+                          <div class="flex flex-col justify-end">
                             <span
                               class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                               >Czas (h)</span
@@ -412,7 +412,7 @@
                               autocomplete="off"
                             />
                           </div>
-                          <div class="flex flex-col">
+                          <div class="flex flex-col justify-end">
                             <span
                               class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
                               >Stawka/h</span
@@ -564,11 +564,11 @@
 
           <!-- The A4 Sheet Visualization container -->
           <div
-            class="w-full bg-slate-200 py-6 sm:py-8 px-4 rounded-3xl shadow-[inset_0_2px_18px_rgba(0,0,0,0.08)] border border-slate-300 overflow-x-hidden overflow-y-auto text-center"
+            class="w-full bg-slate-200 py-6 sm:py-8 px-4 rounded-3xl shadow-[inset_0_2px_18px_rgba(0,0,0,0.08)] border border-slate-300 overflow-x-auto overflow-y-auto text-center"
             style="max-height: calc(100vh - 160px)"
           >
             <div
-              class="bg-white w-full max-w-[794px] min-h-[1123px] text-black p-8 sm:p-16 flex flex-col relative shadow-md pdf-content-sheet text-left mx-auto"
+              class="bg-white w-[794px] min-w-[794px] min-h-[1123px] text-black p-8 sm:p-16 flex flex-col relative shadow-md pdf-content-sheet text-left mx-auto"
               #pdfContent
             >
               <!-- Header -->
