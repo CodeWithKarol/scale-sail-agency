@@ -9,7 +9,10 @@
 
     <div class="flex flex-col gap-8 mt-12 mb-12">
       <!-- Step Indicator -->
-      <div class="flex items-center justify-between max-w-3xl mx-auto w-full px-4 mb-4">
+      <div
+        class="flex items-center justify-between max-w-3xl mx-auto w-full px-4 mb-4"
+        [class.hidden]="showThankYou()"
+      >
         <div
           class="flex flex-col items-center gap-3 group cursor-pointer"
           (click)="goToStep(1)"
@@ -534,19 +537,22 @@
                 Bezpłatna Diagnoza Automatyzacji
                 <lucide-icon [img]="icons.ArrowRight" size="20"></lucide-icon>
               </a>
-              <button
-                (click)="resetFormAndStartOver()"
-                class="btn btn-ghost btn-lg w-full mt-4 flex items-center justify-center border-t-2 border-dashed border-secondary/10 pt-6"
+              <div
+                class="flex flex-col gap-2 mt-6 border-t-2 border-dashed border-secondary/10 pt-6"
               >
-                Wróć i stwórz drugą darmową wycenę
-              </button>
-
-              <a
-                routerLink="/tools"
-                class="text-secondary/40 hover:text-primary text-[10px] uppercase font-bold tracking-widest transition-colors block text-center mt-6"
-              >
-                ← Inne darmowe narzędzia
-              </a>
+                <button
+                  (click)="resetFormAndStartOver()"
+                  class="btn btn-outline w-full flex items-center justify-center border-2 border-secondary/20 text-secondary font-bold hover:bg-secondary hover:text-white transition-all shadow-sm"
+                >
+                  + Rozpocznij nową wycenę
+                </button>
+                <button
+                  (click)="editCurrentQuote()"
+                  class="btn btn-ghost w-full flex items-center justify-center text-secondary/50 hover:text-secondary hover:bg-secondary/5 transition-colors text-xs font-medium"
+                >
+                  Znaleziono błąd? Wróć by edytować
+                </button>
+              </div>
             </div>
           </div>
         </div>
