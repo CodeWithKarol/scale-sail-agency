@@ -126,7 +126,7 @@
                   ? 'Dane Podstawowe'
                   : currentStep() === 2
                     ? 'Szczegóły Wyceny'
-                    : 'Podgląd i Eksport'
+                    : 'Podgląd i Wysyłka'
               }}
             </div>
             <h1 class="heading-2 text-secondary leading-tight">
@@ -138,7 +138,7 @@
                 <span class="text-primary italic">Części i robocizna.</span>
               } @else {
                 Wszystko gotowe? <br />
-                <span class="text-primary italic">Pobierz i wyślij PDF.</span>
+                <span class="text-primary italic">Podgląd i wysyłka PDF.</span>
               }
             </h1>
           </div>
@@ -157,7 +157,9 @@
                     type="text"
                     formControlName="companyName"
                     class="input-field bg-white"
+                    placeholder="np. Auto-Serwis Kowalski"
                     autocomplete="off"
+                    data-testid="company-name-input"
                   />
                   @if (
                     quoteForm.get('companyName')?.touched && quoteForm.get('companyName')?.invalid
@@ -174,6 +176,7 @@
                     formControlName="clientName"
                     class="input-field bg-white"
                     autocomplete="off"
+                    data-testid="client-name-input"
                   />
                   @if (
                     quoteForm.get('clientName')?.touched && quoteForm.get('clientName')?.invalid
@@ -260,6 +263,7 @@
                     type="button"
                     (click)="addPart()"
                     class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+                    data-testid="add-part-btn"
                   >
                     <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj część
                   </button>
@@ -290,8 +294,16 @@
                           formControlName="name"
                           placeholder="Wpisz nazwę"
                           class="input-field w-full"
+                          [class.border-rose-500]="
+                            part.get('name')?.touched && part.get('name')?.invalid
+                          "
                           autocomplete="off"
                         />
+                        @if (part.get('name')?.touched && part.get('name')?.invalid) {
+                          <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                            >Nazwa części jest wymagana</span
+                          >
+                        }
                       </div>
 
                       <!-- Compact Grid for numbers on mobile -->
@@ -321,6 +333,7 @@
                             placeholder="0.00"
                             class="input-field w-full bg-secondary/5 font-medium"
                             autocomplete="off"
+                            data-testid="net-price-input"
                           />
                         </div>
 
@@ -335,6 +348,7 @@
                             placeholder="30"
                             class="input-field w-full bg-primary/5 text-primary font-bold"
                             autocomplete="off"
+                            data-testid="markup-input"
                           />
                         </div>
 
@@ -349,6 +363,7 @@
                             placeholder="0.00"
                             class="input-field w-full font-bold shadow-sm"
                             autocomplete="off"
+                            data-testid="price-input"
                           />
                         </div>
                       </div>
@@ -366,6 +381,7 @@
                     type="button"
                     (click)="addLabor()"
                     class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
+                    data-testid="add-labor-btn"
                   >
                     <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj pozycję
                   </button>
@@ -397,8 +413,16 @@
                             formControlName="name"
                             placeholder="np. Wymiana klocków hamulcowych tył"
                             class="input-field w-full"
+                            [class.border-rose-500]="
+                              lab.get('name')?.touched && lab.get('name')?.invalid
+                            "
                             autocomplete="off"
                           />
+                          @if (lab.get('name')?.touched && lab.get('name')?.invalid) {
+                            <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                              >Opis usługi jest wymagany</span
+                            >
+                          }
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                           <div class="flex flex-col justify-end">
@@ -434,6 +458,60 @@
                   }
                 </div>
               </div>
+
+              <!-- Live Summary for Step 2 -->
+              <app-card
+                variant="highlight"
+                class="mt-4 p-6 flex flex-col gap-4 border-l-8 border-l-primary"
+              >
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-secondary/5 pb-4 mb-2"
+                >
+                  <span class="text-[10px] uppercase font-bold tracking-widest text-secondary/40"
+                    >Stawka VAT</span
+                  >
+                  <div class="relative w-full sm:w-auto">
+                    <select
+                      formControlName="vatRate"
+                      class="appearance-none bg-neutral border border-secondary/10 text-secondary text-sm py-2 pl-4 pr-10 outline-none focus:border-primary transition-colors cursor-pointer w-full sm:w-44"
+                    >
+                      <option [value]="23" class="text-secondary">23% (Standard)</option>
+                      <option [value]="8" class="text-secondary">8%</option>
+                      <option [value]="5" class="text-secondary">5%</option>
+                      <option [value]="0" class="text-secondary">0% / zw. / np.</option>
+                    </select>
+                    <div
+                      class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-secondary/40"
+                    >
+                      <lucide-icon [img]="icons.ChevronDown" size="14"></lucide-icon>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-between items-center border-b border-secondary/5 pb-3">
+                  <span class="text-[10px] uppercase font-bold tracking-widest text-secondary/40"
+                    >Suma Netto</span
+                  >
+                  <span class="font-mono font-bold text-secondary">{{
+                    subtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                  }}</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-secondary/5 pb-3">
+                  <span class="text-[10px] uppercase font-bold tracking-widest text-secondary/40"
+                    >VAT ({{ quoteForm.get('vatRate')?.value }}%)</span
+                  >
+                  <span class="font-mono font-bold text-secondary">{{
+                    vat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                  }}</span>
+                </div>
+                <div class="flex justify-between items-center pt-1">
+                  <span class="text-xs uppercase font-black tracking-tighter text-secondary"
+                    >Do zapłaty (Brutto)</span
+                  >
+                  <span class="text-2xl font-black font-mono tracking-tighter text-primary">{{
+                    total() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl'
+                  }}</span>
+                </div>
+              </app-card>
             }
 
             @if (currentStep() === 3) {
@@ -446,10 +524,19 @@
                     plik na e-mail.
                   </p>
                 </div>
+
+                <button
+                  type="button"
+                  (click)="scrollToPreview()"
+                  class="xl:hidden btn btn-outline w-full flex items-center justify-center gap-2 py-4 mb-2"
+                >
+                  Podejrzyj dokument poniżej ↓
+                </button>
+
                 <button
                   type="button"
                   (click)="openDownloadModal()"
-                  class="btn btn-primary btn-lg w-full flex items-center justify-center gap-3"
+                  class="btn btn-primary btn-lg w-full flex items-center justify-center gap-3 shadow-lg transform hover:-translate-y-1 transition-all"
                 >
                   <lucide-icon [img]="icons.Download" size="20"></lucide-icon>
                   Wyślij PDF na swój e-mail
@@ -466,6 +553,7 @@
                   type="button"
                   (click)="prevStep()"
                   class="btn btn-ghost py-4 px-6 flex items-center gap-2"
+                  data-testid="prev-step-btn"
                 >
                   <lucide-icon [img]="icons.ArrowLeft" size="18"></lucide-icon>
                   Wstecz
@@ -476,6 +564,7 @@
                   type="button"
                   (click)="nextStep()"
                   class="btn btn-primary flex-grow py-4 flex items-center justify-center gap-2"
+                  data-testid="next-step-btn"
                 >
                   Dalej
                   <lucide-icon [img]="icons.ArrowRight" size="18"></lucide-icon>
@@ -791,16 +880,18 @@
                     >
                     <span
                       class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                      data-testid="subtotal-value"
                       >{{ subtotal() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                     >
                   </div>
                   <div class="flex flex-col border-b border-slate-200/50 pb-3">
                     <span
                       class="text-slate-500 uppercase text-[10px] font-bold tracking-widest mb-1"
-                      >VAT (23%)</span
+                      >VAT ({{ quoteForm.get('vatRate')?.value }}%)</span
                     >
                     <span
                       class="text-slate-800 text-right whitespace-nowrap text-lg font-bold tabular-nums font-mono tracking-tighter"
+                      data-testid="vat-value"
                       >{{ vat() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                     >
                   </div>
@@ -811,6 +902,7 @@
                     >
                     <span
                       class="font-black text-rose-600 text-lg sm:text-xl tracking-tighter drop-shadow-sm text-right whitespace-nowrap tabular-nums leading-none font-mono"
+                      data-testid="total-value"
                       >{{ total() | currency: 'PLN' : 'symbol' : '1.2-2' : 'pl' }}</span
                     >
                   </div>
@@ -922,7 +1014,7 @@
           </div>
 
           <!-- Turnstile Widget Container -->
-          <div class="flex items-center justify-center w-full min-h-[75px] mt-2 mb-2">
+          <div class="flex flex-col items-center justify-center w-full min-h-[75px] mt-2 mb-2">
             <ngx-turnstile
               [siteKey]="'0x4AAAAAACvYRxriO7b9Ch5J'"
               theme="light"
@@ -931,6 +1023,13 @@
               class="flex items-center justify-center mx-auto"
               style="min-width: 300px"
             ></ngx-turnstile>
+            @if (!turnstileToken()) {
+              <p
+                class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest mt-2 animate-pulse"
+              >
+                Weryfikuję bezpieczeństwo...
+              </p>
+            }
           </div>
 
           <button
