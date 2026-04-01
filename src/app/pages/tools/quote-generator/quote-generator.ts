@@ -23,11 +23,13 @@ import {
   ArrowRight,
   ArrowLeft,
   ChevronRight,
+  ChevronDown,
   X,
   Mail,
   ShieldCheck,
 } from 'lucide-angular';
 import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
+import { Card } from '../../../shared/ui/card/card';
 import { SeoService } from '../../../shared/core/seo/seo.service';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 
@@ -39,6 +41,7 @@ import { NgxTurnstileModule } from 'ngx-turnstile';
     ReactiveFormsModule,
     LucideAngularModule,
     BreadcrumbComponent,
+    Card,
     NgxTurnstileModule,
     RouterLink,
   ],
@@ -63,8 +66,13 @@ export class QuoteGenerator implements OnInit {
   currentStep = signal(1); // 1: Info, 2: Items, 3: Preview
 
   nextStep() {
+    if (this.currentStep() === 1) {
+      if (!this.isStep1Valid()) return;
+    } else if (this.currentStep() === 2) {
+      if (!this.isStep2Valid()) return;
+    }
+
     if (this.currentStep() < 3) {
-      if (this.currentStep() === 1 && !this.isStep1Valid()) return;
       this.currentStep.update((s) => s + 1);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -82,11 +90,19 @@ export class QuoteGenerator implements OnInit {
       this.showThankYou.set(false);
     }
 
+    // Pozwalaj na powrót zawsze
     if (step < this.currentStep()) {
       this.currentStep.set(step);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (step > this.currentStep() && this.isStep1Valid()) {
-      this.currentStep.set(step);
+      return;
+    }
+
+    // Walidacja przy przechodzeniu do przodu
+    if (step === 2 && this.isStep1Valid()) {
+      this.currentStep.set(2);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (step === 3 && this.isStep1Valid() && this.isStep2Valid()) {
+      this.currentStep.set(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }
@@ -95,11 +111,39 @@ export class QuoteGenerator implements OnInit {
     const controls = ['companyName', 'clientName'];
     let valid = true;
     controls.forEach((c) => {
-      if (this.quoteForm.get(c)?.invalid) {
-        this.quoteForm.get(c)?.markAsTouched();
+      const ctrl = this.quoteForm.get(c);
+      if (ctrl?.invalid) {
+        ctrl.markAsTouched();
         valid = false;
       }
     });
+    return valid;
+  }
+
+  isStep2Valid(): boolean {
+    let valid = true;
+
+    // Walidacja części
+    this.parts.controls.forEach((group) => {
+      if (group.invalid) {
+        group.markAllAsTouched();
+        valid = false;
+      }
+    });
+
+    // Walidacja robocizny
+    this.labor.controls.forEach((group) => {
+      if (group.invalid) {
+        group.markAllAsTouched();
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      // Opcjonalnie: można tu dodać jakiś komunikat typu toast lub alert
+      console.warn('Proszę uzupełnić wszystkie wymagane pola w kosztorysie.');
+    }
+
     return valid;
   }
 
@@ -158,19 +202,21 @@ export class QuoteGenerator implements OnInit {
     ArrowRight,
     ArrowLeft,
     ChevronRight,
+    ChevronDown,
     X,
     Mail,
     ShieldCheck,
   };
 
   quoteForm: FormGroup = this.fb.group({
-    companyName: ['Dobry Serwis Janusz i Syn', Validators.required],
+    companyName: ['', Validators.required],
     clientName: ['', Validators.required],
     clientPhone: [''],
     vehicleMake: [''],
     vehicleModel: [''],
     vehicleVin: [''],
     vehiclePlate: [''],
+    vatRate: [23, Validators.required],
     parts: this.fb.array([this.createPart()]),
     labor: this.fb.array([this.createLabor()]),
   });
@@ -197,8 +243,20 @@ export class QuoteGenerator implements OnInit {
     return sum;
   });
 
-  vat = computed(() => this.subtotal() * 0.23);
+  vat = computed(() => {
+    const rate = this.formValues().vatRate;
+    if (isNaN(Number(rate))) return 0;
+    return this.subtotal() * (Number(rate) / 100);
+  });
+
   total = computed(() => this.subtotal() + this.vat());
+
+  scrollToPreview() {
+    const preview = document.querySelector('.pdf-content-sheet');
+    if (preview) {
+      preview.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   get parts() {
     return this.quoteForm.get('parts') as FormArray;
