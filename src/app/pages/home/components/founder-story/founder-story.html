@@ -47,35 +47,44 @@
               <p class="mb-6 last:mb-0">{{ paragraph }}</p>
             }
 
-            <!-- Buttons -->
+            <!-- Buttons with Visual Hierarchy -->
             <div
-              id="blog-link"
-              class="mt-12 flex flex-col sm:flex-row items-stretch sm:items-center gap-6 scroll-mt-32"
+              id="founder-links"
+              class="mt-12 flex flex-col sm:flex-row items-center sm:items-center gap-6 sm:gap-8 scroll-mt-32"
             >
+              <!-- PRIMARY: Most valuable for user -->
               <app-button
-                route="/work"
+                route="/tools"
                 variant="primary"
                 size="lg"
-                styleClass="btn btn-primary btn-lg justify-center uppercase tracking-widest text-xs shadow-none"
+                styleClass="btn btn-primary btn-lg w-full sm:w-auto justify-center uppercase tracking-widest text-xs shadow-lg transform hover:-translate-y-0.5 transition-all"
+              >
+                Darmowe Narzędzia
+                <lucide-icon [img]="icons.ArrowRight" size="16" class="ml-2"></lucide-icon>
+              </app-button>
+
+              <!-- SECONDARY: Social proof -->
+              <app-button
+                route="/work"
+                variant="secondary"
+                size="lg"
+                styleClass="btn btn-outline border-2 border-secondary/20 hover:border-secondary w-full sm:w-auto justify-center uppercase tracking-widest text-xs transition-all"
               >
                 Zobacz Realizacje
               </app-button>
-              <app-button
-                route="/tools"
-                variant="accent"
-                size="lg"
-                styleClass="btn btn-accent btn-lg justify-center uppercase tracking-widest text-xs shadow-none"
+
+              <!-- GHOST: Less active but trust-building -->
+              <a
+                href="/about"
+                class="group flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 hover:text-primary transition-colors py-2 whitespace-nowrap"
               >
-                Darmowe Narzędzia
-              </app-button>
-              <app-button
-                route="/about"
-                variant="secondary"
-                size="lg"
-                styleClass="btn btn-secondary btn-lg justify-center uppercase tracking-widest text-xs shadow-none"
-              >
-                Pełny profil
-              </app-button>
+                Poznaj moją historię
+                <lucide-icon
+                  [img]="icons.ChevronRight"
+                  size="14"
+                  class="group-hover:translate-x-1 transition-transform"
+                ></lucide-icon>
+              </a>
             </div>
           </div>
         </div>

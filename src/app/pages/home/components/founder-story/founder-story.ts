@@ -1,13 +1,20 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { Button } from '../../../../shared/ui/button/button';
+import { LucideAngularModule, ChevronRight, ArrowRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-founder-story',
-  imports: [Button],
+  standalone: true,
+  imports: [Button, LucideAngularModule],
   templateUrl: './founder-story.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FounderStory {
+  readonly icons = {
+    ChevronRight,
+    ArrowRight,
+  };
+
   founder = signal({
     name: 'Karol Modelski',
     role: 'Twórca systemów i aplikacji',
