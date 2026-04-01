@@ -273,18 +273,19 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Baza Wiedzy i Porady | Scale Sail',
+      title: 'Baza Wiedzy: Automatyzacja i Systemy dla Firm | Scale Sail',
       description:
-        'Dowiedz się, jak proste aplikacje i automatyzacja mogą oszczędzić Twój czas. Praktyczne wskazówki dla właścicieli warsztatów i firm usługowych.',
+        'Praktyczne wskazówki o automatyzacji pracy, budowie systemów dla warsztatów i firm usługowych. Dowiedz się, jak technologia (n8n, Make, AI) może realnie oszczędzić Twój czas.',
       slug: '/blog',
       type: 'article',
       keywords: [
-        'Automatyzacja warsztatu',
-        'Aplikacja dla firmy usługowej',
-        'Zarządzanie zleceniami',
-        'Excel w firmie',
-        'Porady dla przedsiębiorców',
-        'Cyfryzacja biznesu',
+        'automatyzacja warsztatu samochodowego',
+        'programowanie dla biznesu',
+        'jak wdrożyć n8n w firmie',
+        'cyfryzacja małych firm usługowych',
+        'porady automatyzacja procesów',
+        'systemy zarządzania zleceniami blog',
+        'automatyzacja marketingu dla warsztatów',
       ],
     });
 

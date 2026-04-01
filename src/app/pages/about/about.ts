@@ -200,11 +200,21 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'O mnie | Karol Modelski — Scale Sail',
+      title: 'O mnie | Karol Modelski — Ekspert od Automatyzacji i Systemów dla Firm',
       description:
-        'Pomagam małym firmom usługowym i warsztatom wychodzić z ery kartek i Excela. Łączę doświadczenie z największych projektów IT z praktyką automatyzacji (n8n/Make/Zapier) i AI, żeby budować proste i solidne systemy, które realnie odciążają właściciela firmy.',
+        'Poznaj twórcę Scale Sail. Łączę doświadczenie z globalnych projektów IT z praktyką automatyzacji (n8n, Make) i AI. Buduję proste, solidne systemy, które realnie odciążają właścicieli warsztatów i firm usługowych.',
       slug: 'about',
       type: 'profile',
+      keywords: [
+        'Karol Modelski',
+        'ekspert automatyzacji procesów',
+        'wdrożenia n8n warszawa',
+        'programista systemów dla firm',
+        'automatyzacja małej firmy',
+        'konsultacje IT dla usług',
+        'systemy dedykowane dla warsztatów',
+        'Scale Sail założyciel',
+      ],
     });
 
     this.seoService.setBreadcrumbs([

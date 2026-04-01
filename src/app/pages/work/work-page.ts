@@ -122,16 +122,17 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Realizacje | Scale Sail',
+        title: 'Realizacje i Case Studies: Automatyzacja Warsztatów | Scale Sail',
         description:
-          'Case studies wdrożeń systemów dla firm usługowych. Zobacz jak cyfrowa transformacja pomogła realnym biznesom.',
+          'Zobacz konkretne przykłady wdrożeń systemów CRM i automatyzacji. Dowiedz się, jak cyfrowa transformacja pomogła warsztatom i firmom usługowym odzyskać czas.',
         slug: '/work',
         keywords: [
-          'Portfolio',
-          'Realizacje IT',
-          'Aplikacje dla warsztatów',
-          'Systemy usługowe',
-          'Automatyzacja firm',
+          'case study automatyzacja',
+          'wdrożenia systemów dla firm',
+          'przykłady aplikacji dla warsztatów',
+          'automatyzacja serwisu samochodowego realizacje',
+          'portfolio programista systemy biznesowe',
+          'efekty cyfryzacji firmy',
         ],
       });
 

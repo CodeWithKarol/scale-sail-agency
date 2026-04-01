@@ -44,7 +44,7 @@ html {
   }
 
   .section-padding {
-    @apply py-12 sm:py-20 lg:py-32;
+    @apply py-20 sm:py-32 lg:py-40;
   }
 
   /* --- Typography --- */
@@ -61,7 +61,7 @@ html {
   }
 
   .text-body {
-    @apply text-base sm:text-lg text-secondary/80 leading-relaxed font-normal;
+    @apply text-base sm:text-lg text-secondary/75 leading-relaxed font-normal;
   }
 
   .text-small {

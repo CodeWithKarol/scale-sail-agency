@@ -30,15 +30,15 @@ const CASE_STUDIES: CaseStudy[] = [
       'Lekcje z dużych systemów korporacyjnych przełożone na proste narzędzia dla małych firm usługowych.',
     heroImage: '/images/admin-panel/admin-panel.webp',
     challenge:
-      'Systemy dla dużych firm często stają się powolne i trudne w obsłudze przy dużej ilości danych. Klient potrzebował rozwiązania, które pozwoli błyskawicznie zarządzać tysiącami operacji bez błędów i opóźnień.',
+      'Właściciel firmy czuł, że traci kontrolę. Przy tysiącach operacji systemy „mieliły” dane, a pracownicy musieli czekać na odświeżenie ekranu. Każdy błąd w danych oznaczał stres i konieczność ręcznego sprawdzania wszystkiego w Excelu po godzinach.',
     solution:
-      'Zbudowałem nowoczesną aplikację, która natychmiast reaguje na zmiany danych. Wykorzystałem technologie, które gwarantują, że interfejs jest zawsze aktualny i czytelny, niezależnie od skali biznesu.',
+      'Zaprojektowałem panel, który działa z szybkością myśli. Wprowadziłem automatyzację, która sama wyłapuje błędy i czyści dane. Teraz właściciel ma pewność, że to, co widzi na ekranie, jest prawdą, a jego zespół może skupić się na pracy, a nie na walce z systemem.',
     technicalApproach:
       'System jest zbudowany tak, żeby odświeżać tylko te elementy ekranu, które faktycznie się zmieniają – dzięki temu działa lekko, szybko i nie „mieli” przy większej ilości danych. Użytkownik widzi zawsze aktualne informacje, bez opóźnień i bez ręcznego odświeżania. To podejście gwarantuje, że panel Twojej firmy będzie działał bezawaryjnie nawet przy bardzo dużej liczbie aktywnych zleceń. (Pod spodem wykorzystuję m.in. Angular Signals, ale dla Ciebie ważne jest po prostu to, że wszystko działa płynnie).',
     results: [
-      'Wydajność: Obsługa ponad 50 000 aktualizacji danych na sekundę bez zacięć',
-      'Stabilność: System odporny na błędy dzięki rygorystycznym testom automatycznym',
-      'Przejrzystość: Intuicyjny panel, który nie wymaga szkolenia pracowników',
+      'Spokój ducha: Koniec z nerwowym odświeżaniem strony i sprawdzaniem, czy dane się zapisały',
+      'Kontrola: Właściciel widzi stan całej firmy w 3 sekundy, zamiast przekopywać się przez Excela',
+      'Oszczędność czasu: System wykonuje powtarzalne obliczenia za Ciebie, eliminując błędy ręczne',
     ],
     techStack: [
       'Najważniejsze liczby biznesowe na jednym ekranie',
@@ -98,15 +98,15 @@ const CASE_STUDIES: CaseStudy[] = [
       'Przenoszę standardy bankowe do Twojego warsztatu, aby system nigdy nie zawiódł Cię w szczycie sezonu.',
     heroImage: '/images/quick-cart/quick-cart.webp',
     challenge:
-      'W dużych sklepach internetowych błędy w koszyku lub wolne działanie strony to realne straty finansowe. Klient potrzebował platformy, która będzie działać bezbłędnie nawet przy milionach odwiedzin.',
+      'Właściciel walczył z wolno działającym sklepem, który „wywalał się” w najmniej odpowiednich momentach. Każda sekunda ładowania strony oznaczała porzucone koszyki i realną stratę pieniędzy, a błędy w płatnościach budowały wizerunek nieprofesjonalnej firmy.',
     solution:
-      'Zaprojektowałem "QuickCart" – system sprzedaży skupiony na szybkości i niezawodności. Zastosowałem wzorce projektowe z sektora bankowego, aby zapewnić bezpieczeństwo transakcji i płynność działania.',
+      'Wdrożyłem system zbudowany według standardów bankowych – pancerny i błyskawiczny. Klient przestał martwić się o to, czy strona wytrzyma ruch, a jego klienci zyskali narzędzie, które po prostu nie zawodzi. To przełożyło się na wyższą sprzedaż i, co ważniejsze, spokój właściciela.',
     technicalApproach:
       'Architektura systemu pozwala na błyskawiczne procesowanie zamówień bez obciążania urządzenia użytkownika. Nawet przy słabym połączeniu internetowym, koszyk i płatności działają stabilnie. Dokładnie takie podejście stosuję później w systemach dla warsztatów – tak, żeby panel z autami i zleceniami działał szybko i stabilnie nawet w sezonie największej liczby klientów.',
     results: [
-      'Szybkość: Błyskawiczne ładowanie strony (poniżej 0.8 sekundy)',
-      'Mobilność: Idealne działanie na telefonach (wynik 100/100 w testach Google)',
-      'Bezpieczeństwo: Solidna ochrona danych klientów i historii zakupów',
+      'Wizerunek PRO: Sklep wygląda i działa tak szybko, że buduje natychmiastowe zaufanie klienta',
+      'Pewność sprzedaży: System nie „pęka” w szczycie sezonu, pozwalając Ci skupić się na wysyłce, a nie na naprawianiu strony',
+      'Pełna mobilność: Właściciel zarządza sprzedażą z telefonu, stojąc w korku lub będąc na urlopie',
     ],
     techStack: [
       'Szybkie działanie nawet przy dużej liczbie użytkowników',
