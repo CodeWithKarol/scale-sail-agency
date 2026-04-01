@@ -149,11 +149,20 @@ export class QuoteGenerator implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'Darmowy Generator Wycen dla Warsztatów | Scale Sail',
+      title: 'Darmowy Generator Wycen dla Warsztatów (PDF) | Scale Sail',
       description:
-        'Kalkulator wycen online dla mechaników. Wpisz części i robociznę, a generator natychmiast stworzy profesjonalny PDF gotowy do wysłania klientowi.',
+        'Twórz profesjonalne wyceny napraw w 60 sekund. Darmowy kalkulator marży i kosztorysu PDF dla mechaników i serwisów. Wyślij gotowy dokument na e-mail klienta.',
       slug: 'tools/free-quote-generator',
       type: 'website',
+      keywords: [
+        'generator wycen warsztatowych',
+        'kalkulator marży części samochodowych',
+        'darmowy program do kosztorysów napraw',
+        'kosztorys naprawy samochodu pdf',
+        'narzędzia dla mechanika online',
+        'wycena naprawy blacharskiej program',
+        'wzór wyceny warsztatu',
+      ],
     });
 
     this.seoService.setBreadcrumbs([
