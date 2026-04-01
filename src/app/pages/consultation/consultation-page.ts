@@ -16,6 +16,7 @@ import { Button } from '../../shared/ui/button/button';
 import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { LucideAngularModule, ArrowRight, Info, LayoutGrid, Mail } from 'lucide-angular';
+import { NgxTurnstileModule } from 'ngx-turnstile';
 
 type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
@@ -29,6 +30,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
     Button,
     LucideAngularModule,
     RouterLink,
+    NgxTurnstileModule,
   ],
   template: `
     <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
@@ -58,13 +60,11 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
           <!-- Interactive Form Container -->
           <div
-            class="relative bg-white border-4 border-secondary p-8 sm:p-12 shadow-[16px_16px_0px_0px_rgba(10,31,68,0.05)]"
+            class="relative bg-white border-4 border-secondary p-5 sm:p-12 shadow-[16px_16px_0px_0px_rgba(10,31,68,0.05)]"
           >
             <div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
 
-            <div
-              class="flex items-center justify-between mb-10 pb-4 border-b-2 border-secondary/10"
-            >
+            <div class="flex items-center justify-between mb-8 pb-4 border-b-2 border-secondary/10">
               <div class="flex items-center gap-3">
                 <div class="w-3 h-3 bg-secondary"></div>
                 <span class="text-small text-secondary/40">{{
@@ -108,7 +108,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                   <div class="relative">
                     <select
                       formControlName="projectType"
-                      class="input-field appearance-none cursor-pointer"
+                      class="input-field"
                       [class.border-accent]="f['projectType'].invalid && f['projectType'].touched"
                     >
                       <option value="system">
@@ -150,7 +150,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
                     >
                       <input type="radio" formControlName="budget" value="low" class="sr-only" />
                       <span class="flex flex-col">
@@ -173,7 +173,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     </label>
 
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
                     >
                       <input type="radio" formControlName="budget" value="mid" class="sr-only" />
                       <span class="flex flex-col">
@@ -195,7 +195,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     </label>
 
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
                     >
                       <input type="radio" formControlName="budget" value="high" class="sr-only" />
                       <span class="flex flex-col">
@@ -248,60 +248,90 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                   }
                 </div>
 
-                <!-- Contact Data -->
-                <div
-                  class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t-2 border-secondary/5"
-                >
+                <!-- Contact & Security -->
+                <div class="pt-10 border-t-2 border-secondary/5 space-y-6">
                   <div>
-                    <label for="name" class="block font-black text-sm text-secondary mb-2"
-                      >TWOJE IMIĘ (I NAZWA FIRMY)</label
-                    >
-                    <input
-                      type="text"
-                      id="name"
-                      formControlName="name"
-                      class="input-field"
-                      [class.border-accent]="f['name'].invalid && f['name'].touched"
-                      placeholder="np. Tomek (Warsztat u Tomka)"
-                    />
-                    @if (f['name'].invalid && f['name'].touched) {
-                      <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
-                        To pole jest wymagane.
-                      </p>
-                    }
+                    <h3 class="font-black text-lg text-secondary mb-2">4. DANE KONTAKTOWE</h3>
+                    <p class="text-sm text-secondary/60 mb-6">
+                      Z kim mam się kontaktować w sprawie tego projektu?
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label
+                          for="name"
+                          class="block font-black text-xs text-secondary mb-2 uppercase tracking-widest"
+                          >TWOJE IMIĘ (I NAZWA FIRMY)</label
+                        >
+                        <input
+                          type="text"
+                          id="name"
+                          formControlName="name"
+                          class="input-field"
+                          [class.border-accent]="f['name'].invalid && f['name'].touched"
+                          placeholder="np. Tomek (Warsztat u Tomka)"
+                        />
+                        @if (f['name'].invalid && f['name'].touched) {
+                          <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                            To pole jest wymagane.
+                          </p>
+                        }
+                      </div>
+
+                      <div>
+                        <label
+                          for="email"
+                          class="block font-black text-xs text-secondary mb-2 uppercase tracking-widest"
+                          >TWÓJ E-MAIL</label
+                        >
+                        <input
+                          type="email"
+                          id="email"
+                          formControlName="email"
+                          class="input-field"
+                          [class.border-accent]="f['email'].invalid && f['email'].touched"
+                          placeholder="tomek@warsztat.pl"
+                        />
+                        @if (f['email'].invalid && f['email'].touched) {
+                          <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                            @if (f['email'].errors?.['required']) {
+                              Podaj adres email.
+                            } @else if (f['email'].errors?.['email']) {
+                              Błędny format email.
+                            }
+                          </p>
+                        }
+                      </div>
+                    </div>
                   </div>
 
-                  <div>
-                    <label for="email" class="block font-black text-sm text-secondary mb-2"
-                      >TWÓJ E-MAIL</label
-                    >
-                    <input
-                      type="email"
-                      id="email"
-                      formControlName="email"
-                      class="input-field"
-                      [class.border-accent]="f['email'].invalid && f['email'].touched"
-                      placeholder="tomek@warsztat.pl"
-                    />
-                    @if (f['email'].invalid && f['email'].touched) {
-                      <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
-                        @if (f['email'].errors?.['required']) {
-                          Podaj adres email.
-                        } @else if (f['email'].errors?.['email']) {
-                          Błędny format email.
-                        }
+                  <!-- Turnstile Widget -->
+                  <div class="flex flex-col items-start gap-2 pt-4">
+                    <ngx-turnstile
+                      [siteKey]="'0x4AAAAAACzale-5wIMBLCHH'"
+                      theme="light"
+                      (resolved)="onTurnstileResolved($event)"
+                      (error)="onTurnstileError()"
+                      style="min-height: 65px"
+                    ></ngx-turnstile>
+                    @if (!turnstileToken()) {
+                      <p
+                        class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest animate-pulse"
+                      >
+                        Weryfikuję bezpieczeństwo...
                       </p>
                     }
                   </div>
                 </div>
 
                 <!-- Submit Action -->
-                <div class="mt-8">
+                <div class="mt-4 pt-10 border-t-2 border-secondary/5">
                   <app-button
                     type="submit"
                     variant="primary"
                     size="lg"
                     styleClass="w-full sm:w-auto"
+                    [disabled]="status() === 'SUBMITTING' || !turnstileToken()"
                   >
                     <span class="text-lg">PRZEJDŹ DO KALENDARZA</span>
                     <lucide-icon
@@ -427,7 +457,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
           <!-- Final CTA / Closing Section -->
           <div
-            class="mt-20 p-8 sm:p-12 border-4 border-secondary bg-secondary text-white relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500"
+            class="mt-20 p-6 sm:p-12 border-4 border-secondary bg-secondary text-white relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500"
           >
             <div
               class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-10 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"
@@ -443,10 +473,10 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
               <div class="flex flex-col sm:flex-row items-center gap-6">
                 <app-button
-                  variant="primary"
+                  variant="secondary"
                   size="lg"
                   route="/work"
-                  styleClass="w-full sm:w-auto !bg-white !text-secondary !border-white/10 !shadow-none hover:!bg-primary hover:!text-white"
+                  styleClass="w-full sm:w-auto"
                 >
                   <span class="mr-3">ZOBACZ NASZE REALIZACJE</span>
                   <lucide-icon [img]="icons.LayoutGrid" size="20"></lucide-icon>
@@ -481,6 +511,8 @@ export class ConsultationPage implements OnInit {
   private route = inject(ActivatedRoute);
 
   readonly icons = { ArrowRight, Info, LayoutGrid, Mail };
+
+  turnstileToken = signal<string | null>(null);
 
   // Status Machine
   status = signal<QualificationStatus>('PENDING');
@@ -551,13 +583,10 @@ export class ConsultationPage implements OnInit {
   onSubmit() {
     if (this.status() !== 'PENDING') return;
 
-    if (this.form.invalid) {
+    if (this.form.invalid || !this.turnstileToken()) {
       this.form.markAllAsTouched();
       return;
     }
-
-    // Pozwalamy botom wysłać formularz - Web3Forms przejmie 'botcheck: true' i zrzuci maila w pustkę,
-    // odsyłając fałszywe 200 OK. Zmylimy atakującego.
 
     this.status.set('SUBMITTING');
 
@@ -567,31 +596,35 @@ export class ConsultationPage implements OnInit {
     // SLA package is fundamentally cheaper (800-1500) so we explicitly whitelist it.
     const isQualified = budgetValue === 'mid' || budgetValue === 'high' || projectType === 'sla';
 
-    const formData = {
+    const payload = {
       ...this.form.value,
-      access_key: '96dd68a1-6862-4e27-a83f-66e435b684a6',
+      isQualified,
+      status: isQualified ? 'ACCEPTED' : 'REJECTED',
       subject: `[LEAD-KWALIFIKACJA] Opcja: ${budgetValue} | Projekt: ${this.form.value.projectType}`,
-      from_name: 'Scale Sail Kwalifikacja',
+      source: 'Consultation Form',
+      turnstileToken: this.turnstileToken(),
     };
 
-    // Send the lead to Web3Forms anyway so the user doesn't lose the message!
+    const WEBHOOK_URL = 'https://hook.eu1.make.com/yd904he1om2qyevj8aktgk35rjfr4gx9';
+
+    // Send the lead to Make.com webhook for automation
     this.http
-      .post('https://api.web3forms.com/submit', formData)
+      .post(WEBHOOK_URL, payload)
       .pipe(
         tap(() => {
           setTimeout(() => {
             if (isQualified) {
               this.status.set('ACCEPTED');
-              // Zapewnienie, że Angular zdąży przerysować DOM (Signal re-render) przed odpaleniem zewnętrznego skryptu
+              // Ensure Angular re-renders the DOM (Signal) before loading external script
               setTimeout(() => this.loadCalEmbed(), 50);
             } else {
               this.status.set('REJECTED');
             }
-          }, 1500); // Artificial delay to simulate "analysis" and make it feel more important
+          }, 1500); // Artificial delay to simulate "analysis"
         }),
         catchError((err) => {
-          console.error('System failed to dispatch email', err);
-          // Faux positive. Even on HTTP failure, let the user proceed so they aren't stuck locally.
+          console.error('Webhook dispatch failed', err);
+          // Faux positive to prevent user frustration
           this.status.set(isQualified ? 'ACCEPTED' : 'REJECTED');
           if (isQualified) {
             setTimeout(() => this.loadCalEmbed(), 50);
@@ -600,6 +633,15 @@ export class ConsultationPage implements OnInit {
         }),
       )
       .subscribe();
+  }
+
+  onTurnstileResolved(token: string | null) {
+    this.turnstileToken.set(token);
+  }
+
+  onTurnstileError() {
+    console.error('Turnstile verification failed.');
+    this.turnstileToken.set(null);
   }
 
   private loadCalEmbed(): void {

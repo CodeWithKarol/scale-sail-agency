@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { SeoService } from '../../shared/core/seo/seo.service';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
+import { Button } from '../../shared/ui/button/button';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, BreadcrumbComponent, RouterLink],
+  imports: [CommonModule, BreadcrumbComponent, Button],
   template: `
     <div
       class="min-h-screen bg-neutral text-secondary relative pt-40 pb-24 overflow-hidden bg-grid-workshop"
@@ -181,13 +181,12 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
             się na wyniki moich klientów w codziennym zarządzaniu ich firmami.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <a routerLink="/work" class="btn btn-primary btn-lg"> Ostatnie Realizacje → </a>
-            <a
-              routerLink="/consultation"
-              class="btn btn-lg bg-white text-secondary border-2 border-secondary/20 hover:bg-neutral shadow-[4px_4px_0px_0px_rgba(10,31,68,0.1)]"
-            >
+            <app-button variant="primary" size="lg" route="/work">
+              Ostatnie Realizacje →
+            </app-button>
+            <app-button variant="secondary" size="lg" route="/consultation">
               Umów Darmową Konsultację 📅
-            </a>
+            </app-button>
           </div>
         </div>
       </div>

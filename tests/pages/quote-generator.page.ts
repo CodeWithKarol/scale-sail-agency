@@ -2,25 +2,25 @@ import { Page, Locator, expect } from '@playwright/test';
 
 export class QuoteGeneratorPage {
   readonly page: Page;
-  
+
   // Step 1: Main Info & Vehicle
   readonly companyNameInput: Locator;
   readonly clientNameInput: Locator;
   readonly vehicleMakeInput: Locator;
   readonly vehicleModelInput: Locator;
-  
+
   // Step 2: Parts & Labor
   readonly addPartBtn: Locator;
   readonly addLaborBtn: Locator;
   readonly firstPartNetPrice: Locator;
   readonly firstPartMarkup: Locator;
   readonly firstPartPrice: Locator;
-  
+
   // Navigation
   readonly nextStepBtn: Locator;
   readonly prevStepBtn: Locator;
   readonly sendPdfBtn: Locator;
-  
+
   // Totals in Preview (Step 3)
   readonly subtotalValue: Locator;
   readonly vatValue: Locator;
@@ -37,13 +37,13 @@ export class QuoteGeneratorPage {
 
   constructor(page: Page) {
     this.page = page;
-    
+
     // Step 1
     this.companyNameInput = page.getByLabel(/Nazwa Twojego Warsztatu/i);
     this.clientNameInput = page.getByLabel(/Imię i Nazwisko \/ Firma Klienta/i);
     this.vehicleMakeInput = page.getByPlaceholder('np. Toyota');
     this.vehicleModelInput = page.getByPlaceholder('np. Corolla 2.0');
-    
+
     // Step 2
     this.addPartBtn = page.getByRole('button', { name: /dodaj część/i });
     this.addLaborBtn = page.getByRole('button', { name: /dodaj pozycję/i });
@@ -55,7 +55,7 @@ export class QuoteGeneratorPage {
     this.nextStepBtn = page.getByRole('button', { name: /dalej/i });
     this.prevStepBtn = page.getByRole('button', { name: /wstecz/i });
     this.sendPdfBtn = page.getByRole('button', { name: /wyślij pdf na swój e-mail/i });
-    
+
     // Totals in Preview (Step 3)
     this.subtotalValue = page.locator('div:has-text("Kwota netto") > span').last();
     this.vatValue = page.locator('div:has-text("VAT (23%)") > span').last();
@@ -91,7 +91,7 @@ export class QuoteGeneratorPage {
     // Fill first part (already exists by default)
     const partName = this.page.locator('input[formControlName="name"]').first();
     await partName.fill('Test Part');
-    
+
     const netPrice = this.page.locator('input[formControlName="netPrice"]').first();
     await netPrice.fill('100');
 

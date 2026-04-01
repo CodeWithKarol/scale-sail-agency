@@ -41,7 +41,7 @@ import { BlogPost } from '../../blog.model';
       </div>
 
       <!-- Card Content -->
-      <div class="flex flex-col p-8 h-full w-full">
+      <div class="flex flex-col p-5 sm:p-8 h-full w-full">
         <div class="flex items-center gap-x-4 mb-6">
           <div class="status-badge ring-4 ring-secondary/5 text-[8px] px-2">
             {{ post().category }}
@@ -62,18 +62,18 @@ import { BlogPost } from '../../blog.model';
         </h3>
 
         <p
-          class="mt-6 flex-auto line-clamp-3 text-body text-secondary/85 border-l-4 border-secondary/10 pl-5 group-hover:border-primary/30 transition-colors"
+          class="mt-6 flex-auto line-clamp-3 text-body text-secondary/85 border-l-4 border-secondary/10 pl-3 sm:pl-5 group-hover:border-primary/30 transition-colors text-pretty"
         >
           {{ post().excerpt }}
         </p>
 
-        <div class="mt-10 flex items-center pt-6 w-full border-t-2 border-secondary/5">
+        <div class="mt-6 sm:mt-10 flex items-center pt-6 w-full border-t-2 border-secondary/5">
           <div
             class="group/link inline-flex items-center gap-3 text-small text-secondary/60 group-hover:text-primary transition-colors"
           >
             CZYTAJ ARTYKUŁ
             <span
-              class="h-px w-8 bg-secondary/10 transition-all group-hover:w-12 group-hover:bg-primary"
+              class="h-px w-8 bg-secondary/30 transition-all group-hover:w-12 group-hover:bg-primary"
             ></span>
           </div>
         </div>

@@ -41,6 +41,12 @@ export const routes: Routes = [
     title: 'Darmowy Generator Wycen (PDF) | Scale Sail',
   },
   {
+    path: 'tools/loss-calculator',
+    loadComponent: () =>
+      import('./pages/tools/loss-calculator/loss-calculator').then((m) => m.LossCalculator),
+    title: 'Kalkulator Strat Warsztatu | Scale Sail',
+  },
+  {
     path: 'free-quote-generator',
     redirectTo: 'tools/free-quote-generator',
     pathMatch: 'full',

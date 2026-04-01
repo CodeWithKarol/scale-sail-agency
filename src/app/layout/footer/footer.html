@@ -7,8 +7,10 @@
   <div class="layout-container relative z-10 py-16 lg:py-24">
     <div class="xl:grid xl:grid-cols-3 xl:gap-20">
       <!-- Brand Column -->
-      <div class="space-y-12">
-        <app-brand-logo></app-brand-logo>
+      <div class="space-y-10 sm:space-y-12">
+        <div class="inline-block transform scale-110 sm:scale-100 origin-left">
+          <app-brand-logo></app-brand-logo>
+        </div>
 
         <p
           class="text-lg leading-relaxed text-secondary/70 border-l-4 border-primary pl-8 font-medium italic"
@@ -21,27 +23,26 @@
         </p>
 
         <p
-          class="font-mono text-xs leading-relaxed text-secondary/40 max-w-sm uppercase tracking-wider"
+          class="font-mono text-xs leading-relaxed text-secondary/70 max-w-sm uppercase tracking-wider"
         >
           Tworzę dedykowane systemy dla warsztatów i firm usługowych. Pomagam odzyskać czas,
           porządkuję dokumentację i automatyzuję kontakt z Twoimi klientami.
         </p>
 
-        <!-- Status Indicator -->
         <div
-          class="status-badge ring-0 bg-white border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(10,31,68,1)]"
+          class="status-badge ring-0 bg-white border-2 border-secondary shadow-[4px_4px_0px_0px_rgba(10,31,68,1)] text-[10px]"
         >
           <div class="flex gap-1.5">
-            <div class="w-2 h-2 rounded-none bg-primary animate-pulse"></div>
+            <div class="w-1.5 h-1.5 rounded-none bg-primary animate-pulse"></div>
           </div>
-          STATUS: GOTOWY NA WDROŻENIA
+          STATUS: DOBRA POGODA NA WDROŻENIA
         </div>
       </div>
 
       <div class="mt-20 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
         <div>
           <h3
-            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/40 mb-10"
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/70 mb-10"
           >
             KONKRETNE ROZWIĄZANIA
           </h3>
@@ -51,10 +52,10 @@
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/60 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/80 hover:text-primary transition-all cursor-pointer"
                 >
                   <span
-                    class="w-4 h-4 border-2 border-secondary/20 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
+                    class="w-4 h-4 border-2 border-secondary/40 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
                   ></span>
                   {{ item.name }}
                 </a>
@@ -64,7 +65,7 @@
         </div>
         <div>
           <h3
-            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/40 mb-10"
+            class="font-mono text-[10px] font-black uppercase tracking-[0.4em] text-secondary/70 mb-10"
           >
             KONTAKT I WSPÓŁPRACA
           </h3>
@@ -74,10 +75,10 @@
                 <a
                   [routerLink]="item.path"
                   [fragment]="item.fragment"
-                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/60 hover:text-primary transition-all cursor-pointer"
+                  class="group flex items-center gap-4 font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-secondary/80 hover:text-primary transition-all cursor-pointer"
                 >
                   <span
-                    class="w-4 h-4 border-2 border-secondary/20 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
+                    class="w-4 h-4 border-2 border-secondary/40 bg-transparent group-hover:bg-primary group-hover:border-primary transition-all flex-shrink-0"
                   ></span>
                   {{ item.name }}
                 </a>
@@ -93,19 +94,19 @@
       class="mt-20 pt-12 border-t-4 border-secondary flex flex-col md:flex-row items-center justify-between gap-8"
     >
       <div
-        class="flex flex-col md:flex-row items-center gap-6 font-mono text-[10px] font-bold text-secondary/40 uppercase tracking-[0.2em]"
+        class="flex flex-col sm:flex-row items-center gap-4 font-mono text-[10px] font-bold text-secondary/70 uppercase tracking-[0.2em]"
       >
         <p>&copy; {{ currentYear }} SCALE SAIL.</p>
-        <span class="hidden md:inline text-secondary/20">|</span>
-        <p>WSZELKIE PRAWA ZASTRZEŻONE</p>
+        <span class="hidden sm:inline opacity-30">|</span>
+        <p>MADE IN POLAND</p>
       </div>
 
-      <div class="flex gap-8">
+      <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
         @for (item of resources(); track item.name) {
           <a
             [routerLink]="item.path"
             [fragment]="item.fragment"
-            class="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/40 hover:text-secondary transition-colors"
+            class="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/70 hover:text-secondary transition-colors p-1"
           >
             {{ item.name }}
           </a>

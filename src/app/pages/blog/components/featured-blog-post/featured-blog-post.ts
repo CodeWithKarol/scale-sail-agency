@@ -1,10 +1,13 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { BlogPost } from '../../blog.model';
+import { Button } from '../../../../shared/ui/button/button';
+import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-featured-blog-post',
-  imports: [CommonModule, DatePipe],
+  standalone: true,
+  imports: [CommonModule, DatePipe, Button, LucideAngularModule],
   template: `
     <article
       class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b-4 border-secondary/10 pb-20 lg:pb-32"
@@ -68,19 +71,22 @@ import { BlogPost } from '../../blog.model';
         </p>
 
         <div class="mt-12">
-          <a
+          <app-button
             [href]="post().url"
             target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-secondary btn-lg group/btn"
+            variant="secondary"
+            size="lg"
+            class="group/btn"
           >
             <span class="flex items-center gap-4">
               CZYTAJ ARTYKUŁ
-              <span
-                class="h-px w-10 bg-white/30 group-hover/btn:w-16 group-hover/btn:bg-secondary transition-all"
-              ></span>
+              <lucide-icon
+                [img]="icons.ArrowRight"
+                size="20"
+                class="transition-transform group-hover/btn:translate-x-2"
+              ></lucide-icon>
             </span>
-          </a>
+          </app-button>
         </div>
       </div>
     </article>
@@ -89,4 +95,5 @@ import { BlogPost } from '../../blog.model';
 })
 export class FeaturedBlogPostComponent {
   post = input.required<BlogPost>();
+  readonly icons = { ArrowRight };
 }

@@ -16,7 +16,7 @@
       <!-- Compatible (Who it is for) - Highlighted Neo-Brutalist Card -->
       <app-card [variant]="'highlight'" class="h-full flex flex-col">
         <div
-          class="p-6 sm:p-10 flex flex-col h-full bg-white group hover:bg-neutral/30 transition-colors"
+          class="p-5 sm:p-10 flex flex-col h-full bg-white group hover:bg-neutral/30 transition-colors"
         >
           <!-- Header -->
           <div class="flex items-start gap-4 mb-10 border-b-4 border-secondary/10 pb-8">
@@ -80,7 +80,7 @@
         [variant]="'default'"
         class="h-full flex flex-col opacity-90 hover:opacity-100 transition-opacity"
       >
-        <div class="p-6 sm:p-10 flex flex-col h-full bg-neutral/30 group">
+        <div class="p-5 sm:p-10 flex flex-col h-full bg-neutral/30 group">
           <!-- Header -->
           <div class="flex items-start gap-4 mb-10 border-b-2 border-secondary/10 pb-8 opacity-70">
             <div
@@ -101,22 +101,22 @@
               </svg>
             </div>
             <div class="mt-1">
-              <div class="text-small text-secondary/50 mb-3 tracking-[0.2em] font-bold">
+              <div class="text-small text-secondary/70 mb-3 tracking-[0.2em] font-bold">
                 POZA ZAKRESEM
               </div>
-              <h3 class="heading-3 text-secondary/50">Dla kogo nie</h3>
+              <h3 class="heading-3 text-secondary/70">Dla kogo nie</h3>
             </div>
           </div>
 
           <!-- List -->
-          <ul class="space-y-6 flex-1 opacity-70">
+          <ul class="space-y-6 flex-1 opacity-80">
             @for (item of antiPatterns(); track item) {
               <li class="flex gap-4 items-start group/item">
                 <span
-                  class="mt-1.5 w-2 h-2 border-2 border-secondary/30 bg-transparent transition-colors group-hover/item:border-secondary/60 flex-shrink-0"
+                  class="mt-1.5 w-2 h-2 border-2 border-secondary/50 bg-transparent transition-colors group-hover/item:border-secondary/70 flex-shrink-0"
                 ></span>
                 <span
-                  class="text-base text-secondary/60 leading-relaxed group-hover/item:text-secondary/80 transition-colors"
+                  class="text-base text-secondary/80 leading-relaxed group-hover/item:text-secondary/90 transition-colors"
                 >
                   {{ item }}
                 </span>
@@ -125,11 +125,11 @@
           </ul>
 
           <!-- Status -->
-          <div class="mt-12 pt-8 border-t-2 border-secondary/10 opacity-70">
+          <div class="mt-12 pt-8 border-t-2 border-secondary/10 opacity-80">
             <div
-              class="status-badge !bg-transparent !border-secondary/20 !text-secondary/50 inline-flex items-center"
+              class="status-badge !bg-transparent !border-secondary/20 !text-secondary/70 inline-flex items-center"
             >
-              <span class="w-2 h-2 rounded-none bg-secondary/30 mr-2"></span>
+              <span class="w-2 h-2 rounded-none bg-secondary/50 mr-2"></span>
               BRAK WOLNYCH TERMINÓW
             </div>
           </div>
