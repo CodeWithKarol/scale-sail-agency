@@ -259,14 +259,15 @@
                   class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
                 >
                   <h2 class="heading-3">Części i Materiały</h2>
-                  <button
-                    type="button"
+                  <app-button
+                    variant="primary"
+                    size="sm"
                     (click)="addPart()"
-                    class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
                     data-testid="add-part-btn"
                   >
-                    <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj część
-                  </button>
+                    <lucide-icon [img]="icons.Plus" size="14" class="mr-2"></lucide-icon> Dodaj
+                    część
+                  </app-button>
                 </div>
                 <div formArrayName="parts" class="flex flex-col gap-4">
                   @for (part of parts.controls; track part; let i = $index) {
@@ -377,14 +378,15 @@
                   class="flex items-center justify-between border-b-2 border-secondary/10 pb-3 px-1"
                 >
                   <h2 class="heading-3">Robocizna</h2>
-                  <button
-                    type="button"
+                  <app-button
+                    variant="primary"
+                    size="sm"
                     (click)="addLabor()"
-                    class="btn btn-ghost text-primary text-xs flex items-center gap-1.5 py-2 px-4"
                     data-testid="add-labor-btn"
                   >
-                    <lucide-icon [img]="icons.Plus" size="16"></lucide-icon> Dodaj pozycję
-                  </button>
+                    <lucide-icon [img]="icons.Plus" size="14" class="mr-2"></lucide-icon> Dodaj
+                    pozycję
+                  </app-button>
                 </div>
                 <div formArrayName="labor" class="flex flex-col gap-4">
                   @for (lab of labor.controls; track lab; let i = $index) {
@@ -525,22 +527,24 @@
                   </p>
                 </div>
 
-                <button
-                  type="button"
+                <app-button
+                  variant="secondary"
+                  size="lg"
+                  styleClass="xl:hidden w-full mb-4"
                   (click)="scrollToPreview()"
-                  class="xl:hidden btn btn-outline w-full flex items-center justify-center gap-2 py-4 mb-2"
                 >
                   Podejrzyj dokument poniżej ↓
-                </button>
+                </app-button>
 
-                <button
-                  type="button"
+                <app-button
+                  variant="accent"
+                  size="lg"
+                  styleClass="w-full"
                   (click)="openDownloadModal()"
-                  class="btn btn-primary btn-lg w-full flex items-center justify-center gap-3 shadow-lg transform hover:-translate-y-1 transition-all"
                 >
-                  <lucide-icon [img]="icons.Download" size="20"></lucide-icon>
+                  <lucide-icon [img]="icons.Download" size="20" class="mr-3"></lucide-icon>
                   Wyślij PDF na swój e-mail
-                </button>
+                </app-button>
               </div>
             }
 
@@ -549,26 +553,27 @@
               class="flex items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-secondary/10"
             >
               @if (currentStep() > 1) {
-                <button
-                  type="button"
+                <app-button
+                  variant="ghost"
+                  size="lg"
                   (click)="prevStep()"
-                  class="btn btn-ghost py-4 px-6 flex items-center gap-2"
                   data-testid="prev-step-btn"
                 >
-                  <lucide-icon [img]="icons.ArrowLeft" size="18"></lucide-icon>
+                  <lucide-icon [img]="icons.ArrowLeft" size="18" class="mr-2"></lucide-icon>
                   Wstecz
-                </button>
+                </app-button>
               }
               @if (currentStep() < 3) {
-                <button
-                  type="button"
+                <app-button
+                  variant="primary"
+                  size="lg"
+                  styleClass="flex-grow"
                   (click)="nextStep()"
-                  class="btn btn-primary flex-grow py-4 flex items-center justify-center gap-2"
                   data-testid="next-step-btn"
                 >
                   Dalej
-                  <lucide-icon [img]="icons.ArrowRight" size="18"></lucide-icon>
-                </button>
+                  <lucide-icon [img]="icons.ArrowRight" size="18" class="ml-2"></lucide-icon>
+                </app-button>
               }
             </div>
 
@@ -619,28 +624,29 @@
                 generując taki elegancki dokument dla klienta w
                 <strong class="text-primary font-black tracking-wider">5 sekund</strong>.
               </p>
-              <a
-                href="/consultation"
-                class="btn btn-primary btn-lg w-full flex items-center justify-center gap-2"
-              >
+              <app-button href="/consultation" variant="accent" size="lg" styleClass="w-full">
                 Bezpłatna Diagnoza Automatyzacji
-                <lucide-icon [img]="icons.ArrowRight" size="20"></lucide-icon>
-              </a>
+                <lucide-icon [img]="icons.ArrowRight" size="20" class="ml-3"></lucide-icon>
+              </app-button>
               <div
                 class="flex flex-col gap-2 mt-6 border-t-2 border-dashed border-secondary/10 pt-6"
               >
-                <button
+                <app-button
+                  variant="secondary"
+                  size="lg"
+                  styleClass="w-full"
                   (click)="resetFormAndStartOver()"
-                  class="btn btn-outline w-full flex items-center justify-center border-2 border-secondary/20 text-secondary font-bold hover:bg-secondary hover:text-white transition-all shadow-sm"
                 >
                   + Rozpocznij nową wycenę
-                </button>
-                <button
+                </app-button>
+                <app-button
+                  variant="ghost"
+                  size="sm"
+                  styleClass="w-full opacity-60 hover:opacity-100"
                   (click)="editCurrentQuote()"
-                  class="btn btn-ghost w-full flex items-center justify-center text-secondary/50 hover:text-secondary hover:bg-secondary/5 transition-colors text-xs font-medium"
                 >
                   Znaleziono błąd? Wróć by edytować
-                </button>
+                </app-button>
               </div>
             </div>
           </div>

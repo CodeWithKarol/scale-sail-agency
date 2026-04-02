@@ -86,7 +86,7 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
             porozmawiajmy o tym, co możemy zautomatyzować.
           </p>
           <div class="flex justify-center">
-            <app-button variant="primary" size="lg" href="/consultation">
+            <app-button variant="accent" size="lg" href="/consultation">
               <span class="text-lg font-bold">Zarezerwuj Wstępną Analizę 📅</span>
             </app-button>
           </div>

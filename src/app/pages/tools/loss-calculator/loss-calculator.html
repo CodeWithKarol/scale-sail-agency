@@ -1,0 +1,224 @@
+<section class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
+  <!-- Technical Grid Background -->
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
+
+  <div class="layout-container relative z-10 pt-32 sm:pt-40">
+    <app-breadcrumb />
+
+    <div class="max-w-6xl mx-auto">
+      <!-- Header -->
+      <div class="flex flex-col gap-6 mb-16 animate-in fade-in slide-in-from-top-4 duration-700">
+        <div
+          class="inline-flex self-start items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest"
+        >
+          <span class="w-1.5 h-1.5 bg-primary animate-pulse"></span>
+          NARZĘDZIE ANALITYCZNE v1.0
+        </div>
+        <h1 class="heading-1 text-secondary text-balance">
+          Ile kosztuje Cię <br />
+          <span class="text-primary italic">Podatek od Chaosu?</span>
+        </h1>
+        <p class="text-body max-w-2xl text-secondary/70">
+          Wpisz dane swojej firmy i sprawdź, ile realnie pieniędzy oraz czasu tracisz na powtarzalne
+          czynności, które można zautomatyzować. Wyniki bywają bolesne, ale są kluczowe dla rozwoju
+          Twojego warsztatu.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <!-- Form Section -->
+        <div class="lg:col-span-5">
+          <form [formGroup]="calcForm" class="card p-8 md:p-10 flex flex-col gap-8 bg-white">
+            <div class="heading-3 border-b-2 border-secondary/10 pb-4 flex items-center gap-3">
+              <lucide-icon [img]="icons.TrendingDown" size="24" class="text-primary"></lucide-icon>
+              Dane operacyjne
+            </div>
+
+            <div class="flex flex-col gap-6">
+              <label class="flex flex-col gap-2">
+                <span class="text-small text-secondary/60">Liczba mechaników / stanowisk</span>
+                <input
+                  type="number"
+                  formControlName="mechanicsCount"
+                  class="input-field"
+                  placeholder="np. 3"
+                />
+              </label>
+
+              <label class="flex flex-col gap-2">
+                <span class="text-small text-secondary/60">Średnia liczba zleceń miesięcznie</span>
+                <input
+                  type="number"
+                  formControlName="jobsPerMonth"
+                  class="input-field"
+                  placeholder="np. 60"
+                />
+              </label>
+
+              <label class="flex flex-col gap-2">
+                <span class="text-small text-secondary/60"
+                  >Czas na "papierki" (min / zlecenie)</span
+                >
+                <div class="relative">
+                  <input
+                    type="number"
+                    formControlName="paperworkPerJob"
+                    class="input-field input-with-unit"
+                    placeholder="np. 20"
+                  />
+                  <span
+                    class="absolute right-5 top-1/2 -translate-y-1/2 font-mono text-xs opacity-30"
+                    >MINUT</span
+                  >
+                </div>
+                <span class="text-[10px] text-secondary/40 uppercase font-bold"
+                  >Przyjęcie, VIN, szukanie części, wycena PDF</span
+                >
+              </label>
+
+              <label class="flex flex-col gap-2">
+                <span class="text-small text-secondary/60"
+                  >Telefony do klientów (min / zlecenie)</span
+                >
+                <div class="relative">
+                  <input
+                    type="number"
+                    formControlName="callsPerJob"
+                    class="input-field input-with-unit"
+                    placeholder="np. 10"
+                  />
+                  <span
+                    class="absolute right-5 top-1/2 -translate-y-1/2 font-mono text-xs opacity-30"
+                    >MINUT</span
+                  >
+                </div>
+                <span class="text-[10px] text-secondary/40 uppercase font-bold"
+                  >Informowanie o statusie, opóźnieniach, odbiorze</span
+                >
+              </label>
+
+              <label class="flex flex-col gap-2">
+                <span class="text-small text-secondary/60">Twoja stawka roboczogodziny</span>
+                <div class="relative">
+                  <input
+                    type="number"
+                    formControlName="hourlyRate"
+                    class="input-field input-with-unit"
+                    placeholder="np. 200"
+                  />
+                  <span
+                    class="absolute right-5 top-1/2 -translate-y-1/2 font-mono text-xs opacity-30"
+                    >PLN / H</span
+                  >
+                </div>
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <!-- Results Section -->
+        <div class="lg:col-span-7 flex flex-col gap-8 lg:sticky lg:top-32">
+          <app-card
+            variant="highlight"
+            class="p-8 md:p-12 flex flex-col gap-8 border-l-8 border-l-primary bg-white"
+          >
+            <div class="flex flex-col gap-2">
+              <h2 class="text-small text-primary">TWÓJ BILANS STRAT</h2>
+              <p class="heading-2 !text-4xl text-secondary">Podsumowanie miesięczne</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div class="p-6 bg-neutral/50 border border-secondary/5 flex flex-col gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/40"
+                  >Strata finansowa</span
+                >
+                <span class="text-3xl font-black font-mono text-rose-500 tracking-tighter">
+                  -{{ monthlyLossPLN() | currency: 'PLN' : 'symbol' : '1.0-0' : 'pl' }}
+                </span>
+                <span class="text-[10px] text-secondary/40 font-mono italic">MIESIĘCZNIE</span>
+              </div>
+
+              <div class="p-6 bg-neutral/50 border border-secondary/5 flex flex-col gap-2">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/40"
+                  >Stracony czas</span
+                >
+                <span class="text-3xl font-black font-mono text-secondary tracking-tighter">
+                  {{ totalHoursLostPerMonth() | number: '1.0-1' }}h
+                </span>
+                <span class="text-[10px] text-secondary/40 font-mono italic">
+                  (~ {{ daysLostPerMonth() | number: '1.0-1' }} DNI ROBOCZYCH)
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-4 p-8 bg-secondary text-white relative overflow-hidden group">
+              <div
+                class="absolute top-0 right-0 w-32 h-32 bg-primary/10 -mr-16 -mt-16 rotate-45 transition-transform group-hover:scale-110"
+              ></div>
+
+              <div class="relative z-10 flex flex-col gap-4">
+                <div class="flex items-center gap-3">
+                  <lucide-icon
+                    [img]="icons.AlertTriangle"
+                    size="20"
+                    class="text-accent"
+                  ></lucide-icon>
+                  <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/90"
+                    >Prognoza Roczna</span
+                  >
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-small text-white/60 mb-1"
+                    >BRAK AUTOMATYZACJI KOSZTUJE CIĘ ROCZNIE:</span
+                  >
+                  <span
+                    class="text-4xl md:text-5xl font-black font-mono tracking-tighter text-primary drop-shadow-[0_0_15px_rgba(0,123,255,0.3)]"
+                  >
+                    {{ yearlyLossPLN() | currency: 'PLN' : 'symbol' : '1.0-0' : 'pl' }}
+                  </span>
+                </div>
+                <p class="text-sm text-white/80 max-w-sm italic mt-2 leading-relaxed font-medium">
+                  Za tę kwotę mógłbyś wyposażyć nowe stanowisko warsztatowe, zatrudnić pracownika
+                  lub pojechać na wymarzone wakacje bez telefonu w ręku.
+                </p>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-4 flex flex-col gap-6">
+              <p class="text-body text-secondary/70 text-sm">
+                Te liczby to dowód na to, że
+                <strong>cyfryzacja to nie koszt, ale inwestycja</strong>. System Scale Sail
+                zazwyczaj zwraca się po 3-4 miesiącach pracy.
+              </p>
+
+              <app-button
+                variant="primary"
+                size="lg"
+                href="/consultation"
+                styleClass="w-full justify-center group"
+              >
+                <span class="flex items-center gap-3">
+                  Zatrzymaj te straty - Darmowa Analiza
+                  <lucide-icon
+                    [img]="icons.ArrowRight"
+                    size="18"
+                    class="group-hover:translate-x-1 transition-transform"
+                  ></lucide-icon>
+                </span>
+              </app-button>
+            </div>
+          </app-card>
+
+          <!-- Small Warning Footer -->
+          <div class="flex items-center gap-3 px-6 py-4 bg-neutral border border-secondary/10">
+            <lucide-icon [img]="icons.ShieldCheck" size="16" class="text-primary/60"></lucide-icon>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/40">
+              Twoje dane nie są nigdzie zapisywane. To prywatna analiza Twojego biznesu.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

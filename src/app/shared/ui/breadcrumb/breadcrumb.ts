@@ -9,7 +9,7 @@ import { SeoService } from '../../core/seo/seo.service';
     @if (breadcrumbs().length > 1) {
       <nav
         aria-label="Breadcrumb"
-        class="inline-flex items-center bg-neutral border-2 border-secondary/10 px-5 py-2.5 mb-16 animate-in fade-in slide-in-from-left-2 duration-500"
+        class="inline-flex items-center bg-neutral border-2 border-secondary/10 px-5 py-2.5 mt-6 sm:mt-0 mb-12 sm:mb-16 animate-in fade-in slide-in-from-left-2 duration-500"
       >
         <ol class="flex flex-wrap items-center gap-4">
           @for (item of breadcrumbs(); track item.path; let last = $last; let index = $index) {

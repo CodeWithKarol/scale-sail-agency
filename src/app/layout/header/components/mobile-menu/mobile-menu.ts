@@ -49,7 +49,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
         <div class="mt-8 flow-root">
           <div class="-my-6 divide-y divide-secondary/10">
             <div class="space-y-2 py-8">
-              <div class="font-mono text-[10px] text-secondary/30 uppercase tracking-[0.4em] mb-6">
+              <div class="font-mono text-[10px] text-secondary/70 uppercase tracking-[0.4em] mb-6">
                 NAWIGACJA
               </div>
               @for (item of navigation(); track item.name; let index = $index) {
@@ -63,7 +63,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
                       <a
                         [routerLink]="child.path"
                         [fragment]="child.fragment"
-                        class="-mx-3 block px-3 py-3 pl-8 font-mono text-xs font-bold uppercase tracking-widest text-secondary/60 hover:bg-neutral hover:text-primary transition-all border-l-4 border-transparent hover:border-primary"
+                        class="-mx-3 block px-3 py-3 pl-8 font-mono text-xs font-bold uppercase tracking-widest text-secondary/80 hover:bg-neutral hover:text-primary transition-all border-l-4 border-transparent hover:border-primary"
                         (click)="closeMenu.emit()"
                       >
                         {{ child.name }}
@@ -77,7 +77,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
                     class="-mx-3 block px-3 py-4 font-mono text-xs font-bold uppercase tracking-widest text-secondary hover:bg-neutral hover:text-primary transition-all border-l-4 border-transparent hover:border-primary"
                     (click)="closeMenu.emit()"
                   >
-                    <span class="text-secondary/20 mr-3">0{{ index + 1 }}</span>
+                    <span class="text-secondary/40 mr-3">0{{ index + 1 }}</span>
                     {{ item.name }}
                   </a>
                 } @else {
@@ -86,7 +86,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
                     class="-mx-3 block px-3 py-4 font-mono text-xs font-bold uppercase tracking-widest text-secondary hover:bg-neutral hover:text-primary transition-all border-l-4 border-transparent hover:border-primary"
                     (click)="closeMenu.emit()"
                   >
-                    <span class="text-secondary/20 mr-3">0{{ index + 1 }}</span>
+                    <span class="text-secondary/40 mr-3">0{{ index + 1 }}</span>
                     {{ item.name }}
                   </a>
                 }
@@ -103,7 +103,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
               </a>
 
               <div
-                class="mt-12 pt-8 border-t border-secondary/10 flex justify-between font-mono text-[9px] text-secondary/30 uppercase tracking-[0.3em]"
+                class="mt-12 pt-8 border-t border-secondary/10 flex justify-between font-mono text-[9px] text-secondary/70 uppercase tracking-[0.3em]"
               >
                 <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 bg-primary rounded-none animate-pulse"></span>

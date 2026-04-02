@@ -30,6 +30,7 @@ import {
 } from 'lucide-angular';
 import { BreadcrumbComponent } from '../../../shared/ui/breadcrumb/breadcrumb';
 import { Card } from '../../../shared/ui/card/card';
+import { Button } from '../../../shared/ui/button/button';
 import { SeoService } from '../../../shared/core/seo/seo.service';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 
@@ -42,6 +43,7 @@ import { NgxTurnstileModule } from 'ngx-turnstile';
     LucideAngularModule,
     BreadcrumbComponent,
     Card,
+    Button,
     NgxTurnstileModule,
     RouterLink,
   ],

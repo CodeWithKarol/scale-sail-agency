@@ -4,9 +4,9 @@
 
   <!-- Main Content Container -->
   <div
-    class="layout-container relative z-10 flex flex-col items-center justify-center min-h-[80vh] sm:min-h-[85vh] pt-28 sm:pt-40 pb-16 sm:pb-24"
+    class="layout-container relative z-10 flex flex-col items-center justify-center min-h-[80vh] sm:min-h-[85vh] pt-28 sm:pt-40 pb-16 sm:pb-24 px-6"
   >
-    <div class="w-full max-w-5xl mx-auto text-center px-6">
+    <div class="w-full max-w-5xl mx-auto text-center px-2 sm:px-6">
       <!-- Status Badge -->
       <div class="mb-10 flex justify-center">
         <div class="status-badge status-badge-dark ring-4 ring-secondary/5">
@@ -41,15 +41,10 @@
       <!-- CTA Actions -->
       <div class="mt-16 flex flex-col items-center justify-center">
         <div class="flex flex-col items-center justify-center gap-4 sm:flex-row mb-6 w-full">
-          <app-button
-            href="/consultation"
-            variant="accent"
-            size="lg"
-            styleClass="w-full sm:w-auto min-h-[70px]"
-          >
-            <div class="flex flex-col items-center text-center py-1">
+          <app-button href="/consultation" variant="accent" size="lg" styleClass="w-full sm:w-auto">
+            <div class="flex flex-col items-center text-center">
               <span class="text-lg">Umów 15-minutową rozmowę</span>
-              <span class="font-mono text-xs uppercase tracking-[0.2em] text-white/90 mt-1">
+              <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-white/90 mt-1">
                 BEZPŁATNA KONSULTACJA
               </span>
             </div>
@@ -57,14 +52,12 @@
 
           <app-button
             href="/free-quote-generator"
-            variant="ghost"
+            variant="secondary"
             size="lg"
-            styleClass="w-full sm:w-auto min-h-[70px] border-2 border-secondary/40 hover:border-secondary/60 bg-transparent shadow-none hover:shadow-none translate-y-0 hover:-translate-y-1 transition-all group"
+            styleClass="w-full sm:w-auto"
           >
-            <div class="flex flex-col items-center text-center py-1">
-              <span class="text-[17px] font-bold text-secondary">
-                Przetestuj Darmowy Generator Wycen
-              </span>
+            <div class="flex flex-col items-center text-center">
+              <span class="text-[17px] font-bold"> Przetestuj Darmowy Generator Wycen </span>
               <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-secondary/60 mt-1">
                 DLA WARSZTATÓW • 100% BEZPŁATNE
               </span>
