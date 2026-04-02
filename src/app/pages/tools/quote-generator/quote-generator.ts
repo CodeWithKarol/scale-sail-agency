@@ -414,8 +414,6 @@ export class QuoteGenerator implements OnInit {
 
     const WEBHOOK_URL = '/api/webhook?type=quote';
 
-
-
     const response = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: {
