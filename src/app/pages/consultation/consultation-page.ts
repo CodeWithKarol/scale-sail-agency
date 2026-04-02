@@ -102,7 +102,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                   <h3 class="font-black text-lg text-secondary mb-2">
                     1. W CZYM MOGĘ POMÓC NAJSZYBCIEJ?
                   </h3>
-                  <p class="text-sm text-secondary/60 mb-4">
+                  <p class="text-sm text-secondary/75 mb-4">
                     Wybierz główny punkt bólu Twojej firmy.
                   </p>
                   <div class="relative">
@@ -143,14 +143,14 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 <!-- Budget -->
                 <div class="pt-6 border-t-2 border-secondary/5">
                   <h3 class="font-black text-lg text-secondary mb-2">2. RAMY INWESTYCYJNE</h3>
-                  <p class="text-sm text-secondary/60 mb-4">
+                  <p class="text-sm text-secondary/75 mb-4">
                     Budowa dedykowanego systemu to inwestycja, która zwraca się w odzyskanym czasie.
                     W jakim przedziale się poruszamy na start?
                   </p>
 
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
                     >
                       <input type="radio" formControlName="budget" value="low" class="sr-only" />
                       <span class="flex flex-col">
@@ -173,7 +173,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     </label>
 
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
                     >
                       <input type="radio" formControlName="budget" value="mid" class="sr-only" />
                       <span class="flex flex-col">
@@ -195,7 +195,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     </label>
 
                     <label
-                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-2 focus-within:ring-primary hover:bg-neutral/30 transition-colors"
+                      class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
                     >
                       <input type="radio" formControlName="budget" value="high" class="sr-only" />
                       <span class="flex flex-col">
@@ -252,7 +252,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 <div class="pt-10 border-t-2 border-secondary/5 space-y-6">
                   <div>
                     <h3 class="font-black text-lg text-secondary mb-2">4. DANE KONTAKTOWE</h3>
-                    <p class="text-sm text-secondary/60 mb-6">
+                    <p class="text-sm text-secondary/75 mb-6">
                       Z kim mam się kontaktować w sprawie tego projektu?
                     </p>
 
@@ -330,7 +330,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     type="submit"
                     variant="primary"
                     size="lg"
-                    styleClass="w-full sm:w-auto"
+                    styleClass="w-full sm:w-auto shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                     [disabled]="status() === 'SUBMITTING' || !turnstileToken()"
                   >
                     <span class="text-lg">PRZEJDŹ DO KALENDARZA</span>

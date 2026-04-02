@@ -971,18 +971,20 @@
         <!-- Icon Header -->
         <div class="flex flex-col items-center text-center mb-8 mt-2">
           <div
-            class="w-20 h-20 bg-primary/10 flex items-center justify-center mb-6 shadow-sm border-2 border-primary/20 transform rotate-3"
+            class="w-20 h-20 bg-secondary flex items-center justify-center mb-7 shadow-lg border-2 border-secondary transform rotate-3"
           >
             <lucide-icon
               [img]="icons.Download"
-              class="text-primary transform -rotate-3"
+              class="text-white transform -rotate-3"
               size="36"
             ></lucide-icon>
           </div>
-          <h3 class="text-3xl font-black text-secondary uppercase tracking-tight mb-4">
+          <h3 class="text-3xl font-black text-secondary uppercase tracking-tight mb-2">
             Twój Kosztorys<br />Jest Gotowy
           </h3>
-          <p class="text-[15px] font-medium text-secondary/70 leading-relaxed max-w-sm mx-auto">
+          <p
+            class="text-[15px] font-medium text-secondary/80 leading-relaxed max-w-sm mx-auto mt-4 px-2"
+          >
             Wpisz poniżej swój adres e-mail, a system natychmiast wyśle Ci wygenerowany przed chwilą
             dokument PDF.
           </p>
@@ -1005,7 +1007,7 @@
                 type="email"
                 formControlName="email"
                 placeholder="np. warsztat@gmail.com"
-                class="input-field bg-white !pl-12 !py-5 text-base shadow-sm"
+                class="input-field bg-white !pl-12 !py-5 text-base shadow-sm focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all duration-300"
                 [class.border-accent]="
                   emailForm.get('email')?.invalid && emailForm.get('email')?.touched
                 "
@@ -1041,7 +1043,7 @@
           <button
             type="submit"
             [disabled]="isGenerating() || !turnstileToken()"
-            class="btn btn-primary w-full flex items-center justify-center gap-3 text-[15px] py-4 shadow-md group uppercase tracking-widest transition-transform"
+            class="btn btn-primary w-full flex items-center justify-center gap-3 text-[15px] py-4 shadow-xl group uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:grayscale disabled:scale-100"
           >
             @if (!isGenerating()) {
               <span>Odbierz plik PDF</span>
