@@ -412,7 +412,7 @@ export class QuoteGenerator implements OnInit {
       },
     };
 
-    const WEBHOOK_URL = '/api/webhook?type=quote';
+    const WEBHOOK_URL = 'https://hook.eu1.make.com/fy4l7t5fxbm1fi42hxw2za4ttn3uqpoy';
 
     console.log('Wysyłam JSON do webhooka Make...', payload);
 
