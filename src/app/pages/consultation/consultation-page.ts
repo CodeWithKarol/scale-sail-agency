@@ -605,7 +605,7 @@ export class ConsultationPage implements OnInit {
       turnstileToken: this.turnstileToken(),
     };
 
-    const WEBHOOK_URL = 'https://hook.eu1.make.com/yd904he1om2qyevj8aktgk35rjfr4gx9';
+    const WEBHOOK_URL = '/api/webhook?type=consultation';
 
     // Send the lead to Make.com webhook for automation
     this.http

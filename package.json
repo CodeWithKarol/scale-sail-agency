@@ -1,9 +1,11 @@
 {
   "name": "scale-sail-agency",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "vercel:dev": "vercel dev",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test --watch=false",
@@ -52,6 +54,7 @@
     "@tailwindcss/postcss": "^4.1.12",
     "@types/express": "^5.0.1",
     "@types/node": "^20.19.37",
+    "@vercel/node": "^5.6.24",
     "angular-eslint": "21.3.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
@@ -62,6 +65,7 @@
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
     "typescript-eslint": "8.47.0",
+    "vercel": "^50.38.2",
     "vitest": "^4.0.8"
   }
 }

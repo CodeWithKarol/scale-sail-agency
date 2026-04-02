@@ -1,0 +1,4 @@
+{
+  "name": "scale-sail-agency",
+  "devCommand": "ng serve --port $PORT --host 0.0.0.0"
+}
