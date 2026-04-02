@@ -609,7 +609,7 @@ export class ConsultationPage implements OnInit {
 
     // Send the lead to Make.com webhook for automation
     this.http
-      .post(WEBHOOK_URL, payload)
+      .post(WEBHOOK_URL, payload, { responseType: 'text' })
       .pipe(
         tap(() => {
           setTimeout(() => {
