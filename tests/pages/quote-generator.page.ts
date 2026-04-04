@@ -8,6 +8,7 @@ export class QuoteGeneratorPage {
   readonly clientNameInput: Locator;
   readonly vehicleMakeInput: Locator;
   readonly vehicleModelInput: Locator;
+  readonly vehiclePlateInput: Locator;
 
   // Step 2: Parts & Labor
   readonly addPartBtn: Locator;
@@ -43,6 +44,7 @@ export class QuoteGeneratorPage {
     this.clientNameInput = page.getByLabel(/Imię i Nazwisko \/ Firma Klienta/i);
     this.vehicleMakeInput = page.getByPlaceholder('np. Toyota');
     this.vehicleModelInput = page.getByPlaceholder('np. Corolla 2.0');
+    this.vehiclePlateInput = page.getByPlaceholder('np. WX 12345');
 
     // Step 2
     this.addPartBtn = page.getByRole('button', { name: /dodaj część/i });
@@ -79,11 +81,18 @@ export class QuoteGeneratorPage {
     await this.page.waitForLoadState('networkidle');
   }
 
-  async fillStep1(company: string, client: string, make: string, model: string) {
+  async fillStep1(
+    company: string,
+    client: string,
+    make: string,
+    model: string,
+    plate: string = 'WX 12345'
+  ) {
     await this.companyNameInput.fill(company);
     await this.clientNameInput.fill(client);
     await this.vehicleMakeInput.fill(make);
     await this.vehicleModelInput.fill(model);
+    await this.vehiclePlateInput.fill(plate);
     await this.nextStepBtn.click();
   }
 
@@ -98,6 +107,8 @@ export class QuoteGeneratorPage {
     // Fill first labor (already exists by default)
     const laborName = this.page.locator('input[formControlName="name"]').last();
     await laborName.fill('Test Labor');
+    const laborRate = this.page.locator('input[formControlName="rate"]').first();
+    await laborRate.fill('200');
 
     await this.nextStepBtn.click();
   }

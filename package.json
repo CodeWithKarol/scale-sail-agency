@@ -7,14 +7,15 @@
     "start": "ng serve",
     "vercel:dev": "vercel dev",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test --watch=false",
+    "test": "ng test",
+    "test:run": "ng test --watch=false",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
-    "serve:ssr:scale-sail-agency": "node dist/scale-sail-agency/server/server.mjs",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
     "format": "prettier --write .",
-    "build:ci": "npm run lint && npm run test && npm run build"
+    "build:ci": "npm run lint:fix && npm run test:run && npm run build",
+    "serve:ssr:scale-sail-agency": "node dist/scale-sail-agency/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
