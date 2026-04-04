@@ -33,20 +33,24 @@ describe('QuoteGenerator', () => {
   });
 
   it('should calculate initial subtotal, vat, and total correctly', () => {
-    // Initial values: 1 part (price 0) and 1 labor (1 hr x 200 rate)
-    // Actually part price is 0 initially, labor is 200.
+    // Initial values: 1 part (price 0) and 1 labor (1 hr x 0 rate)
+    // We patch part price to 100, labor rate to 200.
     const partGroup = component.parts.at(0);
     partGroup.patchValue({ name: 'Test Part', qty: 1, price: 100 });
 
+    const laborGroup = component.labor.at(0);
+    laborGroup.patchValue({ rate: 200 });
+
     fixture.detectChanges();
 
-    // subtotal: 100 (part) + 200 (labor default) = 300
+    // subtotal: 100 (part) + 200 (labor) = 300
     expect(component.subtotal()).toBe(300);
     expect(component.vat()).toBe(300 * 0.23);
     expect(component.total()).toBe(300 * 1.23);
   });
 
   it('should update totals when adding a part', () => {
+    component.labor.at(0).patchValue({ rate: 200 });
     component.addPart();
     const secondPart = component.parts.at(1);
     secondPart.patchValue({ name: 'Extra Part', qty: 2, price: 50 });
@@ -58,6 +62,7 @@ describe('QuoteGenerator', () => {
   });
 
   it('should calculate part price based on netPrice and markup', () => {
+    component.labor.at(0).patchValue({ rate: 200 });
     const part = component.parts.at(0);
     part.patchValue({ netPrice: 100, markup: 30 });
 

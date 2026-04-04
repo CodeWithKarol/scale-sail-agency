@@ -62,6 +62,7 @@ export class QuoteGenerator implements OnInit {
   showEmailModal = signal(false);
   showThankYou = signal(false);
   isGenerating = signal(false);
+  step2Error = signal<'none' | 'empty' | 'invalid' | 'zero'>('none');
   today = new Date();
 
   // Multi-step logic
@@ -103,14 +104,16 @@ export class QuoteGenerator implements OnInit {
     if (step === 2 && this.isStep1Valid()) {
       this.currentStep.set(2);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (step === 3 && this.isStep1Valid() && this.isStep2Valid()) {
-      this.currentStep.set(3);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (step === 3 && this.isStep1Valid()) {
+      if (this.isStep2Valid()) {
+        this.currentStep.set(3);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
   }
 
   isStep1Valid(): boolean {
-    const controls = ['companyName', 'clientName'];
+    const controls = ['companyName', 'clientName', 'vehicleMake', 'vehicleModel', 'vehiclePlate'];
     let valid = true;
     controls.forEach((c) => {
       const ctrl = this.quoteForm.get(c);
@@ -123,30 +126,40 @@ export class QuoteGenerator implements OnInit {
   }
 
   isStep2Valid(): boolean {
-    let valid = true;
+    let itemsValid = true;
 
-    // Walidacja części
+    // Walidacja części - mark as touched to show red borders
     this.parts.controls.forEach((group) => {
+      group.markAllAsTouched();
       if (group.invalid) {
-        group.markAllAsTouched();
-        valid = false;
+        itemsValid = false;
       }
     });
 
-    // Walidacja robocizny
+    // Walidacja robocizny - mark as touched to show red borders
     this.labor.controls.forEach((group) => {
+      group.markAllAsTouched();
       if (group.invalid) {
-        group.markAllAsTouched();
-        valid = false;
+        itemsValid = false;
       }
     });
 
-    if (!valid) {
-      // Opcjonalnie: można tu dodać jakiś komunikat typu toast lub alert
-      console.warn('Proszę uzupełnić wszystkie wymagane pola w kosztorysie.');
+    const hasNoItems = this.parts.length === 0 && this.labor.length === 0;
+    const isZero = this.subtotal() <= 0;
+
+    let errorType: 'none' | 'empty' | 'invalid' | 'zero' = 'none';
+
+    if (hasNoItems) {
+      errorType = 'empty';
+    } else if (!itemsValid) {
+      errorType = 'invalid';
+    } else if (isZero) {
+      errorType = 'zero';
     }
 
-    return valid;
+    this.step2Error.set(errorType);
+
+    return errorType === 'none';
   }
 
   ngOnInit() {
@@ -223,10 +236,10 @@ export class QuoteGenerator implements OnInit {
     companyName: ['', Validators.required],
     clientName: ['', Validators.required],
     clientPhone: [''],
-    vehicleMake: [''],
-    vehicleModel: [''],
+    vehicleMake: ['', Validators.required],
+    vehicleModel: ['', Validators.required],
     vehicleVin: [''],
-    vehiclePlate: [''],
+    vehiclePlate: ['', Validators.required],
     vatRate: [23, Validators.required],
     parts: this.fb.array([this.createPart()]),
     labor: this.fb.array([this.createLabor()]),
@@ -280,15 +293,27 @@ export class QuoteGenerator implements OnInit {
     const group = this.fb.group({
       name: ['', Validators.required],
       qty: [1, [Validators.required, Validators.min(0.1)]],
-      netPrice: [null], // Zakup netto
-      markup: [30], // Narzut %
-      price: [0, [Validators.required, Validators.min(0)]], // Detal netto szt.
+      netPrice: [null as number | null, [Validators.min(0)]], // Zakup netto
+      markup: [30, [Validators.required, Validators.min(0)]], // Narzut %
+      price: [0, [Validators.required, Validators.min(0.01)]], // Detal netto szt.
     });
 
     // Auto-calculate retail price when netPrice or markup changes
     group.valueChanges.subscribe((val) => {
       if (val.netPrice != null && val.markup != null) {
-        const calculatedPrice = val.netPrice * (1 + val.markup / 100);
+        let safeMarkup = val.markup;
+        if (val.markup < 0) {
+          safeMarkup = 0;
+          group.patchValue({ markup: safeMarkup }, { emitEvent: false });
+        }
+
+        let safeNet = val.netPrice;
+        if (val.netPrice < 0) {
+          safeNet = 0;
+          group.patchValue({ netPrice: safeNet }, { emitEvent: false });
+        }
+
+        const calculatedPrice = safeNet * (1 + safeMarkup / 100);
         if (Math.abs(calculatedPrice - (val.price || 0)) > 0.01) {
           group.patchValue({ price: Number(calculatedPrice.toFixed(2)) }, { emitEvent: false });
         }
@@ -299,10 +324,17 @@ export class QuoteGenerator implements OnInit {
     group.get('price')?.valueChanges.subscribe((newPrice) => {
       const net = group.get('netPrice')?.value;
       if (newPrice != null && net != null && net > 0) {
-        const calculatedMarkup = ((newPrice - net) / net) * 100;
-        const currentMarkup = group.get('markup')?.value || 0;
-        if (Math.abs(calculatedMarkup - currentMarkup) > 0.1) {
-          group.patchValue({ markup: Math.round(calculatedMarkup) }, { emitEvent: false });
+        let calculatedMarkup = ((newPrice - net) / net) * 100;
+
+        if (calculatedMarkup < 0) {
+          calculatedMarkup = 0;
+          // If price is typed lower than netPrice, correct both safely
+          group.patchValue({ markup: 0, price: net }, { emitEvent: false });
+        } else {
+          const currentMarkup = group.get('markup')?.value || 0;
+          if (Math.abs(calculatedMarkup - currentMarkup) > 0.1) {
+            group.patchValue({ markup: Math.round(calculatedMarkup) }, { emitEvent: false });
+          }
         }
       }
     });
@@ -313,13 +345,14 @@ export class QuoteGenerator implements OnInit {
   createLabor(): FormGroup {
     return this.fb.group({
       name: ['', Validators.required],
-      hours: [1, Validators.required],
-      rate: [200, Validators.required],
+      hours: [1, [Validators.required, Validators.min(0.1)]],
+      rate: [0, [Validators.required, Validators.min(0.01)]],
     });
   }
 
   addPart() {
     this.parts.push(this.createPart());
+    this.step2Error.set('none');
   }
   removePart(i: number) {
     this.parts.removeAt(i);
@@ -327,6 +360,7 @@ export class QuoteGenerator implements OnInit {
 
   addLabor() {
     this.labor.push(this.createLabor());
+    this.step2Error.set('none');
   }
   removeLabor(i: number) {
     this.labor.removeAt(i);

@@ -19,6 +19,7 @@
           (keydown.enter)="goToStep(1)"
           tabindex="0"
           role="button"
+          data-testid="stepper-step-1"
         >
           <div
             class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
@@ -51,6 +52,7 @@
           (keydown.enter)="goToStep(2)"
           tabindex="0"
           role="button"
+          data-testid="stepper-step-2"
         >
           <div
             class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
@@ -83,6 +85,7 @@
           (keydown.enter)="goToStep(3)"
           tabindex="0"
           role="button"
+          data-testid="stepper-step-3"
         >
           <div
             class="w-12 h-12 flex items-center justify-center border-2 transition-all duration-300"
@@ -157,6 +160,9 @@
                     type="text"
                     formControlName="companyName"
                     class="input-field bg-white"
+                    [class.border-rose-500]="
+                      quoteForm.get('companyName')?.touched && quoteForm.get('companyName')?.invalid
+                    "
                     placeholder="np. Auto-Serwis Kowalski"
                     autocomplete="off"
                     data-testid="company-name-input"
@@ -175,6 +181,9 @@
                     type="text"
                     formControlName="clientName"
                     class="input-field bg-white"
+                    [class.border-rose-500]="
+                      quoteForm.get('clientName')?.touched && quoteForm.get('clientName')?.invalid
+                    "
                     autocomplete="off"
                     data-testid="client-name-input"
                   />
@@ -190,7 +199,7 @@
                   <span class="text-small"
                     >Numer Telefonu Klienta
                     <span class="text-secondary/40 font-medium lowercase normal-case"
-                      >(opcjonalnie)</span
+                      >(OPCJONALNE)</span
                     ></span
                   >
                   <input
@@ -214,9 +223,20 @@
                       type="text"
                       formControlName="vehicleMake"
                       class="input-field bg-neutral"
+                      [class.border-rose-500]="
+                        quoteForm.get('vehicleMake')?.touched &&
+                        quoteForm.get('vehicleMake')?.invalid
+                      "
                       placeholder="np. Toyota"
                       autocomplete="off"
                     />
+                    @if (
+                      quoteForm.get('vehicleMake')?.touched && quoteForm.get('vehicleMake')?.invalid
+                    ) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Marka jest wymagana</span
+                      >
+                    }
                   </label>
                   <label class="flex flex-col gap-2">
                     <span class="text-small">Model Pojazdu</span>
@@ -224,14 +244,31 @@
                       type="text"
                       formControlName="vehicleModel"
                       class="input-field bg-neutral"
+                      [class.border-rose-500]="
+                        quoteForm.get('vehicleModel')?.touched &&
+                        quoteForm.get('vehicleModel')?.invalid
+                      "
                       placeholder="np. Corolla 2.0"
                       autocomplete="off"
                     />
+                    @if (
+                      quoteForm.get('vehicleModel')?.touched &&
+                      quoteForm.get('vehicleModel')?.invalid
+                    ) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Model jest wymagany</span
+                      >
+                    }
                   </label>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <label class="flex flex-col gap-2">
-                    <span class="text-small">Numer VIN</span>
+                    <span class="text-small"
+                      >Numer VIN
+                      <span class="text-secondary/40 font-medium lowercase normal-case"
+                        >(OPCJONALNE)</span
+                      ></span
+                    >
                     <input
                       type="text"
                       formControlName="vehicleVin"
@@ -244,9 +281,22 @@
                     <input
                       type="text"
                       formControlName="vehiclePlate"
+                      placeholder="np. WX 12345"
                       class="input-field bg-neutral uppercase"
+                      [class.border-rose-500]="
+                        quoteForm.get('vehiclePlate')?.touched &&
+                        quoteForm.get('vehiclePlate')?.invalid
+                      "
                       autocomplete="off"
                     />
+                    @if (
+                      quoteForm.get('vehiclePlate')?.touched &&
+                      quoteForm.get('vehiclePlate')?.invalid
+                    ) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Numer tablic jest wymagany</span
+                      >
+                    }
                   </label>
                 </div>
               </div>
@@ -275,15 +325,13 @@
                       [formGroupName]="i"
                       class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
                     >
-                      @if (parts.length > 1) {
-                        <button
-                          type="button"
-                          (click)="removePart(i)"
-                          class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
-                        >
-                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
-                        </button>
-                      }
+                      <button
+                        type="button"
+                        (click)="removePart(i)"
+                        class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                      </button>
 
                       <div class="flex flex-col">
                         <span
@@ -316,9 +364,13 @@
                           >
                           <input
                             type="number"
+                            min="0.1"
                             formControlName="qty"
                             placeholder="1"
                             class="input-field w-full"
+                            [class.border-rose-500]="
+                              part.get('qty')?.touched && part.get('qty')?.invalid
+                            "
                             autocomplete="off"
                           />
                         </div>
@@ -326,28 +378,50 @@
                         <div class="flex flex-col justify-end">
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                            >Cena Zakupu Netto (PLN)</span
+                            >Cena Zakupu Netto (PLN)
+                            <span class="lowercase normal-case font-medium"
+                              >(OPCJONALNE)</span
+                            ></span
                           >
                           <input
                             type="number"
+                            min="0"
                             formControlName="netPrice"
                             placeholder="0.00"
                             class="input-field w-full bg-secondary/5 font-medium"
+                            [class.border-rose-500]="
+                              part.get('netPrice')?.touched && part.get('netPrice')?.invalid
+                            "
                             autocomplete="off"
                             data-testid="net-price-input"
                           />
                         </div>
 
-                        <div class="flex flex-col justify-end">
+                        <div
+                          class="flex flex-col justify-end transition-opacity duration-300"
+                          [class.opacity-40]="
+                            !part.get('netPrice')?.value || part.get('netPrice')?.value <= 0
+                          "
+                          [class.pointer-events-none]="
+                            !part.get('netPrice')?.value || part.get('netPrice')?.value <= 0
+                          "
+                        >
                           <span
                             class="block text-[10px] uppercase font-bold text-secondary/40 mb-1 ml-1"
-                            >Narzut Warsztatu (%)</span
+                            >Narzut Warsztatu (%)
+                            <span class="lowercase normal-case font-medium"
+                              >(OPCJONALNE)</span
+                            ></span
                           >
                           <input
                             type="number"
+                            min="0"
                             formControlName="markup"
                             placeholder="30"
                             class="input-field w-full bg-primary/5 text-primary font-bold"
+                            [class.border-rose-500]="
+                              part.get('markup')?.touched && part.get('markup')?.invalid
+                            "
                             autocomplete="off"
                             data-testid="markup-input"
                           />
@@ -360,9 +434,13 @@
                           >
                           <input
                             type="number"
+                            min="0"
                             formControlName="price"
                             placeholder="0.00"
                             class="input-field w-full font-bold shadow-sm"
+                            [class.border-rose-500]="
+                              part.get('price')?.touched && part.get('price')?.invalid
+                            "
                             autocomplete="off"
                             data-testid="price-input"
                           />
@@ -371,6 +449,29 @@
                     </div>
                   }
                 </div>
+                @if (parts.length === 0) {
+                  <div
+                    class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-secondary/10 bg-secondary/5 text-center mt-2 group cursor-pointer hover:border-primary/30 transition-colors"
+                    (click)="addPart()"
+                    (keydown.enter)="addPart()"
+                    tabindex="0"
+                  >
+                    <div
+                      class="w-12 h-12 bg-white border-2 border-secondary/5 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform"
+                    >
+                      <lucide-icon [img]="icons.Plus" size="24" class="text-primary"></lucide-icon>
+                    </div>
+                    <p
+                      class="text-[10px] uppercase font-bold tracking-widest text-secondary/40 mb-4"
+                    >
+                      Brak pozycji w tej sekcji
+                    </p>
+                    <app-button variant="primary" size="sm">
+                      <lucide-icon [img]="icons.Plus" size="14" class="mr-2"></lucide-icon> Dodaj
+                      pierwszą część
+                    </app-button>
+                  </div>
+                }
               </div>
               <!-- Labor -->
               <div class="flex flex-col gap-5 mt-2">
@@ -394,15 +495,13 @@
                       [formGroupName]="i"
                       class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
                     >
-                      @if (labor.length > 1) {
-                        <button
-                          type="button"
-                          (click)="removeLabor(i)"
-                          class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
-                        >
-                          <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
-                        </button>
-                      }
+                      <button
+                        type="button"
+                        (click)="removeLabor(i)"
+                        class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
+                      >
+                        <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
+                      </button>
 
                       <div class="flex flex-col gap-4">
                         <div class="flex flex-col">
@@ -434,10 +533,14 @@
                             >
                             <input
                               type="number"
+                              min="0.1"
                               step="0.5"
                               formControlName="hours"
                               placeholder="1.5"
                               class="input-field w-full"
+                              [class.border-rose-500]="
+                                lab.get('hours')?.touched && lab.get('hours')?.invalid
+                              "
                               autocomplete="off"
                             />
                           </div>
@@ -448,9 +551,13 @@
                             >
                             <input
                               type="number"
+                              min="0"
                               formControlName="rate"
                               placeholder="200"
                               class="input-field w-full bg-secondary/5 font-medium"
+                              [class.border-rose-500]="
+                                lab.get('rate')?.touched && lab.get('rate')?.invalid
+                              "
                               autocomplete="off"
                             />
                           </div>
@@ -459,6 +566,29 @@
                     </div>
                   }
                 </div>
+                @if (labor.length === 0) {
+                  <div
+                    class="flex flex-col items-center justify-center p-8 border-2 border-dashed border-secondary/10 bg-secondary/5 text-center mt-2 group cursor-pointer hover:border-primary/30 transition-colors"
+                    (click)="addLabor()"
+                    (keydown.enter)="addLabor()"
+                    tabindex="0"
+                  >
+                    <div
+                      class="w-12 h-12 bg-white border-2 border-secondary/5 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform"
+                    >
+                      <lucide-icon [img]="icons.Plus" size="24" class="text-primary"></lucide-icon>
+                    </div>
+                    <p
+                      class="text-[10px] uppercase font-bold tracking-widest text-secondary/40 mb-4"
+                    >
+                      Brak pozycji w tej sekcji
+                    </p>
+                    <app-button variant="primary" size="sm">
+                      <lucide-icon [img]="icons.Plus" size="14" class="mr-2"></lucide-icon> Dodaj
+                      pozycję robocizny
+                    </app-button>
+                  </div>
+                }
               </div>
 
               <!-- Live Summary for Step 2 -->
@@ -549,32 +679,68 @@
             }
 
             <!-- Step Navigation Buttons -->
-            <div
-              class="flex items-center gap-4 mt-8 pt-8 border-t-2 border-dashed border-secondary/10"
-            >
-              @if (currentStep() > 1) {
-                <app-button
-                  variant="ghost"
-                  size="lg"
-                  (click)="prevStep()"
-                  data-testid="prev-step-btn"
+            <div class="flex flex-col gap-4 mt-8 pt-8 border-t-2 border-dashed border-secondary/10">
+              @if (step2Error() !== 'none' && currentStep() === 2) {
+                <div
+                  class="bg-rose-50 border-2 border-rose-500/20 p-4 flex items-center gap-3 text-rose-600 animate-shake mb-2"
                 >
-                  <lucide-icon [img]="icons.ArrowLeft" size="18" class="mr-2"></lucide-icon>
-                  Wstecz
-                </app-button>
+                  <lucide-icon
+                    [img]="icons.ShieldCheck"
+                    size="20"
+                    class="text-rose-500"
+                  ></lucide-icon>
+                  <div class="flex flex-col">
+                    @if (step2Error() === 'empty') {
+                      <span class="text-[10px] font-black uppercase tracking-widest"
+                        >Kosztorys jest pusty</span
+                      >
+                      <span class="text-xs font-medium"
+                        >Dodaj przynajmniej jedną część lub usługę, aby kontynuować.</span
+                      >
+                    } @else if (step2Error() === 'invalid') {
+                      <span class="text-[10px] font-black uppercase tracking-widest"
+                        >Błędy w pozycjach</span
+                      >
+                      <span class="text-xs font-medium"
+                        >Popraw błędy w polach zaznaczonych na czerwono.</span
+                      >
+                    } @else if (step2Error() === 'zero') {
+                      <span class="text-[10px] font-black uppercase tracking-widest"
+                        >Wycena wynosi 0 zł</span
+                      >
+                      <span class="text-xs font-medium"
+                        >Uzupełnij kwoty i stawki, aby kosztorys miał wartość większą od zera.</span
+                      >
+                    }
+                  </div>
+                </div>
               }
-              @if (currentStep() < 3) {
-                <app-button
-                  variant="primary"
-                  size="lg"
-                  styleClass="flex-grow"
-                  (click)="nextStep()"
-                  data-testid="next-step-btn"
-                >
-                  Dalej
-                  <lucide-icon [img]="icons.ArrowRight" size="18" class="ml-2"></lucide-icon>
-                </app-button>
-              }
+
+              <div class="flex items-center gap-4">
+                @if (currentStep() > 1) {
+                  <app-button
+                    variant="ghost"
+                    size="lg"
+                    (click)="prevStep()"
+                    data-testid="prev-step-btn"
+                  >
+                    <lucide-icon [img]="icons.ArrowLeft" size="18" class="mr-2"></lucide-icon>
+                    Wstecz
+                  </app-button>
+                }
+                @if (currentStep() < 3) {
+                  <app-button
+                    variant="primary"
+                    size="lg"
+                    styleClass="flex-grow"
+                    (click)="nextStep()"
+                    data-testid="next-step-btn"
+                  >
+                    Dalej
+                    <lucide-icon [img]="icons.ArrowRight" size="18" class="ml-2"></lucide-icon>
+                  </app-button>
+                }
+              </div>
             </div>
 
             <div class="mt-4 text-center">
