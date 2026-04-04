@@ -125,7 +125,8 @@ test.describe('Quote Generator (E2E)', () => {
 
     // Click "Dalej" and expect error
     await quotePage.nextStepBtn.click();
-    await expect(page.getByText('Dodaj przynajmniej jedną część lub usługę')).toBeVisible();
+    await expect(page.getByText('Kosztorys jest pusty')).toBeVisible();
+    await expect(page.getByText('Dodaj przynajmniej jedną część lub usługę, aby kontynuować.')).toBeVisible();
 
     // Add a part back
     await page.getByText('Dodaj pierwszą część').click();
@@ -136,7 +137,7 @@ test.describe('Quote Generator (E2E)', () => {
     await page.locator('input[formControlName="price"]').first().fill('100');
 
     // Error should disappear
-    await expect(page.getByText('Dodaj przynajmniej jedną część lub usługę')).not.toBeVisible();
+    await expect(page.getByText('Kosztorys jest pusty')).not.toBeVisible();
   });
 
   test('should block stepper navigation to step 3 when no items are added', async ({ page }) => {
@@ -158,7 +159,7 @@ test.describe('Quote Generator (E2E)', () => {
 
     // Verify we are STILL in Step 2 (Co naprawiamy?)
     await expect(page.getByText('Co naprawiamy?')).toBeVisible();
-    await expect(page.getByText('Dodaj przynajmniej jedną część lub usługę')).toBeVisible();
+    await expect(page.getByText('Kosztorys jest pusty')).toBeVisible();
   });
 
   test('should highlight fields in red when markup is invalid leading to 0 price', async ({ page }) => {
@@ -177,7 +178,8 @@ test.describe('Quote Generator (E2E)', () => {
     // Price at 0 should be red because of Validators.min(0.01)
     await expect(partRow.locator('input[formControlName="price"]')).toHaveClass(/border-rose-500/);
     
-    // Ensure general error also shows
-    await expect(page.getByText('Kosztorys jest pusty')).toBeVisible();
+    // Ensure general invalid error also shows
+    await expect(page.getByText('Błędy w pozycjach')).toBeVisible();
+    await expect(page.getByText('Popraw błędy w polach zaznaczonych na czerwono.')).toBeVisible();
   });
 });

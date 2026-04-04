@@ -2,9 +2,9 @@ name: CI/CD Testing Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   validate-and-test:
@@ -23,7 +23,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci # Szybsze i bezpieczniejsze niż npm install dla CI
+        run: npm install # Zmiana z npm ci z uwagi na konflikt wersji nody/npm
 
       - name: Check Code Quality (Lint)
         run: npm run lint
@@ -32,7 +32,11 @@ jobs:
         run: npm run test:run
 
       - name: Install Playwright & Browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps
 
       - name: Run End-to-End Tests (Playwright)
         run: npm run test:e2e
+
+      - name: Trigger Vercel Production Deploy
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
