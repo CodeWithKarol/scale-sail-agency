@@ -243,6 +243,8 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                         Oczekiwany jest krótki opis.
                       } @else if (f['message'].errors?.['minlength']) {
                         Rozwiń nieco myśl (min. 20 znaków).
+                      } @else if (f['message'].errors?.['maxlength']) {
+                        Max 1000 znaków.
                       }
                     </p>
                   }
@@ -273,7 +275,12 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                         />
                         @if (f['name'].invalid && f['name'].touched) {
                           <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
-                            To pole jest wymagane.
+                            @if (f['name'].errors?.['required']) {
+                              To pole jest wymagane.
+                            }
+                            @if (f['name'].errors?.['maxlength']) {
+                              Max 50 znaków.
+                            }
                           </p>
                         }
                       </div>
@@ -298,6 +305,8 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                               Podaj adres email.
                             } @else if (f['email'].errors?.['email']) {
                               Błędny format email.
+                            } @else if (f['email'].errors?.['maxlength']) {
+                              Max 100 znaków.
                             }
                           </p>
                         }
@@ -518,11 +527,11 @@ export class ConsultationPage implements OnInit {
   status = signal<QualificationStatus>('PENDING');
 
   form = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
+    name: ['', [Validators.required, Validators.maxLength(50)]],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
     projectType: ['system', Validators.required],
     budget: ['mid', Validators.required],
-    message: ['', [Validators.required, Validators.minLength(20)]],
+    message: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(1000)]],
     botcheck: [false],
   });
 

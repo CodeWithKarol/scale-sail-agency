@@ -233,13 +233,13 @@ export class QuoteGenerator implements OnInit {
   };
 
   quoteForm: FormGroup = this.fb.group({
-    companyName: ['', Validators.required],
-    clientName: ['', Validators.required],
-    clientPhone: [''],
-    vehicleMake: ['', Validators.required],
-    vehicleModel: ['', Validators.required],
-    vehicleVin: [''],
-    vehiclePlate: ['', Validators.required],
+    companyName: ['', [Validators.required, Validators.maxLength(50)]],
+    clientName: ['', [Validators.required, Validators.maxLength(50)]],
+    clientPhone: ['', [Validators.maxLength(20)]],
+    vehicleMake: ['', [Validators.required, Validators.maxLength(30)]],
+    vehicleModel: ['', [Validators.required, Validators.maxLength(30)]],
+    vehicleVin: ['', [Validators.maxLength(17)]],
+    vehiclePlate: ['', [Validators.required, Validators.maxLength(15)]],
     vatRate: [23, Validators.required],
     parts: this.fb.array([this.createPart()]),
     labor: this.fb.array([this.createLabor()]),
@@ -291,7 +291,7 @@ export class QuoteGenerator implements OnInit {
 
   createPart(): FormGroup {
     const group = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.maxLength(80)]],
       qty: [1, [Validators.required, Validators.min(0.1)]],
       netPrice: [null as number | null, [Validators.min(0)]], // Zakup netto
       markup: [30, [Validators.required, Validators.min(0)]], // Narzut %
@@ -344,13 +344,17 @@ export class QuoteGenerator implements OnInit {
 
   createLabor(): FormGroup {
     return this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.maxLength(80)]],
       hours: [1, [Validators.required, Validators.min(0.1)]],
       rate: [0, [Validators.required, Validators.min(0.01)]],
     });
   }
 
   addPart() {
+    if (this.parts.length >= 20) {
+      alert('Osiągnięto limit 20 części dla jednego kosztorysu.');
+      return;
+    }
     this.parts.push(this.createPart());
     this.step2Error.set('none');
   }
@@ -359,6 +363,10 @@ export class QuoteGenerator implements OnInit {
   }
 
   addLabor() {
+    if (this.labor.length >= 20) {
+      alert('Osiągnięto limit 20 pozycji robocizny dla jednego kosztorysu.');
+      return;
+    }
     this.labor.push(this.createLabor());
     this.step2Error.set('none');
   }
