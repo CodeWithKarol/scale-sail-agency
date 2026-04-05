@@ -14,6 +14,53 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const rawType = req.query['type'];
     const type = Array.isArray(rawType) ? rawType[0] : rawType;
 
+    // 2. Server-Side Validation
+    if (payload.botcheck === true) {
+      console.warn('[Webhook Proxy] Honeypot triggered (botcheck: true)');
+      return res.status(403).json({ error: 'Security Block: Bot detected' });
+    }
+
+    // Sanitization & Truncation for Security (Defense in Depth)
+    const safeStr = (v: any, max: number) => typeof v === 'string' ? v.substring(0, max) : v;
+
+    if (type === 'consultation') {
+      if (!payload.email || !payload.name || !payload.message) {
+        return res.status(400).json({ error: 'Validation Failed: Missing required fields (name, email, message)' });
+      }
+      payload.name = safeStr(payload.name, 50);
+      payload.email = safeStr(payload.email, 100);
+      payload.message = safeStr(payload.message, 1000);
+      payload.projectType = safeStr(payload.projectType, 30);
+      payload.budget = safeStr(payload.budget, 20);
+    } else if (type === 'quote') {
+      if (!payload.email || !payload.quote) {
+        return res.status(400).json({ error: 'Validation Failed: Missing required fields (email, quoteData)' });
+      }
+
+      payload.quote.companyName = safeStr(payload.quote.companyName, 50);
+      payload.quote.clientName = safeStr(payload.quote.clientName, 50);
+      payload.quote.vehicleMake = safeStr(payload.quote.vehicleMake, 30);
+      payload.quote.vehicleModel = safeStr(payload.quote.vehicleModel, 30);
+      payload.quote.vehicleVin = safeStr(payload.quote.vehicleVin, 17);
+      payload.quote.vehiclePlate = safeStr(payload.quote.vehiclePlate, 15);
+      
+      // Limit arrays to max 20 items and truncate item names
+      if (Array.isArray(payload.quote.parts)) {
+        payload.quote.parts = payload.quote.parts.slice(0, 20).map((p: any) => ({
+          ...p,
+          name: safeStr(p.name, 80)
+        }));
+      }
+      if (Array.isArray(payload.quote.labor)) {
+        payload.quote.labor = payload.quote.labor.slice(0, 20).map((l: any) => ({
+          ...l,
+          name: safeStr(l.name, 80)
+        }));
+      }
+    } else {
+      return res.status(400).json({ error: 'Validation Failed: Invalid type' });
+    }
+
     // 3. Server-Side Turnstile Verification
     let turnstileSecret: string | undefined;
     if (type === 'consultation') {

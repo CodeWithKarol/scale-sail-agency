@@ -170,9 +170,16 @@
                   @if (
                     quoteForm.get('companyName')?.touched && quoteForm.get('companyName')?.invalid
                   ) {
-                    <span class="text-xs text-rose-500 font-bold uppercase mt-1"
-                      >Nazwa warsztatu jest wymagana</span
-                    >
+                    @if (quoteForm.get('companyName')?.errors?.['required']) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Nazwa warsztatu jest wymagana</span
+                      >
+                    }
+                    @if (quoteForm.get('companyName')?.errors?.['maxlength']) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Zbyt długa nazwa (max 50 znaków)</span
+                      >
+                    }
                   }
                 </label>
                 <label class="flex flex-col gap-2">
@@ -190,9 +197,16 @@
                   @if (
                     quoteForm.get('clientName')?.touched && quoteForm.get('clientName')?.invalid
                   ) {
-                    <span class="text-xs text-rose-500 font-bold uppercase mt-1"
-                      >Dane klienta są wymagane</span
-                    >
+                    @if (quoteForm.get('clientName')?.errors?.['required']) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Dane klienta są wymagane</span
+                      >
+                    }
+                    @if (quoteForm.get('clientName')?.errors?.['maxlength']) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Zbyt długa nazwa (max 50 znaków)</span
+                      >
+                    }
                   }
                 </label>
                 <label class="flex flex-col gap-2">
@@ -206,8 +220,20 @@
                     type="text"
                     formControlName="clientPhone"
                     class="input-field bg-white"
+                    [class.border-rose-500]="
+                      quoteForm.get('clientPhone')?.touched && quoteForm.get('clientPhone')?.invalid
+                    "
                     autocomplete="off"
                   />
+                  @if (
+                    quoteForm.get('clientPhone')?.touched && quoteForm.get('clientPhone')?.invalid
+                  ) {
+                    @if (quoteForm.get('clientPhone')?.errors?.['maxlength']) {
+                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                        >Max 20 znaków</span
+                      >
+                    }
+                  }
                 </label>
               </div>
               <!-- Vehicle Data -->
@@ -233,9 +259,16 @@
                     @if (
                       quoteForm.get('vehicleMake')?.touched && quoteForm.get('vehicleMake')?.invalid
                     ) {
-                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
-                        >Marka jest wymagana</span
-                      >
+                      @if (quoteForm.get('vehicleMake')?.errors?.['required']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Marka jest wymagana</span
+                        >
+                      }
+                      @if (quoteForm.get('vehicleMake')?.errors?.['maxlength']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Max 30 znaków</span
+                        >
+                      }
                     }
                   </label>
                   <label class="flex flex-col gap-2">
@@ -255,9 +288,16 @@
                       quoteForm.get('vehicleModel')?.touched &&
                       quoteForm.get('vehicleModel')?.invalid
                     ) {
-                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
-                        >Model jest wymagany</span
-                      >
+                      @if (quoteForm.get('vehicleModel')?.errors?.['required']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Model jest wymagany</span
+                        >
+                      }
+                      @if (quoteForm.get('vehicleModel')?.errors?.['maxlength']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Max 30 znaków</span
+                        >
+                      }
                     }
                   </label>
                 </div>
@@ -273,8 +313,20 @@
                       type="text"
                       formControlName="vehicleVin"
                       class="input-field bg-neutral uppercase"
+                      [class.border-rose-500]="
+                        quoteForm.get('vehicleVin')?.touched && quoteForm.get('vehicleVin')?.invalid
+                      "
                       autocomplete="off"
                     />
+                    @if (
+                      quoteForm.get('vehicleVin')?.touched && quoteForm.get('vehicleVin')?.invalid
+                    ) {
+                      @if (quoteForm.get('vehicleVin')?.errors?.['maxlength']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Max 17 znaków</span
+                        >
+                      }
+                    }
                   </label>
                   <label class="flex flex-col gap-2">
                     <span class="text-small">Rejestracja</span>
@@ -293,9 +345,16 @@
                       quoteForm.get('vehiclePlate')?.touched &&
                       quoteForm.get('vehiclePlate')?.invalid
                     ) {
-                      <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
-                        >Numer tablic jest wymagany</span
-                      >
+                      @if (quoteForm.get('vehiclePlate')?.errors?.['required']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Numer tablic jest wymagany</span
+                        >
+                      }
+                      @if (quoteForm.get('vehiclePlate')?.errors?.['maxlength']) {
+                        <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                          >Max 15 znaków</span
+                        >
+                      }
                     }
                   </label>
                 </div>
@@ -349,9 +408,16 @@
                           autocomplete="off"
                         />
                         @if (part.get('name')?.touched && part.get('name')?.invalid) {
-                          <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
-                            >Nazwa części jest wymagana</span
-                          >
+                          @if (part.get('name')?.errors?.['required']) {
+                            <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                              >Nazwa części jest wymagana</span
+                            >
+                          }
+                          @if (part.get('name')?.errors?.['maxlength']) {
+                            <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                              >Max 80 znaków</span
+                            >
+                          }
                         }
                       </div>
 
@@ -520,9 +586,16 @@
                             autocomplete="off"
                           />
                           @if (lab.get('name')?.touched && lab.get('name')?.invalid) {
-                            <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
-                              >Opis usługi jest wymagany</span
-                            >
+                            @if (lab.get('name')?.errors?.['required']) {
+                              <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                                >Opis usługi jest wymagany</span
+                              >
+                            }
+                            @if (lab.get('name')?.errors?.['maxlength']) {
+                              <span class="text-[10px] text-rose-500 font-bold uppercase mt-1 ml-1"
+                                >Max 80 znaków</span
+                              >
+                            }
                           }
                         </div>
                         <div class="grid grid-cols-2 gap-4">
