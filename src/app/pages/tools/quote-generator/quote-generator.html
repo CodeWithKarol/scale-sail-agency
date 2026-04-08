@@ -382,11 +382,13 @@
                   @for (part of parts.controls; track part; let i = $index) {
                     <div
                       [formGroupName]="i"
+                      data-testid="part-row"
                       class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
                     >
                       <button
                         type="button"
                         (click)="removePart(i)"
+                        aria-label="Usuń część"
                         class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
                       >
                         <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
@@ -559,11 +561,13 @@
                   @for (lab of labor.controls; track lab; let i = $index) {
                     <div
                       [formGroupName]="i"
+                      data-testid="labor-row"
                       class="flex flex-col gap-3 p-4 sm:p-5 bg-white border-2 border-secondary/5 relative group"
                     >
                       <button
                         type="button"
                         (click)="removeLabor(i)"
+                        aria-label="Usuń usługę"
                         class="absolute -top-3 -right-3 w-12 h-12 rounded-none bg-white border-2 border-secondary/10 flex items-center justify-center text-secondary/40 hover:text-accent hover:border-accent shadow-sm z-10 transition-colors"
                       >
                         <lucide-icon [img]="icons.Trash2" size="20"></lucide-icon>
