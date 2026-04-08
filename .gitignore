@@ -47,5 +47,6 @@ Thumbs.db
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/.playwright-mcp/
 .vercel
 .env*.local
