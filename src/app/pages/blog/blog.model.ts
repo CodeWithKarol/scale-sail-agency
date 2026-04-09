@@ -7,6 +7,7 @@ export interface BlogPost {
   imageUrl: string;
   category: string;
   url: string;
+  contentPath?: string;
 }
 
 export interface MediumFeedResponse {

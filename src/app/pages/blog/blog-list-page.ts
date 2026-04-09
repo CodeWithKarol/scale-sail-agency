@@ -8,11 +8,11 @@ import {
   effect,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, map } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
-import { BlogPost, MediumFeedResponse, MediumPost } from './blog.model';
+import { BlogPost } from './blog.model';
+import { BlogService } from '../../shared/services/blog.service';
 import { SeoService } from '../../shared/core/seo/seo.service';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { Button } from '../../shared/ui/button/button';
@@ -22,7 +22,7 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 
 type FeedState =
   | { status: 'loading' }
-  | { status: 'success'; data: MediumFeedResponse }
+  | { status: 'success'; data: { items: BlogPost[] } }
   | { status: 'error'; error: unknown };
 
 @Component({
@@ -157,9 +157,7 @@ type FeedState =
 })
 export class BlogListPage implements OnInit {
   private readonly seoService = inject(SeoService);
-  private readonly http = inject(HttpClient);
-  private readonly rssUrl = 'https://karol-modelski.medium.com/feed';
-  private readonly apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${this.rssUrl}`;
+  private readonly blogService = inject(BlogService);
 
   // State
   private readonly displayBatchSize = 6;
@@ -167,9 +165,12 @@ export class BlogListPage implements OnInit {
 
   // Data Fetching
   feedResource = toSignal(
-    this.http.get<MediumFeedResponse>(this.apiUrl).pipe(
-      map((response): FeedState => ({ status: 'success', data: response })),
-      catchError((err): Observable<FeedState> => of({ status: 'error', error: err })),
+    this.blogService.getPosts().pipe(
+      map((response): FeedState => ({ status: 'success', data: { items: response } })),
+      catchError((err): Observable<FeedState> => {
+        console.error('BLOG FETCH ERROR:', err);
+        return of({ status: 'error', error: err });
+      }),
     ),
     { initialValue: { status: 'loading' } as FeedState },
   );
@@ -182,23 +183,8 @@ export class BlogListPage implements OnInit {
   private allPosts = computed<BlogPost[]>(() => {
     const res = this.feedResource();
     if (res.status !== 'success') return [];
-    if (!res.data || res.data.status !== 'ok') return [];
 
-    return res.data.items.map((item: MediumPost) => {
-      const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
-      const imageUrl = imgMatch ? imgMatch[1] : item.thumbnail;
-
-      return {
-        id: item.guid,
-        title: item.title,
-        excerpt: item.description.replace(/<[^>]*>/g, '').substring(0, 160) + '...',
-        date: new Date(item.pubDate).toISOString(),
-        slug: item.guid,
-        imageUrl: imageUrl,
-        category: item.categories?.length ? item.categories[0] : 'Porady',
-        url: item.link,
-      };
-    });
+    return res.data.items;
   });
 
   // Derived state
