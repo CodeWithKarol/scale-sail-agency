@@ -14,7 +14,7 @@ test.describe('Quote Generator (E2E)', () => {
     await expect(page.getByText('Co naprawiamy?')).toBeVisible();
 
     // Fill name for the default part to make it valid
-    await page.locator('input[formControlName="name"]').first().fill('Brake Pads');
+    await quotePage.partRows.first().locator('input[formControlName="name"]').fill('Brake Pads');
 
     // Change net purchase price
     await quotePage.firstPartNetPrice.fill('100');
@@ -36,19 +36,20 @@ test.describe('Quote Generator (E2E)', () => {
     await expect(page.getByText('Co naprawiamy?')).toBeVisible();
 
     // First part: 100 PLN (net)
-    await page.locator('input[formControlName="name"]').first().fill('Brake Pads');
+    const firstPart = quotePage.partRows.first();
+    await firstPart.locator('input[formControlName="name"]').fill('Brake Pads');
     await quotePage.firstPartNetPrice.fill('100');
     await quotePage.firstPartMarkup.fill('0'); // Retail: 100
 
     // Add second part
     await quotePage.addPartRow();
-    const secondPart = page.locator('[formArrayName="parts"] > div').nth(1);
+    const secondPart = quotePage.partRows.nth(1);
     await secondPart.locator('input[formControlName="name"]').fill('Screws');
     await secondPart.locator('input[formControlName="netPrice"]').fill('50');
     await secondPart.locator('input[formControlName="markup"]').fill('0'); // Retail: 50
 
     // Labor: 1h at 200 PLN
-    const laborRow = page.locator('[formArrayName="labor"] > div').first();
+    const laborRow = quotePage.laborRows.first();
     await laborRow.locator('input[formControlName="name"]').fill('Repair');
     await laborRow.locator('input[formControlName="hours"]').fill('1');
     await laborRow.locator('input[formControlName="rate"]').fill('200');
@@ -70,11 +71,11 @@ test.describe('Quote Generator (E2E)', () => {
 
     // Add an extra part (there will be 2)
     await quotePage.addPartRow();
-    await expect(page.locator('[formArrayName="parts"] > div')).toHaveCount(2);
+    await expect(quotePage.partRows).toHaveCount(2);
 
     // Remove the first one
     await quotePage.removeFirstPart();
-    await expect(page.locator('[formArrayName="parts"] > div')).toHaveCount(1);
+    await expect(quotePage.partRows).toHaveCount(1);
   });
 
   test('should correctly navigate back', async ({ page }) => {
@@ -103,21 +104,20 @@ test.describe('Quote Generator (E2E)', () => {
     await expect(page.getByText('Co naprawiamy?')).toBeVisible();
 
     // Initial state: 1 part, 1 labor
-    await expect(page.locator('[formArrayName="parts"] > div')).toHaveCount(1);
-    await expect(page.locator('[formArrayName="labor"] > div')).toHaveCount(1);
+    await expect(quotePage.partRows).toHaveCount(1);
+    await expect(quotePage.laborRows).toHaveCount(1);
     await expect(quotePage.nextStepBtn).toBeEnabled();
 
     // Remove the only part
     await quotePage.removeFirstPart();
-    await expect(page.locator('[formArrayName="parts"] > div')).toHaveCount(0);
+    await expect(quotePage.partRows).toHaveCount(0);
     await expect(page.getByText('Brak pozycji w tej sekcji').first()).toBeVisible();
     // Still enabled because labor exists
     await expect(quotePage.nextStepBtn).toBeEnabled();
 
     // Remove the only labor item
-    const removeLaborBtn = page.locator('[formArrayName="labor"] button.absolute.-top-3').first();
-    await removeLaborBtn.click();
-    await expect(page.locator('[formArrayName="labor"] > div')).toHaveCount(0);
+    await quotePage.removeFirstLabor();
+    await expect(quotePage.laborRows).toHaveCount(0);
     await expect(page.getByText('Brak pozycji w tej sekcji').last()).toBeVisible();
 
     // BOTH EMPTY -> Button is NOT disabled anymore
@@ -130,11 +130,11 @@ test.describe('Quote Generator (E2E)', () => {
 
     // Add a part back
     await page.getByText('Dodaj pierwszą część').click();
-    await expect(page.locator('[formArrayName="parts"] > div')).toHaveCount(1);
+    await expect(quotePage.partRows).toHaveCount(1);
     
     // Fill required data to make it 'non-empty'
-    await page.locator('input[formControlName="name"]').first().fill('Brake Pads');
-    await page.locator('input[formControlName="price"]').first().fill('100');
+    await quotePage.partRows.first().locator('input[formControlName="name"]').fill('Brake Pads');
+    await quotePage.partRows.first().locator('input[formControlName="price"]').fill('100');
 
     // Error should disappear
     await expect(page.getByText('Kosztorys jest pusty')).not.toBeVisible();
@@ -148,8 +148,7 @@ test.describe('Quote Generator (E2E)', () => {
     await quotePage.removeFirstPart();
     
     // Remove the only labor item
-    const removeLaborBtn = page.locator('[formArrayName="labor"] button.absolute.-top-3').first();
-    await removeLaborBtn.click();
+    await quotePage.removeFirstLabor();
 
     // Verify Next button is NOT disabled
     await expect(quotePage.nextStepBtn).toBeEnabled();
@@ -166,7 +165,7 @@ test.describe('Quote Generator (E2E)', () => {
     await quotePage.fillStep1('Service', 'John Doe', 'Audi', 'A4');
     await expect(page.getByText('Co naprawiamy?')).toBeVisible();
 
-    const partRow = page.locator('[formArrayName="parts"] > div').first();
+    const partRow = quotePage.partRows.first();
     await partRow.locator('input[formControlName="name"]').fill('Edge Case Part');
     
     // Set retail price to 0 manually

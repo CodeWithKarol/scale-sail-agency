@@ -16,6 +16,8 @@ export class QuoteGeneratorPage {
   readonly firstPartNetPrice: Locator;
   readonly firstPartMarkup: Locator;
   readonly firstPartPrice: Locator;
+  readonly partRows: Locator;
+  readonly laborRows: Locator;
 
   // Navigation
   readonly nextStepBtn: Locator;
@@ -47,11 +49,15 @@ export class QuoteGeneratorPage {
     this.vehiclePlateInput = page.getByPlaceholder('np. WX 12345');
 
     // Step 2
+    this.partRows = page.getByTestId('part-row');
+    this.laborRows = page.getByTestId('labor-row');
+
     this.addPartBtn = page.getByRole('button', { name: /dodaj część/i });
     this.addLaborBtn = page.getByRole('button', { name: /dodaj pozycję/i });
-    this.firstPartNetPrice = page.locator('input[formControlName="netPrice"]').first();
-    this.firstPartMarkup = page.locator('input[formControlName="markup"]').first();
-    this.firstPartPrice = page.locator('input[formControlName="price"]').first();
+    
+    this.firstPartNetPrice = this.partRows.first().locator('input[formControlName="netPrice"]');
+    this.firstPartMarkup = this.partRows.first().locator('input[formControlName="markup"]');
+    this.firstPartPrice = this.partRows.first().locator('input[formControlName="price"]');
 
     // Navigation
     this.nextStepBtn = page.getByRole('button', { name: /dalej/i });
@@ -78,7 +84,7 @@ export class QuoteGeneratorPage {
     // Clear state to avoid issues with localStorage persistence between tests
     await this.page.evaluate(() => localStorage.clear());
     await this.page.reload(); // Reload to ensure form is reset
-    await this.page.waitForLoadState('networkidle');
+    await expect(this.companyNameInput).toBeVisible();
   }
 
   async fillStep1(
@@ -98,17 +104,14 @@ export class QuoteGeneratorPage {
 
   async fillStep2() {
     // Fill first part (already exists by default)
-    const partName = this.page.locator('input[formControlName="name"]').first();
-    await partName.fill('Test Part');
-
-    const netPrice = this.page.locator('input[formControlName="netPrice"]').first();
-    await netPrice.fill('100');
+    const firstPart = this.partRows.first();
+    await firstPart.locator('input[formControlName="name"]').fill('Test Part');
+    await firstPart.locator('input[formControlName="netPrice"]').fill('100');
 
     // Fill first labor (already exists by default)
-    const laborName = this.page.locator('input[formControlName="name"]').last();
-    await laborName.fill('Test Labor');
-    const laborRate = this.page.locator('input[formControlName="rate"]').first();
-    await laborRate.fill('200');
+    const firstLabor = this.laborRows.first();
+    await firstLabor.locator('input[formControlName="name"]').fill('Test Labor');
+    await firstLabor.locator('input[formControlName="rate"]').fill('200');
 
     await this.nextStepBtn.click();
   }
@@ -122,9 +125,12 @@ export class QuoteGeneratorPage {
   }
 
   async removeFirstPart() {
-    // The remove buttons use specific positioning classes
-    const removeBtn = this.page.locator('[formArrayName="parts"] button.absolute.-top-3').first();
-    await removeBtn.waitFor({ state: 'visible' });
+    const removeBtn = this.partRows.first().getByRole('button', { name: /usuń część/i });
+    await removeBtn.click();
+  }
+
+  async removeFirstLabor() {
+    const removeBtn = this.laborRows.first().getByRole('button', { name: /usuń usługę/i });
     await removeBtn.click();
   }
 
