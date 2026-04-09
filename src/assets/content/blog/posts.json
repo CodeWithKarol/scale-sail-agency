@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "title": "Jak automatyzacja warsztatu oszczędza 20h tygodniowo",
+    "excerpt": "Dowiedz się, jak proste wdrożenie n8n i Google Sheets może całkowicie zmienić sposób, w jaki zarządzasz zleceniami.",
+    "date": "2026-04-09T10:00:00Z",
+    "slug": "automatyzacja-warsztatu-n8n",
+    "imageUrl": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070",
+    "category": "Case Study",
+    "contentPath": "assets/content/blog/hello-world.md"
+  },
+  {
+    "id": "2",
+    "title": "Automatyzacja procesów w małej firmie",
+    "excerpt": "Zmień swoją firmę w dochodową maszynę. Przeczytaj, jak wyeliminować ręczną pracę i skupić się na wzroście.",
+    "date": "2026-04-10T12:00:00Z",
+    "slug": "automatyzacja-procesow-biznesowych",
+    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
+    "category": "Edukacja",
+    "contentPath": "assets/content/blog/automatyzacja-biznesu.md"
+  }
+]

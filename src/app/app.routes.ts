@@ -20,6 +20,10 @@ export const routes: Routes = [
     title: 'Blog | Scale Sail Agency',
   },
   {
+    path: 'blog/:slug',
+    loadComponent: () => import('./pages/blog/blog-post-page').then((m) => m.BlogPostPage),
+  },
+  {
     path: 'about',
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },

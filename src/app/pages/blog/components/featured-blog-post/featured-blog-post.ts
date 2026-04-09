@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { BlogPost } from '../../blog.model';
 import { Button } from '../../../../shared/ui/button/button';
 import { LucideAngularModule, ArrowRight } from 'lucide-angular';
@@ -7,7 +8,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 @Component({
   selector: 'app-featured-blog-post',
   standalone: true,
-  imports: [CommonModule, DatePipe, Button, LucideAngularModule],
+  imports: [CommonModule, DatePipe, Button, LucideAngularModule, RouterModule],
   template: `
     <article
       class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b-4 border-secondary/10 pb-20 lg:pb-32"
@@ -22,9 +23,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
           </div>
 
           <a
-            [href]="post().url"
-            target="_blank"
-            rel="noopener noreferrer"
+            [routerLink]="['/blog', post().slug]"
             class="block h-full w-full focus:outline-none relative overflow-hidden"
             aria-hidden="true"
             tabindex="-1"
@@ -59,7 +58,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
         <h2
           class="heading-2 text-secondary group-hover:text-primary transition-colors duration-300"
         >
-          <a [href]="post().url" target="_blank" rel="noopener noreferrer">
+          <a [routerLink]="['/blog', post().slug]">
             {{ post().title }}
           </a>
         </h2>
@@ -72,8 +71,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 
         <div class="mt-12">
           <app-button
-            [href]="post().url"
-            target="_blank"
+            [routerLink]="['/blog', post().slug]"
             variant="secondary"
             size="lg"
             class="group/btn"
