@@ -1,4 +1,9 @@
-import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
+import {
+  ApplicationConfig,
+  LOCALE_ID,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter, withInMemoryScrolling, withComponentInputBinding } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
@@ -11,6 +16,7 @@ registerLocaleData(localePl);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideZonelessChangeDetection(),
     provideHttpClient(withFetch()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(

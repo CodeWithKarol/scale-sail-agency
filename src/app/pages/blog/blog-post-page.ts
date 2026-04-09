@@ -1,4 +1,4 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BlogService } from '../../shared/services/blog.service';
@@ -11,7 +11,6 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
 
 @Component({
   selector: 'app-blog-post-page',
-  standalone: true,
   imports: [
     CommonModule,
     RouterModule,
@@ -80,6 +79,7 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
       </div>
     </article>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogPostPage implements OnInit {
   private route = inject(ActivatedRoute);
