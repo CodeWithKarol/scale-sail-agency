@@ -113,6 +113,8 @@ import { Button } from '../../shared/ui/button/button';
                 src="images/karol-modelski.webp"
                 alt="Karol Modelski"
                 class="w-full grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+                width="600"
+                height="800"
               />
             </div>
           </div>
@@ -199,9 +201,9 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'O mnie | Karol Modelski — Ekspert od Automatyzacji i Systemów dla Firm',
+      title: 'O mnie | Karol Modelski — Scale Sail Agency',
       description:
-        'Poznaj twórcę Scale Sail. Łączę doświadczenie z globalnych projektów IT z praktyką automatyzacji (n8n, Make) i AI. Buduję proste, solidne systemy, które realnie odciążają właścicieli warsztatów i firm usługowych.',
+        'Poznaj twórcę Scale Sail. Łączę standardy bankowe z automatyzacją n8n. Buduję systemy, które realnie odciążają właścicieli warsztatów.',
       slug: 'about',
       type: 'profile',
       keywords: [
@@ -298,29 +300,29 @@ export class About implements OnInit {
       role: 'Senior Frontend Developer',
       company: 'GFT Technologies (Citi)',
       period: '2025 - OBECNIE',
-      desc: 'Budowa systemów transakcyjnych dla globalnej bankowości. Standard: Zero tolerancji dla błędów i maksymalna wydajność interfejsu.',
+      desc: 'Budowa pancernych systemów do obsługi milionów operacji bankowych. Standard: Zero tolerancji dla błędów i maksymalna szybkość działania.',
       qualityMark: 'ATEST BANKOWY',
     },
     {
       role: 'Frontend Developer',
       company: 'Silent Eight',
       period: '2023 - 2025',
-      desc: 'Rozwój systemów AI dla sektora finansowego. Skupienie na intuicyjności przy bardzo skomplikowanych danych procesowych.',
+      desc: 'Tworzenie systemów AI dla finansów. Uproszczenie skomplikowanych procesów tak, aby były intuicyjne dla każdego użytkownika.',
       qualityMark: 'STANDARD AI',
     },
     {
       role: 'Software Developer',
       company: 'BNP Paribas',
       period: '2021 - 2023',
-      desc: 'Migracja systemów bankowości internetowej (1M+ użytkowników). Zarządzanie sprawnym przejściem ze starych rozwiązań na nowoczesne.',
-      qualityMark: 'MIGRACJA DANYCH',
+      desc: 'Zarządzanie bezpieczeństwem danych ponad miliona użytkowników bankowości. Gwarancja stabilności przy ogromnej skali.',
+      qualityMark: 'STABILNOŚĆ DANYCH',
     },
     {
       role: 'Junior Frontend Developer',
       company: 'Amway',
       period: '2019 - 2021',
-      desc: 'Tworzenie paneli do zarządzania sprzedażą dla tysięcy przedsiębiorców. Pierwsze kroki w budowaniu aplikacji, które realnie ułatwiają biznes.',
-      qualityMark: 'POCZĄTEK DROGI',
+      desc: 'Budowa prostych paneli do zarządzania firmą dla tysięcy przedsiębiorców. Nauka tego, jak technologia może realnie ułatwiać codzienną pracę.',
+      qualityMark: 'UŁATWIANIE PRACY',
     },
   ];
 }

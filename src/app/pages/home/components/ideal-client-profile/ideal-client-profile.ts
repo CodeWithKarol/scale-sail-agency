@@ -12,18 +12,17 @@ import { SectionHeader } from '../../../../shared/ui/section-header/section-head
 })
 export class IdealClientProfile {
   protected readonly idealClients = signal<string[]>([
-    'Warsztaty i serwisy samochodowe (np. warsztat z 3 stanowiskami, który gubi zlecenia w papierach)',
-    'Firmy usługowe (sprzątanie, montaż okien, klimatyzacja)',
-    'Salony beauty i fryzjerskie (koniec z papierowym zeszytem)',
-    'Osoby zarządzające mieszkaniami na wynajem',
-    'Właściciele zmęczeni szukaniem kartek i gubieniem zleceń',
-    'Firmy, które chcą wyglądać profesjonalnie przed klientem',
+    'Warsztaty samochodowe (2–6 stanowisk), które gubią się w papierowych zleceniach',
+    'Firmy usługowe z powtarzalnymi zleceniami (montaż okien, klimatyzacja, serwisy)',
+    'Właściciele, którzy chcą odzyskać 10–15h tygodniowo spędzanych na telefonach',
+    'Firmy zmęczone płaceniem wysokich abonamentów za sztywne systemy SaaS',
+    'Osoby szukające pancernego systemu na własność, a nie tylko „ładnej strony”',
   ]);
 
   protected readonly antiPatterns = signal<string[]>([
-    'Sklepy internetowe i proste strony wizytówki.',
-    'Osoby szukające najtańszego rozwiązania "na wczoraj".',
-    'Projekty, w których nie ma powtarzalnych zleceń ani pracy z klientami.',
-    'Duże korporacje ze skomplikowaną strukturą zarządzania.',
+    'Osoby szukające najtańszego gotowca „z pudełka” lub darmowych aplikacji',
+    'Firmy bez powtarzalnych procesów (każde zlecenie jest zupełnie inne)',
+    'Duże korporacje szukające skomplikowanych systemów klasy ERP',
+    'Sklepy internetowe i proste wizytówki bez logiki biznesowej',
   ]);
 }

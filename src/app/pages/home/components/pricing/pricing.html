@@ -7,30 +7,30 @@
   <div class="layout-container relative z-10">
     <app-section-header
       subtitle="JASNE ZASADY, ZERO NIESPODZIANEK"
-      title="Wybierz silnik dla Twojej firmy"
-      description="Płacisz raz za wdrożenie i zyskujesz narzędzie na własność. Brak ukrytych kruczków, brak dożywotnich subskrypcji za dostęp."
+      title="Wybierz „silnik” dla Twojej firmy"
+      description="Płacisz raz za wdrożenie i zyskujesz narzędzie na własność. Twój system staje się aktywem firmy, a nie kolejnym comiesięcznym podatkiem od sukcesu."
     />
 
     <!-- Pricing Cards Grid -->
-    <div class="mx-auto mt-16 max-w-2xl lg:mt-24 lg:max-w-none">
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 items-stretch">
+    <div class="mx-auto mt-16 max-w-7xl lg:mt-24">
+      <div class="grid grid-cols-1 gap-10 xl:grid-cols-3 md:grid-cols-2 items-stretch">
         @for (pkg of packages(); track pkg.name) {
           <div
-            class="card-workshop group bg-white border-2 p-8 transition-all duration-300 relative flex flex-col h-full"
+            class="card-workshop group bg-white border-2 p-6 sm:p-8 transition-all duration-300 relative flex flex-col h-full"
             [class.border-primary]="pkg.isPopular"
             [class.border-secondary/10]="!pkg.isPopular"
             [class.shadow-[12px_12px_0px_0px_rgba(0,123,255,0.15)]]="pkg.isPopular"
-            [class.lg:-translate-y-4]="pkg.isPopular"
-            [class.lg:scale-105]="pkg.isPopular"
+            [class.xl:-translate-y-4]="pkg.isPopular"
+            [class.xl:scale-105]="pkg.isPopular"
             [class.z-10]="pkg.isPopular"
           >
             @if (pkg.isPopular) {
               <!-- Popular Badge -->
               <div class="absolute -top-4 inset-x-0 flex justify-center">
                 <span
-                  class="bg-primary text-white text-xs font-black px-4 py-1 tracking-widest uppercase border-2 border-primary shadow-[4px_4px_0px_0px_rgba(10,31,68,0.2)]"
+                  class="bg-primary text-white text-[10px] font-black px-4 py-1 tracking-widest uppercase border-2 border-primary shadow-[4px_4px_0px_0px_rgba(10,31,68,0.2)] text-center"
                 >
-                  Najlepszy wybór dla warsztatów z 2–6 stanowiskami
+                  Najlepszy wybór dla warsztatów
                 </span>
               </div>
             }
@@ -41,14 +41,23 @@
               >
                 {{ pkg.tagline }}
               </span>
-              <h3 class="heading-2 text-secondary mb-4">{{ pkg.name }}</h3>
-              <div class="flex items-baseline gap-2 mb-6">
-                <span class="text-4xl sm:text-5xl font-black tracking-tight text-secondary">
+              <h3
+                class="heading-2 text-secondary mb-4 !text-2xl sm:!text-3xl lg:!text-4xl break-words"
+              >
+                {{ pkg.name }}
+              </h3>
+              <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-6">
+                <span class="text-3xl sm:text-4xl font-black tracking-tight text-secondary">
                   {{ pkg.price }}
                 </span>
-                <span class="text-body font-bold text-secondary/40">{{ pkg.priceSuffix }}</span>
+                <span class="text-sm font-bold text-secondary/40 whitespace-nowrap">
+                  {{ pkg.priceSuffix }}
+                </span>
               </div>
-              <p class="text-body text-secondary/70 min-h-[6rem] sm:min-h-[4rem]">
+              <p
+                class="text-body text-secondary/70 min-h-[5rem] sm:min-h-[4rem] [hyphens:auto]"
+                lang="pl"
+              >
                 {{ pkg.description }}
               </p>
             </div>
@@ -62,10 +71,10 @@
                 <li class="flex items-start gap-3">
                   @if (feature.included) {
                     <svg
-                      class="h-6 w-6 text-primary shrink-0"
+                      class="h-5 w-5 text-primary shrink-0 mt-0.5"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="2.5"
+                      stroke-width="3"
                       stroke="currentColor"
                     >
                       <path
@@ -74,10 +83,15 @@
                         d="M4.5 12.75l6 6 9-13.5"
                       />
                     </svg>
-                    <span class="text-secondary/90 font-bold">{{ feature.name }}</span>
+                    <span
+                      class="text-secondary/90 font-bold text-sm sm:text-base [hyphens:auto]"
+                      lang="pl"
+                    >
+                      {{ feature.name }}
+                    </span>
                   } @else {
                     <svg
-                      class="h-6 w-6 text-secondary/20 shrink-0"
+                      class="h-5 w-5 text-secondary/20 shrink-0 mt-0.5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke-width="2"
@@ -89,7 +103,12 @@
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
-                    <span class="text-secondary/40 line-through">{{ feature.name }}</span>
+                    <span
+                      class="text-secondary/40 line-through text-sm sm:text-base [hyphens:auto]"
+                      lang="pl"
+                    >
+                      {{ feature.name }}
+                    </span>
                   }
                 </li>
               }

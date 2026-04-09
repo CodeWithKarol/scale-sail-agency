@@ -19,11 +19,12 @@ export class FounderStory {
     name: 'Karol Modelski',
     role: 'Twórca systemów i aplikacji',
     image: '/images/karol-modelski.webp',
-    headline: 'Buduję systemy, które ułatwiają życie i pracę',
+    headline: 'Przenoszę standardy bankowe do Twojej firmy',
     bio: [
-      'Wierzę, że technologia w firmie ma ułatwiać życie, a nie je komplikować. Zamiast ciężkich systemów, dostarczam **intuicyjne aplikacje**, które rozwiązują realne problemy Twojego warsztatu.',
-      'Pomagam wyjść z ery kartek i Excela do nowoczesnego modelu pracy, gdzie wszystko – od zleceń po kontakt z klientem – masz pod ręką w telefonie lub komputerze.',
+      'Wierzę, że technologia w firmie ma ułatwiać życie, a nie je komplikować. Zamiast ciężkich systemów, dostarczam <strong class="font-black text-secondary">intuicyjne aplikacje</strong>, które rozwiązują realne problemy Twojej firmy usługowej.',
+      'Swoje doświadczenie zdobywałem projektując systemy dla największych instytucji finansowych, takich jak <strong class="font-black text-secondary">Citi czy BNP Paribas</strong>. Tam nauczyłem się, że system musi być pancerny i niezawodny. Dziś tę samą jakość i inżynierskie podejście oferuję mniejszym firmom.',
+      'Moim celem jest wyciągnięcie Cię z ery kartek i Excela do nowoczesnego modelu pracy, gdzie system dba o klienta, a Ty masz święty spokój.',
     ],
-    badges: ['Programista (6+ lat)', 'Właściciel agencji', 'Ekspert od automatyzacji'],
+    badges: ['Jakość Bankowa', 'Ekspert od Automatyzacji', '6+ lat doświadczenia'],
   });
 }

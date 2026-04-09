@@ -164,9 +164,9 @@ export class QuoteGenerator implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'Darmowy Generator Wycen dla Warsztatów (PDF) | Scale Sail',
+      title: 'Darmowy Generator Wycen PDF dla Warsztatu | Scale Sail',
       description:
-        'Twórz profesjonalne wyceny napraw w 60 sekund. Darmowy kalkulator marży i kosztorysu PDF dla mechaników i serwisów. Wyślij gotowy dokument na e-mail klienta.',
+        'Twórz profesjonalne wyceny PDF w 60 sekund. Darmowy kalkulator marży dla mechaników. Wyślij gotowy kosztorys na e-mail klienta.',
       slug: 'tools/free-quote-generator',
       type: 'website',
       keywords: [

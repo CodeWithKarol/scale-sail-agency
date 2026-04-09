@@ -26,6 +26,10 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
+    path: 'privacy-policy',
+    renderMode: RenderMode.Prerender,
+  },
+  {
     path: '**',
     renderMode: RenderMode.Prerender,
   },

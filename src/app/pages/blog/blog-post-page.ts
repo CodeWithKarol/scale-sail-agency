@@ -45,6 +45,8 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
                 [src]="p.imageUrl"
                 [alt]="p.title"
                 class="w-full h-auto border-4 border-secondary"
+                width="1200"
+                height="630"
               />
             </div>
           }

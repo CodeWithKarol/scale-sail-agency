@@ -51,6 +51,12 @@ export const routes: Routes = [
     title: 'Kalkulator Strat Warsztatu | Scale Sail',
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('./pages/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy),
+    title: 'Polityka Prywatności | Scale Sail Agency',
+  },
+  {
     path: 'free-quote-generator',
     redirectTo: 'tools/free-quote-generator',
     pathMatch: 'full',

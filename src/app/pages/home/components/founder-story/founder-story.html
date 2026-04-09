@@ -44,7 +44,7 @@
         <div class="lg:pr-4">
           <div class="max-w-xl text-lg leading-relaxed text-secondary/85 lg:max-w-lg font-normal">
             @for (paragraph of founder().bio; track $index) {
-              <p class="mb-6 last:mb-0">{{ paragraph }}</p>
+              <p class="mb-6 last:mb-0" [innerHTML]="paragraph"></p>
             }
 
             <!-- Buttons with Visual Hierarchy -->

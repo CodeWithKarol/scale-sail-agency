@@ -38,30 +38,31 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Proste aplikacje dla warsztatów samochodowych i małych firm | Scale Sail',
+      title: 'Zarządzanie zleceniami i automatyzacja SMS dla warsztatu',
       description:
-        'Tworzę aplikacje do zarządzania zleceniami dla warsztatów samochodowych i małych firm usługowych. Wdrażam automatyzacje (Make, n8n) i integracje AI. Uwolnij się od papierologii i Excela.',
+        'Tworzę pancerne systemy zarządzania zleceniami i automatyzacje SMS dla warsztatów. Odzyskaj 15h tygodniowo bez abonamentu.',
       slug: '',
       type: 'website',
+
       keywords: [
-        'program dla warsztatu bez abonamentu',
-        'aplikacja dla warsztatu samochodowego',
         'zarządzanie zleceniami warsztatowymi',
+        'automatyzacja sms dla warsztatu',
+        'program dla warsztatu bez abonamentu',
+        'elektroniczny zeszyt zleceń warsztat',
+        'system do zarządzania kolejką aut',
+        'aplikacja dla warsztatu samochodowego',
         'automatyzacja serwisu samochodowego',
         'system warsztatowy na własność',
-        'elektroniczna książka napraw',
         'wdrożenia n8n i Make',
-        'automatyczne powiadomienia sms dla warsztatu',
         'cyfryzacja małej firmy usługowej',
-        'program do fakturowania napraw',
-        'kalkulator marży części',
+        'program warsztatowy na własny serwer',
       ],
     });
 
     this.seoService.setLocalBusinessSchema({
       name: 'Scale Sail Agency',
       description:
-        'Tworzę aplikacje do zarządzania zleceniami dla warsztatów samochodowych i małych firm usługowych. Wdrażam automatyzacje (Make, n8n) i integracje AI. Uwolnij się od papierologii i Excela.',
+        'Tworzę pancerne systemy zarządzania zleceniami i automatyzacje SMS dla warsztatów samochodowych. Odzyskaj 15h tygodniowo dzięki technologii na własność, bez abonamentu.',
       url: 'https://scale-sail.io',
       logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
       founder: {
@@ -69,6 +70,12 @@ export class Home implements OnInit {
         jobTitle: 'Twórca rozwiązań cyfrowych & Założyciel',
       },
       areaServed: 'Poland',
+      address: {
+        streetAddress: 'Warszawa',
+        addressLocality: 'Warszawa',
+        postalCode: '00-001',
+        addressCountry: 'PL',
+      },
     });
   }
 }

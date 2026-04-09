@@ -57,6 +57,6 @@ Automatyzacja to nie jest magia. To czysta matematyka i oszczędność czasu. Je
 
 ...to prawdopodobnie nadszedł czas, by zautomatyzować Twój proces.
 
-**Zróbmy diagnozę Twojej firmy.** Zapraszam Cię na bezpłatną, 15-minutową rozmowę. Nie będę Ci nic „sprzedawał”. Przeanalizujemy Twój obecny proces i powiem Ci szczerze, co warto zautomatyzować w pierwszej kolejności, by odzyskać najwięcej czasu.
+**Weryfikacja potrzeb Twojej firmy.** Zapraszam Cię na bezpłatną, 15-minutową rozmowę. Nie będę Ci nic „sprzedawał”. Przeanalizujemy Twój obecny proces i powiem Ci szczerze, co warto zautomatyzować w pierwszej kolejności, by odzyskać najwięcej czasu.
 
 [**UMÓW BEZPŁATNĄ KONSULTACJĘ**](/consultation)

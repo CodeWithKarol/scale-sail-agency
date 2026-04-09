@@ -49,43 +49,39 @@ const CASE_STUDIES: CaseStudy[] = [
     screenshots: [
       {
         url: '/images/admin-panel/admin-panel-1.webp',
-        description:
-          'Główny dashboard: Agregacja kluczowych wskaźników biznesowych w czasie rzeczywistym.',
+        description: 'Główny pulpit: Podgląd najważniejszych wyników firmy na żywo.',
       },
       {
         url: '/images/admin-panel/admin-panel-2.webp',
-        description:
-          'Zaawansowane filtrowanie: Błyskawiczne wyszukiwanie w zbiorze ponad 50 000 rekordów.',
+        description: 'Wyszukiwanie: Błyskawiczne odnajdywanie zleceń w bazie tysięcy rekordów.',
       },
       {
         url: '/images/admin-panel/admin-panel-3.webp',
-        description: 'Widok kalendarza: Intuicyjne zarządzanie harmonogramem i zasobami firmy.',
+        description: 'Planowanie: Intuicyjne zarządzanie kalendarzem i pracownikami.',
       },
       {
         url: '/images/admin-panel/admin-panel-4.webp',
-        description: 'Szczegóły operacji: Pełna historia i śledzenie zmian dla każdego zlecenia.',
+        description: 'Szczegóły zlecenia: Pełna historia napraw i kontaktów z klientem.',
       },
       {
         url: '/images/admin-panel/admin-panel-5.webp',
-        description: 'Raporty i analityka: Automatyczne generowanie zestawień finansowych.',
+        description: 'Finanse: Automatyczne podliczanie zysków i kosztów.',
       },
       {
         url: '/images/admin-panel/admin-panel-6.webp',
-        description:
-          'Tryb ciemny: Zoptymalizowany interfejs zapewniający komfort pracy przy słabym oświetleniu.',
+        description: 'Komfort pracy: Ciemny motyw oszczędzający wzrok przy wieczornym planowaniu.',
       },
       {
         url: '/images/admin-panel/admin-panel-7.webp',
-        description: 'Zarządzanie użytkownikami: Elastyczny system ról i uprawnień dostępu.',
+        description: 'Zespół: Proste przydzielanie uprawnień dla mechaników i biura.',
       },
       {
         url: '/images/admin-panel/admin-panel-8.webp',
-        description: 'Integracje zewnętrzne: Automatyczny import danych z systemów kurierskich.',
+        description: 'Łączność: Automatyczne pobieranie danych od partnerów zewnętrznych.',
       },
       {
         url: '/images/admin-panel/admin-panel-9.webp',
-        description:
-          'Weryfikacja danych: System automatycznych alertów przy wykryciu nieścisłości.',
+        description: 'Bezpieczeństwo danych: System sam pilnuje poprawności wpisów.',
       },
     ],
     demoUrl: 'https://www.admin-panel.scale-sail.io/',
