@@ -36,7 +36,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
     <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
       <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
-      <main class="layout-container relative z-10 pt-32 sm:pt-40">
+      <div class="layout-container relative z-10 pt-32 sm:pt-40">
         <app-breadcrumb />
 
         <div
@@ -74,12 +74,12 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
               <div class="text-small font-bold text-secondary">
                 {{
                   status() === 'PENDING'
-                    ? 'FORMULARZ WSTĘPNY'
+                    ? 'WERYFIKACJA POTRZEB'
                     : status() === 'SUBMITTING'
                       ? 'ANALIZA DANYCH'
                       : status() === 'ACCEPTED'
-                        ? 'KALENDARZ ODBLOKOWANY'
-                        : 'BRAK DOPASOWANIA'
+                        ? 'DIAGNOZA ODBLOKOWANA'
+                        : 'INNA ŚCIEŻKA POMOCY'
                 }}
               </div>
             </div>
@@ -110,6 +110,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                       formControlName="projectType"
                       class="input-field"
                       [class.border-accent]="f['projectType'].invalid && f['projectType'].touched"
+                      aria-label="Wybierz rodzaj projektu"
                     >
                       <option value="system">
                         Potrzebuję prostego systemu do zarządzania zleceniami
@@ -506,9 +507,10 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   `,
+
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConsultationPage implements OnInit {

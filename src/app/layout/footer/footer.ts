@@ -24,6 +24,7 @@ export class Footer {
     { name: 'Częste Pytania', path: '/', fragment: 'faq' },
     { name: 'Blog / Wiedza', path: '/blog', fragment: undefined },
     { name: 'O mnie', path: '/about', fragment: undefined },
+    { name: 'Polityka Prywatności', path: '/privacy-policy', fragment: undefined },
   ]);
 
   connect = signal([

@@ -93,9 +93,9 @@ export class LossCalculator implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'Kalkulator Strat Warsztatu | Ile kosztuje Cię papierologia? | Scale Sail',
+      title: 'Kalkulator Strat Warsztatu — Ile tracisz? | Scale Sail',
       description:
-        'Sprawdź, ile realnie tracisz pieniędzy i czasu na ręczne wpisywanie zleceń i telefony do klientów. Interaktywny kalkulator dla właścicieli warsztatów.',
+        'Sprawdź, ile tracisz pieniędzy i czasu na ręczną papierologię i telefony. Interaktywny kalkulator dla właścicieli warsztatów.',
       slug: 'tools/loss-calculator',
       type: 'website',
       keywords: [

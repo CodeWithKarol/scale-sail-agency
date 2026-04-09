@@ -41,14 +41,14 @@ type FeedState =
       <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
       <div class="layout-container relative z-10 pt-32 sm:pt-40">
-        <!-- Breadcrumbs -->
         <app-breadcrumb />
 
         <!-- Header -->
+        <h1 class="heading-1 mb-8">Automatyzacja warsztatu i firmy usługowej — Blog</h1>
         <app-section-header
           subtitle="BAZA WIEDZY"
-          title="Wiedza i Automatyzacja"
-          description="Praktyczne wskazówki, jak wykorzystać technologię do rozwoju Twojej firmy. Od prostych sposobów na Excela po budowę solidnych narzędzi."
+          title="Zdejmij nogę z hamulca. Instrukcje automatyzacji dla firm usługowych."
+          description="Twoja firma powinna być dochodową maszyną, a nie klatką z papierów i telefonów. Piszę o tym, jak za pomocą kodu odzyskać 10-20 godzin tygodniowo i wreszcie skupić się na rzemiośle."
         />
 
         <!-- Content Area -->
@@ -129,7 +129,7 @@ type FeedState =
                 <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-24 h-2 bg-primary"></div>
 
                 <app-button variant="secondary" size="lg" (click)="loadMore()">
-                  <span class="text-lg font-bold">POKAŻ WIĘCEJ WIEDZY</span>
+                  <span class="text-lg font-bold">ZOBACZ WIĘCEJ NARZĘDZI I CASE STUDIES</span>
                 </app-button>
               </div>
             }
@@ -138,15 +138,15 @@ type FeedState =
 
         <!-- Contextual Internal Linking (SEO & Flow) -->
         <div class="mt-32 py-20 border-t-2 border-dashed border-secondary/10 text-center relative">
-          <h2 class="heading-2 text-secondary mb-6">Teoria brzmi dobrze, ale brakuje czasu?</h2>
+          <h2 class="heading-2 text-secondary mb-6">Przestań łatać procesy na taśmę klejącą.</h2>
           <p class="text-lg text-secondary/85 mb-12 max-w-2xl mx-auto">
-            Czytanie o automatyzacji to jedno, ale wdrożenie bezpiecznego systemu wymaga
-            doświadczenia i skupienia. Zamiast testować na własnym organizmie, porozmawiajmy o
-            gotowym rozwiązaniu.
+            Samo czytanie o automatyzacji nie naprawi Twojego kalendarza. Jeśli czujesz, że chaos
+            operacyjny zaczyna Cię przerastać, zróbmy analizę Twojego „silnika” i zobaczmy, co
+            możemy zautomatyzować w pierwszej kolejności.
           </p>
           <div class="flex justify-center">
             <app-button variant="primary" size="lg" href="/consultation">
-              <span class="text-lg font-bold">Zarezerwuj Wstępną Analizę 📅</span>
+              <span class="text-lg font-bold">Umów Weryfikację potrzeb (15 min) 📅</span>
             </app-button>
           </div>
         </div>
@@ -219,10 +219,10 @@ export class BlogListPage implements OnInit {
         '@graph': [
           {
             '@type': 'Blog',
-            headline: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
-            name: 'Baza Wiedzy Scale Sail - Technologia w służbie firmy',
+            headline: 'Zdejmij nogę z hamulca. Instrukcje automatyzacji dla firm usługowych',
+            name: 'Scale Sail - Blog Inżyniera Automatyzacji',
             description:
-              'Praktyczne artykuły o automatyzacji pracy, budowie systemów dla warsztatów i firm usługowych oraz o tym, jak technologia może ułatwić Ci życie.',
+              'Twoja firma powinna być dochodową maszyną, a nie klatką z papierów. Dowiedz się, jak za pomocą kodu odzyskać 10-20 godzin tygodniowo.',
             author: {
               '@type': 'Person',
               name: 'Karol Modelski',
@@ -259,19 +259,19 @@ export class BlogListPage implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Baza Wiedzy: Automatyzacja i Systemy dla Firm | Scale Sail',
+      title: 'Instrukcje automatyzacji dla firm usługowych | Blog Scale Sail',
       description:
-        'Praktyczne wskazówki o automatyzacji pracy, budowie systemów dla warsztatów i firm usługowych. Dowiedz się, jak technologia (n8n, Make, AI) może realnie oszczędzić Twój czas.',
+        'Twoja firma powinna być dochodową maszyną, a nie klatką z papierów. Dowiedz się, jak za pomocą kodu odzyskać 10-20 godzin tygodniowo.',
       slug: '/blog',
       type: 'article',
       keywords: [
         'automatyzacja warsztatu samochodowego',
-        'programowanie dla biznesu',
-        'jak wdrożyć n8n w firmie',
-        'cyfryzacja małych firm usługowych',
-        'porady automatyzacja procesów',
+        'n8n w małej firmie przykłady',
+        'jak zautomatyzować firmę usługową',
+        'automatyzacja n8n warsztat',
+        'oszczędność czasu w warsztacie',
         'systemy zarządzania zleceniami blog',
-        'automatyzacja marketingu dla warsztatów',
+        'porady automatyzacja procesów',
       ],
     });
 

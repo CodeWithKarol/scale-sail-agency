@@ -29,6 +29,7 @@ import { Button } from '../../shared/ui/button/button';
         <app-breadcrumb />
 
         <!-- Header -->
+        <h1 class="heading-1 mb-8">Darmowe narzędzia dla właścicieli warsztatów</h1>
         <app-section-header
           subtitle="DLA WARSZTATÓW"
           title="Odzyskaj czas w swoim warsztacie"
@@ -73,7 +74,7 @@ import { Button } from '../../shared/ui/button/button';
                 route="/tools/free-quote-generator"
                 class="w-full sm:w-auto"
               >
-                URUCHOM NARZĘDZIE
+                WYSTAW PROFESJONALNĄ WYCENĘ
                 <lucide-icon [img]="icons.ArrowRight" size="14" class="ml-2"></lucide-icon>
               </app-button>
             </div>
@@ -175,9 +176,9 @@ export class ToolsPage {
   constructor() {
     effect(() => {
       this.seoService.setPageMetadata({
-        title: 'Darmowe Narzędzia i Kalkulatory dla Warsztatów | Scale Sail',
+        title: 'Narzędzia i Kalkulatory dla Warsztatów | Scale Sail',
         description:
-          'Odzyskaj czas i wyeliminuj błędy. Darmowy generator wycen PDF i kalkulatory zysku stworzone specjalnie dla właścicieli warsztatów samochodowych.',
+          'Darmowy generator wycen PDF i kalkulatory zysku dla warsztatów samochodowych. Odzyskaj czas i wyeliminuj błędy.',
         slug: '/tools',
       });
 

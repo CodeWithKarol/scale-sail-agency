@@ -23,24 +23,24 @@ export class ImpactMetrics {
       value: 'BRAK',
       label: 'OBOWIĄZKOWEGO ABONAMENTU',
       description:
-        'Brak obowiązkowych opłat miesięcznych. Płacisz raz za wdrożenie i masz spokój na lata.',
+        'Płacisz raz za wdrożenie. System staje się Twoim aktywem, a nie miesięcznym obciążeniem.',
     },
     {
       value: 'do 14 dni',
-      label: 'Uruchomienie pierwszej wersji',
+      label: 'START „CYFROWEGO SILNIKA”',
       description: 'Tyle zazwyczaj zajmuje nam wdrożenie najważniejszych funkcji dla Twojej firmy.',
     },
     {
       value: 'do 80%',
-      label: 'Mniej telefonów',
+      label: 'MNIEJ TELEFONÓW OD KLIENTÓW',
       description:
-        'W warsztatach widzimy zwykle do 80% mniej telefonów „na kiedy moje auto?”, w innych firmach usługowych – mniej chaosu w grafiku i fakturach.',
+        'Automatyczne SMS-y informują klienta o statusie naprawy, zanim on w ogóle pomyśli o telefonie.',
     },
     {
       value: '100%',
-      label: 'Twoja własność',
+      label: 'TWOJA WŁASNOŚĆ (NIE WYNAJEM)',
       description:
-        'Nie uzależniasz się od platform. System stawiamy na Twoich zasadach – masz do niego dostęp na zawsze.',
+        'System stawiamy na Twoich zasadach – masz do niego i swoich danych dostęp na zawsze.',
     },
   ]);
 }

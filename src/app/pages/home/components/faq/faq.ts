@@ -18,50 +18,49 @@ export class Faq implements OnInit {
 
   faqs = signal<FAQ[]>([
     {
-      question:
-        'Czym Twój system różni się od gotowego oprogramowania (np. dla warsztatu czy salonu)?',
+      question: 'Czym Twój system różni się od gotowego oprogramowania?',
       answer:
-        'Gotowe systemy często są przeładowane funkcjami, których nie potrzebujesz, i wymagają opłacania dożywotniego abonamentu. Ja buduję dedykowaną aplikację dla Twojej firmy na własność – płacisz raz za wdrożenie, a system jest prosty, szybki i zawiera dokładnie to, czego używasz w codziennej pracy.',
+        'Gotowe systemy (SaaS) są jak buty z sieciówki – niby pasują na każdego, ale często uwierają. Wymagają też opłacania dożywotniego abonamentu. Ja buduję dla Ciebie „system na wymiar”. Płacisz raz za wdrożenie, a narzędzie staje się Twoją własnością. Jest proste, pancerne i zawiera dokładnie to, czego używasz w codziennej pracy.',
     },
     {
       question: 'Czy ja i moi pracownicy poradzimy sobie z obsługą?',
       answer:
-        'Tak. Projektuję aplikacje tak, aby były prostsze niż wysłanie SMS-a. Nie ma tu zbędnych przycisków ani skomplikowanych tabel. Jeśli potrafisz obsługiwać Facebooka lub bankowość w telefonie, poradzisz sobie bez problemu.',
+        'Tak. Projektuję aplikacje tak, aby były prostsze niż wysłanie SMS-a. Nie ma tu zbędnych przycisków ani skomplikowanych tabel. Jeśli potrafisz obsługiwać Facebooka lub bankowość w telefonie, poradzisz sobie bez problemu od pierwszego dnia.',
     },
     {
       question: 'Czy moi klienci muszą coś instalować na telefonie?',
       answer:
-        'Nie. Klient dostaje od Ciebie zwykły link w wiadomości SMS. Klika go i od razu widzi status swojego zlecenia w przeglądarce. Zero haseł, zero zakładania kont, zero instalowania czegokolwiek.',
+        'Nie. Klient dostaje od Ciebie zwykły link w wiadomości SMS. Klika go i od razu widzi status swojego zlecenia w przeglądarce. Zero haseł, zero zakładania kont, zero instalowania aplikacji.',
     },
     {
       question: 'Czy to zadziała na moim telefonie/tablecie?',
       answer:
-        'Tak, aplikacja działa na każdym urządzeniu z dostępem do internetu – od najnowszego iPhone’a po starsze telefony z Androidem. Możesz z niej korzystać na komputerze w biurze i na telefonie, gdy jesteś pod samochodem lub u klienta.',
+        'Tak, aplikacja działa na każdym urządzeniu z dostępem do internetu. Możesz z niej korzystać na komputerze w biurze i na telefonie, gdy jesteś pod samochodem lub u klienta. Wszystkie dane synchronizują się natychmiast.',
     },
     {
       question: 'Ile czasu trwa wdrożenie takiego systemu?',
       answer:
-        'Proste systemy (np. dedykowane dla warsztatu, salonu beauty czy serwisu) uruchamiam zazwyczaj w 7-14 dni. Moim celem jest, abyś jak najszybciej odczuł ulgę i przestał marnować czas na telefony.',
+        'Start „cyfrowego silnika” Twojej firmy zajmuje zazwyczaj od 7 do 14 dni. Pracujemy etapami, abyś jak najszybciej odczuł różnicę w pracy, nie blokując przy tym codziennych napraw.',
     },
     {
       question: 'Ile to kosztuje? Czy są jakieś miesięczne opłaty?',
       answer:
-        'Stosuję prosty model: płacisz raz za przygotowanie i wdrożenie.<br><br>Pracuję w trzech pakietach:<br>– <strong>Small</strong> – prosty system zleceń i SMS‑ów: zwykle <strong>7 000–9 000 zł netto</strong><br>– <strong>Medium</strong> – system zleceń + kalendarz + raporty + automatyzacje: zwykle <strong>11 000–16 000 zł netto</strong><br>– <strong>Large</strong> – rozbudowany system z integracjami i AI: od <strong>17 000 zł netto wzwyż</strong>.<br><br>Potem ponosisz jedynie minimalne koszty utrzymania serwera i wysyłki SMS‑ów (kilkadziesiąt złotych miesięcznie). Jeśli będziesz chciał dalej rozwijać system, możemy umówić się na prosty miesięczny abonament za opiekę – ale nie jest on wymagany, żeby system działał.',
+        'Stosuję prosty model: płacisz raz za przygotowanie i wdrożenie systemu na własność.<br><br>Pracuję w trzech pakietach:<br>– <strong>Fundament</strong> – cyfrowa baza zleceń i SMS‑y: <strong>7 000–9 000 zł netto</strong><br>– <strong>Optymalny</strong> – pełna automatyzacja i kalendarz: <strong>11 000–16 000 zł netto</strong><br>– <strong>Dedykowany</strong> – system zintegrowany z AI i hurtowniami: od <strong>17 000 zł netto wzwyż</strong>.<br><br>Potem ponosisz jedynie minimalne koszty techniczne (serwer/SMS) – zwykle kilkadziesiąt złotych miesięcznie.',
     },
     {
       question: 'Czy po wdrożeniu mogę liczyć na dalszą opiekę i rozwój?',
       answer:
-        'Tak. Po wdrożeniu proponuję prosty pakiet opieki – zwykle <strong>800–1 500 zł netto miesięcznie</strong>, w zależności od skali.<br><br>W ramach pakietu:<br>– monitoruję działanie systemu i automatyzacji (n8n/Make/Zapier),<br>– reaguję na zgłoszenia i drobne poprawki,<br>– stopniowo dokładamy nowe usprawnienia (np. raporty, dodatkowe automatyczne wiadomości, nowe integracje).<br><br>Dzięki temu system rozwija się razem z Twoją firmą, bez konieczności zamawiania za każdym razem dużego projektu.',
+        'Tak. Po wdrożeniu proponuję opcjonalny pakiet <strong>Opieki i Rozwoju</strong> (zwykle 800–1 500 zł netto miesięcznie). W jego ramach dbam o bezpieczeństwo danych, monitoruję system i wprowadzam mikro-usprawnienia na Twoje życzenie. Dzięki temu Twój „silnik” zawsze pracuje na najwyższych obrotach.',
     },
     {
       question: 'Mam już swoje dane w Excelu. Czy da się je przenieść?',
       answer:
-        'Oczywiście. Pomagam przenieść bazę klientów i historię zleceń z Excela lub kartek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
+        'Oczywiście. Pomagam przenieść bazę klientów i historię napraw z Excela lub papierowych notatek do nowej aplikacji, żebyś nie musiał zaczynać od zera.',
     },
     {
-      question: 'Czy system obsłuży kilka stanowisk i różnych mechaników?',
+      question: 'Czy system obsłuży kilka stanowisk i różnych pracowników?',
       answer:
-        'Oczywiście. Możesz przypisywać auta do konkretnych stanowisk roboczych i pracowników. Każdy mechanik może mieć podgląd tylko na swoje zlecenia, a Ty widzisz całą kolejkę warsztatu z góry.',
+        'Oczywiście. Możesz przypisywać zadania do konkretnych stanowisk roboczych i mechaników. Każdy pracownik może mieć podgląd tylko na swoje zlecenia, a Ty widzisz całą kolejkę warsztatu z góry.',
     },
   ]);
 
