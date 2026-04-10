@@ -1,5 +1,15 @@
 [
   {
+    "id": "2",
+    "title": "Program dla warsztatu: SaaS vs Własność. Ile realnie kosztuje abonament?",
+    "excerpt": "Porównujemy koszty gotowych systemów (SaaS) z rozwiązaniami na własność. Sprawdź, kiedy własna automatyzacja zwraca się z nawiązką.",
+    "date": "2026-04-10T10:00:00Z",
+    "slug": "saas-vs-wlasnosc-koszty",
+    "imageUrl": "https://images.unsplash.com/photo-1517524206127-48bbd363f3d7?q=80&w=2070",
+    "category": "Biznes",
+    "contentPath": "/content/blog/saas-vs-wlasnosc-koszty.md"
+  },
+  {
     "id": "1",
     "title": "Koniec z telefonami „czy gotowe?”. Jak n8n automatyzuje komunikację",
     "excerpt": "Dowiedz się, jak wyeliminować 80% telefonów od klientów pytających o status naprawy za pomocą inteligentnej automatyzacji n8n.",
