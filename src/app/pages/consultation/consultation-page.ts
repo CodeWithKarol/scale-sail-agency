@@ -18,6 +18,8 @@ import { of } from 'rxjs';
 import { LucideAngularModule, ArrowRight, Info, LayoutGrid, Mail } from 'lucide-angular';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 
+import { SectionHeader } from '../../shared/ui/section-header/section-header';
+
 type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
 
 @Component({
@@ -31,6 +33,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
     LucideAngularModule,
     RouterLink,
     NgxTurnstileModule,
+    SectionHeader,
   ],
   template: `
     <div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
@@ -43,19 +46,13 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
           class="max-w-4xl mx-auto mt-12 animate-in fade-in slide-in-from-bottom-4 duration-1000"
         >
           <!-- Header Content -->
-          <div class="text-center mb-16">
-            <div class="inline-flex items-center gap-4 mb-8">
-              <span class="w-12 h-1 bg-primary"></span>
-              <span class="text-small text-secondary/60">KWALIFIKACJA PROJEKTU</span>
-              <span class="w-12 h-1 bg-primary"></span>
-            </div>
-
-            <h1 class="heading-1 text-secondary mb-8">BEZPŁATNA KONSULTACJA</h1>
-
-            <p class="text-body sm:text-lg text-secondary/80 max-w-2xl mx-auto">
-              Szanuję Twój czas. Zanim usiądziemy do kalendarza, chcę mieć pewność, że faktycznie
-              potrafię rozwiązać Twój problem. Odpowiedz uczciwie na kilka pytań.
-            </p>
+          <div class="mb-16">
+            <app-section-header
+              [level]="1"
+              subtitle="WERYFIKACJA POTRZEB"
+              title="BEZPŁATNA KONSULTACJA"
+              description="Szanuję Twój czas. Zanim usiądziemy do kalendarza, chcę mieć pewność, że faktycznie potrafię rozwiązać Twój problem. Odpowiedz uczciwie na kilka pytań."
+            />
           </div>
 
           <!-- Interactive Form Container -->
@@ -116,10 +113,12 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                         Potrzebuję prostego systemu do zarządzania zleceniami
                       </option>
                       <option value="automation">
-                        Chcę wdrożyć automatyzacje procesów (n8n/Make)
+                        Chcę zautomatyzować powtarzalne prace i odzyskać czas
                       </option>
-                      <option value="ai">Interesuje mnie wdrożenie integracji i funkcji AI</option>
-                      <option value="sla">Mam inny pomysł / Szukam Opieki SLA</option>
+                      <option value="ai">
+                        Interesują mnie inteligentni asystenci i wsparcie AI
+                      </option>
+                      <option value="care">Mam inny pomysł / Szukam Opieki i Rozwoju</option>
                     </select>
                     <div
                       class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary"
@@ -161,7 +160,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                           >Poniżej 7 000 zł</span
                         >
                         <span class="block text-xs text-secondary/60"
-                          >Szukam tańszego gotowca SaaS</span
+                          >Szukam gotowego programu w abonamencie</span
                         >
                       </span>
                       <!-- Active Ring overlay -->
@@ -206,7 +205,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                           >Powyżej 16 000 zł</span
                         >
                         <span class="block text-xs text-secondary/60"
-                          >Zaawansowana platforma i funkcje AI</span
+                          >Zaawansowany system i inteligentni asystenci</span
                         >
                       </span>
                       <span
@@ -357,7 +356,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                       class="text-primary flex-shrink-0"
                     ></lucide-icon>
                     <p class="text-xs text-secondary italic leading-relaxed text-balance">
-                      Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki SLA) może zaoferować
+                      Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki i Rozwoju) może zaoferować
                       alternatywną ścieżkę pomocy, aby oszczędzić Twój czas.
                     </p>
                   </div>
@@ -410,57 +409,61 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 class="min-h-[400px] flex flex-col justify-center animate-in fade-in slide-in-from-bottom-4 duration-500 text-center items-center"
               >
                 <div
-                  class="w-20 h-20 bg-neutral border-4 border-secondary/20 flex items-center justify-center mb-8"
+                  class="w-20 h-20 bg-primary/10 border-4 border-primary/20 flex items-center justify-center mb-8"
                 >
                   <svg
-                    class="w-10 h-10 text-secondary/60"
+                    class="w-10 h-10 text-primary"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
+                    stroke-width="2.5"
                     viewBox="0 0 24 24"
                   >
                     <path
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     ></path>
                   </svg>
                 </div>
 
-                <h3 class="heading-2 mb-6">Mam na to inną radę.</h3>
+                <h3 class="heading-2 mb-6">Zacznijmy od mniejszego kroku.</h3>
                 <p class="text-lg text-secondary/80 max-w-lg mb-8 leading-relaxed">
-                  Zaznaczyłeś najniższy próg budżetowy. Obecnie skupiam się wyłącznie na
-                  zaawansowanych systemach dedykowanych zaczynających się od wyższych pułapów.<br /><br />Ale
-                  to nie znaczy, że zostawię Cię z niczym.
+                  Dziękuję za szczerość w kwestii budżetu. Budowa dedykowanego systemu na tym etapie
+                  byłaby jak
+                  <span class="text-secondary font-bold">strzelanie z armaty do muchy</span>. Chcę,
+                  aby każda złotówka wydana na technologię zarabiała na siebie od pierwszego dnia.
                 </p>
 
                 <div
-                  class="bg-secondary p-6 inline-block text-left mb-8 max-w-lg shadow-[8px_8px_0px_0px_rgba(10,31,68,0.1)]"
+                  class="bg-white border-4 border-secondary p-8 inline-block text-left mb-10 max-w-lg shadow-[12px_12px_0px_0px_rgba(0,123,255,0.1)]"
                 >
-                  <p class="font-mono text-xs uppercase tracking-widest mb-2 text-white/50">
-                    Co dalej?
+                  <p
+                    class="font-mono text-[10px] uppercase font-black tracking-widest mb-4 text-primary"
+                  >
+                    EKSPERCKA REKOMENDACJA
                   </p>
-                  <p class="text-white">
-                    Dostałem od Ciebie maila z opisem problemu. Do 48 godzin odpiszę Ci
-                    <strong>polecając darmowe lub tanie, gotowe narzędzie abonamentowe</strong>,
-                    które powinieneś spróbować wdrożyć we własnym zakresie. Pozdrawiam!
+                  <p class="text-secondary/90 font-medium mb-4">
+                    Twoja firma jest na etapie, gdzie najwięcej zyskasz wdrażając sprawdzone, gotowe
+                    narzędzia abonamentowe.
+                  </p>
+                  <p class="text-secondary/70 text-sm">
+                    W ciągu 48h wyślę Ci e-mail z <strong>listą 3 konkretnych narzędzi</strong>,
+                    które sam bym wybrał na Twoim miejscu. Pomogą Ci one uporządkować zlecenia i
+                    przygotować grunt pod pełną automatyzację w przyszłości.
                   </p>
                 </div>
 
                 <div class="mb-10 text-center animate-in fade-in duration-1000 delay-300">
-                  <p class="text-secondary/60 text-sm mb-4 italic">
-                    W międzyczasie sprawdź nasze darmowe rozwiązania:
+                  <p class="text-secondary/60 text-sm mb-6 italic">
+                    W międzyczasie skorzystaj z moich darmowych kalkulatorów:
                   </p>
-                  <app-button variant="accent" size="md" route="/tools">
-                    PRZEGLĄDAJ DARMOWE NARZĘDZIA
-                  </app-button>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <app-button variant="secondary" size="md" route="/tools">
+                      DARMOWE NARZĘDZIA
+                    </app-button>
+                    <app-button variant="ghost" size="md" route="/"> POWRÓT DO STARTU </app-button>
+                  </div>
                 </div>
-
-                <a
-                  routerLink="/"
-                  class="text-sm font-black uppercase tracking-widest text-primary hover:underline hover:text-secondary transition-colors"
-                  >Wróć na stronę główną</a
-                >
               </div>
             }
           </div>
@@ -604,14 +607,14 @@ export class ConsultationPage implements OnInit {
     const budgetValue = this.form.get('budget')?.value;
     const projectType = this.form.get('projectType')?.value;
 
-    // SLA package is fundamentally cheaper (800-1500) so we explicitly whitelist it.
-    const isQualified = budgetValue === 'mid' || budgetValue === 'high' || projectType === 'sla';
+    // Care package is fundamentally cheaper (800-1500) so we explicitly whitelist it.
+    const isQualified = budgetValue === 'mid' || budgetValue === 'high' || projectType === 'care';
 
     const payload = {
       ...this.form.value,
       isQualified,
       status: isQualified ? 'ACCEPTED' : 'REJECTED',
-      subject: `[LEAD-KWALIFIKACJA] Opcja: ${budgetValue} | Projekt: ${this.form.value.projectType}`,
+      subject: `[LEAD-WERYFIKACJA] Opcja: ${budgetValue} | Projekt: ${this.form.value.projectType}`,
       source: 'Consultation Form',
       turnstileToken: this.turnstileToken(),
     };

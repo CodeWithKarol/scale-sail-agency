@@ -8,7 +8,7 @@ _Last updated: 2026-04-09_
 **What it does:** Buduję proste aplikacje do zleceń i rozliczeń z wbudowaną automatyzacją SMS/e‑mail oraz AI, oparte na Twoich zasadach i bez abonamentu za samo narzędzie.
 **Product category:** Automatyzacja procesów biznesowych / Custom Business Tools
 **Product type:** Service + Custom Software (Implementation)
-**Business model:** One-time implementation fee + optional monthly support/SLA.
+**Business model:** One-time implementation fee + optional monthly support/care package.
 
 ## Target Audience
 
@@ -54,7 +54,7 @@ _Last updated: 2026-04-09_
 **Key differentiators:**
 
 - Brak abonamentu za oprogramowanie (płacisz za wdrożenie, narzędzie jest Twoje).
-- Podejście "Solidny Rzemieślnik" – inżynierska jakość, pancerne standardy (doświadczenie z bankowości).
+- Podejście "Solidny Rzemieślnik" – ekspercka jakość, pancerne standardy (doświadczenie z bankowości).
 - Pełna customizacja pod konkretny proces klienta.
   **How we do it differently:** Łączymy proste aplikacje (low-code/custom) z potężnymi automatyzacjami (n8n/Make) i AI tam, gdzie ma to sens.
   **Why that's better:** Niższy koszt w długim terminie i system idealnie dopasowany do warsztatu.
@@ -66,7 +66,7 @@ _Last updated: 2026-04-09_
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | "To brzmi drogo na start"     | Wdrożenie zwraca się w kilka miesięcy dzięki oszczędności czasu, a brak abonamentu to tysiące złotych oszczędności w skali lat. |
 | "Nie znam się na technologii" | Buduję systemy tak proste, jak zeszyt, tylko że same wysyłają SMS-y.                                                            |
-| "Co jak się zepsuje?"         | Oferuję pakiet Opieki i Rozwoju (SLA), gdzie monitoruję system i reaguję na zgłoszenia.                                         |
+| "Co jak się zepsuje?"         | Oferuję pakiet Opieki i Rozwoju, gdzie monitoruję system i reaguję na zgłoszenia.                                               |
 
 **Anti-persona:** Duże korporacje szukające gotowego ERP; firmy bez powtarzalnych procesów; osoby szukające najtańszej aplikacji "z pudełka".
 
@@ -99,7 +99,7 @@ _Last updated: 2026-04-09_
 
 **Tone:** Profesjonalny, techniczny, rzemieślniczy, bezpośredni.
 **Style:** Konkretny, partnerski, bez lania wody.
-**Personality:** Solidny inżynier, który zna się na swojej robocie i szanuje Twój warsztat.
+**Personality:** Solidny specjalista, który zna się na swojej robocie i szanuje Twój warsztat.
 
 ## Proof Points
 

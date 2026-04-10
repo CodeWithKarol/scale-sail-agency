@@ -29,10 +29,10 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
         <app-breadcrumb />
 
         <!-- Header -->
-        <h1 class="heading-1 mb-8">Systemy zarządzania zleceniami w praktyce</h1>
         <app-section-header
+          [level]="1"
           subtitle="PORTFOLIO"
-          title="Wybrane Realizacje"
+          title="Systemy zarządzania zleceniami w praktyce"
           description="Zobacz przykładowe projekty – od paneli administracyjnych po lekkie narzędzia dla warsztatów i usług."
         />
 
@@ -83,9 +83,10 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
         <div class="mt-32 py-20 border-t-2 border-dashed border-secondary/10 text-center relative">
           <h2 class="heading-2 text-secondary mb-6">Widzisz tu logikę, której szukasz?</h2>
           <p class="text-lg text-secondary/90 mb-12 max-w-2xl mx-auto">
-            Jeśli chcesz przenieść tę inżynieryjną stabilność do swojej firmy, porozmawiajmy o tym,
-            co możemy zautomatyzować.
+            Jeśli chcesz przenieść tę ekspercką stabilność do swojej firmy, porozmawiajmy o tym, co
+            możemy zautomatyzować.
           </p>
+
           <div class="flex justify-center">
             <app-button variant="accent" size="lg" href="/consultation">
               <span class="text-lg font-bold">Umów Weryfikację potrzeb (15 min) 📅</span>

@@ -11,9 +11,15 @@
     </div>
   }
 
-  <h2 class="mt-4 heading-2 text-secondary text-balance uppercase tracking-[-0.02em]">
-    {{ title() }}
-  </h2>
+  @if (level() === 1) {
+    <h1 class="mt-4 heading-1 text-secondary text-balance uppercase tracking-[-0.02em]">
+      {{ title() }}
+    </h1>
+  } @else {
+    <h2 class="mt-4 heading-2 text-secondary text-balance uppercase tracking-[-0.02em]">
+      {{ title() }}
+    </h2>
+  }
 
   @if (description()) {
     <p

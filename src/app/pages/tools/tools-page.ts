@@ -29,10 +29,10 @@ import { Button } from '../../shared/ui/button/button';
         <app-breadcrumb />
 
         <!-- Header -->
-        <h1 class="heading-1 mb-8">Darmowe narzędzia dla właścicieli warsztatów</h1>
         <app-section-header
+          [level]="1"
           subtitle="DLA WARSZTATÓW"
-          title="Odzyskaj czas w swoim warsztacie"
+          title="Darmowe narzędzia dla właścicieli warsztatów"
           description="Przestań tracić godziny na ręczne wyceny i Excela. Wykorzystaj darmowe kalkulatory stworzone, by automatyzować nużącą papierologię i budować profesjonalny wizerunek w oczach klienta."
           class="max-w-3xl"
         />

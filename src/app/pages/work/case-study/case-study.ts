@@ -25,6 +25,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
 
           <!-- Header -->
           <app-section-header
+            [level]="1"
             [subtitle]="'REALIZACJA: ' + study.id"
             [title]="study.title"
             [description]="study.tagline"
