@@ -277,7 +277,7 @@ export class BlogListPage implements OnInit {
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Blog', path: '/blog' },
+      { name: 'Wiedza', path: '/blog' },
     ]);
   }
 }

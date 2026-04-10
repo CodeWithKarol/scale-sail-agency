@@ -184,10 +184,6 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
               <div
                 class="mt-16 pt-12 border-t-2 border-dashed border-secondary/10 flex flex-col sm:flex-row justify-between items-center gap-10"
               >
-                <div class="status-badge ring-4 ring-secondary/5">
-                  <span class="w-2 h-2 rounded-none bg-primary animate-pulse"></span>
-                  STATUS: W PEŁNI ZOPTYMALIZOWANY
-                </div>
                 <div
                   class="text-small text-secondary/60 bg-neutral px-5 py-2 border-2 border-secondary/10"
                 >
@@ -272,7 +268,7 @@ export class CaseStudyPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Realizacje', path: '/work' },
+        { name: 'Systemy', path: '/work' },
         { name: study.title, path: `/work/${study.id}` },
       ]);
 

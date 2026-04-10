@@ -159,7 +159,7 @@ import { Button } from '../../shared/ui/button/button';
             <a
               routerLink="/work"
               class="text-secondary hover:text-primary underline decoration-primary/30 underline-offset-4 transition-colors p-2"
-              >zobacz jak wdrożyłem to u innych (Realizacje)</a
+              >zobacz jak wdrożyłem to u innych (Systemy)</a
             >
           </div>
         </div>
@@ -176,7 +176,7 @@ export class ToolsPage {
   constructor() {
     effect(() => {
       this.seoService.setPageMetadata({
-        title: 'Narzędzia i Kalkulatory dla Warsztatów | Scale Sail',
+        title: 'Narzędzia dla Serwisu | Scale Sail',
         description:
           'Darmowy generator wycen PDF i kalkulatory zysku dla warsztatów samochodowych. Odzyskaj czas i wyeliminuj błędy.',
         slug: '/tools',
@@ -191,7 +191,7 @@ export class ToolsPage {
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Darmowe Narzędzia i Kalkulatory dla Warsztatów',
+          name: 'Narzędzia dla Serwisu — Kalkulatory i Dokumenty dla Warsztatów',
           description:
             'Kolekcja narzędzi wspierających codzienne operacje w warsztacie samochodowym: od wycen po kalkulacje zysku.',
           url: 'https://scale-sail.io/tools',

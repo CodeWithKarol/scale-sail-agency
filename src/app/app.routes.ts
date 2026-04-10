@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: 'work',
     loadComponent: () => import('./pages/work/work-page').then((m) => m.WorkPage),
-    title: 'Architecture | Scale Sail Agency',
+    title: 'Systemy | Scale Sail Agency',
   },
   {
     path: 'work/:id',
@@ -17,7 +17,7 @@ export const routes: Routes = [
   {
     path: 'blog',
     loadComponent: () => import('./pages/blog/blog-list-page').then((m) => m.BlogListPage),
-    title: 'Blog | Scale Sail Agency',
+    title: 'Wiedza | Scale Sail Agency',
   },
   {
     path: 'blog/:slug',

@@ -124,7 +124,7 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Systemy zarządzania zleceniami — Realizacje | Scale Sail',
+        title: 'Systemy Zleceń — Realizacje i Case Studies | Scale Sail',
         description:
           'Konkretne przykłady wdrożeń systemów zarządzania i automatyzacji. Zobacz, jak cyfrowy warsztat pomaga odzyskać czas.',
         slug: '/work',
@@ -140,7 +140,7 @@ export class WorkPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Realizacje', path: '/work' },
+        { name: 'Systemy', path: '/work' },
       ]);
 
       const projects = this.projects();

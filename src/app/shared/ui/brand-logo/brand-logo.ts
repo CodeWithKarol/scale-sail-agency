@@ -7,38 +7,38 @@ import { ViewportScroller } from '@angular/common';
   imports: [RouterLink],
   template: `
     <a routerLink="/" (click)="onScrollToTop()" class="-m-1.5 p-1.5 flex items-center gap-3 group">
-      <div class="relative">
-        <!-- Logo Image - Increased size -->
+      <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+        <!-- Logo Image -->
         <img
           src="images/scale-sail-logo.webp"
           alt="Scale Sail Logo"
           [attr.loading]="loading()"
           fetchpriority="high"
-          width="48"
-          height="48"
-          class="h-12 w-12 rounded-none object-contain transition-all duration-300"
+          width="40"
+          height="40"
+          class="h-10 w-10 rounded-none object-contain transition-all duration-300"
         />
-        <!-- Industrial Corner accents (Adjusted for larger size) -->
+        <!-- Industrial Corner accents - Fixed alignment -->
         <div
-          class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors"
+          class="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary/40 group-hover:border-primary transition-colors"
         ></div>
         <div
-          class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors"
+          class="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary/40 group-hover:border-primary transition-colors"
         ></div>
       </div>
 
       <div class="flex flex-col whitespace-nowrap">
-        <!-- Brand Name - Increased weight and size -->
+        <!-- Brand Name -->
         <span
-          class="text-xl font-mono font-black leading-none text-secondary uppercase tracking-tight group-hover:text-primary transition-colors"
+          class="text-base sm:text-xl xl:text-2xl font-mono font-black leading-none text-secondary uppercase tracking-tight group-hover:text-primary transition-colors"
         >
           Scale Sail
         </span>
-        <!-- Subtitle - Improved readability -->
+        <!-- Subtitle -->
         <span
-          class="text-[10px] font-mono text-secondary/40 font-black leading-none tracking-[0.3em] mt-2 group-hover:text-secondary/60 uppercase"
+          class="hidden sm:block text-[8px] xl:text-[10px] font-mono text-secondary/40 font-black leading-none tracking-[0.2em] xl:tracking-[0.3em] mt-1.5 xl:mt-2 group-hover:text-secondary/60 uppercase"
         >
-          Systemy dla firm
+          Automatyzacja Zleceń
         </span>
       </div>
     </a>

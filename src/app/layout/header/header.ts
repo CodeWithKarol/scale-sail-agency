@@ -26,11 +26,10 @@ export class Header {
   mobileMenuOpen = signal(false);
   scrolled = signal(false);
 
-  // Flat navigation structure for better UX and speed
+  // Compact navigation for better UX and spacing
   readonly navigation = [
+    { name: 'Systemy', path: '/work' },
     { name: 'Narzędzia', path: '/tools' },
-    { name: 'Realizacje', path: '/work' },
-    { name: 'Jak pomagam', path: '/', fragment: 'problem-solution' },
     { name: 'Cennik', path: '/', fragment: 'pricing' },
     { name: 'Wiedza', path: '/blog' },
     { name: 'O mnie', path: '/about' },

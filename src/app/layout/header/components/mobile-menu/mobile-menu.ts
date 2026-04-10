@@ -96,20 +96,11 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
             <div class="py-10">
               <a
                 href="/consultation"
-                class="block px-6 py-5 font-mono text-xs font-black uppercase tracking-[0.2em] bg-accent text-white border-2 border-accent hover:bg-white hover:text-accent transition-all text-center"
+                class="block px-6 py-5 font-mono text-xs font-black uppercase tracking-[0.2em] bg-accent text-white border-2 border-secondary shadow-[8px_8px_0px_0px_rgba(10,31,68,1)] hover:bg-secondary hover:text-accent transition-all text-center"
                 (click)="closeMenu.emit()"
               >
-                UMÓW ROZMOWĘ
+                UMÓW DIAGNOZĘ 📅
               </a>
-
-              <div
-                class="mt-12 pt-8 border-t border-secondary/10 flex justify-between font-mono text-[9px] text-secondary/70 uppercase tracking-[0.3em]"
-              >
-                <div class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-primary rounded-none animate-pulse"></span>
-                  STATUS: GOTOWY NA WDROŻENIA
-                </div>
-              </div>
             </div>
           </div>
         </div>
