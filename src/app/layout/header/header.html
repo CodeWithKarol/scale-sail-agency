@@ -3,16 +3,35 @@
   [class.py-1]="scrolled()"
 >
   <nav class="layout-container flex items-center justify-between py-4" aria-label="Global">
-    <!-- Logo -->
-    <div class="flex xl:flex-1 shrink-0 transform scale-110 lg:scale-115 xl:scale-125 origin-left">
+    <!-- Left: Logo Area -->
+    <div class="flex flex-1 justify-start items-center min-w-fit shrink-0">
       <app-brand-logo></app-brand-logo>
     </div>
 
-    <!-- Mobile Menu Button -->
-    <div class="flex lg:hidden">
+    <!-- Center: Desktop Nav (Optimized Spacing) -->
+    <div class="hidden lg:flex justify-center items-center flex-initial mx-4">
+      <div class="flex items-center lg:gap-x-1 xl:gap-x-4">
+        @for (item of navigation; track item.name; let index = $index) {
+          <a
+            [routerLink]="item.path"
+            [fragment]="item.fragment"
+            class="relative px-2 xl:px-4 py-2 font-mono text-[11px] xl:text-[13px] font-black uppercase tracking-widest text-secondary/75 hover:text-primary transition-all group cursor-pointer flex items-center whitespace-nowrap"
+          >
+            {{ item.name }}
+            <span
+              class="absolute bottom-0 left-2 xl:left-4 right-2 xl:right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
+            ></span>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Right: Mobile Trigger / Desktop CTA -->
+    <div class="flex flex-1 justify-end items-center min-w-fit shrink-0">
+      <!-- Mobile Menu Button -->
       <button
         type="button"
-        class="inline-flex items-center justify-center p-3 text-secondary hover:text-primary hover:bg-neutral transition-all border-2 border-transparent hover:border-secondary/10 group rounded-none"
+        class="lg:hidden inline-flex items-center justify-center p-3 text-secondary hover:text-primary hover:bg-neutral transition-all border-2 border-transparent hover:border-secondary/10 group rounded-none"
         (click)="toggleMobileMenu()"
       >
         <span class="sr-only">Otwórz menu</span>
@@ -22,31 +41,13 @@
           <span class="h-0.5 w-full bg-current group-hover:w-1/2 transition-all ml-auto"></span>
         </div>
       </button>
-    </div>
 
-    <!-- Desktop Nav (Flat Structure) -->
-    <div class="hidden lg:flex lg:items-center lg:gap-x-8 xl:gap-x-5 lg:mx-8 xl:mx-12">
-      @for (item of navigation; track item.name; let index = $index) {
-        <a
-          [routerLink]="item.path"
-          [fragment]="item.fragment"
-          [class.hidden]="index > 3"
-          [class.xl:flex]="index > 3"
-          class="relative px-3 xl:px-4 py-2 font-mono text-[11px] xl:text-[12px] font-black uppercase tracking-widest text-secondary/75 hover:text-primary transition-all group cursor-pointer flex items-center whitespace-nowrap"
-        >
-          {{ item.name }}
-          <span
-            class="absolute bottom-0 left-3 xl:left-4 right-3 xl:right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
-          ></span>
-        </a>
-      }
-    </div>
-
-    <!-- Desktop CTA -->
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end shrink-0">
-      <app-button href="/consultation" variant="accent" size="sm">
-        BEZPŁATNA KONSULTACJA
-      </app-button>
+      <!-- Desktop CTA -->
+      <div class="hidden lg:block">
+        <app-button href="/consultation" variant="accent" size="sm" styleClass="!px-6 xl:!px-8">
+          DARMOWA DIAGNOZA 📅
+        </app-button>
+      </div>
     </div>
   </nav>
 </header>

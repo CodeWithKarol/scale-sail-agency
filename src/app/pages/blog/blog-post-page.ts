@@ -110,7 +110,7 @@ export class BlogPostPage implements OnInit {
   private updateBreadcrumbs(post: BlogPost) {
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Blog', path: '/blog' },
+      { name: 'Wiedza', path: '/blog' },
       { name: post.title, path: `/blog/${post.slug}` },
     ]);
   }
