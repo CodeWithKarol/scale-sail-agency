@@ -16,7 +16,7 @@ Większość właścicieli warsztatów uważa, że to nieunikniona cena prowadze
 
 Na rynku jest mnóstwo gotowych programów dla warsztatów. Obiecują złote góry, ale prawie wszystkie mają jeden wspólny haczyk: **wieczny abonament**. Płacisz 300, 500, czasem 800 zł miesięcznie za sam dostęp do własnych danych.
 
-Jako inżynier z doświadczeniem w bankowości patrzę na to inaczej. Wynajmowanie narzędzi, które są sercem Twojej firmy, to niepotrzebne ryzyko i koszt stały, który zjada Twój zysk.
+Jako specjalista z doświadczeniem w bankowości patrzę na to inaczej. Wynajmowanie narzędzi, które są sercem Twojej firmy, to niepotrzebne ryzyko i koszt stały, który zjada Twój zysk.
 
 - **W modelu SaaS:** Płacisz co miesiąc. Jak przestaniesz – tracisz dostęp do historii zleceń i bazy klientów. To „podatek od sukcesu” – im więcej masz stanowisk i pracy, tym więcej często musisz płacić.
 - **W moim modelu:** Płacisz raz za wdrożenie. Budujemy Twój własny system oparty na n8n i dedykowanych automatyzacjach. Narzędzie staje się Twoją własnością. Nie ma ukrytych opłat za „licencję od stanowiska”.
@@ -45,7 +45,7 @@ To doświadczenie przenoszę do ScaleSail Agency. Moje automatyzacje to nie są 
 - **Niezawodność:** Tworzę systemy z logiką obsługi błędów (tzw. error handling). Jeśli system SMS-owy miałby awarię – Ty dostaniesz o tym powiadomienie.
 - **Prostota:** Mimo skomplikowanej technologii pod maską, dla Ciebie obsługa jest tak prosta, jak odczytanie kodu błędu na komputerze diagnostycznym.
 
-Dostajesz inżynierską jakość i spokój ducha, na który zasługuje każda solidna firma usługowa.
+Dostajesz ekspercką jakość i spokój ducha, na który zasługuje każda solidna firma usługowa.
 
 ## Czy Twój warsztat jest gotowy na „nowy silnik”?
 

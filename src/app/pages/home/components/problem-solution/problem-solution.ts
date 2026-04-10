@@ -31,11 +31,12 @@ export class ProblemSolution {
     {
       title: 'Rezerwacje, które pracują w nocy',
       description:
-        'Klienci zapisują się sami przez Twoją stronę, nawet gdy Ty śpisz. System sam przypomni im o wizycie, żebyś nie stał nad pustym podnośnikiem czekając na spóźnialskich.',
+        'Klienci zapisują się sami przez Twoją stronę, nawet gdy Ty śpisz. System sam przypomni im o wizycie, żebyś nie stał nad pustym podnośnikiem i odzyskał spokój wieczorami.',
       icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z',
       theme: 'primary',
       label: 'KALENDARZ 24/7',
     },
+
     {
       title: 'Odzyskaj 15 godzin tygodniowo',
       description:

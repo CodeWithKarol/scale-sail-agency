@@ -44,10 +44,10 @@ type FeedState =
         <app-breadcrumb />
 
         <!-- Header -->
-        <h1 class="heading-1 mb-8">Automatyzacja warsztatu i firmy usługowej — Blog</h1>
         <app-section-header
+          [level]="1"
           subtitle="BAZA WIEDZY"
-          title="Zdejmij nogę z hamulca. Instrukcje automatyzacji dla firm usługowych."
+          title="Automatyzacja warsztatu i firmy usługowej — Blog"
           description="Twoja firma powinna być dochodową maszyną, a nie klatką z papierów i telefonów. Piszę o tym, jak za pomocą kodu odzyskać 10-20 godzin tygodniowo i wreszcie skupić się na rzemiośle."
         />
 

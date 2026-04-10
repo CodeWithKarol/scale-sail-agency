@@ -4,10 +4,12 @@ import { SeoService } from '../../shared/core/seo/seo.service';
 import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 import { Button } from '../../shared/ui/button/button';
 
+import { SectionHeader } from '../../shared/ui/section-header/section-header';
+
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, BreadcrumbComponent, Button],
+  imports: [CommonModule, BreadcrumbComponent, Button, SectionHeader],
   template: `
     <div
       class="min-h-screen bg-neutral text-secondary relative pt-40 pb-24 overflow-hidden bg-grid-workshop"
@@ -21,24 +23,20 @@ import { Button } from '../../shared/ui/button/button';
 
         <!-- Hero Intro -->
         <div
-          class="max-w-5xl mx-auto text-center mb-32 animate-in fade-in slide-in-from-bottom-4 duration-1000"
+          class="max-w-5xl mx-auto mb-32 animate-in fade-in slide-in-from-bottom-4 duration-1000"
         >
-          <div class="mb-10 flex justify-center">
-            <div class="status-badge status-badge-dark ring-4 ring-secondary/5">
-              SYLWETKA TWÓRCY
+          <app-section-header
+            [level]="1"
+            subtitle="SYLWETKA TWÓRCY"
+            title="Buduję systemy, których nie musisz pilnować"
+            description="Nazywam się Karol Modelski. Od lat pomagam firmom wychodzić z ery kartek i Excela, budując systemy, które są solidne jak narzędzia warsztatowe."
+          >
+            <div class="mt-8">
+              <span class="heading-3 opacity-80 uppercase tracking-tight block">
+                Solidne jak bank, proste jak zeszyt.
+              </span>
             </div>
-          </div>
-
-          <h1 class="heading-1 text-secondary mb-12">
-            Buduję systemy, które <br />
-            <span class="text-primary italic">zdejmują ciężar</span> z Twoich barków.
-          </h1>
-
-          <p class="text-body sm:text-lg text-secondary/70 max-w-3xl mx-auto">
-            Nazywam się <span class="text-secondary font-black">Karol Modelski</span>. Od lat
-            pomagam firmom wychodzić z ery kartek i Excela, budując systemy, które są
-            <span class="text-secondary font-black italic">solidne jak narzędzia warsztatowe</span>.
-          </p>
+          </app-section-header>
         </div>
 
         <!-- Craftsman Principles -->
@@ -83,6 +81,10 @@ import { Button } from '../../shared/ui/button/button';
                   nauczyłem się, że w technologii nie liczy się „błysk”, ale
                   <span class="text-secondary font-black">niezawodność i bezpieczeństwo danych</span
                   >.
+                </p>
+                <p class="text-body sm:text-lg text-secondary/80 mb-6 font-bold">
+                  Tam błąd kosztuje miliony. U Ciebie błąd kosztuje Twój czas i spokój – obie te
+                  rzeczy są dla mnie tak samo ważne.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80">
                   Dziś tę samą „bankową” jakość przenoszę do warsztatów samochodowych oraz małych i
@@ -179,8 +181,8 @@ import { Button } from '../../shared/ui/button/button';
         >
           <h2 class="heading-2 text-secondary mb-6">Poznałeś moją jakość. Zobacz efekty.</h2>
           <p class="text-lg text-secondary/70 mb-12 max-w-2xl mx-auto">
-            Wiesz już, jak podchodzę do biznesu. Sprawdź, jak ta inżynieryjna solidność przekłada
-            się na wyniki moich klientów w codziennym zarządzaniu ich firmami.
+            Wiesz już, jak podchodzę do biznesu. Sprawdź, jak ta ekspercka solidność przekłada się
+            na wyniki moich klientów w codziennym zarządzaniu ich firmami.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
             <app-button variant="primary" size="lg" route="/work">
@@ -287,8 +289,9 @@ export class About implements OnInit {
     },
     {
       title: 'SOLIDNOŚĆ BANKOWA',
-      desc: 'Praca dla największych banków nauczyła mnie, że system po prostu musi działać. Bez "zawieszek", bez przestojów i bez błędów w danych. Tę samą jakość daję Twojej firmie.',
+      desc: 'Praca dla największych banków nauczyła mnie, że system po prostu musi działać. Buduję rozwiązania, które przetrwają lata bez Twojej ingerencji i "naprawiania na już".',
     },
+
     {
       title: 'TECHNOLOGIA DLA BIZNESU',
       desc: 'Kod to tylko fundament. Moim celem nie jest napisanie programu, ale odzyskanie Twojego czasu. Jeśli aplikacja nie zarabia na siebie poprzez Twoją wygodę – nie ma sensu.',

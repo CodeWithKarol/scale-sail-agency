@@ -83,7 +83,7 @@ export class Pricing {
         { name: 'Wdrożenie Asystentów AI', included: true },
         { name: 'Dedykowany portal kliencki', included: true },
         { name: 'System, który się nie zawiesza', included: true },
-        { name: 'Priorytetowe wsparcie SLA', included: true },
+        { name: 'Gwarancja Szybkiej Pomocy', included: true },
       ],
       isPopular: false,
       ctaText: 'Budujmy System Dedykowany →',

@@ -11,4 +11,5 @@ export class SectionHeader {
   title = input.required<string>();
   description = input<string>();
   alignment = input<'center' | 'left'>('center');
+  level = input<1 | 2>(2);
 }
