@@ -23,7 +23,10 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
               project().heroImage ||
               'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80'
             "
-            [alt]="project().title + ' - podgląd'"
+            [alt]="
+              project().title +
+              ' - system warsztatowy bez abonamentu - panel zarządzania zleceniami'
+            "
             width="800"
             height="450"
             class="absolute inset-1 sm:inset-2 h-[calc(100%-0.5rem)] sm:h-[calc(100%-1rem)] w-[calc(100%-0.5rem)] sm:w-[calc(100%-1rem)] object-cover object-top grayscale transition duration-700 group-hover/card:grayscale-0 group-hover/card:scale-105"

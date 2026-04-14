@@ -38,7 +38,10 @@ export interface Screenshot {
                 [src]="getUrl(screenshot)"
                 loading="lazy"
                 class="w-full h-auto transform transition-transform duration-1000 group-hover:scale-[1.02] filter contrast-110 grayscale-[0.3] group-hover:grayscale-0"
-                [alt]="getDescription(screenshot) || 'Zdjęcie projektu'"
+                [alt]="
+                  (getDescription(screenshot) || 'Zdjęcie projektu') +
+                  ' - oprogramowanie warsztatowe na własność - Scale Sail'
+                "
               />
             </div>
             @if (getDescription(screenshot); as desc) {
@@ -79,7 +82,10 @@ export interface Screenshot {
             tabindex="0"
             role="button"
             [attr.aria-label]="isZoomed() ? 'Zmniejsz zdjęcie' : 'Powiększ zdjęcie'"
-            [alt]="getDescription(selected) || 'Podgląd projektu'"
+            [alt]="
+              (getDescription(selected) || 'Podgląd projektu') +
+              ' - automatyzacja warsztatu samochodowego bez abonamentu'
+            "
           />
 
           @if (getDescription(selected); as desc) {

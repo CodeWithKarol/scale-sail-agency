@@ -27,7 +27,7 @@ import { BlogPost } from '../../blog.model';
             post().imageUrl ||
             'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
           "
-          [alt]="post().title"
+          [alt]="post().title + ' - system warsztatowy bez abonamentu - poradnik'"
           class="absolute inset-1 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] object-cover grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105"
         />
         <a

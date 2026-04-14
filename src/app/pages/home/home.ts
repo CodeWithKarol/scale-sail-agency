@@ -11,6 +11,7 @@ import { Pricing } from './components/pricing/pricing';
 import { FinalCta } from './components/final-cta/final-cta';
 import { ImpactMetrics } from './components/impact-metrics/impact-metrics';
 import { IdealClientProfile } from './components/ideal-client-profile/ideal-client-profile';
+import { PriceComparison } from './components/price-comparison/price-comparison';
 import { LogoCloud } from './components/logo-cloud/logo-cloud';
 
 @Component({
@@ -27,6 +28,7 @@ import { LogoCloud } from './components/logo-cloud/logo-cloud';
     FinalCta,
     ImpactMetrics,
     IdealClientProfile,
+    PriceComparison,
     LogoCloud,
   ],
   templateUrl: './home.html',
@@ -38,9 +40,9 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'Zarządzanie zleceniami i automatyzacja SMS dla warsztatu',
+      title: 'System do warsztatu bez abonamentu – płacisz raz, masz na zawsze | Scale Sail',
       description:
-        'Tworzę pancerne systemy zarządzania zleceniami i automatyzacje SMS dla warsztatów. Odzyskaj 15h tygodniowo bez abonamentu.',
+        'Oprogramowanie dla warsztatu na własność. Buduję systemy do zarządzania zleceniami i automatyzacje SMS/Make bez miesięcznych opłat. Sprawdź model bez subskrypcji.',
       slug: '',
       type: 'website',
 

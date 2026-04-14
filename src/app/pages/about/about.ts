@@ -113,7 +113,7 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
             >
               <img
                 src="images/karol-modelski.webp"
-                alt="Karol Modelski"
+                alt="Karol Modelski - Scale Sail Agency - Systemy zarządzania zleceniami"
                 class="w-full grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
                 width="600"
                 height="800"
