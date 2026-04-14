@@ -11,7 +11,7 @@ import { ViewportScroller } from '@angular/common';
         <!-- Logo Image -->
         <img
           src="images/scale-sail-logo.webp"
-          alt="Scale Sail Logo"
+          alt="Scale Sail Agency - Pancerne systemy dla warsztatów bez abonamentu"
           [attr.loading]="loading()"
           fetchpriority="high"
           width="40"

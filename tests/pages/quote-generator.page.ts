@@ -54,7 +54,7 @@ export class QuoteGeneratorPage {
 
     this.addPartBtn = page.getByRole('button', { name: /dodaj część/i });
     this.addLaborBtn = page.getByRole('button', { name: /dodaj pozycję/i });
-    
+
     this.firstPartNetPrice = this.partRows.first().locator('input[formControlName="netPrice"]');
     this.firstPartMarkup = this.partRows.first().locator('input[formControlName="markup"]');
     this.firstPartPrice = this.partRows.first().locator('input[formControlName="price"]');
@@ -65,9 +65,9 @@ export class QuoteGeneratorPage {
     this.sendPdfBtn = page.getByRole('button', { name: /wyślij pdf na swój e-mail/i });
 
     // Totals in Preview (Step 3)
-    this.subtotalValue = page.locator('div:has-text("Kwota netto") > span').last();
-    this.vatValue = page.locator('div:has-text("VAT (23%)") > span').last();
-    this.totalBruttoValue = page.locator('div:has-text("Suma do zapłaty (Brutto)") > span').last();
+    this.subtotalValue = page.getByTestId('preview-subtotal');
+    this.vatValue = page.getByTestId('preview-vat');
+    this.totalBruttoValue = page.getByTestId('preview-total');
 
     // Email Modal
     this.emailInput = page.locator('input[formControlName="email"]');
@@ -92,7 +92,7 @@ export class QuoteGeneratorPage {
     client: string,
     make: string,
     model: string,
-    plate: string = 'WX 12345'
+    plate: string = 'WX 12345',
   ) {
     await this.companyNameInput.fill(company);
     await this.clientNameInput.fill(client);

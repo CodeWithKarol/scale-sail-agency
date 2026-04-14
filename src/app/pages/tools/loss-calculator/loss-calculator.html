@@ -120,10 +120,12 @@
         <div class="lg:col-span-7 flex flex-col gap-8 lg:sticky lg:top-32">
           <app-card
             variant="highlight"
-            class="p-8 md:p-12 flex flex-col gap-8 border-l-8 border-l-primary bg-white"
+            class="p-8 md:p-12 flex flex-col gap-8 border-l-8 border-l-primary bg-white shadow-[16px_16px_0px_0px_rgba(10,31,68,1)]"
           >
             <div class="flex flex-col gap-2">
-              <h2 class="text-small text-primary">TWÓJ BILANS STRAT</h2>
+              <h2 class="text-small text-primary font-black tracking-widest uppercase">
+                Twój Bilans Strat
+              </h2>
               <p class="heading-2 !text-4xl text-secondary">Podsumowanie miesięczne</p>
             </div>
 
@@ -216,6 +218,93 @@
             <span class="text-[10px] font-bold uppercase tracking-widest text-secondary/40">
               Twoje dane nie są nigdzie zapisywane. To prywatna analiza Twojego biznesu.
             </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROI & Strategy Section -->
+    <div class="layout-container mt-24 pt-24 border-t-2 border-secondary/10">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="heading-2 text-secondary mb-12">
+          Jak odzyskać te <span class="text-primary italic">pieniądze i czas?</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-secondary/80 leading-relaxed">
+          <div class="space-y-6">
+            <h3 class="heading-4 text-secondary uppercase tracking-widest text-sm">
+              Automatyzacja to nie gadżet
+            </h3>
+            <p>
+              Każda minuta spędzona na przepisywaniu numeru VIN z kartki do komputera to minuta, za
+              którą klient Ci nie płaci. Jeśli Twoi mechanicy tracą czas na szukanie części w trzech
+              różnych katalogach, tracisz marżę.
+            </p>
+            <p>
+              System Scale Sail eliminuje te "wycieki". Wdrażam automatyzacje, które robią tę czarną
+              robotę za Ciebie, pozwalając Ci skupić się na tym, co naprawdę zarabia:
+              <strong>naprawianiu aut i budowaniu relacji z klientami.</strong> Dowiedz się jak
+              działają moje
+              <a
+                href="/"
+                class="text-primary font-bold underline decoration-primary/30 hover:decoration-primary transition-all"
+                >systemy dla warsztatów bez abonamentu</a
+              >.
+            </p>
+          </div>
+          <div class="space-y-6">
+            <h3 class="heading-4 text-secondary uppercase tracking-widest text-sm">
+              Gdzie ucieka najwięcej?
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex gap-4 items-start">
+                <span class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></span>
+                <span
+                  ><strong>Błędne wyceny:</strong> Brak aktualnych cen z hurtowni powoduje, że
+                  sprzedajesz części "pod kreską".</span
+                >
+              </li>
+              <li class="flex gap-4 items-start">
+                <span class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></span>
+                <span
+                  ><strong>Telefony:</strong> "Czy auto gotowe?" – każde takie pytanie to przerwanie
+                  pracy mechanika na 5-10 minut.</span
+                >
+              </li>
+              <li class="flex gap-4 items-start">
+                <span class="w-2 h-2 bg-primary mt-2 flex-shrink-0"></span>
+                <span
+                  ><strong>Zaginione zlecenia:</strong> Papierowe kartki giną, a z nimi szansa na
+                  dosprzedaż dodatkowych usług.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Final CTA Banner -->
+        <div
+          class="mt-20 p-8 sm:p-12 bg-white border-4 border-secondary shadow-[12px_12px_0px_0px_rgba(10,31,68,1)] relative overflow-hidden"
+        >
+          <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 -mr-16 -mt-16 rotate-45"></div>
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div class="max-w-xl text-center lg:text-left">
+              <h4 class="heading-3 text-secondary mb-4">
+                Twój warsztat zasługuje na lepszy silnik
+              </h4>
+              <p class="text-body text-secondary/70">
+                Pokażę Ci, jak zamienić te czerwone liczby z kalkulatora w realny zysk. Bez
+                abonamentu, bez ryzyka.
+              </p>
+            </div>
+            <app-button
+              href="/consultation"
+              variant="accent"
+              size="lg"
+              styleClass="whitespace-nowrap"
+            >
+              Umów darmową diagnozę
+            </app-button>
           </div>
         </div>
       </div>

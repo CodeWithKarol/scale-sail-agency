@@ -124,9 +124,9 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Systemy Zleceń — Realizacje i Case Studies | Scale Sail',
+        title: 'Systemy warsztatowe bez abonamentu – Realizacje | Scale Sail',
         description:
-          'Konkretne przykłady wdrożeń systemów zarządzania i automatyzacji. Zobacz, jak cyfrowy warsztat pomaga odzyskać czas.',
+          'Zobacz jak wdrożyliśmy pancerne systemy zarządzania i automatyzacje SMS w warsztatach samochodowych. Case studies rozwiązań na własność, bez miesięcznych opłat.',
         slug: '/work',
         keywords: [
           'case study automatyzacja',

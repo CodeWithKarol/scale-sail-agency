@@ -93,9 +93,9 @@ export class LossCalculator implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'Kalkulator Strat Warsztatu — Ile tracisz? | Scale Sail',
+      title: 'Koszty braku automatyzacji w warsztacie – Kalkulator | Scale Sail',
       description:
-        'Sprawdź, ile tracisz pieniędzy i czasu na ręczną papierologię i telefony. Interaktywny kalkulator dla właścicieli warsztatów.',
+        'Oblicz ile pieniędzy ucieka z Twojego warsztatu przez chaos w papierach i brak automatyzacji SMS. Sprawdź Bilans Strat i zacznij oszczędzać dzięki systemowi na własność.',
       slug: 'tools/loss-calculator',
       type: 'website',
       keywords: [

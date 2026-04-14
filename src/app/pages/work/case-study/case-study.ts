@@ -84,7 +84,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
             >
               <img
                 [src]="study.heroImage"
-                [alt]="study.title"
+                [alt]="study.title + ' - system warsztatowy bez abonamentu - panel zarządzania'"
                 fetchpriority="high"
                 class="w-full h-full object-cover object-top grayscale-[0.2] hover:grayscale-0 transition-all duration-1000"
               />

@@ -33,7 +33,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
                 post().imageUrl ||
                 'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
               "
-              [alt]="post().title"
+              [alt]="post().title + ' - automatyzacja procesów warsztatowych - blog Scale Sail'"
               width="800"
               height="450"
               fetchpriority="high"

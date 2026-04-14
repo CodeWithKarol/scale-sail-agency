@@ -43,7 +43,7 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
             <div class="max-w-5xl mx-auto mb-16 shadow-2xl">
               <img
                 [src]="p.imageUrl"
-                [alt]="p.title"
+                [alt]="p.title + ' - oprogramowanie na własność dla firm usługowych'"
                 class="w-full h-auto border-4 border-secondary"
                 width="1200"
                 height="630"

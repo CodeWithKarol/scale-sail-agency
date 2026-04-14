@@ -176,9 +176,9 @@ export class ToolsPage {
   constructor() {
     effect(() => {
       this.seoService.setPageMetadata({
-        title: 'Narzędzia dla Serwisu | Scale Sail',
+        title: 'Bezpłatne Narzędzia dla Warsztatu bez abonamentu | Scale Sail',
         description:
-          'Darmowy generator wycen PDF i kalkulatory zysku dla warsztatów samochodowych. Odzyskaj czas i wyeliminuj błędy.',
+          'Darmowe kalkulatory marży, generatory kosztorysów PDF i narzędzia analityczne dla nowoczesnego mechanika. Sprawdź jak technologia Scale Sail pomaga w biznesie.',
         slug: '/tools',
       });
 
