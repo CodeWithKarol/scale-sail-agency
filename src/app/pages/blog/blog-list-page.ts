@@ -145,7 +145,7 @@ type FeedState =
             możemy zautomatyzować w pierwszej kolejności.
           </p>
           <div class="flex justify-center">
-            <app-button variant="primary" size="lg" href="/consultation">
+            <app-button variant="primary" size="lg" href="/konsultacja">
               <span class="text-lg font-bold">Umów Weryfikację potrzeb (15 min) 📅</span>
             </app-button>
           </div>

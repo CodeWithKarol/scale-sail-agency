@@ -14,21 +14,21 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Systemy', path: '/work', fragment: undefined },
-    { name: 'Narzędzia', path: '/tools', fragment: undefined },
-    { name: 'Generator Wycen PDF', path: '/tools/free-quote-generator', fragment: undefined },
+    { name: 'Systemy', path: '/realizacje', fragment: undefined },
+    { name: 'Narzędzia', path: '/narzedzia', fragment: undefined },
+    { name: 'Generator Wycen PDF', path: '/narzedzia/generator-wycen-pdf', fragment: undefined },
     { name: 'Cennik', path: '/', fragment: 'pricing' },
   ]);
 
   resources = signal([
     { name: 'Wiedza', path: '/blog', fragment: undefined },
     { name: 'Częste Pytania', path: '/', fragment: 'faq' },
-    { name: 'O mnie', path: '/about', fragment: undefined },
-    { name: 'Polityka Prywatności', path: '/privacy-policy', fragment: undefined },
+    { name: 'O mnie', path: '/o-mnie', fragment: undefined },
+    { name: 'Polityka Prywatności', path: '/polityka-prywatnosci', fragment: undefined },
   ]);
 
   connect = signal([
-    { name: 'Darmowa Konsultacja', path: '/consultation', fragment: undefined },
+    { name: 'Darmowa Konsultacja', path: '/konsultacja', fragment: undefined },
     { name: 'Napisz do mnie', path: '/', fragment: 'contact' },
   ]);
 

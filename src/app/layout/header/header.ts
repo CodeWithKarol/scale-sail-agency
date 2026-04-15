@@ -28,11 +28,11 @@ export class Header {
 
   // Compact navigation for better UX and spacing
   readonly navigation = [
-    { name: 'Systemy', path: '/work' },
-    { name: 'Narzędzia', path: '/tools' },
+    { name: 'Systemy', path: '/realizacje' },
+    { name: 'Narzędzia', path: '/narzedzia' },
     { name: 'Cennik', path: '/', fragment: 'pricing' },
     { name: 'Wiedza', path: '/blog' },
-    { name: 'O mnie', path: '/about' },
+    { name: 'O mnie', path: '/o-mnie' },
   ];
 
   @HostListener('window:scroll', [])

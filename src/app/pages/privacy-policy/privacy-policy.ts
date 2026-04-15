@@ -72,12 +72,12 @@ export class PrivacyPolicy implements OnInit {
       title: 'Polityka Prywatności | Scale Sail Agency',
       description:
         'Zasady przetwarzania danych osobowych i plików cookies w serwisie Scale Sail Agency.',
-      slug: 'privacy-policy',
+      slug: 'polityka-prywatnosci',
     });
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Polityka Prywatności', path: '/privacy-policy' },
+      { name: 'Polityka Prywatności', path: '/polityka-prywatnosci' },
     ]);
   }
 }

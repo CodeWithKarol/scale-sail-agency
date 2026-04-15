@@ -167,7 +167,7 @@ export class QuoteGenerator implements OnInit {
       title: 'Darmowy Generator Wycen PDF dla Warsztatu | Scale Sail',
       description:
         'Twórz profesjonalne wyceny PDF w 60 sekund. Darmowy kalkulator marży dla mechaników. Wyślij gotowy kosztorys na e-mail klienta.',
-      slug: 'tools/free-quote-generator',
+      slug: 'narzedzia/generator-wycen-pdf',
       type: 'website',
       keywords: [
         'generator wycen warsztatowych',
@@ -182,8 +182,8 @@ export class QuoteGenerator implements OnInit {
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Narzędzia', path: '/tools' },
-      { name: 'Kreator Wycen', path: '/tools/free-quote-generator' },
+      { name: 'Narzędzia', path: '/narzedzia' },
+      { name: 'Kreator Wycen', path: '/narzedzia/generator-wycen-pdf' },
     ]);
 
     this.seoService.setSchema(
@@ -191,7 +191,7 @@ export class QuoteGenerator implements OnInit {
         '@context': 'https://schema.org',
         '@type': 'WebApplication',
         name: 'Darmowy Generator Wycen Napraw',
-        url: 'https://scale-sail.io/tools/free-quote-generator',
+        url: 'https://scale-sail.io/narzedzia/generator-wycen-pdf',
         description:
           'Profesjonalny kreator wycen warsztatowych z eksportem do pliku PDF na e-mail. Pozwala na zliczenie marży, robocizny i wystawienie eleganckiego dokumentu chronograficznego dla klienta warsztatu.',
         applicationCategory: 'BusinessApplication',
@@ -199,7 +199,7 @@ export class QuoteGenerator implements OnInit {
         isPartOf: {
           '@type': 'CollectionPage',
           name: 'Darmowe Narzędzia i Kalkulatory dla Warsztatów',
-          url: 'https://scale-sail.io/tools',
+          url: 'https://scale-sail.io/narzedzia',
         },
         creator: {
           '@type': 'Organization',

@@ -185,10 +185,10 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
             na wyniki moich klientów w codziennym zarządzaniu ich firmami.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <app-button variant="primary" size="lg" route="/work">
+            <app-button variant="primary" size="lg" route="/realizacje">
               Ostatnie Realizacje →
             </app-button>
-            <app-button variant="secondary" size="lg" route="/consultation">
+            <app-button variant="secondary" size="lg" route="/konsultacja">
               Umów Darmową Konsultację 📅
             </app-button>
           </div>
@@ -206,7 +206,7 @@ export class About implements OnInit {
       title: 'O mnie | Karol Modelski — Scale Sail Agency',
       description:
         'Poznaj twórcę Scale Sail. Łączę standardy bankowe z automatyzacją n8n. Buduję systemy, które realnie odciążają właścicieli warsztatów.',
-      slug: 'about',
+      slug: 'o-mnie',
       type: 'profile',
       keywords: [
         'Karol Modelski',
@@ -222,7 +222,7 @@ export class About implements OnInit {
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'O mnie', path: '/about' },
+      { name: 'O mnie', path: '/o-mnie' },
     ]);
 
     // Enhanced ProfilePage Schema
@@ -232,8 +232,8 @@ export class About implements OnInit {
         '@graph': [
           {
             '@type': 'ProfilePage',
-            '@id': 'https://scale-sail.io/about/#webpage',
-            url: 'https://scale-sail.io/about',
+            '@id': 'https://scale-sail.io/o-mnie/#webpage',
+            url: 'https://scale-sail.io/o-mnie',
             name: 'O mnie | Karol Modelski — Scale Sail',
             isPartOf: { '@id': 'https://scale-sail.io/#website' },
             mainEntity: { '@id': 'https://scale-sail.io/#person' },
@@ -244,7 +244,7 @@ export class About implements OnInit {
             '@type': 'Person',
             '@id': 'https://scale-sail.io/#person',
             name: 'Karol Modelski',
-            url: 'https://scale-sail.io/about',
+            url: 'https://scale-sail.io/o-mnie',
             jobTitle: 'Twórca rozwiązań cyfrowych & Założyciel Scale Sail',
             image: {
               '@type': 'ImageObject',

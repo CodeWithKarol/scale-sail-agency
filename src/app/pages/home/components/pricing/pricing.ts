@@ -47,7 +47,7 @@ export class Pricing {
       ],
       isPopular: false,
       ctaText: 'Budujmy Fundament →',
-      href: '/consultation',
+      href: '/konsultacja',
       queryParams: { package: 'small' },
     },
     {
@@ -67,7 +67,7 @@ export class Pricing {
       ],
       isPopular: true,
       ctaText: 'Wybieram Pakiet Optymalny →',
-      href: '/consultation',
+      href: '/konsultacja',
       queryParams: { package: 'medium' },
     },
     {
@@ -87,7 +87,7 @@ export class Pricing {
       ],
       isPopular: false,
       ctaText: 'Budujmy System Dedykowany →',
-      href: '/consultation',
+      href: '/konsultacja',
       queryParams: { package: 'large' },
     },
   ]);

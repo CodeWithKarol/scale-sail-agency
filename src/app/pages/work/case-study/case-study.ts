@@ -201,10 +201,10 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
               Przejrzeliśmy karty – teraz ruch należy do Ciebie.
             </p>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-              <app-button variant="primary" size="lg" href="/consultation">
+              <app-button variant="primary" size="lg" href="/konsultacja">
                 Zbudujmy Coś Podobnego 🚀
               </app-button>
-              <app-button variant="secondary" size="lg" href="/work">
+              <app-button variant="secondary" size="lg" href="/realizacje">
                 <span class="flex items-center gap-4">
                   <svg
                     class="h-5 w-5 rotate-180"
@@ -262,14 +262,14 @@ export class CaseStudyPage {
         title: `${study.title} | Case Study Scale Sail`,
         description: study.challenge.substring(0, 160) + '...',
         image: study.heroImage,
-        slug: `/work/${study.id}`,
+        slug: `/realizacje/${study.id}`,
         type: 'article',
       });
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Systemy', path: '/work' },
-        { name: study.title, path: `/work/${study.id}` },
+        { name: 'Systemy', path: '/realizacje' },
+        { name: study.title, path: `/realizacje/${study.id}` },
       ]);
 
       // Full Case Study Rich Result
@@ -279,7 +279,7 @@ export class CaseStudyPage {
           '@graph': [
             {
               '@type': 'Article',
-              '@id': `https://scale-sail.io/work/${study.id}/#article`,
+              '@id': `https://scale-sail.io/realizacje/${study.id}/#article`,
               headline: study.title,
               description: study.challenge,
               image: `https://scale-sail.io${study.heroImage}`,
@@ -287,7 +287,7 @@ export class CaseStudyPage {
               author: {
                 '@type': 'Person',
                 name: 'Karol Modelski',
-                url: 'https://scale-sail.io/about',
+                url: 'https://scale-sail.io/o-mnie',
               },
               publisher: {
                 '@type': 'Organization',
@@ -299,7 +299,7 @@ export class CaseStudyPage {
               },
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': `https://scale-sail.io/work/${study.id}`,
+                '@id': `https://scale-sail.io/realizacje/${study.id}`,
               },
             },
           ],

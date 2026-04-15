@@ -6,12 +6,12 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home').then((m) => m.Home),
   },
   {
-    path: 'work',
+    path: 'realizacje',
     loadComponent: () => import('./pages/work/work-page').then((m) => m.WorkPage),
     title: 'Systemy | Scale Sail Agency',
   },
   {
-    path: 'work/:id',
+    path: 'realizacje/:id',
     loadComponent: () => import('./pages/work/case-study/case-study').then((m) => m.CaseStudyPage),
   },
   {
@@ -24,41 +24,41 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/blog/blog-post-page').then((m) => m.BlogPostPage),
   },
   {
-    path: 'about',
+    path: 'o-mnie',
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
-    path: 'consultation',
+    path: 'konsultacja',
     loadComponent: () =>
       import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
     title: 'Konsultacja | Scale Sail Agency',
   },
   {
-    path: 'tools',
+    path: 'narzedzia',
     loadComponent: () => import('./pages/tools/tools-page').then((m) => m.ToolsPage),
     title: 'Narzędzia | Scale Sail Agency',
   },
   {
-    path: 'tools/free-quote-generator',
+    path: 'narzedzia/generator-wycen-pdf',
     loadComponent: () =>
       import('./pages/tools/quote-generator/quote-generator').then((m) => m.QuoteGenerator),
     title: 'Darmowy Generator Wycen (PDF) | Scale Sail',
   },
   {
-    path: 'tools/loss-calculator',
+    path: 'narzedzia/kalkulator-strat',
     loadComponent: () =>
       import('./pages/tools/loss-calculator/loss-calculator').then((m) => m.LossCalculator),
     title: 'Kalkulator Strat Warsztatu | Scale Sail',
   },
   {
-    path: 'privacy-policy',
+    path: 'polityka-prywatnosci',
     loadComponent: () =>
       import('./pages/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy),
     title: 'Polityka Prywatności | Scale Sail Agency',
   },
   {
     path: 'free-quote-generator',
-    redirectTo: 'tools/free-quote-generator',
+    redirectTo: 'narzedzia/generator-wycen-pdf',
     pathMatch: 'full',
   },
   {

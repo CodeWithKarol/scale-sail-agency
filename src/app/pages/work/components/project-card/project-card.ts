@@ -33,7 +33,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
           />
 
           <a
-            [routerLink]="['/work', project().id]"
+            [routerLink]="['/realizacje', project().id]"
             class="absolute inset-0 focus:outline-none z-20"
             tabindex="-1"
           >
@@ -53,7 +53,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
           <h3
             class="heading-2 text-secondary group-hover:text-primary transition-colors duration-300"
           >
-            <a [routerLink]="['/work', project().id]">
+            <a [routerLink]="['/realizacje', project().id]">
               <span class="absolute inset-0"></span>
               {{ project().title }}
             </a>
@@ -87,7 +87,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
         <!-- Call to Action -->
         <div class="mt-16 flex items-center gap-x-6">
           <app-button
-            [route]="['/work', project().id]"
+            [route]="['/realizacje', project().id]"
             variant="secondary"
             size="lg"
             class="group/link"

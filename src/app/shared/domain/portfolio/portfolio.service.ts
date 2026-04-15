@@ -24,7 +24,7 @@ export interface CaseStudy {
 
 const CASE_STUDIES: CaseStudy[] = [
   {
-    id: 'admin-panel',
+    id: 'panel-zarzadzania',
     title: 'Jak ogarnąć 50 000 danych bez zacięcia',
     tagline:
       'Lekcje z dużych systemów korporacyjnych przełożone na proste narzędzia dla małych firm usługowych.',
@@ -88,7 +88,7 @@ const CASE_STUDIES: CaseStudy[] = [
     repoUrl: 'https://github.com/CodeWithKarol/admin-panel',
   },
   {
-    id: 'quick-cart',
+    id: 'szybki-koszyk',
     title: 'Niezawodność warta milionów odwiedzin',
     tagline:
       'Przenoszę standardy bankowe do Twojego warsztatu, aby system nigdy nie zawiódł Cię w szczycie sezonu.',
@@ -107,7 +107,7 @@ const CASE_STUDIES: CaseStudy[] = [
     techStack: [
       'Szybkie działanie nawet przy dużej liczbie użytkowników',
       'Stabilność – system nie „pęka”, gdy jest więcej zamówień',
-      'Czytelny podział na koszyk, zamówienia i płatności',
+      'Czytelny podgląd tego, co dzieje się w firmie dziś i w najbliższych dniach',
       'Architektura, którą można później łatwo rozbudować',
     ],
     screenshots: [

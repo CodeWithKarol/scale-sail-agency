@@ -457,7 +457,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                     W międzyczasie skorzystaj z moich darmowych kalkulatorów:
                   </p>
                   <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <app-button variant="secondary" size="md" route="/tools">
+                    <app-button variant="secondary" size="md" route="/narzedzia">
                       DARMOWE NARZĘDZIA
                     </app-button>
                     <app-button variant="ghost" size="md" route="/"> POWRÓT DO STARTU </app-button>
@@ -487,7 +487,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 <app-button
                   variant="secondary"
                   size="lg"
-                  route="/work"
+                  route="/realizacje"
                   styleClass="w-full sm:w-auto"
                 >
                   <span class="mr-3">ZOBACZ NASZE REALIZACJE</span>
@@ -548,13 +548,21 @@ export class ConsultationPage implements OnInit {
       title: 'Kwalifikacja & Konsultacja | Scale Sail Agency',
       description:
         'Zarezerwuj darmową konsultację dla Twojej firmy. Krótka kwalifikacja oszczędzi nasz wspólny czas.',
-      slug: 'consultation',
+      slug: 'konsultacja',
       type: 'website',
+      keywords: [
+        'audyt automatyzacji warsztatu',
+        'konsultacja wdrożeniowa IT',
+        'analiza procesów w firmie usługowej',
+        'doradztwo technologiczne dla warsztatów',
+        'wdrożenie systemów biznesowych',
+        'optymalizacja procesów warsztatowych',
+      ],
     });
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Kwalifikacja', path: '/consultation' },
+      { name: 'Kwalifikacja', path: '/konsultacja' },
     ]);
 
     this.seoService.setSchema(
@@ -564,7 +572,7 @@ export class ConsultationPage implements OnInit {
         name: 'Kwalifikacja i Rozmowa Wdrożeniowa',
         description:
           'Darmowa kwalifikacja projektu i rezerwacja terminu konsultacji poprzez kalendarz Cal.com.',
-        url: 'https://scale-sail.io/consultation',
+        url: 'https://scale-sail.io/konsultacja',
         mainEntity: {
           '@type': 'Organization',
           name: 'Scale Sail Agency',

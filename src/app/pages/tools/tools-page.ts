@@ -71,7 +71,7 @@ import { Button } from '../../shared/ui/button/button';
               <app-button
                 variant="primary"
                 size="sm"
-                route="/tools/free-quote-generator"
+                route="/narzedzia/generator-wycen-pdf"
                 class="w-full sm:w-auto"
               >
                 WYSTAW PROFESJONALNĄ WYCENĘ
@@ -113,7 +113,7 @@ import { Button } from '../../shared/ui/button/button';
               <app-button
                 variant="ghost"
                 size="sm"
-                route="/tools/loss-calculator"
+                route="/narzedzia/kalkulator-strat"
                 class="w-full sm:w-auto !border-rose-500/20 !text-rose-500 hover:!bg-rose-500 hover:!text-white"
               >
                 OBLICZ STRATY
@@ -149,7 +149,7 @@ import { Button } from '../../shared/ui/button/button';
             Twój rozwój – zaprojektujmy system, który przejmie nudne zadania i pozwoli Ci skupić się
             na naprawianiu aut.
           </p>
-          <app-button variant="primary" size="lg" route="/consultation" class="w-full sm:w-auto">
+          <app-button variant="primary" size="lg" route="/konsultacja" class="w-full sm:w-auto">
             ZABLOKUJ TERMIN KONSULTACJI 📅
           </app-button>
           <div
@@ -157,7 +157,7 @@ import { Button } from '../../shared/ui/button/button';
           >
             <span class="hidden sm:inline">lub</span>
             <a
-              routerLink="/work"
+              routerLink="/realizacje"
               class="text-secondary hover:text-primary underline decoration-primary/30 underline-offset-4 transition-colors p-2"
               >zobacz jak wdrożyłem to u innych (Systemy)</a
             >
@@ -179,12 +179,20 @@ export class ToolsPage {
         title: 'Bezpłatne Narzędzia dla Warsztatu bez abonamentu | Scale Sail',
         description:
           'Darmowe kalkulatory marży, generatory kosztorysów PDF i narzędzia analityczne dla nowoczesnego mechanika. Sprawdź jak technologia Scale Sail pomaga w biznesie.',
-        slug: '/tools',
+        slug: '/narzedzia',
+        keywords: [
+          'darmowe narzędzia dla mechanika',
+          'kalkulator marży warsztat',
+          'generator wycen pdf',
+          'kalkulator strat operacyjnych',
+          'automatyzacja papierologii warsztat',
+          'narzędzia dla właściciela warsztatu',
+        ],
       });
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Narzędzia', path: '/tools' },
+        { name: 'Narzędzia', path: '/narzedzia' },
       ]);
 
       this.seoService.setSchema(
@@ -194,7 +202,7 @@ export class ToolsPage {
           name: 'Narzędzia dla Serwisu — Kalkulatory i Dokumenty dla Warsztatów',
           description:
             'Kolekcja narzędzi wspierających codzienne operacje w warsztacie samochodowym: od wycen po kalkulacje zysku.',
-          url: 'https://scale-sail.io/tools',
+          url: 'https://scale-sail.io/narzedzia',
           mainEntity: {
             '@type': 'ItemList',
             itemListElement: [
@@ -202,13 +210,13 @@ export class ToolsPage {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Błyskawiczny Generator Wycen PDF',
-                url: 'https://scale-sail.io/tools/free-quote-generator',
+                url: 'https://scale-sail.io/narzedzia/generator-wycen-pdf',
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Kalkulator Strat Operacyjnych',
-                url: 'https://scale-sail.io/tools/loss-calculator',
+                url: 'https://scale-sail.io/narzedzia/kalkulator-strat',
               },
             ],
           },

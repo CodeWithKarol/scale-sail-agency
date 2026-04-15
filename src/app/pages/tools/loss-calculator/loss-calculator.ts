@@ -96,7 +96,7 @@ export class LossCalculator implements OnInit {
       title: 'Koszty braku automatyzacji w warsztacie – Kalkulator | Scale Sail',
       description:
         'Oblicz ile pieniędzy ucieka z Twojego warsztatu przez chaos w papierach i brak automatyzacji SMS. Sprawdź Bilans Strat i zacznij oszczędzać dzięki systemowi na własność.',
-      slug: 'tools/loss-calculator',
+      slug: 'narzedzia/kalkulator-strat',
       type: 'website',
       keywords: [
         'kalkulator strat warsztatu',
@@ -109,8 +109,8 @@ export class LossCalculator implements OnInit {
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Narzędzia', path: '/tools' },
-      { name: 'Kalkulator Strat', path: '/tools/loss-calculator' },
+      { name: 'Narzędzia', path: '/narzedzia' },
+      { name: 'Kalkulator Strat', path: '/narzedzia/kalkulator-strat' },
     ]);
 
     this.seoService.setSchema(

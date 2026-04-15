@@ -95,7 +95,7 @@ import { BrandLogo } from '../../../../shared/ui/brand-logo/brand-logo';
 
             <div class="py-10">
               <a
-                href="/consultation"
+                href="/konsultacja"
                 class="block px-6 py-5 font-mono text-xs font-black uppercase tracking-[0.2em] bg-accent text-white border-2 border-secondary shadow-[8px_8px_0px_0px_rgba(10,31,68,1)] hover:bg-secondary hover:text-accent transition-all text-center"
                 (click)="closeMenu.emit()"
               >
