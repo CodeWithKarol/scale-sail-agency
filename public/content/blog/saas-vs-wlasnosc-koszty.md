@@ -42,4 +42,4 @@ Inwestycja w customową automatyzację zazwyczaj zwraca się po 2-3 latach w por
 **Weryfikacja potrzeb Twojej firmy.**
 Zanim zdecydujesz się na kolejny abonament, porozmawiajmy. Podczas bezpłatnej, 15-minutowej rozmowy sprawdzę Twój obecny proces i powiem Ci uczciwie, czy budowa systemu na własność już teraz ma u Ciebie sens ekonomiczny.
 
-[**UMÓW BEZPŁATNĄ WERYFIKACJĘ POTRZEB**](/consultation)
+[**UMÓW BEZPŁATNĄ WERYFIKACJĘ POTRZEB**](/konsultacja)

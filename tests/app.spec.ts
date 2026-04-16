@@ -10,7 +10,22 @@ test.describe('App Integration Tests', () => {
   });
 
   test('should navigate to about page', async ({ page }) => {
-    await page.goto('/about');
-    await expect(page).toHaveURL(/.*about/);
+    await page.goto('/o-mnie');
+    await expect(page).toHaveURL(/.*o-mnie/);
+  });
+
+  test('should navigate to realizacje page', async ({ page }) => {
+    await page.goto('/realizacje');
+    await expect(page).toHaveURL(/.*realizacje/);
+  });
+
+  test('should navigate to narzedzia page', async ({ page }) => {
+    await page.goto('/narzedzia');
+    await expect(page).toHaveURL(/.*narzedzia/);
+  });
+
+  test('should navigate to konsultacja page', async ({ page }) => {
+    await page.goto('/konsultacja');
+    await expect(page).toHaveURL(/.*konsultacja/);
   });
 });

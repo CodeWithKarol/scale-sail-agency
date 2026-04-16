@@ -80,7 +80,7 @@ export class QuoteGeneratorPage {
   }
 
   async goto() {
-    await this.page.goto('/tools/free-quote-generator');
+    await this.page.goto('/narzedzia/generator-wycen-pdf');
     // Clear state to avoid issues with localStorage persistence between tests
     await this.page.evaluate(() => localStorage.clear());
     await this.page.reload(); // Reload to ensure form is reset

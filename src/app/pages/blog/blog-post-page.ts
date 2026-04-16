@@ -64,7 +64,7 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
                 Pomagam firmom budować systemy, które działają same. Sprawdź, jak możemy
                 współpracować.
               </p>
-              <app-button variant="primary" size="lg" href="/consultation">
+              <app-button variant="primary" size="lg" href="/konsultacja">
                 DARMOWA KONSULTACJA 📅
               </app-button>
             </div>

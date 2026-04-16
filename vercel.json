@@ -1,4 +1,43 @@
 {
   "name": "scale-sail-agency",
-  "devCommand": "ng serve --port $PORT --host 0.0.0.0"
+  "devCommand": "ng serve --port $PORT --host 0.0.0.0",
+  "redirects": [
+    { "source": "/work", "destination": "/realizacje", "permanent": true },
+    { "source": "/work/:id", "destination": "/realizacje/:id", "permanent": true },
+    {
+      "source": "/realizacje/admin-panel",
+      "destination": "/realizacje/panel-zarzadzania",
+      "permanent": true
+    },
+    {
+      "source": "/realizacje/quick-cart",
+      "destination": "/realizacje/szybki-koszyk",
+      "permanent": true
+    },
+    { "source": "/about", "destination": "/o-mnie", "permanent": true },
+    { "source": "/consultation", "destination": "/konsultacja", "permanent": true },
+    { "source": "/tools", "destination": "/narzedzia", "permanent": true },
+    {
+      "source": "/tools/free-quote-generator",
+      "destination": "/narzedzia/generator-wycen-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/tools/loss-calculator",
+      "destination": "/narzedzia/kalkulator-strat",
+      "permanent": true
+    },
+    {
+      "source": "/narzedzia/free-quote-generator",
+      "destination": "/narzedzia/generator-wycen-pdf",
+      "permanent": true
+    },
+    {
+      "source": "/narzedzia/loss-calculator",
+      "destination": "/narzedzia/kalkulator-strat",
+      "permanent": true
+    },
+    { "source": "/tools/:path*", "destination": "/narzedzia/:path*", "permanent": true },
+    { "source": "/privacy-policy", "destination": "/polityka-prywatnosci", "permanent": true }
+  ]
 }

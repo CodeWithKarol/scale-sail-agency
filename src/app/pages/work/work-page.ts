@@ -88,7 +88,7 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
           </p>
 
           <div class="flex justify-center">
-            <app-button variant="accent" size="lg" href="/consultation">
+            <app-button variant="accent" size="lg" href="/konsultacja">
               <span class="text-lg font-bold">Umów Weryfikację potrzeb (15 min) 📅</span>
             </app-button>
           </div>
@@ -127,7 +127,7 @@ export class WorkPage {
         title: 'Systemy warsztatowe bez abonamentu – Realizacje | Scale Sail',
         description:
           'Zobacz jak wdrożyliśmy pancerne systemy zarządzania i automatyzacje SMS w warsztatach samochodowych. Case studies rozwiązań na własność, bez miesięcznych opłat.',
-        slug: '/work',
+        slug: '/realizacje',
         keywords: [
           'case study automatyzacja',
           'wdrożenia systemów dla firm',
@@ -140,7 +140,7 @@ export class WorkPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Systemy', path: '/work' },
+        { name: 'Systemy', path: '/realizacje' },
       ]);
 
       const projects = this.projects();
@@ -153,7 +153,7 @@ export class WorkPage {
               name: 'Wybrane Realizacje | Scale Sail Agency',
               description:
                 'Historie wdrożeń systemów, które usprawniły pracę w firmach usługowych.',
-              url: 'https://scale-sail.io/work',
+              url: 'https://scale-sail.io/realizacje',
               mainEntity: {
                 '@type': 'ItemList',
                 itemListElement: projects.map((project, index) => ({
@@ -161,7 +161,7 @@ export class WorkPage {
                   position: index + 1,
                   item: {
                     '@type': 'Article',
-                    url: `https://scale-sail.io/work/${project.id}`,
+                    url: `https://scale-sail.io/realizacje/${project.id}`,
                     name: project.title,
                     headline: project.title,
                     image: project.heroImage ? [`https://scale-sail.io${project.heroImage}`] : [],
