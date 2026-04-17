@@ -257,7 +257,7 @@ import { LucideAngularModule, Check, X } from 'lucide-angular';
             na wyniki moich klientów w codziennym zarządzaniu ich firmami.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-6">
-            <app-button variant="primary" size="lg" route="/realizacje">
+            <app-button variant="primary" size="lg" route="/system-dla-warsztatu">
               Ostatnie Realizacje →
             </app-button>
             <app-button variant="secondary" size="lg" route="/konsultacja">

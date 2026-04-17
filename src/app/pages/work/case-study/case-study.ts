@@ -204,7 +204,7 @@ import { SectionHeader } from '../../../shared/ui/section-header/section-header'
               <app-button variant="primary" size="lg" href="/konsultacja">
                 Zbudujmy Coś Podobnego 🚀
               </app-button>
-              <app-button variant="secondary" size="lg" href="/realizacje">
+              <app-button variant="secondary" size="lg" href="/system-dla-warsztatu">
                 <span class="flex items-center gap-4">
                   <svg
                     class="h-5 w-5 rotate-180"

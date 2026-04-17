@@ -31,7 +31,7 @@ import { BlogPost } from '../../blog.model';
           class="absolute inset-1 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] object-cover grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105"
         />
         <a
-          [routerLink]="['/blog', post().slug]"
+          [routerLink]="['/wiedza-dla-warsztatu', post().slug]"
           class="absolute inset-0 z-10 focus:outline-none"
           aria-hidden="true"
           tabindex="-1"
@@ -54,7 +54,7 @@ import { BlogPost } from '../../blog.model';
         <h3
           class="heading-3 text-secondary group-hover:text-primary transition-colors line-clamp-2 uppercase tracking-tight"
         >
-          <a [routerLink]="['/blog', post().slug]">
+          <a [routerLink]="['/wiedza-dla-warsztatu', post().slug]">
             <span class="absolute inset-0"></span>
             {{ post().title }}
           </a>

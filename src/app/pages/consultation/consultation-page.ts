@@ -487,7 +487,7 @@ type QualificationStatus = 'PENDING' | 'SUBMITTING' | 'ACCEPTED' | 'REJECTED';
                 <app-button
                   variant="secondary"
                   size="lg"
-                  route="/realizacje"
+                  route="/system-dla-warsztatu"
                   styleClass="w-full sm:w-auto"
                 >
                   <span class="mr-3">ZOBACZ NASZE REALIZACJE</span>

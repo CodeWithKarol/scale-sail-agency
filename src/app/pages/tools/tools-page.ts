@@ -157,7 +157,7 @@ import { Button } from '../../shared/ui/button/button';
           >
             <span class="hidden sm:inline">lub</span>
             <a
-              routerLink="/realizacje"
+              routerLink="/system-dla-warsztatu"
               class="text-secondary hover:text-primary underline decoration-primary/30 underline-offset-4 transition-colors p-2"
               >zobacz jak wdrożyłem to u innych (Systemy)</a
             >

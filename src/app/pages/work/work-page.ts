@@ -156,7 +156,7 @@ export class WorkPage {
               name: 'Wybrane Realizacje | Scale Sail Agency',
               description:
                 'Historie wdrożeń systemów, które usprawniły pracę w firmach usługowych.',
-              url: 'https://scale-sail.io/realizacje',
+              url: 'https://scale-sail.io/system-dla-warsztatu',
               mainEntity: {
                 '@type': 'ItemList',
                 itemListElement: projects.map((project, index) => ({
@@ -164,7 +164,7 @@ export class WorkPage {
                   position: index + 1,
                   item: {
                     '@type': 'Article',
-                    url: `https://scale-sail.io/realizacje/${project.id}`,
+                    url: `https://scale-sail.io/system-dla-warsztatu/${project.id}`,
                     name: project.title,
                     headline: project.title,
                     image: project.heroImage ? [`https://scale-sail.io${project.heroImage}`] : [],

@@ -69,6 +69,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'realizacje/:id',
+    redirectTo: 'system-dla-warsztatu/:id',
+    pathMatch: 'full',
+  },
+  {
     path: 'cennik',
     redirectTo: 'program-dla-warsztatu-bez-abonamentu',
     pathMatch: 'full',
@@ -81,6 +86,11 @@ export const routes: Routes = [
   {
     path: 'blog',
     redirectTo: 'wiedza-dla-warsztatu',
+    pathMatch: 'full',
+  },
+  {
+    path: 'blog/:slug',
+    redirectTo: 'wiedza-dla-warsztatu/:slug',
     pathMatch: 'full',
   },
   {

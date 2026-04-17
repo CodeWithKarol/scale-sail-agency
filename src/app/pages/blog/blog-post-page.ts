@@ -154,7 +154,7 @@ export class BlogPostPage implements OnInit {
       },
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': `https://scale-sail.io/blog/${post.slug}`,
+        '@id': `https://scale-sail.io/wiedza-dla-warsztatu/${post.slug}`,
       },
     });
   }

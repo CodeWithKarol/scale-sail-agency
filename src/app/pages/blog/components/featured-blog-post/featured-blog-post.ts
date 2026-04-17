@@ -23,7 +23,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
           </div>
 
           <a
-            [routerLink]="['/blog', post().slug]"
+            [routerLink]="['/wiedza-dla-warsztatu', post().slug]"
             class="block h-full w-full focus:outline-none relative overflow-hidden"
             aria-hidden="true"
             tabindex="-1"
@@ -58,7 +58,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
         <h2
           class="heading-2 text-secondary group-hover:text-primary transition-colors duration-300"
         >
-          <a [routerLink]="['/blog', post().slug]">
+          <a [routerLink]="['/wiedza-dla-warsztatu', post().slug]">
             {{ post().title }}
           </a>
         </h2>
@@ -71,7 +71,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 
         <div class="mt-12">
           <app-button
-            [routerLink]="['/blog', post().slug]"
+            [routerLink]="['/wiedza-dla-warsztatu', post().slug]"
             variant="secondary"
             size="lg"
             class="group/btn"

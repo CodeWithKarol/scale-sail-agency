@@ -14,13 +14,13 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'System dla warsztatu', path: '/realizacje', fragment: undefined },
+    { name: 'System dla warsztatu', path: '/system-dla-warsztatu', fragment: undefined },
     { name: 'Narzędzia dla warsztatu', path: '/narzedzia', fragment: undefined },
     { name: 'Cennik bez abonamentu', path: '/cennik', fragment: undefined },
   ]);
 
   resources = signal([
-    { name: 'Wiedza', path: '/blog', fragment: undefined },
+    { name: 'Wiedza', path: '/wiedza-dla-warsztatu', fragment: undefined },
     { name: 'Częste Pytania', path: '/', fragment: 'faq' },
     { name: 'O mnie', path: '/o-mnie', fragment: undefined },
     { name: 'Polityka Prywatności', path: '/polityka-prywatnosci', fragment: undefined },
