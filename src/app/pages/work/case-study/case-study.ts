@@ -262,14 +262,14 @@ export class CaseStudyPage {
         title: `${study.title} | Case Study Scale Sail`,
         description: study.challenge.substring(0, 160) + '...',
         image: study.heroImage,
-        slug: `/realizacje/${study.id}`,
+        slug: `system-dla-warsztatu/${study.id}`,
         type: 'article',
       });
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Systemy', path: '/realizacje' },
-        { name: study.title, path: `/realizacje/${study.id}` },
+        { name: 'Systemy', path: '/system-dla-warsztatu' },
+        { name: study.title, path: `/system-dla-warsztatu/${study.id}` },
       ]);
 
       // Full Case Study Rich Result
@@ -279,7 +279,7 @@ export class CaseStudyPage {
           '@graph': [
             {
               '@type': 'Article',
-              '@id': `https://scale-sail.io/realizacje/${study.id}/#article`,
+              '@id': `https://scale-sail.io/system-dla-warsztatu/${study.id}/#article`,
               headline: study.title,
               description: study.challenge,
               image: `https://scale-sail.io${study.heroImage}`,
@@ -299,7 +299,7 @@ export class CaseStudyPage {
               },
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': `https://scale-sail.io/realizacje/${study.id}`,
+                '@id': `https://scale-sail.io/system-dla-warsztatu/${study.id}`,
               },
             },
           ],

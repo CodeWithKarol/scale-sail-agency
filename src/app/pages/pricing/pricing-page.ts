@@ -44,12 +44,12 @@ export class PricingPage implements OnInit {
       title: 'Program dla warsztatu bez abonamentu – Cennik',
       description:
         'Sprawdź ile kosztuje program do warsztatu z jednorazową opłatą. Automatyzacja warsztatu samochodowego i system zarządzania zleceniami na własność.',
-      slug: 'cennik',
+      slug: 'program-dla-warsztatu-bez-abonamentu',
     });
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Cennik', path: '/cennik' },
+      { name: 'Cennik', path: '/program-dla-warsztatu-bez-abonamentu' },
     ]);
   }
 }

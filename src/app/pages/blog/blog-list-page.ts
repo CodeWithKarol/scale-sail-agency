@@ -233,7 +233,7 @@ export class BlogListPage implements OnInit {
               headline: post.title,
               name: post.title,
               description: post.excerpt,
-              url: post.url,
+              url: `https://scale-sail.io/wiedza-dla-warsztatu/${post.slug}`,
               datePublished: post.date,
               image: post.imageUrl ? [post.imageUrl] : [],
               author: {
@@ -243,12 +243,12 @@ export class BlogListPage implements OnInit {
               },
               mainEntityOfPage: {
                 '@type': 'WebPage',
-                '@id': post.url,
+                '@id': `https://scale-sail.io/wiedza-dla-warsztatu/${post.slug}`,
               },
             })),
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': 'https://scale-sail.io/blog',
+              '@id': 'https://scale-sail.io/wiedza-dla-warsztatu',
             },
             inLanguage: 'pl-PL',
           },
@@ -262,7 +262,7 @@ export class BlogListPage implements OnInit {
       title: 'Instrukcje automatyzacji dla firm usługowych | Blog Scale Sail',
       description:
         'Twoja firma powinna być dochodową maszyną, a nie klatką z papierów. Dowiedz się, jak za pomocą kodu odzyskać 10-20 godzin tygodniowo.',
-      slug: '/blog',
+      slug: 'wiedza-dla-warsztatu',
       type: 'article',
       keywords: [
         'automatyzacja warsztatu samochodowego',
@@ -277,7 +277,7 @@ export class BlogListPage implements OnInit {
 
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Wiedza', path: '/blog' },
+      { name: 'Wiedza', path: '/wiedza-dla-warsztatu' },
     ]);
   }
 }

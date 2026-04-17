@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 
 export const serverRoutes: ServerRoute[] = [
   {
-    path: 'realizacje/:id',
+    path: 'system-dla-warsztatu/:id',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       const portfolioService = inject(PortfolioService);
@@ -15,7 +15,7 @@ export const serverRoutes: ServerRoute[] = [
     },
   },
   {
-    path: 'blog/:slug',
+    path: 'wiedza-dla-warsztatu/:slug',
     renderMode: RenderMode.Prerender,
     async getPrerenderParams() {
       const blogService = inject(BlogService);

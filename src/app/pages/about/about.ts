@@ -141,13 +141,22 @@ import { LucideAngularModule, Check, X } from 'lucide-angular';
                 <p class="text-body sm:text-lg text-secondary/80 mb-6">
                   Przez lata budowałem systemy dla największych instytucji finansowych. Tam
                   nauczyłem się, że w technologii nie liczy się „błysk”, ale
-                  <span class="text-secondary font-black">niezawodność i bezpieczeństwo danych</span
+                  <a
+                    href="/system-dla-warsztatu"
+                    class="text-secondary font-black border-b-2 border-primary/30 hover:border-primary transition-all cursor-pointer"
+                    >niezawodność i bezpieczeństwo danych</a
                   >.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80 mb-6 font-bold">
                   Tam błąd kosztuje miliony. U Ciebie błąd kosztuje Twój czas i spokój. Dlatego moją
-                  misją jest cyfryzacja warsztatu samochodowego tak, aby system sam pilnował
-                  terminów, a liczba telefonów od klientów spadła o 80%.
+                  misją jest
+                  <a
+                    href="/"
+                    class="text-secondary font-black border-b-2 border-primary/30 hover:border-primary transition-all"
+                    >cyfryzacja warsztatu samochodowego</a
+                  >
+                  tak, aby system sam pilnował terminów, a liczba telefonów od klientów spadła o
+                  80%.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80">
                   Dziś tę samą „bankową” jakość przenoszę do warsztatów samochodowych oraz małych i

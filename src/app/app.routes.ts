@@ -6,42 +6,43 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home').then((m) => m.Home),
   },
   {
-    path: 'realizacje',
+    path: 'system-dla-warsztatu',
     loadComponent: () => import('./pages/work/work-page').then((m) => m.WorkPage),
-    title: 'Systemy | Scale Sail Agency',
+    title: 'System dla warsztatu – Realizacje',
   },
   {
-    path: 'realizacje/:id',
+    path: 'system-dla-warsztatu/:id',
     loadComponent: () => import('./pages/work/case-study/case-study').then((m) => m.CaseStudyPage),
   },
   {
-    path: 'blog',
+    path: 'wiedza-dla-warsztatu',
     loadComponent: () => import('./pages/blog/blog-list-page').then((m) => m.BlogListPage),
-    title: 'Wiedza | Scale Sail Agency',
+    title: 'Wiedza dla warsztatu – Artykuły',
   },
   {
-    path: 'blog/:slug',
+    path: 'wiedza-dla-warsztatu/:slug',
     loadComponent: () => import('./pages/blog/blog-post-page').then((m) => m.BlogPostPage),
   },
   {
     path: 'o-mnie',
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
+    title: 'O mnie – Karol Modelski',
   },
   {
-    path: 'cennik',
+    path: 'program-dla-warsztatu-bez-abonamentu',
     loadComponent: () => import('./pages/pricing/pricing-page').then((m) => m.PricingPage),
-    title: 'Cennik | Scale Sail Agency',
+    title: 'Program dla warsztatu bez abonamentu – Cennik',
+  },
+  {
+    path: 'automatyzacja-warsztatu-narzedzia',
+    loadComponent: () => import('./pages/tools/tools-page').then((m) => m.ToolsPage),
+    title: 'Automatyzacja warsztatu – Darmowe narzędzia',
   },
   {
     path: 'konsultacja',
     loadComponent: () =>
       import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
-    title: 'Konsultacja | Scale Sail Agency',
-  },
-  {
-    path: 'narzedzia',
-    loadComponent: () => import('./pages/tools/tools-page').then((m) => m.ToolsPage),
-    title: 'Narzędzia | Scale Sail Agency',
+    title: 'Bezpłatna Konsultacja | Scale Sail Agency',
   },
   {
     path: 'narzedzia/generator-wycen-pdf',
@@ -60,6 +61,27 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/privacy-policy/privacy-policy').then((m) => m.PrivacyPolicy),
     title: 'Polityka Prywatności | Scale Sail Agency',
+  },
+  // SEO Redirects
+  {
+    path: 'realizacje',
+    redirectTo: 'system-dla-warsztatu',
+    pathMatch: 'full',
+  },
+  {
+    path: 'cennik',
+    redirectTo: 'program-dla-warsztatu-bez-abonamentu',
+    pathMatch: 'full',
+  },
+  {
+    path: 'narzedzia',
+    redirectTo: 'automatyzacja-warsztatu-narzedzia',
+    pathMatch: 'full',
+  },
+  {
+    path: 'blog',
+    redirectTo: 'wiedza-dla-warsztatu',
+    pathMatch: 'full',
   },
   {
     path: 'free-quote-generator',
