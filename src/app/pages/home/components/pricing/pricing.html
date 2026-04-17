@@ -1,15 +1,20 @@
 <section
-  class="section-padding relative isolate overflow-hidden bg-neutral border-t-2 border-secondary/10 bg-grid-workshop"
+  class="relative isolate overflow-hidden bg-neutral bg-grid-workshop"
+  [class.section-padding]="!isStandalone()"
+  [class.border-t-2]="!isStandalone()"
+  [class.border-secondary/10]="!isStandalone()"
 >
   <!-- Technical Grid Background -->
   <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
 
   <div class="layout-container relative z-10">
-    <app-section-header
-      subtitle="JASNE ZASADY, ZERO NIESPODZIANEK"
-      title="Wybierz „silnik” dla Twojej firmy"
-      description="Płacisz raz za wdrożenie i zyskujesz narzędzie na własność. Twój system staje się aktywem firmy, a nie kolejnym comiesięcznym podatkiem od sukcesu."
-    />
+    @if (!isStandalone()) {
+      <app-section-header
+        subtitle="JASNE ZASADY, ZERO NIESPODZIANEK"
+        title="Wybierz „silnik” dla Twojej firmy"
+        description="Płacisz raz za wdrożenie i zyskujesz narzędzie na własność. Twój system staje się aktywem firmy, a nie kolejnym comiesięcznym podatkiem od sukcesu."
+      />
+    }
 
     <!-- Pricing Cards Grid -->
     <div class="mx-auto mt-16 max-w-7xl lg:mt-24">

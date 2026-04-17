@@ -31,9 +31,9 @@ import { Button } from '../../shared/ui/button/button';
         <!-- Header -->
         <app-section-header
           [level]="1"
-          subtitle="DLA WARSZTATÓW"
-          title="Darmowe narzędzia dla właścicieli warsztatów"
-          description="Przestań tracić godziny na ręczne wyceny i Excela. Wykorzystaj darmowe kalkulatory stworzone, by automatyzować nużącą papierologię i budować profesjonalny wizerunek w oczach klienta."
+          subtitle="AUTOMATYZACJA NA START"
+          title="Darmowe kalkulatory i narzędzia dla nowoczesnego warsztatu"
+          description="Przestań tracić czas na ręczne wyceny i chaos w Excelu. Wykorzystaj darmowy generator wycen PDF i kalkulator strat warsztatu, aby błyskawicznie uporządkować papierologię. Sprawdź, jak technologia Scale Sail realnie ułatwia codzienną pracę serwisów samochodowych."
           class="max-w-3xl"
         />
 
@@ -176,9 +176,9 @@ export class ToolsPage {
   constructor() {
     effect(() => {
       this.seoService.setPageMetadata({
-        title: 'Bezpłatne Narzędzia dla Warsztatu bez abonamentu | Scale Sail',
+        title: 'Darmowe narzędzia dla warsztatu – Generator wycen PDF',
         description:
-          'Darmowe kalkulatory marży, generatory kosztorysów PDF i narzędzia analityczne dla nowoczesnego mechanika. Sprawdź jak technologia Scale Sail pomaga w biznesie.',
+          'Wykorzystaj darmowy generator wycen napraw samochodowych i kalkulator strat warsztatu. Błyskawicznie uporządkuj papierologię i kosztorysy.',
         slug: '/narzedzia',
         keywords: [
           'darmowe narzędzia dla mechanika',

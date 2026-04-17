@@ -5,11 +5,13 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
 import { Button } from '../../shared/ui/button/button';
 
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
+import { Card } from '../../shared/ui/card/card';
+import { LucideAngularModule, Check, X } from 'lucide-angular';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, BreadcrumbComponent, Button, SectionHeader],
+  imports: [CommonModule, BreadcrumbComponent, Button, SectionHeader, Card, LucideAngularModule],
   template: `
     <div
       class="min-h-screen bg-neutral text-secondary relative pt-40 pb-24 overflow-hidden bg-grid-workshop"
@@ -27,9 +29,9 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
         >
           <app-section-header
             [level]="1"
-            subtitle="SYLWETKA TWÓRCY"
-            title="Buduję systemy, których nie musisz pilnować"
-            description="Nazywam się Karol Modelski. Od lat pomagam firmom wychodzić z ery kartek i Excela, budując systemy, które są solidne jak narzędzia warsztatowe."
+            subtitle="EKSPERT AUTOMATYZACJI I SYSTEMÓW DLA WARSZTATÓW"
+            title="Karol Modelski – buduję pancerne systemy dla firm usługowych"
+            description="Od lat pomagam warsztatom samochodowym i firmom usługowym wychodzić z ery kartek i Excela. Projektuję dedykowane systemy zarządzania zleceniami oraz wdrożenia automatyzacji n8n, które są solidne jak narzędzia warsztatowe."
           >
             <div class="mt-8">
               <span class="heading-3 opacity-80 uppercase tracking-tight block">
@@ -37,6 +39,66 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
               </span>
             </div>
           </app-section-header>
+        </div>
+
+        <!-- Ideal Client Profile Integration -->
+        <div class="max-w-6xl mx-auto mb-40">
+          <div class="flex items-center gap-6 mb-16">
+            <h2 class="text-small text-primary uppercase">Z kim pracuję</h2>
+            <div class="h-px flex-1 bg-secondary/10"></div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+            <app-card [variant]="'highlight'">
+              <div
+                class="p-8 sm:p-12 flex flex-col h-full bg-white group hover:bg-neutral/30 transition-colors"
+              >
+                <h3 class="heading-3 text-secondary mb-8 border-b-2 border-secondary/10 pb-4">
+                  Dla kogo moje systemy są idealne?
+                </h3>
+                <ul class="space-y-6 flex-1">
+                  @for (item of idealClients; track item) {
+                    <li class="flex gap-4 items-start group/item">
+                      <lucide-icon
+                        [img]="icons.Check"
+                        size="20"
+                        class="text-primary mt-1"
+                      ></lucide-icon>
+                      <span
+                        class="text-lg font-medium text-secondary/80 leading-relaxed group-hover/item:text-secondary transition-colors"
+                      >
+                        {{ item }}
+                      </span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            </app-card>
+
+            <app-card [variant]="'default'" class="opacity-90">
+              <div class="p-8 sm:p-12 flex flex-col h-full bg-neutral/30 group">
+                <h3 class="heading-3 text-secondary/70 mb-8 border-b-2 border-secondary/10 pb-4">
+                  Kiedy prawdopodobnie nie pomogę?
+                </h3>
+                <ul class="space-y-6 flex-1 opacity-80">
+                  @for (item of antiPatterns; track item) {
+                    <li class="flex gap-4 items-start group/item">
+                      <lucide-icon
+                        [img]="icons.X"
+                        size="20"
+                        class="text-secondary/30 mt-1"
+                      ></lucide-icon>
+                      <span
+                        class="text-base text-secondary/70 leading-relaxed group-hover/item:text-secondary/90 transition-colors"
+                      >
+                        {{ item }}
+                      </span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            </app-card>
+          </div>
         </div>
 
         <!-- Craftsman Principles -->
@@ -83,8 +145,9 @@ import { SectionHeader } from '../../shared/ui/section-header/section-header';
                   >.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80 mb-6 font-bold">
-                  Tam błąd kosztuje miliony. U Ciebie błąd kosztuje Twój czas i spokój – obie te
-                  rzeczy są dla mnie tak samo ważne.
+                  Tam błąd kosztuje miliony. U Ciebie błąd kosztuje Twój czas i spokój. Dlatego moją
+                  misją jest cyfryzacja warsztatu samochodowego tak, aby system sam pilnował
+                  terminów, a liczba telefonów od klientów spadła o 80%.
                 </p>
                 <p class="text-body sm:text-lg text-secondary/80">
                   Dziś tę samą „bankową” jakość przenoszę do warsztatów samochodowych oraz małych i
@@ -203,9 +266,9 @@ export class About implements OnInit {
 
   ngOnInit() {
     this.seoService.setPageMetadata({
-      title: 'O mnie | Karol Modelski — Scale Sail Agency',
+      title: 'Karol Modelski – Ekspert Automatyzacji Warsztatów',
       description:
-        'Poznaj twórcę Scale Sail. Łączę standardy bankowe z automatyzacją n8n. Buduję systemy, które realnie odciążają właścicieli warsztatów.',
+        'Dowiedz się, jak cyfryzować warsztat samochodowy i zmniejszyć liczbę telefonów dzięki automatyzacji n8n. Buduję dedykowane systemy zarządzania zleceniami.',
       slug: 'o-mnie',
       type: 'profile',
       keywords: [
@@ -264,10 +327,9 @@ export class About implements OnInit {
               priceRange: '$$',
               address: {
                 '@type': 'PostalAddress',
-                streetAddress: 'Warszawa',
-                addressLocality: 'Warszawa',
-                addressRegion: 'Mazowieckie',
-                postalCode: '00-001',
+                streetAddress: 'ul. Mieczysława Karłowicza 1 lok. 40',
+                addressLocality: 'Jelenia Góra',
+                postalCode: '58-506',
                 addressCountry: 'PL',
               },
               logo: {
@@ -284,17 +346,17 @@ export class About implements OnInit {
 
   principles = [
     {
-      title: 'PROSTOTA PONAD WSZYSTKO',
-      desc: 'Nie instaluję zbędnych bajerów. System ma być tak prosty, byś mógł go obsłużyć w pośpiechu, mając ręce pełne roboty. Jeśli coś nie ułatwia Ci życia – usuwamy to.',
+      title: 'DEDYKOWANE ZAMIAST SKOMPLIKOWANYCH',
+      desc: 'Nie instaluję zbędnych ERP-ów. System ma być tak prosty, byś mógł go obsłużyć w pośpiechu, mając ręce pełne roboty. Jeśli coś nie ułatwia Ci życia – usuwamy to.',
     },
     {
-      title: 'SOLIDNOŚĆ BANKOWA',
+      title: 'JAKOŚĆ BANKOWA (CITI / BNP)',
       desc: 'Praca dla największych banków nauczyła mnie, że system po prostu musi działać. Buduję rozwiązania, które przetrwają lata bez Twojej ingerencji i "naprawiania na już".',
     },
 
     {
-      title: 'TECHNOLOGIA DLA BIZNESU',
-      desc: 'Kod to tylko fundament. Moim celem nie jest napisanie programu, ale odzyskanie Twojego czasu. Jeśli aplikacja nie zarabia na siebie poprzez Twoją wygodę – nie ma sensu.',
+      title: 'AUTOMATYZACJA DLA BIZNESU',
+      desc: 'Kod to tylko fundament. Wykorzystuję narzędzia takie jak n8n czy AI, aby odzyskać Twój czas. Jeśli aplikacja nie zarabia na siebie poprzez Twoją wygodę – nie ma sensu.',
     },
   ];
 
@@ -327,5 +389,22 @@ export class About implements OnInit {
       desc: 'Budowa prostych paneli do zarządzania firmą dla tysięcy przedsiębiorców. Nauka tego, jak technologia może realnie ułatwiać codzienną pracę.',
       qualityMark: 'UŁATWIANIE PRACY',
     },
+  ];
+
+  icons = { Check, X };
+
+  idealClients = [
+    'Warsztaty samochodowe (2–6 stanowisk)',
+    'Firmy usługowe z powtarzalnymi zleceniami',
+    'Właściciele szukający odzyskania 10–15h tygodniowo',
+    'Firmy zmęczone abonamentami SaaS',
+    'Osoby szukające pancernego systemu na własność',
+  ];
+
+  antiPatterns = [
+    'Szukający najtańszego gotowca „z pudełka”',
+    'Firmy bez powtarzalnych procesów',
+    'Duże korporacje (systemy ERP)',
+    'Proste wizytówki bez logiki biznesowej',
   ];
 }

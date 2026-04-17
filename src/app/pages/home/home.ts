@@ -7,11 +7,8 @@ import { Process } from './components/process/process';
 import { FounderStory } from './components/founder-story/founder-story';
 import { Contact } from './components/contact/contact';
 import { Faq } from './components/faq/faq';
-import { Pricing } from './components/pricing/pricing';
 import { FinalCta } from './components/final-cta/final-cta';
 import { ImpactMetrics } from './components/impact-metrics/impact-metrics';
-import { IdealClientProfile } from './components/ideal-client-profile/ideal-client-profile';
-import { PriceComparison } from './components/price-comparison/price-comparison';
 import { LogoCloud } from './components/logo-cloud/logo-cloud';
 
 @Component({
@@ -22,13 +19,10 @@ import { LogoCloud } from './components/logo-cloud/logo-cloud';
     ProblemSolution,
     Process,
     FounderStory,
-    Pricing,
     Contact,
     Faq,
     FinalCta,
     ImpactMetrics,
-    IdealClientProfile,
-    PriceComparison,
     LogoCloud,
   ],
   templateUrl: './home.html',
@@ -40,24 +34,20 @@ export class Home implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageMetadata({
-      title: 'System do warsztatu bez abonamentu – płacisz raz, masz na zawsze | Scale Sail',
+      title: 'Program dla warsztatu bez abonamentu',
       description:
-        'Oprogramowanie dla warsztatu na własność. Buduję systemy do zarządzania zleceniami i automatyzacje SMS/Make bez miesięcznych opłat. Sprawdź model bez subskrypcji.',
+        'Automatyzacja warsztatu samochodowego bez miesięcznej subskrypcji. System zleceń, SMS-y do klientów i generator wycen wdrażane pod Twoją firmę.',
       slug: '',
       type: 'website',
 
       keywords: [
-        'zarządzanie zleceniami warsztatowymi',
-        'automatyzacja sms dla warsztatu',
-        'program dla warsztatu bez abonamentu',
+        'program do warsztatu bez abonamentu',
+        'system do zleceń dla warsztatu bez subskrypcji',
+        'automatyzacja warsztatu samochodowego',
+        'program do warsztatu jednorazowa opłata',
+        'system zarządzania zleceniami warsztat',
+        'automatyczne powiadomienia SMS warsztat',
         'elektroniczny zeszyt zleceń warsztat',
-        'system do zarządzania kolejką aut',
-        'aplikacja dla warsztatu samochodowego',
-        'automatyzacja serwisu samochodowego',
-        'system warsztatowy na własność',
-        'wdrożenia n8n i Make',
-        'cyfryzacja małej firmy usługowej',
-        'program warsztatowy na własny serwer',
       ],
     });
 
@@ -73,9 +63,9 @@ export class Home implements OnInit {
       },
       areaServed: 'Poland',
       address: {
-        streetAddress: 'Warszawa',
-        addressLocality: 'Warszawa',
-        postalCode: '00-001',
+        streetAddress: 'ul. Mieczysława Karłowicza 1 lok. 40',
+        addressLocality: 'Jelenia Góra',
+        postalCode: '58-506',
         addressCountry: 'PL',
       },
     });
