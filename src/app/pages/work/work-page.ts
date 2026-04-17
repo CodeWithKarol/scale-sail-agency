@@ -130,7 +130,7 @@ export class WorkPage {
         title: 'Zobacz standard systemów warsztatowych, które wdrażam | Scale Sail',
         description:
           'Poznaj projekty demonstrujące pełnię możliwości moich rozwiązań – od zarządzania zleceniami po automatyzacje SMS. Systemy na własność, bez miesięcznych opłat.',
-        slug: '/realizacje',
+        slug: 'system-dla-warsztatu',
         keywords: [
           'case study automatyzacja',
           'wdrożenia systemów dla firm',
@@ -143,7 +143,7 @@ export class WorkPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Systemy', path: '/realizacje' },
+        { name: 'Systemy', path: '/system-dla-warsztatu' },
       ]);
 
       const projects = this.projects();

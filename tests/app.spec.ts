@@ -16,12 +16,12 @@ test.describe('App Integration Tests', () => {
 
   test('should navigate to realizacje page', async ({ page }) => {
     await page.goto('/realizacje');
-    await expect(page).toHaveURL(/.*realizacje/);
+    await expect(page).toHaveURL(/.*system-dla-warsztatu/);
   });
 
   test('should navigate to narzedzia page', async ({ page }) => {
     await page.goto('/narzedzia');
-    await expect(page).toHaveURL(/.*narzedzia/);
+    await expect(page).toHaveURL(/.*automatyzacja-warsztatu-narzedzia/);
   });
 
   test('should navigate to konsultacja page', async ({ page }) => {

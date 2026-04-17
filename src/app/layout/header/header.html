@@ -9,12 +9,12 @@
     </div>
 
     <!-- Center: Desktop Nav (Optimized Spacing) -->
-    <div class="hidden lg:flex justify-center items-center flex-initial mx-4">
-      <div class="flex items-center lg:gap-x-1 xl:gap-x-4">
+    <div class="hidden lg:flex justify-center items-center flex-initial mx-2">
+      <div class="flex items-center gap-x-0.5 xl:gap-x-2">
         @for (item of navigation; track item.name; let index = $index) {
           <a
             [routerLink]="item.path"
-            class="relative px-2 xl:px-4 py-2 font-mono text-[11px] xl:text-[13px] font-black uppercase tracking-widest text-secondary/75 hover:text-primary transition-all group cursor-pointer flex items-center whitespace-nowrap"
+            class="relative px-2 xl:px-4 py-2 font-mono text-[10px] xl:text-[12px] font-black uppercase tracking-widest text-secondary/75 hover:text-primary transition-all group cursor-pointer flex items-center whitespace-nowrap"
           >
             {{ item.name }}
             <span

@@ -2,21 +2,35 @@
   "name": "scale-sail-agency",
   "devCommand": "ng serve --port $PORT --host 0.0.0.0",
   "redirects": [
-    { "source": "/work", "destination": "/realizacje", "permanent": true },
-    { "source": "/work/:id", "destination": "/realizacje/:id", "permanent": true },
+    { "source": "/work", "destination": "/system-dla-warsztatu", "permanent": true },
+    { "source": "/work/:id", "destination": "/system-dla-warsztatu/:id", "permanent": true },
+    { "source": "/realizacje", "destination": "/system-dla-warsztatu", "permanent": true },
+    { "source": "/realizacje/:id", "destination": "/system-dla-warsztatu/:id", "permanent": true },
     {
-      "source": "/realizacje/admin-panel",
-      "destination": "/realizacje/panel-zarzadzania",
+      "source": "/system-dla-warsztatu/admin-panel",
+      "destination": "/system-dla-warsztatu/panel-zarzadzania",
       "permanent": true
     },
     {
-      "source": "/realizacje/quick-cart",
-      "destination": "/realizacje/szybki-koszyk",
+      "source": "/system-dla-warsztatu/quick-cart",
+      "destination": "/system-dla-warsztatu/szybki-koszyk",
       "permanent": true
     },
     { "source": "/about", "destination": "/o-mnie", "permanent": true },
     { "source": "/consultation", "destination": "/konsultacja", "permanent": true },
-    { "source": "/tools", "destination": "/narzedzia", "permanent": true },
+    {
+      "source": "/cennik",
+      "destination": "/program-dla-warsztatu-bez-abonamentu",
+      "permanent": true
+    },
+    { "source": "/blog", "destination": "/wiedza-dla-warsztatu", "permanent": true },
+    { "source": "/blog/:slug", "destination": "/wiedza-dla-warsztatu/:slug", "permanent": true },
+    { "source": "/tools", "destination": "/automatyzacja-warsztatu-narzedzia", "permanent": true },
+    {
+      "source": "/narzedzia",
+      "destination": "/automatyzacja-warsztatu-narzedzia",
+      "permanent": true
+    },
     {
       "source": "/tools/free-quote-generator",
       "destination": "/narzedzia/generator-wycen-pdf",
@@ -37,7 +51,6 @@
       "destination": "/narzedzia/kalkulator-strat",
       "permanent": true
     },
-    { "source": "/tools/:path*", "destination": "/narzedzia/:path*", "permanent": true },
     { "source": "/privacy-policy", "destination": "/polityka-prywatnosci", "permanent": true }
   ]
 }

@@ -110,8 +110,8 @@ export class BlogPostPage implements OnInit {
   private updateBreadcrumbs(post: BlogPost) {
     this.seoService.setBreadcrumbs([
       { name: 'Start', path: '/' },
-      { name: 'Wiedza', path: '/blog' },
-      { name: post.title, path: `/blog/${post.slug}` },
+      { name: 'Wiedza', path: '/wiedza-dla-warsztatu' },
+      { name: post.title, path: `/wiedza-dla-warsztatu/${post.slug}` },
     ]);
   }
 
@@ -119,7 +119,7 @@ export class BlogPostPage implements OnInit {
     this.seoService.setPageMetadata({
       title: post.title,
       description: post.excerpt,
-      slug: `/blog/${post.slug}`,
+      slug: `wiedza-dla-warsztatu/${post.slug}`,
       type: 'article',
       image: post.imageUrl,
       keywords: [
