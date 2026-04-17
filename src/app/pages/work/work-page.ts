@@ -31,20 +31,23 @@ import { BreadcrumbComponent } from '../../shared/ui/breadcrumb/breadcrumb';
         <!-- Header -->
         <app-section-header
           [level]="1"
-          subtitle="PORTFOLIO"
-          title="Systemy zarządzania zleceniami w praktyce"
-          description="Zobacz przykładowe projekty – od paneli administracyjnych po lekkie narzędzia dla warsztatów i usług."
+          subtitle="PORTFOLIO & STANDARDY"
+          title="Zobacz standard systemów warsztatowych, które wdrażam"
+          description="Poznaj projekty demonstrujące pełnię możliwości moich rozwiązań – od zarządzania zleceniami po automatyzacje SMS. To funkcjonalne wzorce i systemy demo, które przenoszę do Twojej firmy, aby zastąpić papierowe kalendarze nowoczesną technologią na własność."
         />
 
         <div
           class="max-w-4xl border-l-8 border-primary/10 pl-10 py-8 bg-white/5 mb-24 animate-in fade-in slide-in-from-left-4 duration-700 delay-200"
         >
           <p class="text-body sm:text-lg text-secondary/90 italic">
-            Część poniższych projektów to przykładowe realizacje stworzone na potrzeby portfolio –
-            pokazują poziom złożoności, jakość frontendu i podejście do projektowania paneli, z
-            których później korzystają prawdziwi użytkownicy.
+            Standard bankowy jako fundament. Poniższe realizacje to w pełni funkcjonalne systemy
+            stworzone, aby zaprezentować architekturę i logikę, którą otrzymasz w ramach współpracy.
+            To dowód na to, że technologia w Twojej firmie będzie przejrzysta, pancerna i gotowa na
+            start od pierwszego dnia.
           </p>
-          <div class="mt-6 text-small text-secondary/75">GWARANCJA JAKOŚCI: WYSOKI STANDARD</div>
+          <div class="mt-6 text-small text-secondary/75">
+            GWARANCJA JAKOŚCI: GOTOWE DO WDROŻENIA
+          </div>
         </div>
 
         <!-- Projects List -->
@@ -124,9 +127,9 @@ export class WorkPage {
     effect(() => {
       // SEO
       this.seoService.setPageMetadata({
-        title: 'Systemy warsztatowe bez abonamentu – Realizacje | Scale Sail',
+        title: 'Zobacz standard systemów warsztatowych, które wdrażam | Scale Sail',
         description:
-          'Zobacz jak wdrożyliśmy pancerne systemy zarządzania i automatyzacje SMS w warsztatach samochodowych. Case studies rozwiązań na własność, bez miesięcznych opłat.',
+          'Poznaj projekty demonstrujące pełnię możliwości moich rozwiązań – od zarządzania zleceniami po automatyzacje SMS. Systemy na własność, bez miesięcznych opłat.',
         slug: '/realizacje',
         keywords: [
           'case study automatyzacja',

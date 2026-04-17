@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Card } from '../../../../shared/ui/card/card';
@@ -10,6 +10,7 @@ import { Card } from '../../../../shared/ui/card/card';
   templateUrl: './price-comparison.html',
 })
 export class PriceComparison {
+  isStandalone = input<boolean>(false);
   comparisonData = [
     {
       label: 'Koszt roczny (średnio)',

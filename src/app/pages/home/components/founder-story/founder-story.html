@@ -3,80 +3,47 @@
 >
   <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
     <div
-      class="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+      class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-12 lg:mx-0 lg:max-w-none lg:grid-cols-2"
     >
-      <!-- Text Column -->
-      <div class="lg:pr-4">
-        <div class="relative lg:max-w-lg">
-          <div class="animate-in fade-in slide-in-from-left-4 duration-700">
-            <div class="mb-8 flex">
-              <div class="status-badge status-badge-dark ring-4 ring-secondary/5">
-                SYLWETKA TWÓRCY
-              </div>
-            </div>
-            <h2 class="heading-2 text-secondary mb-10">
-              {{ founder().headline }}
-            </h2>
-
-            <div class="mt-8 sm:mt-12 text-body border-l-4 border-primary pl-4 sm:pl-8 italic">
-              {{ founder().name }}
-              <span class="block text-small mt-3">{{ founder().role }}</span>
-            </div>
-
-            <!-- Badges -->
-            <div class="mt-8 flex flex-wrap gap-3">
-              @for (badge of founder().badges; track $index) {
-                <div
-                  class="px-3 py-1 bg-neutral border-2 border-secondary/10 text-[10px] font-mono font-bold uppercase tracking-widest text-secondary/70 rounded-none"
-                >
-                  {{ badge }}
-                </div>
-              }
-            </div>
-          </div>
+      <!-- Image Column -->
+      <div class="relative order-2 lg:order-1">
+        <div
+          class="relative aspect-square bg-white border-2 border-secondary/10 p-2 lg:max-w-sm ml-auto mr-auto lg:ml-0 group shadow-none"
+        >
+          <img
+            class="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)] object-cover filter grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
+            [src]="founder().image"
+            alt="Karol Modelski - Twórca systemów warsztatowych na własność"
+            loading="lazy"
+            width="400"
+            height="400"
+          />
         </div>
       </div>
 
-      <!-- Image Column -->
-      <div
-        class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
-      >
-        <div class="lg:pr-4">
-          <div class="max-w-xl text-lg leading-relaxed text-secondary/85 lg:max-w-lg font-normal">
-            @for (paragraph of founder().bio; track $index) {
-              <p class="mb-6 last:mb-0" [innerHTML]="paragraph"></p>
-            }
+      <!-- Text Column -->
+      <div class="lg:pr-4 order-1 lg:order-2">
+        <div class="relative lg:max-w-lg">
+          <div class="animate-in fade-in slide-in-from-right-4 duration-700">
+            <div class="mb-6 flex">
+              <div class="status-badge status-badge-dark ring-4 ring-secondary/5 uppercase">
+                O twórcy
+              </div>
+            </div>
+            <h2 class="heading-2 text-secondary mb-6 !text-3xl lg:!text-4xl">
+              {{ founder().headline }}
+            </h2>
 
-            <!-- Buttons with Visual Hierarchy -->
-            <div
-              id="founder-links"
-              class="mt-12 flex flex-col sm:flex-row items-center sm:items-center gap-6 sm:gap-8 scroll-mt-32"
-            >
-              <!-- PRIMARY: Most valuable for user -->
-              <app-button
-                route="/narzedzia"
-                variant="primary"
-                size="lg"
-                styleClass="btn btn-primary btn-lg w-full sm:w-auto justify-center uppercase tracking-widest text-xs shadow-lg transform hover:-translate-y-0.5 transition-all"
-              >
-                Darmowe Narzędzia
-                <lucide-icon [img]="icons.ArrowRight" size="16" class="ml-2"></lucide-icon>
-              </app-button>
+            <div class="text-body text-secondary/85 mb-8">
+              @for (paragraph of founder().bio; track $index) {
+                <p class="mb-4 last:mb-0" [innerHTML]="paragraph"></p>
+              }
+            </div>
 
-              <!-- SECONDARY: Social proof -->
-              <app-button
-                route="/realizacje"
-                variant="secondary"
-                size="lg"
-                styleClass="btn btn-outline border-2 border-secondary/20 hover:border-secondary w-full sm:w-auto justify-center uppercase tracking-widest text-xs transition-all"
-              >
-                Zobacz Realizacje
-              </app-button>
-
-              <!-- GHOST: Less active but trust-building -->
+            <div class="flex flex-wrap items-center gap-6">
               <a
                 href="/o-mnie"
-                class="group flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 hover:text-primary transition-colors py-2 whitespace-nowrap"
+                class="group flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-secondary hover:text-primary transition-colors py-2"
               >
                 Poznaj moją historię
                 <lucide-icon
@@ -85,26 +52,20 @@
                   class="group-hover:translate-x-1 transition-transform"
                 ></lucide-icon>
               </a>
+
+              <div class="h-1 w-1 rounded-full bg-secondary/20 hidden sm:block"></div>
+
+              <div class="flex flex-wrap gap-2">
+                @for (badge of founder().badges; track $index) {
+                  <span
+                    class="text-[10px] font-mono font-bold uppercase tracking-widest text-secondary/40"
+                  >
+                    #{{ badge }}
+                  </span>
+                }
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- Image -->
-      <div
-        class="lg:-ml-12 lg:-mt-12 p-6 sm:p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden"
-      >
-        <div
-          class="relative aspect-[4/5] bg-white border-2 border-secondary/10 p-2 sm:aspect-[2/3] lg:aspect-[3/4] lg:max-w-sm ml-auto mr-auto lg:mr-0 group shadow-none"
-        >
-          <img
-            class="absolute inset-2 h-[calc(100%-1rem)] w-[calc(100%-1rem)] object-cover filter grayscale contrast-110 group-hover:grayscale-0 transition-all duration-700"
-            [src]="founder().image"
-            alt="Karol Modelski - Twórca systemów warsztatowych na własność"
-            loading="lazy"
-            width="400"
-            height="533"
-          />
         </div>
       </div>
     </div>

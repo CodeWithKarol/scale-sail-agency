@@ -14,10 +14,9 @@ export class Footer {
   currentYear = new Date().getFullYear();
 
   services = signal([
-    { name: 'Systemy', path: '/realizacje', fragment: undefined },
-    { name: 'Narzędzia', path: '/narzedzia', fragment: undefined },
-    { name: 'Generator Wycen PDF', path: '/narzedzia/generator-wycen-pdf', fragment: undefined },
-    { name: 'Cennik', path: '/', fragment: 'pricing' },
+    { name: 'System dla warsztatu', path: '/realizacje', fragment: undefined },
+    { name: 'Narzędzia dla warsztatu', path: '/narzedzia', fragment: undefined },
+    { name: 'Cennik bez abonamentu', path: '/cennik', fragment: undefined },
   ]);
 
   resources = signal([

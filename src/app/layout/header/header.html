@@ -14,7 +14,6 @@
         @for (item of navigation; track item.name; let index = $index) {
           <a
             [routerLink]="item.path"
-            [fragment]="item.fragment"
             class="relative px-2 xl:px-4 py-2 font-mono text-[11px] xl:text-[13px] font-black uppercase tracking-widest text-secondary/75 hover:text-primary transition-all group cursor-pointer flex items-center whitespace-nowrap"
           >
             {{ item.name }}

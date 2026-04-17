@@ -1,32 +1,51 @@
 <div class="min-h-screen bg-neutral relative bg-grid-workshop">
   <app-hero />
+
+  <div class="py-10 bg-secondary border-y-4 border-primary relative z-20 overflow-hidden">
+    <div class="absolute inset-0 bg-grid-workshop opacity-5"></div>
+    <div
+      class="layout-container flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10 text-center"
+    >
+      <div
+        class="status-badge ring-4 ring-primary/20 uppercase tracking-widest text-[10px] shadow-xl"
+      >
+        Specjalizacja
+      </div>
+      <h2 class="heading-3 !text-white !text-xl lg:!text-3xl uppercase tracking-tight">
+        Warsztaty samochodowe i firmy z powtarzalnymi usługami
+      </h2>
+      <div class="hidden md:block h-2 w-2 bg-primary rotate-45"></div>
+      <p class="text-white/60 font-mono text-xs font-black uppercase tracking-[0.2em]">
+        Systemy na własność • <span class="text-primary">Zero abonamentu</span>
+      </p>
+    </div>
+  </div>
+
   <app-logo-cloud />
+
   <div id="problem-solution">
     <app-problem-solution />
   </div>
-  <div id="impact-metrics">
-    <app-impact-metrics />
-  </div>
-  <div id="ideal-client-profile">
-    <app-ideal-client-profile />
-  </div>
-  <div id="price-comparison">
-    <app-price-comparison />
-  </div>
+
   <div id="process">
     <app-process />
   </div>
+
+  <div id="impact-metrics">
+    <app-impact-metrics />
+  </div>
+
   <div id="about">
     <app-founder-story />
   </div>
-  <div id="pricing">
-    <app-pricing />
-  </div>
+
   <div id="faq">
     <app-faq />
   </div>
+
   <div id="contact">
     <app-contact />
   </div>
+
   <app-final-cta />
 </div>

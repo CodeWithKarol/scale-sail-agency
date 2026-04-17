@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SectionHeader } from '../../../../shared/ui/section-header/section-header';
 import { Button } from '../../../../shared/ui/button/button';
@@ -29,14 +29,15 @@ interface PricingPackage {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Pricing {
+  isStandalone = input<boolean>(false);
   packages = signal<PricingPackage[]>([
     {
-      name: 'Fundament',
+      name: 'Fundament: System Zleceń',
       tagline: 'PORZĄDEK NA START',
       price: '7k - 9k',
       priceSuffix: 'zł netto',
       description:
-        'Koniec z gubieniem kartek. Cyfrowa baza zleceń i powiadomienia SMS, które odciążą Twój telefon.',
+        'Idealny program dla warsztatu na start. Cyfrowa baza zleceń i powiadomienia SMS, które odciążą Twój telefon.',
       features: [
         { name: 'Pancerny CRM i Kolejka zleceń', included: true },
         { name: 'Automatyczne SMS-y do klienta', included: true },
@@ -51,12 +52,12 @@ export class Pricing {
       queryParams: { package: 'small' },
     },
     {
-      name: 'Optymalny',
+      name: 'Optymalny: Automatyzacja',
       tagline: 'BIZNES NA AUTOPILOCIE',
       price: '11k - 16k',
       priceSuffix: 'zł netto',
       description:
-        'System, który pracuje za Ciebie. Odzyskasz 15h tygodniowo dzięki automatyzacji nudnych zadań.',
+        'Zaawansowane zarządzanie zleceniami warsztatowymi. Odzyskasz 15h tygodniowo dzięki automatyzacji nudnych zadań.',
       features: [
         { name: 'Wszystko z pakietu Fundament', included: true },
         { name: 'Moduł Kalendarza i Rezerwacji', included: true },
@@ -71,7 +72,7 @@ export class Pricing {
       queryParams: { package: 'medium' },
     },
     {
-      name: 'Dedykowany',
+      name: 'Dedykowany: Pełna Skala',
       tagline: 'PEŁNA SKALA & AI',
       price: 'od 17k',
       priceSuffix: 'zł netto',

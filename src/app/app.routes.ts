@@ -28,6 +28,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
+    path: 'cennik',
+    loadComponent: () => import('./pages/pricing/pricing-page').then((m) => m.PricingPage),
+    title: 'Cennik | Scale Sail Agency',
+  },
+  {
     path: 'konsultacja',
     loadComponent: () =>
       import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
