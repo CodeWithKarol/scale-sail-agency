@@ -58,3 +58,6 @@ export const ANTI_PATTERNS = [
   'Duże korporacje (systemy ERP)',
   'Proste wizytówki bez logiki biznesowej',
 ];
+
+export const FOUNDER_QUOTE =
+  'W bankowości awaria systemu to strata milionów. W warsztacie – to utrata zaufania klienta. Przenoszę tę samą obsesję na punkcie niezawodności do mniejszych firm, budując rozwiązania, które po prostu nigdy nie zawiodą.';

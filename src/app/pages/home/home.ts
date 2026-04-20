@@ -69,5 +69,26 @@ export class Home implements OnInit {
         addressCountry: 'PL',
       },
     });
+
+    this.seoService.setOrganizationSchema({
+      name: 'Scale Sail Agency',
+      url: 'https://scale-sail.io',
+      logo: 'https://scale-sail.io/images/scale-sail-logo.webp',
+      description:
+        'Specjalistyczna agencja automatyzacji procesów dla warsztatów samochodowych i firm usługowych.',
+      knowsAbout: [
+        'Automatyzacja warsztatu samochodowego',
+        'Systemy zarządzania zleceniami',
+        'Automatyzacja SMS dla firm',
+        'Optymalizacja procesów biznesowych',
+        'Custom software dla usług',
+      ],
+      sameAs: ['https://www.linkedin.com/in/karol-modelski', 'https://github.com/CodeWithKarol'],
+    });
+
+    this.seoService.setBreadcrumbs([
+      { name: 'Start', path: '/' },
+      { name: 'Automatyzacja Warsztatu', path: '/' },
+    ]);
   }
 }

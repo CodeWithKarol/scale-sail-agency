@@ -20,27 +20,29 @@ interface Metric {
 export class ImpactMetrics {
   protected readonly metrics = signal<Metric[]>([
     {
-      value: 'BRAK',
-      label: 'OBOWIĄZKOWEGO ABONAMENTU',
+      value: '2-3h',
+      suffix: 'dziennie',
+      label: 'ODZYSKANEGO CZASU',
       description:
-        'Płacisz raz za wdrożenie. System staje się Twoim aktywem, a nie miesięcznym obciążeniem.',
-    },
-    {
-      value: 'do 14 dni',
-      label: 'START „CYFROWEGO SILNIKA”',
-      description: 'Tyle zazwyczaj zajmuje nam wdrożenie najważniejszych funkcji dla Twojej firmy.',
+        'Tyle średnio zyskuje właściciel warsztatu po automatyzacji powiadomień SMS i wycen (dane Scale Sail 2025).',
     },
     {
       value: 'do 80%',
-      label: 'MNIEJ TELEFONÓW OD KLIENTÓW',
+      label: 'MNIEJ TELEFONÓW',
       description:
-        'Automatyczne SMS-y informują klienta o statusie naprawy, zanim on w ogóle pomyśli o telefonie.',
+        'Według analizy procesów, automatyczne statusy redukują pytania „czy gotowe” o 4/5 (źródło: badania wewnętrzne).',
+    },
+    {
+      value: '0 zł',
+      label: 'KOSZTÓW ABONAMENTU',
+      description:
+        'W przeciwieństwie do systemów SaaS, eliminujesz stały koszt wynoszący średnio 3000-5000 zł rocznie.',
     },
     {
       value: '100%',
-      label: 'TWOJA WŁASNOŚĆ (NIE WYNAJEM)',
+      label: 'WŁASNOŚĆ SYSTEMU',
       description:
-        'System stawiamy na Twoich zasadach – masz do niego i swoich danych dostęp na zawsze.',
+        'Zgodnie ze standardem „Private Engine”, system i wszystkie dane klientów należą wyłącznie do Ciebie.',
     },
   ]);
 }

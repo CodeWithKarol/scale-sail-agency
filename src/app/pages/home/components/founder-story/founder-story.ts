@@ -23,6 +23,8 @@ export class FounderStory {
     bio: [
       'Nazywam się Karol Modelski i od lat pomagam firmom usługowym wychodzić z ery kartek i Excela. Łączę standardy bankowe (Citi, BNP Paribas) z maksymalną prostotą obsługi. Buduję systemy na własność, które realnie odzyskują Twój czas i dają święty spokój.',
     ],
+    quote:
+      'W bankowości awaria systemu to strata milionów. W warsztacie – to utrata zaufania klienta. Przenoszę tę samą obsesję na punkcie niezawodności do mniejszych firm, budując rozwiązania, które po prostu nigdy nie zawiodą.',
     badges: ['Jakość Bankowa', 'Ekspert od Automatyzacji', '6+ lat doświadczenia'],
   });
 }
