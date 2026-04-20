@@ -21,7 +21,7 @@ test.describe('App Integration Tests', () => {
 
   test('should navigate to narzedzia page', async ({ page }) => {
     await page.goto('/narzedzia');
-    await expect(page).toHaveURL(/.*automatyzacja-warsztatu-narzedzia/);
+    await expect(page).toHaveURL(/.*narzedzia/);
   });
 
   test('should navigate to konsultacja page', async ({ page }) => {

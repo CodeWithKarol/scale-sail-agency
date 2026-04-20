@@ -202,7 +202,7 @@ export class QuoteGenerator implements OnInit {
         isPartOf: {
           '@type': 'CollectionPage',
           name: 'Darmowe Narzędzia i Kalkulatory dla Warsztatów',
-          url: 'https://scale-sail.io/automatyzacja-warsztatu-narzedzia',
+          url: 'https://scale-sail.io/narzedzia',
         },
         creator: {
           '@type': 'Organization',

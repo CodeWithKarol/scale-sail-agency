@@ -179,7 +179,7 @@ export class ToolsPage {
         title: 'Darmowe narzędzia dla warsztatu – Generator wycen PDF',
         description:
           'Wykorzystaj darmowy generator wycen napraw samochodowych i kalkulator strat warsztatu. Błyskawicznie uporządkuj papierologię i kosztorysy.',
-        slug: 'automatyzacja-warsztatu-narzedzia',
+        slug: 'narzedzia',
         keywords: [
           'darmowe narzędzia dla mechanika',
           'kalkulator marży warsztat',
@@ -192,7 +192,7 @@ export class ToolsPage {
 
       this.seoService.setBreadcrumbs([
         { name: 'Start', path: '/' },
-        { name: 'Narzędzia', path: '/automatyzacja-warsztatu-narzedzia' },
+        { name: 'Narzędzia', path: '/narzedzia' },
       ]);
 
       this.seoService.setSchema(
@@ -202,7 +202,7 @@ export class ToolsPage {
           name: 'Narzędzia dla Serwisu — Kalkulatory i Dokumenty dla Warsztatów',
           description:
             'Kolekcja narzędzi wspierających codzienne operacje w warsztacie samochodowym: od wycen po kalkulacje zysku.',
-          url: 'https://scale-sail.io/automatyzacja-warsztatu-narzedzia',
+          url: 'https://scale-sail.io/narzedzia',
           mainEntity: {
             '@type': 'ItemList',
             itemListElement: [

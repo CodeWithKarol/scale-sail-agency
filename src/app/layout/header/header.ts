@@ -29,7 +29,7 @@ export class Header {
   // Compact navigation for better UX and spacing
   readonly navigation = [
     { name: 'System', path: '/system-dla-warsztatu' },
-    { name: 'Narzędzia', path: '/automatyzacja-warsztatu-narzedzia' },
+    { name: 'Narzędzia', path: '/narzedzia' },
     { name: 'Bez abonamentu', path: '/program-dla-warsztatu-bez-abonamentu' },
     { name: 'Wiedza', path: '/wiedza-dla-warsztatu' },
     { name: 'O mnie', path: '/o-mnie' },
