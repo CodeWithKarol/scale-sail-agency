@@ -24,28 +24,56 @@
   <app-logo-cloud />
 
   <div id="problem-solution">
-    <app-problem-solution />
+    @defer (on viewport) {
+      <app-problem-solution />
+    } @placeholder {
+      <div class="h-[600px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
   <div id="process">
-    <app-process />
+    @defer (on viewport) {
+      <app-process />
+    } @placeholder {
+      <div class="h-[800px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
   <div id="impact-metrics">
-    <app-impact-metrics />
+    @defer (on viewport) {
+      <app-impact-metrics />
+    } @placeholder {
+      <div class="h-[400px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
   <div id="about">
-    <app-founder-story />
+    @defer (on viewport) {
+      <app-founder-story />
+    } @placeholder {
+      <div class="h-[600px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
   <div id="faq">
-    <app-faq />
+    @defer (on viewport) {
+      <app-faq />
+    } @placeholder {
+      <div class="h-[600px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
   <div id="contact">
-    <app-contact />
+    @defer (on viewport) {
+      <app-contact />
+    } @placeholder {
+      <div class="h-[800px] bg-neutral/50 animate-pulse"></div>
+    }
   </div>
 
-  <app-final-cta />
+  @defer (on viewport) {
+    <app-final-cta />
+  } @placeholder {
+    <div class="h-[400px] bg-neutral/50 animate-pulse"></div>
+  }
 </div>

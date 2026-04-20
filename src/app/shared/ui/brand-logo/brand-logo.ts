@@ -1,19 +1,18 @@
 import { ChangeDetectionStrategy, Component, inject, output, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { ViewportScroller, NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-brand-logo',
-  imports: [RouterLink],
+  imports: [RouterLink, NgOptimizedImage],
   template: `
     <a routerLink="/" (click)="onScrollToTop()" class="-m-1.5 p-1.5 flex items-center gap-3 group">
       <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
         <!-- Logo Image -->
         <img
-          src="images/scale-sail-logo.webp"
+          ngSrc="images/scale-sail-logo.webp"
           alt="Scale Sail Agency - Pancerne systemy dla warsztatów bez abonamentu"
-          [attr.loading]="loading()"
-          fetchpriority="high"
+          priority
           width="40"
           height="40"
           class="h-10 w-10 rounded-none object-contain transition-all duration-300"

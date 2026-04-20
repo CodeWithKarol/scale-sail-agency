@@ -1,11 +1,12 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BlogPost } from '../../blog.model';
 
 @Component({
   selector: 'app-blog-post-card',
-  imports: [CommonModule, DatePipe, RouterModule],
+  standalone: true,
+  imports: [DatePipe, RouterModule, NgOptimizedImage],
   styles: [
     `
       :host {
@@ -23,11 +24,12 @@ import { BlogPost } from '../../blog.model';
         class="relative w-full aspect-[16/9] overflow-hidden bg-neutral border-b-2 border-secondary/10 p-1"
       >
         <img
-          [src]="
+          [ngSrc]="
             post().imageUrl ||
             'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
           "
           [alt]="post().title + ' - system warsztatowy bez abonamentu - poradnik'"
+          fill
           class="absolute inset-1 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] object-cover grayscale transition duration-700 group-hover:grayscale-0 group-hover:scale-105"
         />
         <a

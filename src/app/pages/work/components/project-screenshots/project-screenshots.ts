@@ -1,5 +1,5 @@
 import { Component, input, signal, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 
 export interface Screenshot {
   url: string;
@@ -8,7 +8,8 @@ export interface Screenshot {
 
 @Component({
   selector: 'app-project-screenshots',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [NgOptimizedImage],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <!-- Grid of Thumbnails -->
@@ -17,7 +18,7 @@ export interface Screenshot {
         @for (screenshot of screenshots(); track getUrl(screenshot)) {
           <div class="break-inside-avoid">
             <div
-              class="relative bg-white border-2 border-secondary/10 group cursor-zoom-in hover:border-primary transition-all duration-500 p-2 overflow-hidden rounded-none shadow-[8px_8px_0px_0px_rgba(10,31,68,0.03)] focus:outline-none focus:ring-2 focus:ring-primary"
+              class="relative bg-white border-2 border-secondary/10 group cursor-zoom-in hover:border-primary transition-all duration-500 p-2 overflow-hidden rounded-none shadow-[8px_8px_0px_0px_rgba(10,31,68,0.03)] focus:outline-none focus:ring-2 focus:ring-primary aspect-video"
               (click)="openZoom(screenshot)"
               (keydown.enter)="openZoom(screenshot)"
               (keydown.space)="openZoom(screenshot); $event.preventDefault()"
@@ -35,9 +36,9 @@ export interface Screenshot {
                 </div>
               </div>
               <img
-                [src]="getUrl(screenshot)"
-                loading="lazy"
-                class="w-full h-auto transform transition-transform duration-1000 group-hover:scale-[1.02] filter contrast-110 grayscale-[0.3] group-hover:grayscale-0"
+                [ngSrc]="getUrl(screenshot)"
+                fill
+                class="transform transition-transform duration-1000 group-hover:scale-[1.02] filter contrast-110 grayscale-[0.3] group-hover:grayscale-0 object-cover"
                 [alt]="
                   (getDescription(screenshot) || 'Zdjęcie projektu') +
                   ' - oprogramowanie warsztatowe na własność - Scale Sail'

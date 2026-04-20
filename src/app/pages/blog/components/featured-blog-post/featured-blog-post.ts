@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { DatePipe, NgOptimizedImage } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { BlogPost } from '../../blog.model';
 import { Button } from '../../../../shared/ui/button/button';
@@ -8,7 +8,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 @Component({
   selector: 'app-featured-blog-post',
   standalone: true,
-  imports: [CommonModule, DatePipe, Button, LucideAngularModule, RouterModule],
+  imports: [DatePipe, Button, LucideAngularModule, RouterModule, NgOptimizedImage],
   template: `
     <article
       class="group relative isolate flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-20 border-b-4 border-secondary/10 pb-20 lg:pb-32"
@@ -29,14 +29,13 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
             tabindex="-1"
           >
             <img
-              [src]="
+              [ngSrc]="
                 post().imageUrl ||
                 'https://images.unsplash.com/photo-1499750310159-5254f4cc1555?q=80&w=2670&auto=format&fit=crop'
               "
               [alt]="post().title + ' - automatyzacja procesów warsztatowych - blog Scale Sail'"
-              width="800"
-              height="450"
-              fetchpriority="high"
+              priority
+              fill
               class="absolute inset-0 h-full w-full object-cover transition duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
             />
           </a>

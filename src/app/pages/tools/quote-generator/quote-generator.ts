@@ -34,6 +34,8 @@ import { Button } from '../../../shared/ui/button/button';
 import { SeoService } from '../../../shared/core/seo/seo.service';
 import { NgxTurnstileModule } from 'ngx-turnstile';
 
+import { QuoteCalculatorService } from '../../../shared/services/quote-calculator.service';
+
 @Component({
   selector: 'app-quote-generator',
   standalone: true,
@@ -56,6 +58,7 @@ export class QuoteGenerator implements OnInit {
 
   private fb = inject(FormBuilder);
   private seoService = inject(SeoService);
+  private calculatorService = inject(QuoteCalculatorService);
 
   turnstileToken = signal<string | null>(null);
 
@@ -257,20 +260,12 @@ export class QuoteGenerator implements OnInit {
   // Computed totals for better performance with OnPush
   subtotal = computed(() => {
     const val = this.formValues();
-    let sum = 0;
-    val.parts?.forEach((part: { qty?: number; price?: number }) => {
-      sum += (part.qty || 0) * (part.price || 0);
-    });
-    val.labor?.forEach((labor: { hours?: number; rate?: number }) => {
-      sum += (labor.hours || 0) * (labor.rate || 0);
-    });
-    return sum;
+    return this.calculatorService.calculateSubtotal(val.parts || [], val.labor || []);
   });
 
   vat = computed(() => {
-    const rate = this.formValues().vatRate;
-    if (isNaN(Number(rate))) return 0;
-    return this.subtotal() * (Number(rate) / 100);
+    const rate = Number(this.formValues().vatRate);
+    return this.calculatorService.calculateVat(this.subtotal(), rate);
   });
 
   total = computed(() => this.subtotal() + this.vat());
@@ -301,21 +296,12 @@ export class QuoteGenerator implements OnInit {
     // Auto-calculate retail price when netPrice or markup changes
     group.valueChanges.subscribe((val) => {
       if (val.netPrice != null && val.markup != null) {
-        let safeMarkup = val.markup;
-        if (val.markup < 0) {
-          safeMarkup = 0;
-          group.patchValue({ markup: safeMarkup }, { emitEvent: false });
-        }
-
-        let safeNet = val.netPrice;
-        if (val.netPrice < 0) {
-          safeNet = 0;
-          group.patchValue({ netPrice: safeNet }, { emitEvent: false });
-        }
-
-        const calculatedPrice = safeNet * (1 + safeMarkup / 100);
+        const calculatedPrice = this.calculatorService.calculateRetailPrice(
+          val.netPrice,
+          val.markup,
+        );
         if (Math.abs(calculatedPrice - (val.price || 0)) > 0.01) {
-          group.patchValue({ price: Number(calculatedPrice.toFixed(2)) }, { emitEvent: false });
+          group.patchValue({ price: calculatedPrice }, { emitEvent: false });
         }
       }
     });
@@ -324,17 +310,11 @@ export class QuoteGenerator implements OnInit {
     group.get('price')?.valueChanges.subscribe((newPrice) => {
       const net = group.get('netPrice')?.value;
       if (newPrice != null && net != null && net > 0) {
-        let calculatedMarkup = ((newPrice - net) / net) * 100;
+        const calculatedMarkup = this.calculatorService.calculateMarkup(net, newPrice);
+        const currentMarkup = group.get('markup')?.value || 0;
 
-        if (calculatedMarkup < 0) {
-          calculatedMarkup = 0;
-          // If price is typed lower than netPrice, correct both safely
-          group.patchValue({ markup: 0, price: net }, { emitEvent: false });
-        } else {
-          const currentMarkup = group.get('markup')?.value || 0;
-          if (Math.abs(calculatedMarkup - currentMarkup) > 0.1) {
-            group.patchValue({ markup: Math.round(calculatedMarkup) }, { emitEvent: false });
-          }
+        if (Math.abs(calculatedMarkup - currentMarkup) > 0.1) {
+          group.patchValue({ markup: calculatedMarkup }, { emitEvent: false });
         }
       }
     });

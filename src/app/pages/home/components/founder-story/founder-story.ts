@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { LucideAngularModule, ChevronRight, ArrowRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-founder-story',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, NgOptimizedImage],
   templateUrl: './founder-story.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
