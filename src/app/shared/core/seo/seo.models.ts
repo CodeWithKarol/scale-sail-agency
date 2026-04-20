@@ -45,6 +45,15 @@ export interface LocalBusinessConfig {
   sameAs?: string[];
 }
 
+export interface OrganizationConfig {
+  name: string;
+  url: string;
+  logo: string;
+  description: string;
+  sameAs?: string[];
+  knowsAbout?: string[]; // Important for GEO topical authority
+}
+
 export interface FaqItem {
   question: string;
   answer: string;

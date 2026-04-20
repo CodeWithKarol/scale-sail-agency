@@ -7,7 +7,7 @@ import { Button } from '../../shared/ui/button/button';
 import { SectionHeader } from '../../shared/ui/section-header/section-header';
 import { Card } from '../../shared/ui/card/card';
 import { LucideAngularModule, Check, X } from 'lucide-angular';
-import { PRINCIPLES, EXPERIENCE, IDEAL_CLIENTS, ANTI_PATTERNS } from './about.data';
+import { PRINCIPLES, EXPERIENCE, IDEAL_CLIENTS, ANTI_PATTERNS, FOUNDER_QUOTE } from './about.data';
 
 @Component({
   selector: 'app-about',
@@ -31,6 +31,7 @@ export class About implements OnInit {
   readonly experience = EXPERIENCE;
   readonly idealClients = IDEAL_CLIENTS;
   readonly antiPatterns = ANTI_PATTERNS;
+  readonly quote = FOUNDER_QUOTE;
   readonly icons = { Check, X };
 
   ngOnInit() {

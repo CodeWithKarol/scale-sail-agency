@@ -6,6 +6,7 @@ import {
   FaqItem,
   JsonLdSchema,
   LocalBusinessConfig,
+  OrganizationConfig,
   SeoConfig,
 } from './seo.models';
 
@@ -71,6 +72,25 @@ export class SeoService {
    */
   public setSchema(schema: JsonLdSchema, scriptId = 'json-ld-schema'): void {
     this.injectSchemaScript(scriptId, schema);
+  }
+
+  /**
+   * Generates and injects Organization schema.
+   * Crucial for GEO (Generative Engine Optimization) to define brand authority.
+   */
+  public setOrganizationSchema(config: OrganizationConfig): void {
+    const schema: JsonLdSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: config.name,
+      url: config.url,
+      logo: config.logo,
+      description: config.description,
+      ...(config.sameAs && { sameAs: config.sameAs }),
+      ...(config.knowsAbout && { knowsAbout: config.knowsAbout }),
+    };
+
+    this.injectSchemaScript('json-ld-organization', schema);
   }
 
   /**
@@ -152,6 +172,7 @@ export class SeoService {
   private clearPageSchemas(): void {
     const schemasToClear = [
       'json-ld-faq',
+      'json-ld-organization',
       'json-ld-local-business',
       'json-ld-breadcrumbs',
       'json-ld-schema',

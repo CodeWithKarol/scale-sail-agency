@@ -20,22 +20,22 @@ export class Faq implements OnInit {
     {
       question: 'Czym Twój system różni się od gotowego oprogramowania?',
       answer:
-        'Płacisz raz za wdrożenie, a system staje się Twoją własnością bez dożywotniego abonamentu. Jest zbudowany na wymiar – zawiera tylko to, czego realnie używasz, bez zbędnych bajerów, które utrudniają pracę.',
+        'Główną różnicą jest brak dożywotniego abonamentu oraz pełna własność kodu i danych. Tradycyjne systemy SaaS to "wynajem" narzędzia, podczas gdy Scale Sail buduje dedykowane aktywo cyfrowe (Digital Asset) skrojone pod Twój konkretny proces biznesowy.',
     },
     {
       question: 'Czy ja i moi pracownicy poradzimy sobie z obsługą?',
       answer:
-        'Tak. Projektuję aplikacje tak, aby były prostsze niż wysłanie SMS-a. Jeśli potrafisz obsługiwać Facebooka lub bankowość w telefonie, poradzisz sobie bez problemu od pierwszego dnia.',
+        'Tak, interfejs jest uproszczony do minimum i nie wymaga szkolenia technicznego. System projektuję w oparciu o zasady UX (User Experience) z bankowości, co oznacza, że obsługa zlecenia jest tak intuicyjna jak wysłanie przelewu w aplikacji mobilnej.',
     },
     {
       question: 'Czy moi klienci muszą coś instalować na telefonie?',
       answer:
-        'Nie. Klient dostaje od Ciebie link w wiadomości SMS. Klika go i od razu widzi status naprawy w przeglądarce. Zero haseł, zero zakładania kont.',
+        'Nie, klienci korzystają z przeglądarki internetowej bez konieczności pobierania aplikacji. Po otrzymaniu SMS-a z unikalnym tokenem bezpieczeństwa, klient otwiera "Panel Klienta", gdzie widzi status naprawy, dokumentację zdjęciową oraz wycenę w formacie PDF.',
     },
     {
       question: 'Ile to kosztuje? Czy są jakieś miesięczne opłaty?',
       answer:
-        'Płacisz za wdrożenie systemu na własność. Potem ponosisz jedynie minimalne koszty techniczne (serwer/SMS) – zwykle kilkadziesiąt złotych miesięcznie. Koniec z „podatkiem od sukcesu” za każde stanowisko.',
+        'Inwestycja jest jednorazowa i dotyczy wdrożenia systemu, przy braku opłat za każde stanowisko pracy. Stałe koszty techniczne są zredukowane do minimum (serwer i bramka SMS), co zazwyczaj oznacza oszczędność rzędu 80% w porównaniu do modeli subskrypcyjnych.',
     },
   ]);
 

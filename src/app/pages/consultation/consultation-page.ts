@@ -101,11 +101,11 @@ export class ConsultationPage implements OnInit {
         mainEntity: {
           '@type': 'Organization',
           name: 'Scale Sail Agency',
-          email: 'karol@scale-sail.io',
+          email: 'contact@scale-sail.io',
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'sales',
-            email: 'karol@scale-sail.io',
+            email: 'contact@scale-sail.io',
             availableLanguage: ['Polish', 'English'],
           },
         },
