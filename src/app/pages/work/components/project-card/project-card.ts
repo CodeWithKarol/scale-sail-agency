@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { CaseStudy } from '../../../../shared/domain/portfolio/portfolio.service';
 import { Button } from '../../../../shared/ui/button/button';
 import { LucideAngularModule, ArrowRight } from 'lucide-angular';
@@ -8,7 +8,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [CommonModule, RouterLink, Button, LucideAngularModule],
+  imports: [RouterLink, Button, LucideAngularModule, NgOptimizedImage],
   template: `
     <article
       class="group/card relative isolate flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-24"
@@ -19,7 +19,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
           class="group relative aspect-[16/9] w-full overflow-hidden bg-white border-2 border-secondary/10 p-1 sm:p-2 transition-all duration-500 hover:border-primary group-hover:shadow-[12px_12px_0px_0px_rgba(10,31,68,0.05)]"
         >
           <img
-            [src]="
+            [ngSrc]="
               project().heroImage ||
               'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80'
             "
@@ -27,8 +27,7 @@ import { LucideAngularModule, ArrowRight } from 'lucide-angular';
               project().title +
               ' - system warsztatowy bez abonamentu - panel zarządzania zleceniami'
             "
-            width="800"
-            height="450"
+            fill
             class="absolute inset-1 sm:inset-2 h-[calc(100%-0.5rem)] sm:h-[calc(100%-1rem)] w-[calc(100%-0.5rem)] sm:w-[calc(100%-1rem)] object-cover object-top grayscale transition duration-700 group-hover/card:grayscale-0 group-hover/card:scale-105"
           />
 

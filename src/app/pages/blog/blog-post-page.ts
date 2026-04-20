@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, signal, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BlogService } from '../../shared/services/blog.service';
 import { BlogPost } from './blog.model';
@@ -18,6 +18,7 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
     Button,
     LucideAngularModule,
     MarkdownPipe,
+    NgOptimizedImage,
   ],
   template: `
     <article class="min-h-screen bg-neutral text-secondary pb-24 pt-32 sm:pt-40">
@@ -40,13 +41,13 @@ import { MarkdownPipe } from '../../shared/pipes/markdown.pipe';
           </header>
 
           @if (p.imageUrl) {
-            <div class="max-w-5xl mx-auto mb-16 shadow-2xl">
+            <div class="max-w-5xl mx-auto mb-16 shadow-2xl relative aspect-[1200/630]">
               <img
-                [src]="p.imageUrl"
+                [ngSrc]="p.imageUrl"
                 [alt]="p.title + ' - oprogramowanie na własność dla firm usługowych'"
-                class="w-full h-auto border-4 border-secondary"
-                width="1200"
-                height="630"
+                class="border-4 border-secondary object-cover"
+                fill
+                priority
               />
             </div>
           }

@@ -1,0 +1,465 @@
+<div class="min-h-screen bg-neutral text-secondary pb-24 sm:pb-32 relative bg-grid-workshop">
+  <div class="absolute inset-0 z-0 bg-grid-workshop opacity-40 pointer-events-none"></div>
+
+  <div class="layout-container relative z-10 pt-32 sm:pt-40">
+    <app-breadcrumb />
+
+    <div class="max-w-4xl mx-auto mt-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+      <!-- Header Content -->
+      <div class="mb-16">
+        <app-section-header
+          [level]="1"
+          subtitle="WERYFIKACJA POTRZEB"
+          title="BEZPŁATNA KONSULTACJA"
+          description="Szanuję Twój czas. Zanim usiądziemy do kalendarza, chcę mieć pewność, że faktycznie potrafię rozwiązać Twój problem. Odpowiedz uczciwie na kilka pytań."
+        />
+      </div>
+
+      <!-- Interactive Form Container -->
+      <div
+        class="relative bg-white border-4 border-secondary p-5 sm:p-12 shadow-[16px_16px_0px_0px_rgba(10,31,68,0.05)]"
+      >
+        <div class="absolute top-0 left-0 w-full h-2 bg-primary"></div>
+
+        <div class="flex items-center justify-between mb-8 pb-4 border-b-2 border-secondary/10">
+          <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-secondary"></div>
+            <span class="text-small text-secondary/40">{{
+              status() === 'PENDING' ? 'KROK 1 Z 2' : 'KROK 2 Z 2'
+            }}</span>
+          </div>
+          <div class="text-small font-bold text-secondary">
+            {{
+              status() === 'PENDING'
+                ? 'WERYFIKACJA POTRZEB'
+                : status() === 'SUBMITTING'
+                  ? 'ANALIZA DANYCH'
+                  : status() === 'ACCEPTED'
+                    ? 'DIAGNOZA ODBLOKOWANA'
+                    : 'INNA ŚCIEŻKA POMOCY'
+            }}
+          </div>
+        </div>
+
+        @if (status() === 'PENDING') {
+          <!-- Step 1: The Form -->
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex flex-col gap-8">
+            <!-- Honeypot -->
+            <input
+              type="checkbox"
+              formControlName="botcheck"
+              class="hidden"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+
+            <!-- Project Type / Problem -->
+            <div>
+              <h3 class="font-black text-lg text-secondary mb-2">
+                1. W CZYM MOGĘ POMÓC NAJSZYBCIEJ?
+              </h3>
+              <p class="text-sm text-secondary/75 mb-4">Wybierz główny punkt bólu Twojej firmy.</p>
+              <div class="relative">
+                <select
+                  formControlName="projectType"
+                  class="input-field"
+                  [class.border-accent]="f['projectType'].invalid && f['projectType'].touched"
+                  aria-label="Wybierz rodzaj projektu"
+                >
+                  <option value="system">
+                    Potrzebuję prostego systemu do zarządzania zleceniami
+                  </option>
+                  <option value="automation">
+                    Chcę zautomatyzować powtarzalne prace i odzyskać czas
+                  </option>
+                  <option value="ai">Interesują mnie inteligentni asystenci i wsparcie AI</option>
+                  <option value="care">Mam inny pomysł / Szukam Opieki i Rozwoju</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              @if (f['projectType'].invalid && f['projectType'].touched) {
+                <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                  Wybierz obszar, w którym potrzebujesz pomocy.
+                </p>
+              }
+            </div>
+
+            <!-- Budget -->
+            <div class="pt-6 border-t-2 border-secondary/5">
+              <h3 class="font-black text-lg text-secondary mb-2">2. RAMY INWESTYCYJNE</h3>
+              <p class="text-sm text-secondary/75 mb-4">
+                Budowa dedykowanego systemu to inwestycja, która zwraca się w odzyskanym czasie. W
+                jakim przedziale się poruszamy na start?
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <label
+                  class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <input type="radio" formControlName="budget" value="low" class="sr-only" />
+                  <span class="flex flex-col">
+                    <span
+                      class="block text-sm font-black mb-1"
+                      [class.text-primary]="f['budget'].value === 'low'"
+                      >Poniżej 7 000 zł</span
+                    >
+                    <span class="block text-xs text-secondary/60"
+                      >Szukam gotowego programu w abonamencie</span
+                    >
+                  </span>
+                  <!-- Active Ring overlay -->
+                  <span
+                    class="pointer-events-none absolute -inset-px border-2"
+                    [class.border-transparent]="f['budget'].value !== 'low'"
+                    [class.border-primary]="f['budget'].value === 'low'"
+                    aria-hidden="true"
+                  ></span>
+                </label>
+
+                <label
+                  class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <input type="radio" formControlName="budget" value="mid" class="sr-only" />
+                  <span class="flex flex-col">
+                    <span
+                      class="block text-sm font-black mb-1"
+                      [class.text-primary]="f['budget'].value === 'mid'"
+                      >7 000 - 16 000 zł</span
+                    >
+                    <span class="block text-xs text-secondary/60"
+                      >Optymalny system i automatyzacje</span
+                    >
+                  </span>
+                  <span
+                    class="pointer-events-none absolute -inset-px border-2"
+                    [class.border-transparent]="f['budget'].value !== 'mid'"
+                    [class.border-primary]="f['budget'].value === 'mid'"
+                    aria-hidden="true"
+                  ></span>
+                </label>
+
+                <label
+                  class="relative flex cursor-pointer rounded-none border-2 border-secondary/20 bg-white p-3 sm:p-4 focus-within:ring-4 focus-within:ring-primary/10 hover:bg-neutral/40 hover:border-secondary/40 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <input type="radio" formControlName="budget" value="high" class="sr-only" />
+                  <span class="flex flex-col">
+                    <span
+                      class="block text-sm font-black mb-1"
+                      [class.text-primary]="f['budget'].value === 'high'"
+                      >Powyżej 16 000 zł</span
+                    >
+                    <span class="block text-xs text-secondary/60"
+                      >Zaawansowany system i inteligentni asystenci</span
+                    >
+                  </span>
+                  <span
+                    class="pointer-events-none absolute -inset-px border-2"
+                    [class.border-transparent]="f['budget'].value !== 'high'"
+                    [class.border-primary]="f['budget'].value === 'high'"
+                    aria-hidden="true"
+                  ></span>
+                </label>
+              </div>
+              @if (f['budget'].invalid && f['budget'].touched) {
+                <p class="text-accent text-xs font-bold mt-4 uppercase tracking-wide text-center">
+                  Wybierz przybliżony budżet na start.
+                </p>
+              }
+            </div>
+
+            <!-- Message -->
+            <div class="pt-6 border-t-2 border-secondary/5">
+              <h3 class="font-black text-lg text-secondary mb-2">3. SZCZEGÓŁY (BEZ LANIA WODY)</h3>
+              <textarea
+                formControlName="message"
+                rows="3"
+                class="input-field resize-none"
+                [class.border-accent]="f['message'].invalid && f['message'].touched"
+                placeholder="Opisz w paru słowach, jak dzisiaj przebiega praca i co Cię w tym najbardziej ukłuło (min. 20 znaków)..."
+              ></textarea>
+              @if (f['message'].invalid && f['message'].touched) {
+                <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                  @if (f['message'].errors?.['required']) {
+                    Oczekiwany jest krótki opis.
+                  } @else if (f['message'].errors?.['minlength']) {
+                    Rozwiń nieco myśl (min. 20 znaków).
+                  } @else if (f['message'].errors?.['maxlength']) {
+                    Max 1000 znaków.
+                  }
+                </p>
+              }
+            </div>
+
+            <!-- Contact & Security -->
+            <div class="pt-10 border-t-2 border-secondary/5 space-y-6">
+              <div>
+                <h3 class="font-black text-lg text-secondary mb-2">4. DANE KONTAKTOWE</h3>
+                <p class="text-sm text-secondary/75 mb-6">
+                  Z kim mam się kontaktować w sprawie tego projektu?
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block font-black text-xs text-secondary mb-2 uppercase tracking-widest"
+                      >TWOJE IMIĘ (I NAZWA FIRMY)</label
+                    >
+                    <input
+                      type="text"
+                      id="name"
+                      formControlName="name"
+                      class="input-field"
+                      [class.border-accent]="f['name'].invalid && f['name'].touched"
+                      placeholder="np. Tomek (Warsztat u Tomka)"
+                    />
+                    @if (f['name'].invalid && f['name'].touched) {
+                      <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                        @if (f['name'].errors?.['required']) {
+                          To pole jest wymagane.
+                        }
+                        @if (f['name'].errors?.['maxlength']) {
+                          Max 50 znaków.
+                        }
+                      </p>
+                    }
+                  </div>
+
+                  <div>
+                    <label
+                      for="email"
+                      class="block font-black text-xs text-secondary mb-2 uppercase tracking-widest"
+                      >TWÓJ E-MAIL</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      formControlName="email"
+                      class="input-field"
+                      [class.border-accent]="f['email'].invalid && f['email'].touched"
+                      placeholder="tomek@warsztat.pl"
+                    />
+                    @if (f['email'].invalid && f['email'].touched) {
+                      <p class="text-accent text-xs font-bold mt-2 uppercase tracking-wide">
+                        @if (f['email'].errors?.['required']) {
+                          Podaj adres email.
+                        } @else if (f['email'].errors?.['email']) {
+                          Błędny format email.
+                        } @else if (f['email'].errors?.['maxlength']) {
+                          Max 100 znaków.
+                        }
+                      </p>
+                    }
+                  </div>
+                </div>
+              </div>
+
+              <!-- Turnstile Widget -->
+              <div class="flex flex-col items-start gap-2 pt-4">
+                <ngx-turnstile
+                  [siteKey]="'0x4AAAAAACzale-5wIMBLCHH'"
+                  theme="light"
+                  (resolved)="onTurnstileResolved($event)"
+                  (error)="onTurnstileError()"
+                  style="min-height: 65px"
+                ></ngx-turnstile>
+                @if (!turnstileToken()) {
+                  <p
+                    class="text-[10px] text-secondary/40 font-bold uppercase tracking-widest animate-pulse"
+                  >
+                    Weryfikuję bezpieczeństwo...
+                  </p>
+                }
+              </div>
+            </div>
+
+            <!-- Submit Action -->
+            <div class="mt-4 pt-10 border-t-2 border-secondary/5">
+              <app-button
+                type="submit"
+                variant="primary"
+                size="lg"
+                styleClass="w-full sm:w-auto shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                [disabled]="status() === 'SUBMITTING' || !turnstileToken()"
+              >
+                <span class="text-lg">PRZEJDŹ DO KALENDARZA</span>
+                <lucide-icon
+                  [img]="icons.ArrowRight"
+                  size="20"
+                  class="ml-3 group-hover:translate-x-1 transition-transform"
+                ></lucide-icon>
+              </app-button>
+              <div class="mt-6 flex items-center gap-3 opacity-70">
+                <lucide-icon
+                  [img]="icons.Info"
+                  size="14"
+                  class="text-primary flex-shrink-0"
+                ></lucide-icon>
+                <p class="text-xs text-secondary italic leading-relaxed text-balance">
+                  Zaznaczenie "Poniżej 7 000 zł" (z wyjątkiem Opieki i Rozwoju) może zaoferować
+                  alternatywną ścieżkę pomocy, aby oszczędzić Twój czas.
+                </p>
+              </div>
+            </div>
+          </form>
+        } @else if (status() === 'SUBMITTING') {
+          <!-- Step 2: Loading State -->
+          <div
+            class="h-[400px] flex flex-col items-center justify-center text-center animate-pulse"
+          >
+            <div
+              class="w-16 h-16 border-4 border-secondary border-t-primary rounded-full animate-spin mb-8"
+            ></div>
+            <h3 class="heading-3 mb-2">Przetwarzanie danych...</h3>
+            <p class="text-secondary/60">Sprawdzam dopasowanie formularza.</p>
+          </div>
+        } @else if (status() === 'ACCEPTED') {
+          <!-- Step 3A: Accepted -> Embed Calendar -->
+          <div class="animate-in fade-in zoom-in-95 duration-500">
+            <div class="bg-primary/5 border-2 border-primary p-6 mb-8 flex items-start gap-4">
+              <div
+                class="w-8 h-8 bg-primary text-white flex-shrink-0 flex items-center justify-center font-bold"
+              >
+                ✓
+              </div>
+              <div>
+                <h4 class="font-black text-secondary mb-1">JESTEŚMY DOPASOWANI</h4>
+                <p class="text-sm text-secondary/80">
+                  Twój przypadek wymaga głębszej analizy. Traktuję to poważnie, dlatego specjalnie
+                  dla Ciebie
+                  <b>wydłużam czas naszej wstępnej darmowej rozmowy do pełnych 30 minut</b>. Wybierz
+                  dogodny termin w kalendarzu poniżej. Rozmowa do niczego Cię nie zobowiązuje.
+                </p>
+              </div>
+            </div>
+
+            <!-- Cal.com / Embed Placeholder -->
+            <div
+              class="w-full min-h-[500px] bg-neutral/30 border-2 border-dashed border-secondary/20 relative"
+              id="my-cal-inline"
+              style="overflow: scroll"
+            >
+              <!-- Cal.com will inject its iframe here automatically -->
+            </div>
+          </div>
+        } @else if (status() === 'REJECTED') {
+          <!-- Step 3B: Rejected -> Alternative Help -->
+          <div
+            class="min-h-[400px] flex flex-col justify-center animate-in fade-in slide-in-from-bottom-4 duration-500 text-center items-center"
+          >
+            <div
+              class="w-20 h-20 bg-primary/10 border-4 border-primary/20 flex items-center justify-center mb-8"
+            >
+              <svg
+                class="w-10 h-10 text-primary"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+
+            <h3 class="heading-2 mb-6">Zacznijmy od mniejszego kroku.</h3>
+            <p class="text-lg text-secondary/80 max-w-lg mb-8 leading-relaxed">
+              Dziękuję za szczerość w kwestii budżetu. Budowa dedykowanego systemu na tym etapie
+              byłaby jak
+              <span class="text-secondary font-bold">strzelanie z armaty do muchy</span>. Chcę, aby
+              każda złotówka wydana na technologię zarabiała na siebie od pierwszego dnia.
+            </p>
+
+            <div
+              class="bg-white border-4 border-secondary p-8 inline-block text-left mb-10 max-w-lg shadow-[12px_12px_0px_0px_rgba(0,123,255,0.1)]"
+            >
+              <p
+                class="font-mono text-[10px] uppercase font-black tracking-widest mb-4 text-primary"
+              >
+                EKSPERCKA REKOMENDACJA
+              </p>
+              <p class="text-secondary/90 font-medium mb-4">
+                Twoja firma jest na etapie, gdzie najwięcej zyskasz wdrażając sprawdzone, gotowe
+                narzędzia abonamentowe.
+              </p>
+              <p class="text-secondary/70 text-sm">
+                W ciągu 48h wyślę Ci e-mail z <strong>listą 3 konkretnych narzędzi</strong>, które
+                sam bym wybrał na Twoim miejscu. Pomogą Ci one uporządkować zlecenia i przygotować
+                grunt pod pełną automatyzację w przyszłości.
+              </p>
+            </div>
+
+            <div class="mb-10 text-center animate-in fade-in duration-1000 delay-300">
+              <p class="text-secondary/60 text-sm mb-6 italic">
+                W międzyczasie skorzystaj z moich darmowych kalkulatorów:
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <app-button variant="secondary" size="md" route="/narzedzia">
+                  DARMOWE NARZĘDZIA
+                </app-button>
+                <app-button variant="ghost" size="md" route="/"> POWRÓT DO STARTU </app-button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Final CTA / Closing Section -->
+      <div
+        class="mt-20 p-6 sm:p-12 border-4 border-secondary bg-secondary text-white relative overflow-hidden group animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500"
+      >
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-primary opacity-10 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"
+        ></div>
+
+        <div class="relative z-10 max-w-2xl text-center sm:text-left">
+          <h2 class="heading-2 text-white mb-6 uppercase tracking-tight">Nadal się wahasz?</h2>
+          <p class="text-lg text-white/80 mb-10 leading-relaxed font-normal">
+            Rozumiem to. Budowa dedykowanego systemu to duża decyzja. Zobacz nasze dotychczasowe
+            realizacje, aby przekonać się, jakie konkretne problemy rozwiązaliśmy dla innych
+            warsztatów i firm usługowych.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center gap-6">
+            <app-button
+              variant="secondary"
+              size="lg"
+              route="/system-dla-warsztatu"
+              styleClass="w-full sm:w-auto"
+            >
+              <span class="mr-3">ZOBACZ NASZE REALIZACJE</span>
+              <lucide-icon [img]="icons.LayoutGrid" size="20"></lucide-icon>
+            </app-button>
+
+            <a
+              href="mailto:karol@scale-sail.io"
+              class="text-sm font-black uppercase tracking-widest text-white/70 hover:text-white transition-colors flex items-center gap-3 group"
+            >
+              <lucide-icon
+                [img]="icons.Mail"
+                size="16"
+                class="text-primary group-hover:scale-110 transition-transform"
+              ></lucide-icon>
+              LUB NAPISZ DO MNIE BEZPOŚREDNIO
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
