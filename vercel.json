@@ -25,10 +25,10 @@
     },
     { "source": "/blog", "destination": "/wiedza-dla-warsztatu", "permanent": true },
     { "source": "/blog/:slug", "destination": "/wiedza-dla-warsztatu/:slug", "permanent": true },
-    { "source": "/tools", "destination": "/automatyzacja-warsztatu-narzedzia", "permanent": true },
+    { "source": "/tools", "destination": "/narzedzia", "permanent": true },
     {
-      "source": "/narzedzia",
-      "destination": "/automatyzacja-warsztatu-narzedzia",
+      "source": "/automatyzacja-warsztatu-narzedzia",
+      "destination": "/narzedzia",
       "permanent": true
     },
     {

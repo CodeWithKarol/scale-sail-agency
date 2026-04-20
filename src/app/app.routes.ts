@@ -34,15 +34,9 @@ export const routes: Routes = [
     title: 'Program dla warsztatu bez abonamentu – Cennik',
   },
   {
-    path: 'automatyzacja-warsztatu-narzedzia',
+    path: 'narzedzia',
     loadComponent: () => import('./pages/tools/tools-page').then((m) => m.ToolsPage),
     title: 'Automatyzacja warsztatu – Darmowe narzędzia',
-  },
-  {
-    path: 'konsultacja',
-    loadComponent: () =>
-      import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
-    title: 'Bezpłatna Konsultacja | Scale Sail Agency',
   },
   {
     path: 'narzedzia/generator-wycen-pdf',
@@ -55,6 +49,12 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/tools/loss-calculator/loss-calculator').then((m) => m.LossCalculator),
     title: 'Kalkulator Strat Warsztatu | Scale Sail',
+  },
+  {
+    path: 'konsultacja',
+    loadComponent: () =>
+      import('./pages/consultation/consultation-page').then((m) => m.ConsultationPage),
+    title: 'Bezpłatna Konsultacja | Scale Sail Agency',
   },
   {
     path: 'polityka-prywatnosci',
@@ -79,8 +79,8 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'narzedzia',
-    redirectTo: 'automatyzacja-warsztatu-narzedzia',
+    path: 'automatyzacja-warsztatu-narzedzia',
+    redirectTo: 'narzedzia',
     pathMatch: 'full',
   },
   {
